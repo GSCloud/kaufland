@@ -1,0 +1,48 @@
+<div class="clearfix" style="padding:1rem"></div>
+
+{{^user.id}}
+<div class="container">
+  <div class="row">
+    <div class="column">
+      <div class="float-right center">
+        {{>login}}
+      </div>
+      <p>{{ l.readme }}</p>
+    </div>
+  </div>
+</div>
+{{/user.id}}
+
+{{#user.id}}
+<div class="container">
+  <div class="row">
+    <div class="column">
+      <div class="float-right center">
+        {{>logout}}
+      </div>
+      <p>{{ l.readme }}</p>
+    </div>
+  </div>
+</div>
+{{/user.id}}
+
+<script>
+(function (w, $, undefined) {
+  'use strict';
+
+  // *** DELAYED FUNCTIONS ***
+
+  GSC._fn.push(function () {
+    // add nonce to all anchors
+    $('.container').find('a').each(function() {
+      var h = $(this).attr('href');
+      var nonce = '?nonce=' + Math.round(Math.random() * 10000);
+      if ((h.indexOf('?') == -1) && (h.indexOf('http') != -1)) {
+        $(this).attr('href', h + nonce);
+      }
+    });
+  });
+
+})(window, $);
+
+</script>

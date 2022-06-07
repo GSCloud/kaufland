@@ -1,0 +1,69 @@
+<script>
+'use strict';
+
+// polyfills @TODO delete?
+Array.prototype.includes||Object.defineProperty(Array.prototype,"includes",{value:function(f,g){if(null==this)throw new TypeError('"this" is null or not defined');var e=Object(this),b=e.length>>>0;if(0===b)return!1;var a=g|0;for(a=Math.max(0<=a?a:b-Math.abs(a),0);a<b;){var c=e[a],d=f;if(c===d||"number"===typeof c&&"number"===typeof d&&isNaN(c)&&isNaN(d))return!0;a++}return!1}});
+String.prototype.trim||(String.prototype.trim=function(){return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,"")});
+
+(function (w, d, undefined) {
+
+  // check network status
+  function checkNetwork(e) {
+    if ("onLine" in navigator) {
+      if (navigator.onLine) {
+        d.getElementsByTagName("html")[0].setAttribute("offline", false);
+        d.getElementsByTagName("html")[0].setAttribute("online", true);
+        if (d.getElementById("offline-message")) d.getElementById("offline-message").setAttribute("aria-hidden", true);
+        if (w.GSC) w.GSC.offline = false;
+        if (w.GSC) w.GSC.online = true;
+      } else {
+        d.getElementsByTagName("html")[0].setAttribute("offline", true);
+        d.getElementsByTagName("html")[0].setAttribute("online", false);
+        if (d.getElementById("offline-message")) d.getElementById("offline-message").setAttribute("aria-hidden", false);
+        if (w.GSC) w.GSC.offline = true;
+        if (w.GSC) w.GSC.online = false;
+        if (w.GSC) w.GSC.loaderOff();
+      }
+    }
+  }
+
+  // "online" feature detection and binding
+  if ("onLine" in navigator) {
+    w.addEventListener("load", function () {
+      w.addEventListener("online", checkNetwork);
+      w.addEventListener("offline", checkNetwork);
+      checkNetwork();
+    });
+  }
+
+  // setCookie() general function
+  if (typeof window.setCookie !== "function") window.setCookie = function (key, value, days) {
+    if (key === undefined) return false;
+    if (value === undefined) return false;
+    if (days === undefined) days = 31;
+    if (days == 0) { // session cookie      
+      document.cookie = key + "=" + value + ";path=/";
+    } else {
+      var d1 = new Date().getTime();
+      var d2 = d1 + (parseInt(days) * 86400 * 1000); // time is in miliseconds!
+      document.cookie = key + "=" + value + ";path=/" + ";expires=" + new Date(d2).toGMTString();
+    }
+  }
+
+  // getCookie() general function
+  if (typeof window.getCookie !== "function") window.getCookie = function (key) {
+    if (key === undefined) return false;
+    var v = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
+  }
+
+  // delCookie() general function
+  if (typeof window.delCookie !== "function") window.delCookie = function (key) {
+    if (key === undefined) return false;
+    var date = new Date();
+    date.setTime(0);
+    document.cookie = key + "=;path=/" + ";expires=" + date.toGMTString();
+  }
+})(window, document);
+
+</script>

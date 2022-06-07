@@ -1,0 +1,54 @@
+#@author Filip Oščádal <git@gscloud.cz>
+#CSP Headers
+
+csp: [
+    "Content-Security-Policy: "
+    "report-to"
+    "default;"
+    "report-uri"
+    "https://gscloud.cz;"
+
+    "object-src"
+    "'none';"
+
+    "default-src"
+    "'unsafe-inline'"
+    "'self'"
+    "https://*;"
+
+    "connect-src"
+    "'self'"
+    "https://*;"
+
+    "font-src"
+    "'self'"
+    "data:"
+    "'unsafe-inline'"
+    "*.gstatic.com;"
+
+    "script-src"
+    "*.facebook.net"
+    "*.google-analytics.com"
+    "*.googleapis.com"
+    "*.googletagmanager.com"
+    "*.ytimg.com"
+    "cdn.onesignal.com"
+    "cdn.syndication.twimg.com"
+    "cdnjs.cloudflare.com"
+    "onesignal.com"
+    "platform.twitter.com"
+    "static.cloudflareinsights.com"
+    "'self'"
+    "'unsafe-inline'"
+    "'unsafe-eval';"
+
+    "img-src"
+    "*"
+    "'self'"
+    "'unsafe-inline'"
+    "data:;"
+    
+    "form-action"
+    "https://*"
+    "'self';"
+]
