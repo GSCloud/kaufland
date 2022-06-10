@@ -3,5 +3,5 @@ defaults:
 
 home:
   path: /
-  presenter: mini
+  presenter: lahve
   sitemap: true
