@@ -1,7 +1,7 @@
 {
-    "name": "Tesseract MINI",
-    "short_name": "MINI",
-    "description": "Tesseract MINI",
+    "name": "LAHVÁRNA",
+    "short_name": "LAHVE",
+    "description": "LAHVÁRNA CZ1950",
     "icons": [{
             "src": "/img/favicon-64.webp",
             "type": "image/webp",
@@ -60,7 +60,7 @@
     "display": "standalone",
     "theme_color": "white",
     "background_color": "#fff",
-    "lang": "en",
+    "lang": "cs",
     "mobileAppIOS": "true",
     "appleStatusBarStyle": "default"
 }
