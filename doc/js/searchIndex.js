@@ -821,6 +821,21 @@ Search.appendIndex(
             "summary": "Controller\u0020processor",
             "url": "classes/GSC-CiTester.html#method___construct"
         },                {
+            "fqsen": "\\GSC\\CliDemo",
+            "name": "CliDemo",
+            "summary": "CLI\u0020Demo\u0020class",
+            "url": "classes/GSC-CliDemo.html"
+        },                {
+            "fqsen": "\\GSC\\CliDemo\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Controller\u0020constructor",
+            "url": "classes/GSC-CliDemo.html#method___construct"
+        },                {
+            "fqsen": "\\GSC\\CliDemo\u003A\u003Aprocess\u0028\u0029",
+            "name": "process",
+            "summary": "Controller\u0020processor",
+            "url": "classes/GSC-CliDemo.html#method_process"
+        },                {
             "fqsen": "\\GSC\\CliPresenter",
             "name": "CliPresenter",
             "summary": "CLI\u0020Presenter\u0020class",
@@ -860,6 +875,21 @@ Search.appendIndex(
             "name": "selectModule",
             "summary": "Select\u0020CLI\u0020module",
             "url": "classes/GSC-CliPresenter.html#method_selectModule"
+        },                {
+            "fqsen": "\\GSC\\CliVersion",
+            "name": "CliVersion",
+            "summary": "CLI\u0020Version\u0020class",
+            "url": "classes/GSC-CliVersion.html"
+        },                {
+            "fqsen": "\\GSC\\CliVersion\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Controller\u0020constructor",
+            "url": "classes/GSC-CliVersion.html#method___construct"
+        },                {
+            "fqsen": "\\GSC\\CliVersion\u003A\u003Aprocess\u0028\u0029",
+            "name": "process",
+            "summary": "Controller\u0020processor",
+            "url": "classes/GSC-CliVersion.html#method_process"
         },                {
             "fqsen": "\\GSC\\CorePresenter",
             "name": "CorePresenter",
@@ -920,6 +950,16 @@ Search.appendIndex(
             "name": "CODESET",
             "summary": "",
             "url": "classes/GSC-ErrorPresenter.html#constant_CODESET"
+        },                {
+            "fqsen": "\\GSC\\LahvePresenter",
+            "name": "LahvePresenter",
+            "summary": "Mini\u0020Presenter",
+            "url": "classes/GSC-LahvePresenter.html"
+        },                {
+            "fqsen": "\\GSC\\LahvePresenter\u003A\u003Aprocess\u0028\u0029",
+            "name": "process",
+            "summary": "Main\u0020controller",
+            "url": "classes/GSC-LahvePresenter.html#method_process"
         },                {
             "fqsen": "\\GSC\\LoginPresenter",
             "name": "LoginPresenter",
@@ -1055,36 +1095,6 @@ Search.appendIndex(
             "name": "TESSERACT_START",
             "summary": "",
             "url": "namespaces/default.html#constant_TESSERACT_START"
-        },                {
-            "fqsen": "\\GSC\\CliDemo",
-            "name": "CliDemo",
-            "summary": "CLI\u0020Demo\u0020class",
-            "url": "classes/GSC-CliDemo.html"
-        },                {
-            "fqsen": "\\GSC\\CliDemo\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Controller\u0020constructor",
-            "url": "classes/GSC-CliDemo.html#method___construct"
-        },                {
-            "fqsen": "\\GSC\\CliDemo\u003A\u003Aprocess\u0028\u0029",
-            "name": "process",
-            "summary": "Controller\u0020processor",
-            "url": "classes/GSC-CliDemo.html#method_process"
-        },                {
-            "fqsen": "\\GSC\\CliVersion",
-            "name": "CliVersion",
-            "summary": "CLI\u0020Version\u0020class",
-            "url": "classes/GSC-CliVersion.html"
-        },                {
-            "fqsen": "\\GSC\\CliVersion\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Controller\u0020constructor",
-            "url": "classes/GSC-CliVersion.html#method___construct"
-        },                {
-            "fqsen": "\\GSC\\CliVersion\u003A\u003Aprocess\u0028\u0029",
-            "name": "process",
-            "summary": "Controller\u0020processor",
-            "url": "classes/GSC-CliVersion.html#method_process"
         },                {
             "fqsen": "\\",
             "name": "\\",
