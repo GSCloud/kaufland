@@ -1,4 +1,4 @@
-### 1950
+### LAHVÁRNA
 
 # uncomment to force debugging !!!
 dbg: TRUE
@@ -20,8 +20,8 @@ goauth_origin: "https://1950.mxd.cz"
 goauth_redirect: "https://1950.mxd.cz/login"
 
 # local Google OAUTH 2.0
-local_goauth_origin: "http://localhost:8020"
-local_goauth_redirect: "http://localhost:8020/login"
+local_goauth_origin: "http://localhost:8002"
+local_goauth_redirect: "http://localhost:8002/login"
 
 # Google properties
 google: [
@@ -33,8 +33,8 @@ cache_profiles: [
 ]
 
 # localization
-lang: en
+lang: cs
 l:
   title: "LAHVÁRNA"
   author: "Fred Brooker @ GS Cloud Ltd."
-  noscript: "Please enable JavaScript!"
+  noscript: "Prosím, povolte JavaScript!"
