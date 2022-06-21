@@ -5,7 +5,7 @@ dbg: TRUE
 #dbg: FALSE
 
 # CORE
-app: 1950
+app: lahvarna
 date_default_timezone: "Europe/Prague"
 project: TESSERACT
 secret_cookie_key: secure.key
