@@ -32,6 +32,13 @@ google: [
 cache_profiles: [
 ]
 
+# CSV data
+data: [
+  prepravky: "2PACX-1vTVRFD-DghrRMEECMr06ZaxiP-VPMQ2_EL7wk-18mBm8LYFXnNssv97lqzHHwXH8_BEP4FvNgNDyD_C"
+  texty: "2PACX-1vTDkEIbLHxadWBps7cvWNN6699wlsCB7GpwBlJ_-M_TObHnMzNG_b1jnDFu6XoVIrXjQYyepKqOTLw_"
+  lahve: "2PACX-1vQmC2JG3i-NGdqSUTyAmXBmx_5A4oanfJBEqwCDHYFMVlTSHGmQ5CpJX5gxeqaHgiLTB8NhhDLxiPu4"
+]
+
 # localization
 lang: cs
 l:
