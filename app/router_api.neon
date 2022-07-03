@@ -1,22 +1,51 @@
-call1:
-  path: "/api/v1/call1/[a:string]"
-  api_description: "API call example #1"
-  api_info: "Returns: array of records"
-  api_example: [
-    "api/v1/call1/foo"
-    "api/v1/call1/bar42"
-    "api/v1/call1/666"
-  ]
-  api: true
-  assert_json: true
-  finished: true
-  presenter: api
-
 uuid:
-  path: "/api/v1/getuuid"
+  path: "/api/v1/GetUUID"
+  method: GET|POST
   api_description: "Get UUID"
   api_info: "Returns (JSON): UUID string"
   api: true
-  assert_json: true
+  assert_json: false
+  assert_httpcode: 404
+  finished: false
+  presenter: api
+
+getstaffclass:
+  path: "/api/v1/GetStaffClass"
+  method: GET|POST
+  api_description: "Get staff class"
+  api_info: "Returns (JSON): class string"
+  api: true
+  assert_json: false
+  assert_httpcode: 404
+  finished: false
+  presenter: api
+
+gettextinfo:
+  path: "/api/v1/GetTexts"
+  api_description: "Get general information"
+  api_info: "Returns (JSON): array of strings"
+  api: true
+  assert_json: false
+  assert_httpcode: 404
+  finished: false
+  presenter: api
+
+getbottlesinfo:
+  path: "/api/v1/GetBottles"
+  api_description: "Get information about bottles"
+  api_info: "Returns (JSON): array of data"
+  api: true
+  assert_json: false
+  assert_httpcode: 404
+  finished: false
+  presenter: api
+
+getcratesinfo:
+  path: "/api/v1/GetCrates"
+  api_description: "Get information about crates"
+  api_info: "Returns (JSON): array of data"
+  api: true
+  assert_json: false
+  assert_httpcode: 404
   finished: false
   presenter: api
