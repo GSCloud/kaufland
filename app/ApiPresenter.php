@@ -1,10 +1,13 @@
 <?php
 /**
  * GSC Tesseract
+ * php version 7.4.0
  *
  * @category Framework
- * @author   Fred Brooker <oscadal@gscloud.cz>
+ * @package  Tesseract
+ * @author   Fred Brooker <git@gscloud.cz>
  * @license  MIT https://gscloud.cz/LICENSE
+ * @link     https://1950.mxd.cz
  */
 
 namespace GSC;
@@ -16,30 +19,28 @@ use Symfony\Component\Lock\Store\FlockStore;
 
 /**
  * API Presenter
+ * 
+ * @category Framework
+ * @package  Tesseract
+ * @author   Fred Brooker <git@gscloud.cz>
+ * @license  MIT https://gscloud.cz/LICENSE
+ * @link     https://1950.mxd.cz
  */
+
 class ApiPresenter extends APresenter
 {
 
-    /** @var string operations log */
     const OPLOG = "/operations.log";
-
-    /** @var bool use cache? */
     const USE_CACHE = true;
-
-    /** @var string API cache profile */
     const API_CACHE = 'tenminutes';
-
-    /** @var string API access time limit */
     const ACCESS_TIME_LIMIT = 3599;
-
-    /** @var int maximum records */
     const MAX_RECORDS = 300;
-
-    /** @var int maximum access hits */
     const MAX_API_HITS = 1000;
 
     /**
      * Main controller
+     * 
+     * @return self
      */
     public function process()
     {
@@ -102,31 +103,31 @@ class ApiPresenter extends APresenter
 
         // API calls
         switch ($view) {
-            case "call1": // IMPLEMENTED
-                $data = [1, 2, 3, 4, 5];
-                $param = $match["params"]["string"] ?? null;                
-                if (is_null($param)) {
-                    return $this->proxyJsonData(404, $extras);
-                }
-                $data["input"] = $param;
-                //$extras["keys"] = array_keys($data);
-                return $this->proxyJsonData($data, $extras);
+        case "call1": // IMPLEMENTED
+            $data = [1, 2, 3, 4, 5];
+            $param = $match["params"]["string"] ?? null;                
+            if (is_null($param)) {
+                return $this->proxyJsonData(404, $extras);
+            }
+            $data["input"] = $param;
+            //$extras["keys"] = array_keys($data);
+            return $this->proxyJsonData($data, $extras);
                 break;
 
-            case "call2": // IMPLEMENTED
-                $data = [1, 2, 3, 4, 5];
-                $param = $match["params"]["number"] ?? null;
-                if (is_null($param)) {
-                    return $this->proxyJsonData(404, $extras);
-                }
-                $data["input"] = $param;
-                //$extras["keys"] = array_keys($data);
-                return $this->proxyJsonData($data, $extras);
+        case "call2": // IMPLEMENTED
+            $data = [1, 2, 3, 4, 5];
+            $param = $match["params"]["number"] ?? null;
+            if (is_null($param)) {
+                return $this->proxyJsonData(404, $extras);
+            }
+            $data["input"] = $param;
+            //$extras["keys"] = array_keys($data);
+            return $this->proxyJsonData($data, $extras);
                 break;
 
-            default:
-                sleep(3);
-                return ErrorPresenter::getInstance()->process(404);
+        default:
+            sleep(3);
+            return ErrorPresenter::getInstance()->process(404);
         }
         return $this;
     }
@@ -136,15 +137,17 @@ class ApiPresenter extends APresenter
      *
      * @return mixed access count or null
      */
-    private function accessLimiter()
+    public function accessLimiter()
     {
         $hour = date("H");
         $uid = $this->getUID();
         $key = "access_limiter_" . SERVER . "_" . PROJECT . "_${hour}_${uid}";
-        $redis = new RedisClient([
+        $redis = new RedisClient(
+            [
             'server' => 'localhost:6377',
             'timeout' => 1,
-        ]);
+            ]
+        );
         try {
             $val = (int) @$redis->get($key);
         } catch (\Exception $e) {
@@ -166,13 +169,14 @@ class ApiPresenter extends APresenter
     }
 
     /**
-     * write to operations log - START
+     * Write to operations log - START
      *
-     * @param array $data extras
+     * @param array  $data    extras
      * @param string $api_key API key (optional)
-     * @return object Singleton
+     * 
+     * @return self
      */
-    private function writeOpStart($data = null, $api_key = "")
+    public function writeOpStart($data = null, $api_key = "")
     {
         if (empty($data)) {
             return;
@@ -183,14 +187,22 @@ class ApiPresenter extends APresenter
             "ip:" . (string) $this->getIP(),
             (string) $this->getCurrentUser()["email"],
             (string) $this->getCurrentUser()["id"],
-            \strtr(\htmlspecialchars((string) $this->getCurrentUser()["name"]), ",", ""),
+            \strtr(
+                \htmlspecialchars(
+                    (string) $this->getCurrentUser()["name"]
+                ), ",", ""
+            ),
             "grp:" . (string) $this->getUserGroup(),
             "uid:" . (string) $this->getUID(),
             "use:" . (int) $data["api_usage"],
             "fn:" . (string) $data["fn"],
             "key:" . (string) $api_key,
-            "url:" . \strtr(\htmlspecialchars($_SERVER["REQUEST_URI"] ?? ""), ",", "_"),
-            "ua:" . \strtr(\htmlspecialchars($_SERVER["HTTP_USER_AGENT"] ?? ""), ",", "_"),
+            "url:" . \strtr(
+                \htmlspecialchars($_SERVER["REQUEST_URI"] ?? ""), ",", "_"
+            ),
+            "ua:" . \strtr(
+                \htmlspecialchars($_SERVER["HTTP_USER_AGENT"] ?? ""), ",", "_"
+            ),
         ];
         $factory = new Factory(new FlockStore()); // FlockStore lock
         $lock = $factory->createLock("operationslog");
@@ -201,12 +213,13 @@ class ApiPresenter extends APresenter
     }
 
     /**
-     * write to operations log - END
+     * Write to operations log - END
      *
      * @param string $stat status
+     * 
      * @return object Singleton
      */
-    private function writeOpEnd($stat = null)
+    public function writeOpEnd($stat = null)
     {
         if (empty($stat)) {
             return;
@@ -217,7 +230,11 @@ class ApiPresenter extends APresenter
             "ip:" . (string) $this->getIP(),
             (string) $this->getCurrentUser()["email"],
             (string) $this->getCurrentUser()["id"],
-            \strtr(\htmlspecialchars((string) $this->getCurrentUser()["name"]), ",", ""),
+                \strtr(
+                    \htmlspecialchars(
+                        (string) $this->getCurrentUser()["name"]
+                    ), ",", ""
+                ),
             "grp:" . (string) $this->getUserGroup(),
             "uid:" . (string) $this->getUID(),
             "status:" . $stat,
@@ -231,11 +248,12 @@ class ApiPresenter extends APresenter
     }
 
     /**
-     * proxy JSON data to write
+     * Proxy JSON data to write
      *
      * @param mixed $p1 parameter 1
      * @param mixed $p2 parameter 2
      * @param mixed $p3 parameter 3 (optional)
+     * 
      * @return object Singleton
      */
     public function proxyJsonData($p1, $p2, $p3 = null)
@@ -261,23 +279,29 @@ class ApiPresenter extends APresenter
      * Get key usage from operations log
      *
      * @param string $key API key
+     * 
      * @return mixed usage count
      */
-    private function getKeyUsage($key)
+    public function getKeyUsage($key)
     {
         if (\is_null($key)) {
             return null;
         }
         $x = trim((string) $key);
-        if (self::USE_CACHE && $result = Cache::read("getKeyUsage_$x", self::API_CACHE)) {
+        if (self::USE_CACHE && $result = Cache::read(
+            "getKeyUsage_$x", self::API_CACHE
+        )
+        ) {
             return $result; // read from cache
         }
         if (!$file = @\file(DATA . self::OPLOG)) {
             return null; // no data!
         }
-        $filtered = \array_filter($file, function ($value) use ($x) {
-            return \strpos($value, ",key:$x");
-        });
+        $filtered = \array_filter(
+            $file, function ($value) use ($x) {
+                return \strpos($value, ",key:$x");
+            }
+        );
         $result = count($filtered);
         Cache::write("getKeyUsage_$x", $result, self::API_CACHE);
         return $result;
@@ -287,6 +311,7 @@ class ApiPresenter extends APresenter
      * Get API call usage from operations log
      *
      * @param string $fn function name
+     * 
      * @return mixed usage count
      */
     public static function getCallUsage($fn)
@@ -295,15 +320,22 @@ class ApiPresenter extends APresenter
             return null;
         }
         $x = trim((string) $fn);
-        if (self::USE_CACHE && $result = Cache::read("getCallUsage_$x", self::API_CACHE)) {
-            return $result; // read from cache
+        if (self::USE_CACHE && $result = Cache::read(
+            "getCallUsage_$x", self::API_CACHE
+        )
+        ) {
+            // read from cache
+            return $result;
         }
         if (!$file = @\file(DATA . self::OPLOG)) {
-            return null; // no data!
+            // no data!
+            return null;
         }
-        $filtered = \array_filter($file, function ($value) use ($x) {
-            return \strpos($value, ",fn:$x");
-        });
+        $filtered = \array_filter(
+            $file, function ($value) use ($x) {
+                return \strpos($value, ",fn:$x");
+            }
+        );
         $result = count($filtered) ? count($filtered) : "-"; // format the count
         Cache::write("getCallUsage_$x", $result, self::API_CACHE);
         return $result;
