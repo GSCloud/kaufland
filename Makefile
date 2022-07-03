@@ -1,5 +1,7 @@
 #@author Fred Brooker <git@gscloud.cz>
+
 include .env
+
 all: info
 
 info:

@@ -1,5 +1,6 @@
 defaults:
-  language: en
+  language: cs
+  template: lahve
 
 home:
   path: /

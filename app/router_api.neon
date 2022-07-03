@@ -11,3 +11,12 @@ call1:
   assert_json: true
   finished: true
   presenter: api
+
+uuid:
+  path: "/api/v1/getuuid"
+  api_description: "Get UUID"
+  api_info: "Returns (JSON): UUID string"
+  api: true
+  assert_json: true
+  finished: false
+  presenter: api

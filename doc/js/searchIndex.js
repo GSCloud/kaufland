@@ -18,17 +18,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\GSC\\ApiPresenter\u003A\u003AwriteOpStart\u0028\u0029",
             "name": "writeOpStart",
-            "summary": "write\u0020to\u0020operations\u0020log\u0020\u002D\u0020START",
+            "summary": "Write\u0020to\u0020operations\u0020log\u0020\u002D\u0020START",
             "url": "classes/GSC-ApiPresenter.html#method_writeOpStart"
         },                {
             "fqsen": "\\GSC\\ApiPresenter\u003A\u003AwriteOpEnd\u0028\u0029",
             "name": "writeOpEnd",
-            "summary": "write\u0020to\u0020operations\u0020log\u0020\u002D\u0020END",
+            "summary": "Write\u0020to\u0020operations\u0020log\u0020\u002D\u0020END",
             "url": "classes/GSC-ApiPresenter.html#method_writeOpEnd"
         },                {
             "fqsen": "\\GSC\\ApiPresenter\u003A\u003AproxyJsonData\u0028\u0029",
             "name": "proxyJsonData",
-            "summary": "proxy\u0020JSON\u0020data\u0020to\u0020write",
+            "summary": "Proxy\u0020JSON\u0020data\u0020to\u0020write",
             "url": "classes/GSC-ApiPresenter.html#method_proxyJsonData"
         },                {
             "fqsen": "\\GSC\\ApiPresenter\u003A\u003AgetKeyUsage\u0028\u0029",
