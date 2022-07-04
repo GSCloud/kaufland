@@ -114,17 +114,6 @@ class ApiPresenter extends APresenter
             return $this->proxyJsonData($data, $extras);
                 break;
 
-        case "call2": // IMPLEMENTED
-            $data = [1, 2, 3, 4, 5];
-            $param = $match["params"]["number"] ?? null;
-            if (is_null($param)) {
-                return $this->proxyJsonData(404, $extras);
-            }
-            $data["input"] = $param;
-            //$extras["keys"] = array_keys($data);
-            return $this->proxyJsonData($data, $extras);
-                break;
-
         default:
             sleep(3);
             return ErrorPresenter::getInstance()->process(404);

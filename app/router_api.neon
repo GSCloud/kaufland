@@ -18,6 +18,7 @@ getstaffclass:
   assert_json: false
   assert_httpcode: 404
   finished: false
+  use_key: true
   presenter: api
 
 gettextinfo:
@@ -28,6 +29,7 @@ gettextinfo:
   assert_json: false
   assert_httpcode: 404
   finished: false
+  use_key: true
   presenter: api
 
 getbottlesinfo:
@@ -38,6 +40,7 @@ getbottlesinfo:
   assert_json: false
   assert_httpcode: 404
   finished: false
+  use_key: true
   presenter: api
 
 getcratesinfo:
@@ -48,4 +51,5 @@ getcratesinfo:
   assert_json: false
   assert_httpcode: 404
   finished: false
+  use_key: true
   presenter: api
