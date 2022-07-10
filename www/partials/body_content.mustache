@@ -25,25 +25,31 @@
 {{/user.id}}
 
 <div class="container center">
-  <a href="/api">REST API</a>
+  <a href="/api"
+    ><button class="responsive">
+      <i>home</i>
+      <span>REST API</span>
+    </button>
+  </a>
 </div>
 
 <script>
-(function (w, $, undefined) {
-  'use strict';
+  (function (w, $, undefined) {
+    "use strict";
 
-  // *** DELAYED FUNCTIONS ***
+    // *** DELAYED FUNCTIONS ***
 
-  GSC._fn.push(function () {
-    // add nonce to all anchors
-    $('.container').find('a').each(function() {
-      var h = $(this).attr('href');
-      var nonce = '?nonce=' + Math.round(Math.random() * 10000);
-      if ((h.indexOf('?') == -1) && (h.indexOf('http') != -1)) {
-        $(this).attr('href', h + nonce);
-      }
+    GSC._fn.push(function () {
+      // add nonce to all anchors
+      $(".container")
+        .find("a")
+        .each(function () {
+          var h = $(this).attr("href");
+          var nonce = "?nonce=" + Math.round(Math.random() * 10000);
+          if (h.indexOf("?") == -1 && h.indexOf("http") != -1) {
+            $(this).attr("href", h + nonce);
+          }
+        });
     });
-  });
-})(window, $);
-
+  })(window, $);
 </script>
