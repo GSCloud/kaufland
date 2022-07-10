@@ -42,7 +42,7 @@ class ApiPresenter extends APresenter
      */
     public function process()
     {
-        setlocale(LC_ALL, 'cs_CZ.utf8');
+        \setlocale(LC_ALL, 'cs_CZ.utf8');
 
         $cfg = $this->getCfg();
         $d = $this->getData();
@@ -65,16 +65,16 @@ class ApiPresenter extends APresenter
 
         // general API properties
         $extras = [
+            "fn" => $view,
+            "name" => "LAHVE REST API",
             "api_quota" => (int) self::MAX_API_HITS,
             "api_usage" => $this->accessLimiter(),
-            "uuid" => $this->getUID(),
             "access_time_limit" => self::ACCESS_TIME_LIMIT,
             "cache_time_limit" => $this->getData("cache_profiles")[self::API_CACHE],
             "records_quota" => self::MAX_RECORDS,
             "private" => $priv,
             "use_key" => $use_key,
-            "fn" => $view,
-            "name" => "LAHVE REST API",
+            "uuid" => $this->getUID(),
         ];
 
         // access validation
@@ -97,20 +97,33 @@ class ApiPresenter extends APresenter
             }
         }
 
-        // API calls
+        // process API calls
         switch ($view) {
         case "GetUUID":
             $data = [
                 "uuid" => $this->getUID()
             ];
             return $this->writeJsonData($data, $extras);
-                break;
+        break;
 
         default:
-            sleep(1);
+            // TODO: uncomment in production
+            //sleep(5);
             return ErrorPresenter::getInstance()->process(404);
         }
         return $this;
+    }
+
+    /**
+     * Check REST API key validity
+     *
+     * @param [string] $api_key REST API key
+     * 
+     * @return true
+     */
+    public function checkKey($api_key)
+    {
+        return true;
     }
 
     /**

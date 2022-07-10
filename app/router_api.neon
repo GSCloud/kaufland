@@ -33,7 +33,7 @@ GetSupportInfo:
   presenter: api
 
 GetBottlesInfo:
-  path: "/api/v1/GetBottleInfo"
+  path: "/api/v1/GetBottlesInfo"
   api_description: "Get bottles information"
   api_info: "Returns (JSON): array of data"
   api: true
