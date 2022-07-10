@@ -1,55 +1,55 @@
-uuid:
+GetUUID:
   path: "/api/v1/GetUUID"
-  method: GET|POST
+  method: GET
   api_description: "Get UUID"
   api_info: "Returns (JSON): UUID string"
   api: true
-  assert_json: false
-  assert_httpcode: 404
-  finished: false
+  assert_json: true
+  assert_httpcode: 200
+  finished: true
   presenter: api
 
-getstaffclass:
-  path: "/api/v1/GetStaffClass"
-  method: GET|POST
-  api_description: "Get staff class"
+GetUserClass:
+  path: "/api/v1/GetUserClass"
+  method: GET
+  api_description: "Get user class"
   api_info: "Returns (JSON): class string"
   api: true
   assert_json: false
-  assert_httpcode: 404
+  assert_httpcode: 403
   finished: false
   use_key: true
   presenter: api
 
-gettextinfo:
-  path: "/api/v1/GetTexts"
-  api_description: "Get general information"
+GetSupportInfo:
+  path: "/api/v1/GetSupportInfo"
+  api_description: "Get support information"
   api_info: "Returns (JSON): array of strings"
   api: true
   assert_json: false
-  assert_httpcode: 404
+  assert_httpcode: 403
   finished: false
   use_key: true
   presenter: api
 
-getbottlesinfo:
-  path: "/api/v1/GetBottles"
-  api_description: "Get information about bottles"
+GetBottlesInfo:
+  path: "/api/v1/GetBottleInfo"
+  api_description: "Get bottles information"
   api_info: "Returns (JSON): array of data"
   api: true
   assert_json: false
-  assert_httpcode: 404
+  assert_httpcode: 403
   finished: false
   use_key: true
   presenter: api
 
-getcratesinfo:
-  path: "/api/v1/GetCrates"
-  api_description: "Get information about crates"
+GetCratesInfo:
+  path: "/api/v1/GetCratesInfo"
+  api_description: "Get crates information"
   api_info: "Returns (JSON): array of data"
   api: true
   assert_json: false
-  assert_httpcode: 404
+  assert_httpcode: 403
   finished: false
   use_key: true
   presenter: api
