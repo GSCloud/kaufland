@@ -1,8 +1,15 @@
+<div class="white-text">
+  <div class="center-align padding">
+    <h3 class="center-align">{{ l.title }}</h3>
+    <img id="logo" src="{{ cdn }}/img/favicon-256.png" alt="{{ l. title }} logo">
+  </div>
+</div>
+
 {{^user.id}}
 <div class="container">
   <div class="row">
     <div class="column">
-      <div class="float-right center">
+      <div class="center">
         {{>login}}
       </div>
       <p>{{ l.readme }}</p>
@@ -15,7 +22,7 @@
 <div class="container">
   <div class="row">
     <div class="column">
-      <div class="float-right center">
+      <div class="center">
         {{>logout}}
       </div>
       <p>{{ l.readme }}</p>
@@ -52,4 +59,5 @@
         });
     });
   })(window, $);
+
 </script>
