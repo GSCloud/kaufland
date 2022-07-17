@@ -81,24 +81,27 @@
 
     GSC._fn.push(function () {
 
-      // NAVIGATION CLICKS
-
+      // NAVIGATION CLICK HANDLERS - TOP
+      
       // logo
       $(".nav_app").click(function () {
         top.location.reload();
       })
-
+      
       // config
       $(".nav_config").click(function () {
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
-
+      
       // user
       $(".nav_user").click(function () {
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
+
+      
+      // NAVIGATION CLICK HANDLERS - BOTTOM
 
       // info
       $(".nav_info").click(function () {
