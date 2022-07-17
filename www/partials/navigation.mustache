@@ -1,7 +1,6 @@
 <!-- top navigation | all sizes -->
 <nav class="top">
   <img id="logo"
-    onclick="location.reload()"
     class="circle small-margin"
     src="{{ cdn }}/img/favicon-256.png"
   />
@@ -80,47 +79,55 @@
 
     GSC._fn.push(function () {
 
-      // config click
+      // NAVIGATION CLICKS
+
+      // logo
+      $("#id").click(function () {
+        top.location.reload();
+      })
+
+      // config
       $(".nav_config").click(function () {
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
 
-      // user click
+      // user
       $(".nav_user").click(function () {
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
 
-      // info click
+      // info
       $(".nav_info").click(function () {
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
 
-      // game click
+      // game
       $(".nav_game").click(function () {
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
 
-      // message click
+      // message
       $(".nav_message").click(function () {
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
 
-      // price click
+      // price
       $(".nav_price").click(function () {
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
 
-      // warehouse click
+      // warehouse
       $(".nav_warehouse").click(function () {
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
+
     });
   })(window, $);
 
