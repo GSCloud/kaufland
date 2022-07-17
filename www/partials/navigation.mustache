@@ -1,9 +1,11 @@
 <!-- top navigation | all sizes -->
 <nav class="top">
-  <img id="logo"
+  <a class="nav_app">
+    <img id="logo"
     class="circle small-margin"
     src="{{ cdn }}/img/favicon-256.png"
-  />
+    />
+  </a>
   <a class="nav_config">
     <i tabindex="-1" class="large" data-color="yellow-text">build</i>
     <div>
@@ -82,7 +84,7 @@
       // NAVIGATION CLICKS
 
       // logo
-      $("#id").click(function () {
+      $(".nav_app").click(function () {
         top.location.reload();
       })
 
