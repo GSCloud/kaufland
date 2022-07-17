@@ -1,18 +1,18 @@
 <!-- top navigation | all sizes -->
 <nav class="top">
-  <img
+  <img id="logo"
     onclick="location.reload()"
     class="circle small-margin"
     src="{{ cdn }}/img/favicon-256.png"
   />
-  <a>
-    <i tabindex="-1" class="large white-text">build</i>
+  <a class="nav_config">
+    <i tabindex="-1" class="large" data-color="yellow-text">build</i>
     <div>
       <b tabindex="-1">{{ l.nav_config }}</b>
     </div>
   </a>
-  <a>
-    <i tabindex="-1" class="large white-text">face</i>
+  <a class="nav_user">
+    <i tabindex="-1" class="large" data-color="blue-text">face</i>
     <div>
       <b tabindex="-1">{{ l.nav_user }}</b>
     </div>
@@ -21,32 +21,32 @@
 
 <!-- bottom navigation | medium large -->
 <nav class="bottom m l">
-  <a>
-    <i tabindex="-1" class="large blue-text">info</i>
+  <a class="nav_info">
+    <i tabindex="-1" class="large" data-color="blue-text">info</i>
     <div>
       <b tabindex="-1">{{ l.nav_info }}</b>
     </div>
   </a>
-  <a>
-    <i tabindex="-1" class="large black-text">sports_esports</i>
+  <a class="nav_game">
+    <i tabindex="-1" class="large" data-color="black-text">sports_esports</i>
     <div>
       <b tabindex="-1">{{ l.nav_game }}</b>
     </div>
   </a>
-  <a>
-    <i tabindex="-1" class="large green-text">message</i>
+  <a class="nav_message">
+    <i tabindex="-1" class="large" data-color="green-text">message</i>
     <div>
       <b tabindex="-1">{{ l.nav_message }}</b>
     </div>
   </a>
-  <a>
-    <i tabindex="-1" class="large red-text">paid</i>
+  <a class="nav_price">
+    <i tabindex="-1" class="large" data-color="red-text">paid</i>
     <div>
       <b tabindex="-1">{{ l.nav_price }}</b>
     </div>
   </a>
-  <a>
-    <i tabindex="-1" class="large orange-text">warehouse</i>
+  <a class="nav_warehouse">
+    <i tabindex="-1" class="large" data-color="orange-text">warehouse</i>
     <div>
       <b tabindex="-1">{{ l.nav_warehouse }}</b>
     </div>
@@ -55,19 +55,73 @@
 
 <!-- bottom navigation | small -->
 <nav class="bottom s">
-  <a>
-    <i tabindex="-1" class="large blue-text">info</i>
+  <a class="nav_info">
+    <i tabindex="-1" class="large" data-color="blue-text">info</i>
   </a>
-  <a>
-    <i tabindex="-1" class="large black-text">sports_esports</i>
+  <a class="nav_game">
+    <i tabindex="-1" class="large" data-color="black-text">sports_esports</i>
   </a>
-  <a>
-    <i tabindex="-1" class="large green-text">message</i>
+  <a class="nav_message">
+    <i tabindex="-1" class="large" data-color="green-text">message</i>
   </a>
-  <a>
-    <i tabindex="-1" class="large red-text">paid</i>
+  <a class="nav_price">
+    <i tabindex="-1" class="large" data-color="red-text">paid</i>
   </a>
-  <a>
-    <i tabindex="-1" class="large orange-text">warehouse</i>
+  <a class="nav_warehouse">
+    <i tabindex="-1" class="large" data-color="orange-text">warehouse</i>
   </a>
 </nav>
+
+<script>
+  (function (w, $, undefined) {
+    "use strict";
+
+    // *** DELAYED FUNCTIONS ***
+
+    GSC._fn.push(function () {
+
+      // config click
+      $(".nav_config").click(function () {
+        var c = this.className;
+        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+      })
+
+      // user click
+      $(".nav_user").click(function () {
+        var c = this.className;
+        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+      })
+
+      // info click
+      $(".nav_info").click(function () {
+        var c = this.className;
+        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+      })
+
+      // game click
+      $(".nav_game").click(function () {
+        var c = this.className;
+        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+      })
+
+      // message click
+      $(".nav_message").click(function () {
+        var c = this.className;
+        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+      })
+
+      // price click
+      $(".nav_price").click(function () {
+        var c = this.className;
+        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+      })
+
+      // warehouse click
+      $(".nav_warehouse").click(function () {
+        var c = this.className;
+        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+      })
+    });
+  })(window, $);
+
+</script>
