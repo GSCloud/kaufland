@@ -13,7 +13,7 @@
     </div>
   </a>
   <a class="nav_user">
-    <i tabindex="-1" class="large" data-color="blue-text">face</i>
+    <i tabindex="-1" class="large" data-color="red-text">face</i>
     <div>
       <b tabindex="-1">{{ l.nav_user }}</b>
     </div>
@@ -90,12 +90,14 @@
       
       // config
       $(".nav_config").click(function () {
+        $("nav i").removeClass().addClass("large");
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
       
       // user
       $(".nav_user").click(function () {
+        $("nav i").removeClass().addClass("large");
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
@@ -105,30 +107,35 @@
 
       // info
       $(".nav_info").click(function () {
+        $("nav i").removeClass().addClass("large");
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
 
       // game
       $(".nav_game").click(function () {
+        $("nav i").removeClass().addClass("large");
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
 
       // message
       $(".nav_message").click(function () {
+        $("nav i").removeClass().addClass("large");
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
 
       // price
       $(".nav_price").click(function () {
+        $("nav i").removeClass().addClass("large");
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
 
       // warehouse
       $(".nav_warehouse").click(function () {
+        $("nav i").removeClass().addClass("large");
         var c = this.className;
         $("." + c + ">i").addClass($("." + c + ">i").data("color"));
       })
