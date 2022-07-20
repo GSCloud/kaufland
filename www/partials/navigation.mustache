@@ -81,64 +81,61 @@
 
     GSC._fn.push(function () {
 
+      // set navigation style by element
+      function setNavigation(el) {
+        localStorage["navigation"] = el;
+        $("nav i, nav div").removeClass();
+        $("." + el + ">i").addClass($("." + el + ">i").data("color")).addClass("large");
+        $("." + el + ">div").addClass($("." + el + ">i").data("color"));
+      }
+
       // NAVIGATION CLICK HANDLERS - TOP
-      
-      // logo
+      // K - logo
       $(".nav_app").click(function () {
         top.location.reload();
       })
+
       
       // config
       $(".nav_config").click(function () {
-        $("nav i").removeClass().addClass("large");
-        var c = this.className;
-        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+        setNavigation(this.className);
       })
       
       // user
       $(".nav_user").click(function () {
-        $("nav i").removeClass().addClass("large");
-        var c = this.className;
-        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+        setNavigation(this.className);
       })
-
       
       // NAVIGATION CLICK HANDLERS - BOTTOM
-
       // info
       $(".nav_info").click(function () {
-        $("nav i").removeClass().addClass("large");
-        var c = this.className;
-        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+        setNavigation(this.className);
       })
-
+      
       // game
       $(".nav_game").click(function () {
-        $("nav i").removeClass().addClass("large");
-        var c = this.className;
-        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+        setNavigation(this.className);
       })
-
+      
       // message
       $(".nav_message").click(function () {
-        $("nav i").removeClass().addClass("large");
-        var c = this.className;
-        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+        setNavigation(this.className);
       })
-
+      
       // price
       $(".nav_price").click(function () {
-        $("nav i").removeClass().addClass("large");
-        var c = this.className;
-        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+        setNavigation(this.className);
       })
-
+      
       // warehouse
       $(".nav_warehouse").click(function () {
-        $("nav i").removeClass().addClass("large");
-        var c = this.className;
-        $("." + c + ">i").addClass($("." + c + ">i").data("color"));
+        setNavigation(this.className);
       })
+
+      // set navigation to the saved state
+      if (localStorage && localStorage["navigation"]) {
+        $("." + localStorage["navigation"]).click();
+      }
 
     });
   })(window, $);
