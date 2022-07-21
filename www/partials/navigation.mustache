@@ -1,5 +1,5 @@
 <!-- top navigation | all sizes -->
-<nav class="top">
+<nav class="top middle">
   <a class="nav_app">
     <img id="logo"
     class="circle small-margin"
@@ -7,60 +7,60 @@
     />
   </a>
   <a class="nav_config">
-    <i tabindex="-1" class="large" data-color="yellow-text">build</i>
+    <i tabindex="-1" class="large" data-color="white-text">build</i>
     <div>
-      <b tabindex="-1">{{ l.nav_config }}</b>
+      <span tabindex="-1">{{ l.nav_config }}</span>
     </div>
   </a>
   <a class="nav_user">
-    <i tabindex="-1" class="large" data-color="red-text">face</i>
+    <i tabindex="-1" class="large" data-color="white-text">face</i>
     <div>
-      <b tabindex="-1">{{ l.nav_user }}</b>
+      <span tabindex="-1">{{ l.nav_user }}</span>
     </div>
   </a>
 </nav>
 
 <!-- bottom navigation | medium large -->
-<nav class="bottom m l">
+<nav class="bottom m l middle">
   <a class="nav_info">
     <i tabindex="-1" class="large" data-color="blue-text">info</i>
     <div>
-      <b tabindex="-1">{{ l.nav_info }}</b>
+      <span tabindex="-1">{{ l.nav_info }}</span>
     </div>
   </a>
   <a class="nav_game">
-    <i tabindex="-1" class="large" data-color="black-text">sports_esports</i>
+    <i tabindex="-1" class="large" data-color="pink-text">sports_esports</i>
     <div>
-      <b tabindex="-1">{{ l.nav_game }}</b>
+      <span tabindex="-1">{{ l.nav_game }}</span>
     </div>
   </a>
   <a class="nav_message">
     <i tabindex="-1" class="large" data-color="green-text">message</i>
     <div>
-      <b tabindex="-1">{{ l.nav_message }}</b>
+      <span tabindex="-1">{{ l.nav_message }}</span>
     </div>
   </a>
   <a class="nav_price">
     <i tabindex="-1" class="large" data-color="red-text">paid</i>
     <div>
-      <b tabindex="-1">{{ l.nav_price }}</b>
+      <span tabindex="-1">{{ l.nav_price }}</span>
     </div>
   </a>
   <a class="nav_warehouse">
     <i tabindex="-1" class="large" data-color="orange-text">warehouse</i>
     <div>
-      <b tabindex="-1">{{ l.nav_warehouse }}</b>
+      <span tabindex="-1">{{ l.nav_warehouse }}</span>
     </div>
   </a>
 </nav>
 
 <!-- bottom navigation | small -->
-<nav class="bottom s">
+<nav class="bottom s middle">
   <a class="nav_info">
     <i tabindex="-1" class="large" data-color="blue-text">info</i>
   </a>
   <a class="nav_game">
-    <i tabindex="-1" class="large" data-color="black-text">sports_esports</i>
+    <i tabindex="-1" class="large" data-color="pink-text">sports_esports</i>
   </a>
   <a class="nav_message">
     <i tabindex="-1" class="large" data-color="green-text">message</i>
@@ -83,58 +83,59 @@
 
       // set navigation style by element
       function setNavigation(el) {
-        localStorage["navigation"] = el;
-        $("nav i, nav div").removeClass();
-        $("." + el + ">i").addClass($("." + el + ">i").data("color")).addClass("large");
-        $("." + el + ">div").addClass($("." + el + ">i").data("color"));
+        if (!el) return false;
+        if (!$('.' + el)) return false;
+        localStorage['navigation'] = el;
+        $('nav i, nav div').removeClass();
+        $('.' + el + '>i').addClass($('.' + el + '>i').data('color')).addClass('large');
+        $('.' + el + '>div').addClass($('.' + el + '>i').data('color')).addClass('bold small-shadow');
       }
 
       // NAVIGATION CLICK HANDLERS - TOP
       // K - logo
-      $(".nav_app").click(function () {
+      $('.nav_app').click(function () {
         top.location.reload();
       })
-
       
       // config
-      $(".nav_config").click(function () {
+      $('.nav_config').click(function () {
         setNavigation(this.className);
       })
       
       // user
-      $(".nav_user").click(function () {
+      $('.nav_user').click(function () {
         setNavigation(this.className);
       })
       
       // NAVIGATION CLICK HANDLERS - BOTTOM
       // info
-      $(".nav_info").click(function () {
+      $('.nav_info').click(function () {
         setNavigation(this.className);
       })
       
       // game
-      $(".nav_game").click(function () {
+      $('.nav_game').click(function () {
         setNavigation(this.className);
       })
       
       // message
-      $(".nav_message").click(function () {
+      $('.nav_message').click(function () {
         setNavigation(this.className);
       })
       
       // price
-      $(".nav_price").click(function () {
+      $('.nav_price').click(function () {
         setNavigation(this.className);
       })
       
       // warehouse
-      $(".nav_warehouse").click(function () {
+      $('.nav_warehouse').click(function () {
         setNavigation(this.className);
       })
 
       // set navigation to the saved state
-      if (localStorage && localStorage["navigation"]) {
-        $("." + localStorage["navigation"]).click();
+      if (localStorage && localStorage['navigation']) {
+        $('.' + localStorage['navigation']).click();
       }
 
     });
