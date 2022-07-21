@@ -87,6 +87,7 @@
         if (!$('.' + el)) return false;
         localStorage['navigation'] = el;
         $('nav i, nav div').removeClass();
+        $('.section').addClass('hidden');
         $('.' + el + '>i').addClass($('.' + el + '>i').data('color')).addClass('large');
         $('.' + el + '>div').addClass($('.' + el + '>i').data('color')).addClass('bold small-shadow');
       }
@@ -100,42 +101,51 @@
       // config
       $('.nav_config').click(function () {
         setNavigation(this.className);
+        $('#config').removeClass('hidden');
       })
       
       // user
       $('.nav_user').click(function () {
         setNavigation(this.className);
+        $('#user').removeClass('hidden');
       })
       
       // NAVIGATION CLICK HANDLERS - BOTTOM
       // info
       $('.nav_info').click(function () {
         setNavigation(this.className);
+        $('#info').removeClass('hidden');
       })
       
       // game
       $('.nav_game').click(function () {
         setNavigation(this.className);
+        $('#game').removeClass('hidden');
       })
       
       // message
       $('.nav_message').click(function () {
         setNavigation(this.className);
+        $('#message').removeClass('hidden');
       })
       
       // price
       $('.nav_price').click(function () {
         setNavigation(this.className);
+        $('#price').removeClass('hidden');
       })
       
       // warehouse
       $('.nav_warehouse').click(function () {
         setNavigation(this.className);
+        $('#warehouse').removeClass('hidden');
       })
 
       // set navigation to the saved state
       if (localStorage && localStorage['navigation']) {
         $('.' + localStorage['navigation']).click();
+      } else {
+        $('.nav_info').click();
       }
 
     });
