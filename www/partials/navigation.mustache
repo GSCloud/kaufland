@@ -89,7 +89,7 @@
       if (scroll > 300) {
         $("#top_nav").hide(250);
       } else {
-        $("#top_nav").show(50);
+        $("#top_nav").show(100);
       }
     };
 
@@ -101,19 +101,21 @@
       function setNavigation(el) {
         if (!el) return false;
         if (!$('.' + el)) return false;
-        // remember navigation
         localStorage['navigation'] = el;
         // process page offset
         var offset = localStorage['scroll_' + el];
         if (isNaN(offset)) offset = 0;
         var last = localStorage['scroll_last_' + el];
         if (isNaN(last)) last = 0;
-        if (offset == last) offset = 0;
+        if (localStorage['navigation_last'] == el) {
+          if (offset == last) offset = 0;
+        }
         window.scrollTo({
           top: offset,
           left: 0,
           behavior: 'smooth'
         });
+        localStorage['navigation_last'] = el;
         localStorage['scroll_last_' + el] = offset;
         $('nav i, nav div').removeClass();
         $('.section').addClass('hidden');
