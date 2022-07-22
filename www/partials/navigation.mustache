@@ -1,5 +1,5 @@
 <!-- top navigation | all sizes -->
-<nav class="top middle">
+<nav id="top_nav" class="top middle">
   <a class="nav_app">
     <img id="logo"
     class="circle small-margin"
@@ -85,6 +85,11 @@
       if (document.getElementById("progressbar")) document.getElementById("progressbar").style.width = scrolled + "%";
       if (localStorage && localStorage['navigation']) {
         localStorage['scroll_' + localStorage['navigation']] = parseInt(scroll);
+      }
+      if (scroll > 300) {
+        $("#top_nav").hide(250);
+      } else {
+        $("#top_nav").show(50);
       }
     };
 
