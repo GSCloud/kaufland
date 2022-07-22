@@ -77,11 +77,22 @@
   (function (w, $, undefined) {
     "use strict";
 
+    // progress bar handler
+    w.onscroll = function() {
+      var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (scroll / height) * 100;
+      if (document.getElementById("progressbar")) document.getElementById("progressbar").style.width = scrolled + "%";
+      if (localStorage && localStorage['navigation']) {
+        localStorage['scroll_' + localStorage['navigation']] = parseInt(scrolled);
+      }
+    };
+
     // *** DELAYED FUNCTIONS ***
 
     GSC._fn.push(function () {
 
-      // set navigation style by element
+        // set navigation style by element
       function setNavigation(el) {
         if (!el) return false;
         if (!$('.' + el)) return false;
