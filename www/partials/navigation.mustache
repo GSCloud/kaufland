@@ -86,10 +86,13 @@
       if (localStorage && localStorage['navigation']) {
         localStorage['scroll_' + localStorage['navigation']] = parseInt(scroll);
       }
-      if (scroll > 300) {
-        $("#top_nav").hide(250);
-      } else {
-        $("#top_nav").show(100);
+      // show/hide top navigation on touch enabled devices
+      if (GSC.touch) {
+        if (scroll > 300) {
+          $("#top_nav").hide(250);
+        } else {
+          $("#top_nav").show(100);
+        }
       }
     };
 
@@ -102,7 +105,8 @@
         if (!el) return false;
         if (!$('.' + el)) return false;
         localStorage['navigation'] = el;
-        // process page offset
+
+        // compute vertical offset
         var offset = localStorage['scroll_' + el];
         if (isNaN(offset)) offset = 0;
         var last = localStorage['scroll_last_' + el];
@@ -110,13 +114,17 @@
         if (localStorage['navigation_last'] == el) {
           if (offset == last) offset = 0;
         }
+        localStorage['scroll_last_' + el] = offset;
+        localStorage['navigation_last'] = el;
+
+        // scroll to
         window.scrollTo({
           top: offset,
           left: 0,
           behavior: 'smooth'
         });
-        localStorage['navigation_last'] = el;
-        localStorage['scroll_last_' + el] = offset;
+
+        // set UI design
         $('nav i, nav div').removeClass();
         $('.section').addClass('hidden');
         $('.' + el + '>i').addClass($('.' + el + '>i').data('color')).addClass('large');
