@@ -44,7 +44,7 @@ lang: cs
 l:
   title: "LAHVÁRNA"
   author: "Fred Brooker @ GS Cloud Ltd."
-  noscript: "Prosím, povolte JavaScript!"
+  noscript: "Povolte, prosím, JavaScript!<br>Bez něj je tato aplikace zcela nefunční."
   nav_info: "Info"
   nav_game: "Hry"
   nav_message: "Zprávy"
