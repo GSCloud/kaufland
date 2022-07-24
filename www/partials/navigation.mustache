@@ -134,6 +134,10 @@
       // NAVIGATION CLICK HANDLERS - TOP
       // K - logo
       $('.nav_app').click(function () {
+        $('#appinfo_modal').removeClass('hidden').addClass('active')
+      })
+
+      $('.nav_update').click(function () {
         top.location.reload();
       })
       
