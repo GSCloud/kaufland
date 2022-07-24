@@ -5,9 +5,11 @@
       <div class="padding">
         <h5 class="bold">{{ l.tit_appinfo }}</h5>
         <div>
-          <a rel=nofollow target=_blank href="https://github.com/GSCloud/kaufland">https://github.com/GSCloud/kaufland</a>
+          <b>
+            <a rel=nofollow target=_blank class="yellow-text" href="https://github.com/GSCloud/kaufland">https://github.com/GSCloud/kaufland</a>
+          </b>
           <h6>Funkce</h6>
-          <div class="row">
+          <div class="row white-text">
             <div class="col s12 m12 l12">
               Dokončeno je základní responsivní Beercss UI a tlačítková navigace.
             </div>
@@ -17,9 +19,16 @@
             verze: <b>{{ VERSION_SHORT }}</b>
             <br>
             datum vydání: <b>{{ VERSION_DATE }}</b>
+            <br>
+            REST API:
+            <b>
+              <a class="yellow-text" href="/api">{{ canonical_url }}/api</a>
+            </b>
           </div>
         </div>
-        <nav>
+        <div class="container center">
+        </div>
+        <nav class="container center">
           <button class="nav_update border">{{ l.but_update }}</button>
         </nav>
       </div>
@@ -94,7 +103,6 @@
 <div class="white-text main">
   <div class="center-align padding">
     <h3 class="center-align">{{ l.title }}</h3>
-    
     <div class="left-align padding">
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
@@ -128,15 +136,6 @@
   </div>
 </div>
 {{/user.id}}
-
-<div class="container center">
-  <a href="/api"
-    ><button class="responsive">
-      <i>home</i>
-      <span>REST API</span>
-    </button>
-  </a>
-</div>
 
 <script>
   (function (w, $, undefined) {

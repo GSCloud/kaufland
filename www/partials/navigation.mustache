@@ -109,7 +109,7 @@
         if (!$('.' + el)) return false;
         localStorage['navigation'] = el;
 
-        // remove modal popups
+        // remove modals
         if (GSC.modals.length) {
           GSC.modals.forEach(el => {
             $('#' + el).removeClass('active');
@@ -203,8 +203,8 @@
         $('.nav_info').click();
       }
 
-      // section click event handler
-      $('.section').click(function () {
+      // section/main click = remove modals
+      $('.section,.main').click(function () {
         if (GSC.modals.length) {
           GSC.modals.forEach(el => {
             $('#' + el).removeClass('active');
