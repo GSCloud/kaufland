@@ -8,12 +8,7 @@
           <b>
             <a rel=nofollow target=_blank class="yellow-text" href="https://github.com/GSCloud/kaufland">https://github.com/GSCloud/kaufland</a>
           </b>
-          <h6 tabindex="-1">Funkce</h6>
-          <div class="row white-text">
-            <div class="col s12 m12 l12" tabindex="-1">
-              Dokončeno je základní responsivní Beercss UI a tlačítková navigace.
-            </div>
-          </div>
+          <br>
           <br>
           <div class="small-text" tabindex="-1">
             verze: <b>{{ VERSION_SHORT }}</b>
@@ -96,6 +91,33 @@
     <div class="left-align padding" tabindex="-1">
       <p>Suspendisse condimentum quam a erat tempus consectetur. Duis porttitor varius turpis, nec sagittis turpis lacinia posuere. Nunc sodales lorem quis posuere facilisis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lobortis velit velit, volutpat viverra dolor porta pretium. Etiam et ex turpis. Aliquam efficitur iaculis tellus, vel congue elit faucibus eu. Duis in est lacinia, egestas nibh vel, feugiat leo. Duis sodales nisl ut massa viverra fringilla. Sed eros odio, posuere eget volutpat eu, elementum ut metus. Vestibulum efficitur pharetra est, in sagittis justo efficitur porta. Vestibulum sodales ligula a mi dictum volutpat aliquet sit amet diam. Etiam at laoreet ligula.</p>
     </div>
+
+    {{^user.id}}
+    <div class="container">
+      <div class="row">
+        <div class="column">
+          <div class="center">
+            {{>login}}
+          </div>
+          <p>{{ l.readme }}</p>
+        </div>
+      </div>
+    </div>
+    {{/user.id}}
+
+    {{#user.id}}
+    <div class="container">
+      <div class="row">
+        <div class="column">
+          <div class="center">
+            {{>logout}}
+          </div>
+          <p>{{ l.readme }}</p>
+        </div>
+      </div>
+    </div>
+    {{/user.id}}
+
   </div>
 </div>
 
@@ -109,32 +131,6 @@
     </div>
   </div>
 </div>
-
-{{^user.id}}
-<div class="container">
-  <div class="row">
-    <div class="column">
-      <div class="center">
-        {{>login}}
-      </div>
-      <p>{{ l.readme }}</p>
-    </div>
-  </div>
-</div>
-{{/user.id}}
-
-{{#user.id}}
-<div class="container">
-  <div class="row">
-    <div class="column">
-      <div class="center">
-        {{>logout}}
-      </div>
-      <p>{{ l.readme }}</p>
-    </div>
-  </div>
-</div>
-{{/user.id}}
 
 <script>
   (function (w, $, undefined) {

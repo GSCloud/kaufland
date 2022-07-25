@@ -144,10 +144,11 @@
       // NAVIGATION CLICK HANDLERS - TOP
       // K - logo
       $('.nav_app').click(function () {
-        $('#appinfo_modal').addClass('active').removeClass('hidden');
+        $('#appinfo_modal').toggleClass('active').removeClass('hidden');
         GSC.modals.push('appinfo_modal');
       });
 
+      // update
       $('.nav_update').click(function () {
         top.location.reload();
       });
