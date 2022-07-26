@@ -43,8 +43,8 @@ data: [
 lang: cs
 l:
   author: "Fred Brooker @ GS Cloud Ltd."
-  description: "Aplikace Chytrá lahvárna, interní použití pro Kaufland Brno-Slatina."
-  keywords: "lahvárna,kaufland,fred,brooker,gscloud.cz"
+  description: "Aplikace Chytrá lahvárna PWA je určena pro interní použití v Kauflandu Brno-Slatina."
+  keywords: "lahvárna,kaufland,fred,brooker,gscloud.cz,brno,PWA,recycling"
   noscript: "Povolte, prosím, JavaScript!<br>Bez něj je tato aplikace zcela nefunční."
   theme_color: "#000"
   title: "LAHVÁRNA"
