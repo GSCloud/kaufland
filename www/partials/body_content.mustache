@@ -16,10 +16,12 @@
             datum vydání: <b class="white-text">{{ VERSION_DATE }}</b>
             <br>
             <br>
+            přehled změn:
+            <b><a target=_blank class="green-text" href="/changelog.txt">/changelog.txt</a></b>
+            <br>
+            <br>
             REST API:
-            <b>
-              <a class="green-text" href="/api">{{ canonical_url }}api</a>
-            </b>
+            <b><a target=_blank class="green-text" href="/api">/api</a></b>
           </div>
         </div>
         <nav class="container">
@@ -35,7 +37,7 @@
   <div class="center-align padding">
     <h4 class="center-align" tabindex="-1">{{ l.tit_info }}</h4>
     <div class="left-align padding" tabindex="-1">
-      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+      <p>Zde budou základní informace o práci lahvaře a fungování lahvárny Kaufland.</p>
     </div>
   </div>
 </div>
@@ -44,7 +46,7 @@
   <div class="center-align padding">
     <h4 class="center-align" tabindex="-1">{{ l.tit_game }}</h4>
     <div class="left-align padding" tabindex="-1">
-      <p>Curabitur ac massa arcu. Nam non dolor rutrum, feugiat nunc semper, dignissim augue. Cras ultrices arcu semper ultrices imperdiet. Praesent posuere pulvinar interdum. Cras venenatis massa orci, sed feugiat magna posuere in. Cras vel fringilla arcu. Fusce feugiat egestas tellus in lacinia. Nam rhoncus aliquet porttitor. In pulvinar mi in ligula tempus ullamcorper. Sed in mauris ante.</p>
+      <p>V přípravě jsou hry <b>Milionář z lahvárny</b> a <b>Pexeso</b>.</p>
     </div>
   </div>
 </div>
@@ -53,7 +55,7 @@
   <div class="center-align padding">
     <h4 class="center-align" tabindex="-1">{{ l.tit_message }}</h4>
     <div class="left-align padding" tabindex="-1">
-      <p>Integer posuere sit amet erat luctus tincidunt. Ut commodo purus nisl, eu mattis ligula dignissim a. Sed nec massa at quam interdum aliquam ut ac est. Vestibulum vitae ultricies felis. Aliquam erat volutpat. Nulla lobortis sollicitudin placerat. Suspendisse maximus vehicula vulputate. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras cursus non dui eu lobortis. Fusce viverra, leo sed sodales bibendum, felis ligula tincidunt elit, eget vehicula diam justo vel ipsum.</p>
+      <p>Centrální místo pro pracovní vzkazy a generované logy o provedených akcích.</p>
     </div>
   </div>
 </div>
@@ -62,7 +64,7 @@
   <div class="center-align padding">
     <h4 class="center-align" tabindex="-1">{{ l.tit_price }}</h4>
     <div class="left-align padding" tabindex="-1">
-      <p>Nullam sit amet semper velit. Fusce maximus at dolor sit amet mattis. Nulla sit amet ultrices nunc, sed suscipit enim. Aliquam ultricies risus a erat posuere, non interdum sem placerat. Mauris sem quam, pulvinar in cursus eget, maximus aliquet dolor. Nunc quam dolor, tempor id enim vel, pulvinar imperdiet ligula. Pellentesque elit mi, hendrerit vel suscipit et, cursus non sapien. Donec tristique sem at erat viverra, quis bibendum magna tincidunt. Maecenas euismod felis libero. Suspendisse et bibendum magna. Curabitur consectetur diam vitae tincidunt elementum.</p>
+      <p>Automatizovaný přehled slevových akcí na pivo ve skle řetězců Kaufland, Lidl, Penny a Albert.</p>
     </div>
   </div>
 </div>
@@ -71,7 +73,7 @@
   <div class="center-align padding">
     <h4 class="center-align" tabindex="-1">{{ l.tit_warehouse }}</h4>
     <div class="left-align padding" tabindex="-1">
-      <p>Sed at pretium augue. Donec euismod pretium sodales. Sed porttitor sapien in purus vulputate, fringilla commodo urna tempus. Nam quam lectus, ultricies vitae congue vitae, varius at neque. Fusce tempus a arcu nec vulputate. Suspendisse sollicitudin nibh ac velit luctus sodales. Morbi efficitur nibh quis mattis pellentesque. Mauris eget lorem dui. Vestibulum ultricies est sit amet neque viverra ultrices. Sed pulvinar commodo dolor, vel suscipit sem accumsan fermentum. Aenean vitae semper metus, eu dignissim quam. Donec nec ullamcorper arcu. Mauris sed rhoncus neque. Quisque at enim vulputate purus lacinia hendrerit a vitae ante.</p>
+      <p>Orientační náhled skladových zásob.</p>
     </div>
   </div>
 </div>
@@ -79,8 +81,31 @@
 <div id="config" class="white-text hidden section">
   <div class="center-align padding">
     <h4 class="center-align" tabindex="-1">{{ l.tit_config }}</h4>
-    <div class="left-align padding" tabindex="-1">
-      <p>Curabitur ornare risus neque. Vivamus non magna ac felis tristique faucibus. Vestibulum nisi neque, porta eu efficitur ut, feugiat ac velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper turpis felis, sed dictum justo imperdiet at. Morbi pharetra ultrices felis eu malesuada. Duis dui sapien, porta vel nisl in, hendrerit auctor tortor. Donec commodo sagittis risus, mattis ullamcorper nulla scelerisque eu. Vestibulum suscipit commodo elit quis aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+    <div class="left-align large-padding" tabindex="-1">
+      <div class="row">
+        <label class="switch">
+          <input type="checkbox" disabled>
+          <span>⬜️ světlý design</span>
+        </label>
+        <br>
+        <br>
+        <label class="switch">
+          <input type="checkbox" disabled>
+          <span>🎹 hudba</span>
+        </label>
+        <br>
+        <br>
+        <label class="switch">
+          <input type="checkbox" disabled>
+          <span>🔊 zvukové efekty</span>
+        </label>
+        <br>
+        <br>
+        <label class="switch">
+          <input type="checkbox" disabled>
+          <span>📳 vibrace</span>
+        </label>
+      </div>
     </div>
   </div>
 </div>

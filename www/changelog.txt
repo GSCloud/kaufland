@@ -1,0 +1,6 @@
+26.7.2022
+
++ dokončeno základní responzivní Beercss UI
++ Google OAuth 2.0 login
++ informační modal box pod K ikonou
++ nový způsob aktualizace PWA

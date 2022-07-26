@@ -205,8 +205,6 @@
         $('.nav_info').click();
       }
       
-      //$('.nav_app').click();
-
       // click text to remove modals
       $('.section,main').click(function () {
         if (GSC.modals.length) {
@@ -215,6 +213,9 @@
           });
         }
       });
+
+      // show version box on load
+      //$('.nav_app').click();
 
     });
   })(window, $);
