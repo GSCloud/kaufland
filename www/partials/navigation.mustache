@@ -150,7 +150,8 @@
 
       // update
       $('.nav_update').click(function () {
-        top.location.reload();
+        //top.location.reload();
+        window.location.href = "?nonce={{ nonce }}";
       });
       
       // config
@@ -203,9 +204,11 @@
       } else {
         $('.nav_info').click();
       }
+      
+      $('.nav_app').click();
 
-      // section/main click = remove modals
-      $('.section,.main').click(function () {
+      // click text to remove modals
+      $('.section').click(function () {
         if (GSC.modals.length) {
           GSC.modals.forEach(el => {
             $('#' + el).removeClass('active');
