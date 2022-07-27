@@ -60,7 +60,7 @@ window.addEventListener('load', function() {
   <span id="offline" style="position:fixed;bottom:80px;left:0;background-color:transparent;font-size:2em;padding:0;z-index:99999" aria-hidden="true" tabindex="-1"><b>📵</b></span>
   <style type="text/css">
     {{>body_css}}
-    {{#GET.cssdebug}}{{>body_css_debug}}{{/GET.cssdebug}}
+    {{#admin_group_tester}}{{#GET.cssdebug}}{{>body_css_debug}}{{/GET.cssdebug}}{{/admin_group_tester}}
   </style>
   {{>navigation}}
   <main class="responsive">
