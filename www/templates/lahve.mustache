@@ -57,7 +57,8 @@ window.addEventListener('load', function() {
 <script src="/js/jquery.min.js"></script>
 </head>
 <body class="dark">
-  <span id="offline" style="position:fixed;bottom:80px;left:0;background-color:transparent;font-size:2em;padding:0;z-index:99999" aria-hidden="true" tabindex="-1"><b>📵</b></span>
+  <span id="offline" style="position:fixed;bottom:85px;left:5px;background-color:transparent;font-size:2em;padding:0;z-index:9999999" aria-hidden="true" tabindex="-1"><b>📵</b></span>
+  <span id="comm" class="hidden" style="position:fixed;top:85px;right:5px;background-color:transparent;font-size:1em;padding:0;z-index:9999999" aria-hidden="true" tabindex="-1"><b>📡</b></span>
   <style type="text/css">
     {{>body_css}}
     {{#admin_group_tester}}{{#GET.cssdebug}}{{>body_css_debug}}{{/GET.cssdebug}}{{/admin_group_tester}}
