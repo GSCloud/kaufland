@@ -197,6 +197,39 @@
         $('#warehouse').removeClass('hidden');
       });
 
+      // settings: UI
+      $('.ui').click(function () {
+        localStorage["ui"] = $(this).is(":checked");
+        if (localStorage["ui"] == "true") {
+          ui("mode", "light");
+          $(".white-text").removeClass('white-text').addClass('black-text');
+        } else {
+          ui("mode", "dark");
+          $(".black-text").removeClass('black-text').addClass('white-text');
+        }
+      });
+
+      // settings: vibrate
+      $('.vibrate').click(function () {
+        GSC.vibrate = $(this).is(":checked");
+        localStorage["vibrate"] = GSC.vibrate;
+        if (localStorage["vibrate"] == "true") {
+          window.navigator.vibrate(100);
+        }
+      });
+
+      // settings: SFX
+      $('.sfx').click(function () {
+        GSC.sfx = $(this).is(":checked");
+        localStorage["sfx"] = GSC.sfx;
+      });
+
+      // settings: MUSIC
+      $('.music').click(function () {
+        GSC.music = $(this).is(":checked");
+        localStorage["music"] = GSC.music;
+      });
+
       // RUNTIME AND OTHER HANDLERS
       // set navigation to the saved state
       if (localStorage && localStorage['navigation']) {
@@ -217,6 +250,17 @@
       // show version box on load
       //$('.nav_app').click();
 
+      $('.music').prop('checked', localStorage["music"] == "true");
+      $('.sfx').prop('checked', localStorage["sfx"] == "true");
+      $('.ui').prop('checked', localStorage["ui"] == "true");
+      $('.vibrate').prop('checked', localStorage["vibrate"] == "true");
+      if (localStorage["ui"] == "true") {
+        ui("mode", "light");
+        $(".white-text").removeClass('white-text').addClass('black-text');
+      } else {
+        ui("mode", "dark");
+        $(".black-text").removeClass('black-text').addClass('white-text');
+      }
     });
   })(window, $);
 
