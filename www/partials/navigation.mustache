@@ -245,7 +245,7 @@
       // test: vibrate
       $('.nav_testvib').click(function () {
         console.log('vibrate test');
-        if (GSC.vibrate == "true") {
+        if (GSC.vibrate) {
           window.navigator.vibrate([100,50,100,50,100]);
         }
       });
@@ -299,7 +299,7 @@
 
       // set test button color
       function setTestVibrateButton() {
-        if (GSC.vibrate == "true") {
+        if (GSC.vibrate) {
           $('.nav_testvib').removeClass('grey').addClass('blue');
         } else {
           $('.nav_testvib').removeClass('blue').addClass('grey');
