@@ -222,7 +222,8 @@
 
       // settings: vibrate
       $('.vibrate').click(function () {
-        GSC.vibrate = localStorage["vibrate"] = $(this).is(":checked");
+        localStorage["vibrate"] = $(this).is(":checked");
+        GSC.vibrate = localStorage["vibrate"];
         if (GSC.vibrate == "true") {
           window.navigator.vibrate(100);
         }
@@ -230,18 +231,20 @@
 
       // settings: SFX
       $('.sfx').click(function () {
-        GSC.sfx = localStorage["sfx"] = $(this).is(":checked");
+        localStorage["sfx"] = $(this).is(":checked");
+        GSC.sfx = localStorage["sfx"];
       });
 
       // settings: MUSIC
       $('.music').click(function () {
-        GSC.music = localStorage["music"] = $(this).is(":checked");
+        localStorage["music"] = $(this).is(":checked");
+        GSC.music = localStorage["music"];
       });
 
       // test: vibrate
       $('.nav_testvib').click(function () {
         console.log('vibrate test');
-        window.navigator.vibrate(200);
+        if (GSC.vibrate == "true") window.navigator.vibrate(200);
       });
 
       // test: sfx
