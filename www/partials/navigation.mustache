@@ -224,7 +224,7 @@
       $('.vibrate').click(function () {
         localStorage["vibrate"] = $(this).is(":checked");
         GSC.vibrate = parseBool(localStorage["vibrate"]);
-        if (GSC.vibrate == "true") {
+        if (GSC.vibrate) {
           window.navigator.vibrate(100);
         }
         setTestVibrateButton();
