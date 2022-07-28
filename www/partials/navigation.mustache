@@ -296,6 +296,13 @@
       GSC.sfx = localStorage["sfx"];
       GSC.vibrate = localStorage["vibrate"];
 
+      // set test button color
+      if (GSC.vibrate == "true") {
+        $('.nav_testvib').removeClass('grey').addClass('blue');
+      } else {
+        $('.nav_testvib').removeClass('blue').addClass('grey');
+      }
+
       // set UI mode
       setUiMode();
 
