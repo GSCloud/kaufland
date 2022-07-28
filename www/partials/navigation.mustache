@@ -110,7 +110,7 @@
 
       // set UI mode
       function setUiMode() {
-        if (localStorage["ui"] == "true") {
+        if (parseBool(localStorage["ui"])) {
           ui("mode", "light");
           $(".white-text").removeClass('white-text').addClass('black-text');
         } else {
