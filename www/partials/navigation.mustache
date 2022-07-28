@@ -244,7 +244,9 @@
       // test: vibrate
       $('.nav_testvib').click(function () {
         console.log('vibrate test');
-        if (GSC.vibrate == "true") window.navigator.vibrate([200,100,200,100,200]);
+        if (GSC.vibrate == "true") {
+          window.navigator.vibrate([100,50,100,50,100]);
+        }
       });
 
       // test: sfx
