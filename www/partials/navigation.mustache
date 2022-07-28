@@ -220,10 +220,10 @@
         setUiMode();
       });
 
-      // settings: vibrate
+      // settings: VIBRATE
       $('.vibrate').click(function () {
         localStorage["vibrate"] = $(this).is(":checked");
-        GSC.vibrate = localStorage["vibrate"];
+        GSC.vibrate = parseBool(localStorage["vibrate"]);
         if (GSC.vibrate == "true") {
           window.navigator.vibrate(100);
         }
@@ -233,13 +233,13 @@
       // settings: SFX
       $('.sfx').click(function () {
         localStorage["sfx"] = $(this).is(":checked");
-        GSC.sfx = localStorage["sfx"];
+        GSC.sfx = parseBool(localStorage["sfx"]);
       });
 
       // settings: MUSIC
       $('.music').click(function () {
         localStorage["music"] = $(this).is(":checked");
-        GSC.music = localStorage["music"];
+        GSC.music = parseBool(localStorage["music"]);
       });
 
       // test: vibrate
@@ -293,9 +293,9 @@
       $('.vibrate').prop('checked', localStorage["vibrate"] == "true");
 
       // set GSC properties
-      GSC.music = localStorage["music"];
-      GSC.sfx = localStorage["sfx"];
-      GSC.vibrate = localStorage["vibrate"];
+      GSC.music = parseBool(localStorage["music"]);
+      GSC.sfx = parseBool(localStorage["sfx"]);
+      GSC.vibrate = parseBool(localStorage["vibrate"]);
 
       // set test button color
       function setTestVibrateButton() {

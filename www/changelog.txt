@@ -1,8 +1,9 @@
 28.7.2022
 =========
-+ dokončena karta Nastavení
++ fn: parseBool()
++ vylepšena karta Nastavení
 + Vibrate API
-+ WebAudio API
++ WebAudio API (nedokončeno)
 
 27.7.2022
 =========

@@ -20,6 +20,11 @@ if (localStorage) {
   }
 }
 
+// parseBool()
+function parseBool(val) {
+  return val === true || val === "true";
+}
+
 // compute SHA-256 hash of a string
 async function sha256(message) {
   const encoder = new TextEncoder();
