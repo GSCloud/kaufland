@@ -1,5 +1,5 @@
 <!-- top navigation | all sizes -->
-<nav id="top_nav" class="top middle">
+<nav id="top_nav" class="top middle hidden">
   <a class="nav_app">
     <img id="logo"
     class="circle small-margin"
@@ -7,13 +7,13 @@
     />
   </a>
   <a class="nav_config">
-    <i tabindex="-1" class="large" data-color="white-text">build</i>
+    <i tabindex="-1" class="large" data-color="orange-text">build</i>
     <div>
       <span tabindex="-1">{{ l.nav_config }}</span>
     </div>
   </a>
   <a class="nav_user">
-    <i tabindex="-1" class="large" data-color="white-text">face</i>
+    <i tabindex="-1" class="large" data-color="orange-text">face</i>
     <div>
       <span tabindex="-1">{{ l.nav_user }}</span>
     </div>
@@ -21,7 +21,7 @@
 </nav>
 
 <!-- bottom navigation | medium large -->
-<nav class="bottom m l middle">
+<nav class="bottom m l middle hidden">
   <a class="nav_info">
     <i tabindex="-1" class="large" data-color="blue-text">info</i>
     <div>
@@ -55,7 +55,7 @@
 </nav>
 
 <!-- bottom navigation | small -->
-<nav class="bottom s middle">
+<nav class="bottom s middle hidden">
   <a class="nav_info">
     <i tabindex="-1" class="large" data-color="blue-text">info</i>
   </a>
@@ -152,7 +152,7 @@
         $('nav i, nav div').removeClass();
         $('.section').addClass('hidden');
         $('.' + el + '>i').addClass($('.' + el + '>i').data('color')).addClass('large');
-        $('.' + el + '>div').addClass($('.' + el + '>i').data('color')).addClass('bold small-shadow');
+        $('.' + el + '>div').addClass($('.' + el + '>i').data('color')).addClass('bold');
       }
 
 
@@ -306,9 +306,11 @@
         }
       }
 
-      // set UI mode
+      // final UI quirks
       setUiMode();
       setTestVibrateButton();
+      $('nav').hide().removeClass('hidden').hide().show(300);
+      $('body').hide().removeClass('hidden').hide().show(500);
 
     });
   })(window, $);
