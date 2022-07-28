@@ -4,6 +4,7 @@
 + vylepšena karta Nastavení
 + Vibrate API
 + WebAudio API (nedokončeno)
++ základní barva "Kaufland rudá"
 
 27.7.2022
 =========
