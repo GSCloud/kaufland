@@ -116,6 +116,10 @@
         </div>
       </div>
     </div>
+    <div class="center large-padding" tabindex="-1">
+      <button class="nav_testvib blue bold white-text">Test vibrace</button>
+      <!-- <button class="nav_testsfx blue bold white-text">Test zvuku</button> -->
+    </div>
   </div>
 </div>
 
@@ -163,12 +167,6 @@
 
     // AudioContext
     GSC.audioctx = null;
-    try {
-      GSC.audioctx = new AudioContext();
-    }
-    catch(e) {
-      console.log(e);
-    }
 
     // GSC.ComOn() - communication icon ON
     if (typeof GSC.ComOn !== "function") GSC.ComOn = function() {

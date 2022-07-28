@@ -222,20 +222,33 @@
 
       // settings: vibrate
       $('.vibrate').click(function () {
-        localStorage["vibrate"] = $(this).is(":checked");
-        if (localStorage["vibrate"] == "true") {
+        GSC.vibrate = localStorage["vibrate"] = $(this).is(":checked");
+        if (GSC.vibrate == "true") {
           window.navigator.vibrate(100);
         }
       });
 
       // settings: SFX
       $('.sfx').click(function () {
-        localStorage["sfx"] = $(this).is(":checked");
+        GSC.sfx = localStorage["sfx"] = $(this).is(":checked");
       });
 
       // settings: MUSIC
       $('.music').click(function () {
-        localStorage["music"] = $(this).is(":checked");
+        GSC.music = localStorage["music"] = $(this).is(":checked");
+      });
+
+      // test: vibrate
+      $('.nav_testvib').click(function () {
+        console.log('vibrate test');
+        if (GSC.vibrate == "true") {
+          window.navigator.vibrate(200);
+        }
+      });
+
+      // test: sfx
+      $('.nav_testsfx').click(function () {
+        console.log('audio test');
       });
 
 
@@ -250,6 +263,15 @@
       
       // click text to remove modals
       $('.section,main').click(function () {
+        if (!GSC.audioctx) {
+          try {
+            GSC.audioctx = new AudioContext();
+            console.log('AudioContext created');
+          }
+          catch(e) {
+            console.log(e);
+          }
+        }
         if (GSC.modals.length) {
           GSC.modals.forEach(el => {
             $('#' + el).removeClass('active');
@@ -260,11 +282,16 @@
       // show version box on load
       //$('.nav_app').click();
 
-      // set settings switches
+      // set switches
       $('.music').prop('checked', localStorage["music"] == "true");
       $('.sfx').prop('checked', localStorage["sfx"] == "true");
       $('.ui').prop('checked', localStorage["ui"] == "true");
       $('.vibrate').prop('checked', localStorage["vibrate"] == "true");
+
+      // set GSC properties
+      GSC.music = localStorage["music"];
+      GSC.sfx = localStorage["sfx"];
+      GSC.vibrate = localStorage["vibrate"];
 
       // set UI mode
       setUiMode();
