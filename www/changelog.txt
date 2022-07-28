@@ -1,6 +1,8 @@
 28.7.2022
 =========
 + fn: parseBool()
++ nějaké VFX
++ oranžová barva horní navigace
 + vylepšena karta Nastavení
 + Vibrate API
 + WebAudio API (nedokončeno)
