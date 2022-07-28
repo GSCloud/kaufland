@@ -77,6 +77,11 @@
   (function (w, $, undefined) {
     "use strict";
 
+    // show error page if there is no localStorage
+    if (!localStorage) {
+      window.location.href = '/err/500';
+    }
+
     // progress bar handler
     w.onscroll = function() {
       var scroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -96,12 +101,23 @@
       }
     };
 
-    // *** DELAYED FUNCTIONS ***
 
+    // *** DELAYED FUNCTIONS ***
     GSC._fn.push(function () {
 
       // array of modal popups
       GSC.modals = [];
+
+      // set UI mode
+      function setUiMode() {
+        if (localStorage["ui"] == "true") {
+          ui("mode", "light");
+          $(".white-text").removeClass('white-text').addClass('black-text');
+        } else {
+          ui("mode", "dark");
+          $(".black-text").removeClass('black-text').addClass('white-text');
+        }
+      }
 
       // set navigation by element
       function setNavigation(el) {
@@ -126,22 +142,22 @@
         }
         localStorage['scroll_last_' + el] = offset;
         localStorage['navigation_last'] = el;
-
-        // scroll to
         window.scrollTo({
           top: offset,
           left: 0,
           behavior: 'smooth'
         });
 
-        // set UI design
+        // set view design
         $('nav i, nav div').removeClass();
         $('.section').addClass('hidden');
         $('.' + el + '>i').addClass($('.' + el + '>i').data('color')).addClass('large');
         $('.' + el + '>div').addClass($('.' + el + '>i').data('color')).addClass('bold small-shadow');
       }
 
+
       // NAVIGATION CLICK HANDLERS - TOP
+
       // K - logo
       $('.nav_app').click(function () {
         $('#appinfo_modal').toggleClass('active').removeClass('hidden');
@@ -150,7 +166,6 @@
 
       // update
       $('.nav_update').click(function () {
-        //top.location.reload();
         window.location.replace("?nonce={{ nonce }}");
       });
       
@@ -165,8 +180,10 @@
         setNavigation(this.className);
         $('#user').removeClass('hidden');
       });
-      
+
+
       // NAVIGATION CLICK HANDLERS - BOTTOM
+
       // info
       $('.nav_info').click(function () {
         setNavigation(this.className);
@@ -200,19 +217,12 @@
       // settings: UI
       $('.ui').click(function () {
         localStorage["ui"] = $(this).is(":checked");
-        if (localStorage["ui"] == "true") {
-          ui("mode", "light");
-          $(".white-text").removeClass('white-text').addClass('black-text');
-        } else {
-          ui("mode", "dark");
-          $(".black-text").removeClass('black-text').addClass('white-text');
-        }
+        setUiMode();
       });
 
       // settings: vibrate
       $('.vibrate').click(function () {
-        GSC.vibrate = $(this).is(":checked");
-        localStorage["vibrate"] = GSC.vibrate;
+        localStorage["vibrate"] = $(this).is(":checked");
         if (localStorage["vibrate"] == "true") {
           window.navigator.vibrate(100);
         }
@@ -220,19 +230,19 @@
 
       // settings: SFX
       $('.sfx').click(function () {
-        GSC.sfx = $(this).is(":checked");
-        localStorage["sfx"] = GSC.sfx;
+        localStorage["sfx"] = $(this).is(":checked");
       });
 
       // settings: MUSIC
       $('.music').click(function () {
-        GSC.music = $(this).is(":checked");
-        localStorage["music"] = GSC.music;
+        localStorage["music"] = $(this).is(":checked");
       });
 
-      // RUNTIME AND OTHER HANDLERS
+
+      // OTHER HANDLERS AND SETUP
+
       // set navigation to the saved state
-      if (localStorage && localStorage['navigation']) {
+      if (localStorage['navigation']) {
         $('.' + localStorage['navigation']).click();
       } else {
         $('.nav_info').click();
@@ -250,17 +260,15 @@
       // show version box on load
       //$('.nav_app').click();
 
+      // set settings switches
       $('.music').prop('checked', localStorage["music"] == "true");
       $('.sfx').prop('checked', localStorage["sfx"] == "true");
       $('.ui').prop('checked', localStorage["ui"] == "true");
       $('.vibrate').prop('checked', localStorage["vibrate"] == "true");
-      if (localStorage["ui"] == "true") {
-        ui("mode", "light");
-        $(".white-text").removeClass('white-text').addClass('black-text');
-      } else {
-        ui("mode", "dark");
-        $(".black-text").removeClass('black-text').addClass('white-text');
-      }
+
+      // set UI mode
+      setUiMode();
+
     });
   })(window, $);
 

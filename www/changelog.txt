@@ -1,3 +1,7 @@
+28.7.2022
+=========
++ dokončena karta Nastavení
+
 27.7.2022
 =========
 + podpora WebShare API
