@@ -91,13 +91,13 @@
         <div class="col s6 right-align">
           <label class="switch">
             <input type="checkbox" class="ui">
-            <span>⬜️ design</span>
+            <span>{{ l.switch_design }}</span>
           </label>
         </div>
         <div class="col s6 left-align">
           <label class="switch">
             <input type="checkbox" class="vibrate">
-            <span>📳 vibrace</span>
+            <span>{{ l.switch_vibrate }}</span>
           </label>
         </div>
       </div>
@@ -105,20 +105,21 @@
         <div class="col s6 right-align">
           <label class="switch">
             <input type="checkbox" class="sfx">
-            <span>🔊 zvuky</span>
+            <span>{{ l.switch_sfx }}</span>
           </label>
         </div>
         <div class="col s6 left-align">
           <label class="switch">
             <input type="checkbox" class="music">
-            <span>🎹 hudba</span>
+            <span>{{ l.switch_music }}</span>
           </label>
         </div>
       </div>
     </div>
     <div class="center large-padding" tabindex="-1">
-      <button class="nav_testvib blue bold white-text">Test vibrace</button>
-      <!-- <button class="nav_testsfx blue bold white-text">Test zvuku</button> -->
+      <button class="nav_test_vib blue bold white-text">Test vibrace</button>
+      <button class="nav_test_sfx blue bold white-text">Test zvuku</button>
+      <button class="nav_test_music blue bold white-text">Test hudby</button>
     </div>
   </div>
 </div>
@@ -126,13 +127,6 @@
 <div id="user" class="white-text hidden section">
   <div class="center-align padding">
     <h4 class="center-align" tabindex="-1">{{ l.tit_user }}</h4>
-{{#admin_group_tester}}
-    <div class="center-align padding" tabindex="-1">
-      <a href="?cssdebug=1&nonce={{ nonce }}" class="">
-        <button class="nav_update responsive blue bold white-text">CSS debugger</button>
-      </a>
-    </div>
-{{/admin_group_tester}}
     <div class="left-align padding" tabindex="-1">
       {{^user.id}}
       <div class="container">
@@ -147,7 +141,7 @@
       {{/user.id}}
 
       {{#user.id}}
-      <div class="container">
+      <article class="border">
         <div class="row">
           <div class="column">
             <div class="center">
@@ -155,9 +149,16 @@
             </div>
           </div>
         </div>
-      </div>
+      </article>
       {{/user.id}}
     </div>
+{{#admin_group_tester}}
+    <div class="center-align padding" tabindex="-1">
+      <a href="?cssdebug=1&nonce={{ nonce }}" class="">
+        <button class="nav_update responsive blue bold white-text">CSS debugger</button>
+      </a>
+    </div>
+{{/admin_group_tester}}
   </div>
 </div>
 
@@ -167,7 +168,6 @@
 
     // AudioContext
     GSC.audioctx = null;
-
 
     // GSC.ComOn() - communication icon ON
     if (typeof GSC.ComOn !== "function") GSC.ComOn = function() {

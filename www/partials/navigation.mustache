@@ -7,13 +7,13 @@
     />
   </a>
   <a class="nav_config">
-    <i tabindex="-1" class="large" data-color="orange-text">build</i>
+    <i tabindex="-1" class="large" data-color="yellow-text">build</i>
     <div>
       <span tabindex="-1">{{ l.nav_config }}</span>
     </div>
   </a>
   <a class="nav_user">
-    <i tabindex="-1" class="large" data-color="orange-text">face</i>
+    <i tabindex="-1" class="large" data-color="yellow-text">face</i>
     <div>
       <span tabindex="-1">{{ l.nav_user }}</span>
     </div>
@@ -156,7 +156,7 @@
       }
 
 
-      // NAVIGATION CLICK HANDLERS - TOP
+      // NAVIGATION CLICK HANDLERS
 
       // K - logo
       $('.nav_app').click(function () {
@@ -180,9 +180,6 @@
         setNavigation(this.className);
         $('#user').removeClass('hidden');
       });
-
-
-      // NAVIGATION CLICK HANDLERS - BOTTOM
 
       // info
       $('.nav_info').click(function () {
@@ -234,29 +231,40 @@
       $('.sfx').click(function () {
         localStorage["sfx"] = $(this).is(":checked");
         GSC.sfx = parseBool(localStorage["sfx"]);
+        setTestSfxButton();
       });
 
       // settings: MUSIC
       $('.music').click(function () {
         localStorage["music"] = $(this).is(":checked");
         GSC.music = parseBool(localStorage["music"]);
+        setTestMusicButton();
       });
 
       // test: vibrate
-      $('.nav_testvib').click(function () {
-        console.log('vibrate test');
+      $('.nav_test_vib').click(function () {
         if (GSC.vibrate) {
+          console.log('vibrate');
           window.navigator.vibrate([100,50,100,50,100]);
         }
       });
 
       // test: sfx
-      $('.nav_testsfx').click(function () {
-        console.log('audio test');
+      $('.nav_test_sfx').click(function () {
+        if (GSC.sfx) {
+          console.log('sfx');
+        }
+      });
+
+      // test: music
+      $('.nav_test_music').click(function () {
+        if (GSC.music) {
+          console.log('music');
+        }
       });
 
 
-      // OTHER HANDLERS AND SETUP
+      // OTHER HANDLERS AND RUNTIMES
 
       // set navigation to the saved state
       if (localStorage['navigation']) {
@@ -270,9 +278,11 @@
         if (!GSC.audioctx) {
           try {
             GSC.audioctx = new AudioContext();
-            console.log('AudioContext created');
+            console.log('AudioContext created:');
+            console.log(GSC.audioctx);
           }
           catch(e) {
+            console.log("AudioContext error:");
             console.log(e);
           }
         }
@@ -283,7 +293,7 @@
         }
       });
 
-      // show version box on load
+      // show version modal box on load
       //$('.nav_app').click();
 
       // set switches
@@ -297,21 +307,39 @@
       GSC.sfx = parseBool(localStorage["sfx"]);
       GSC.vibrate = parseBool(localStorage["vibrate"]);
 
-      // set test button color
+      // test button #1
       function setTestVibrateButton() {
         if (GSC.vibrate) {
-          $('.nav_testvib').removeClass('grey').addClass('blue');
+          $('.nav_test_vib').removeClass('grey').addClass('blue');
         } else {
-          $('.nav_testvib').removeClass('blue').addClass('grey');
+          $('.nav_test_vib').removeClass('blue').addClass('grey');
         }
       }
 
-      // final UI quirks
+      // test button #2
+      function setTestSfxButton() {
+        if (GSC.sfx) {
+          $('.nav_test_sfx').removeClass('grey').addClass('blue');
+        } else {
+          $('.nav_test_sfx').removeClass('blue').addClass('grey');
+        }
+      }
+      // test button #3
+      function setTestMusicButton() {
+        if (GSC.music) {
+          $('.nav_test_music').removeClass('grey').addClass('blue');
+        } else {
+          $('.nav_test_music').removeClass('blue').addClass('grey');
+        }
+      }
+
+      // UI quirks
       setUiMode();
       setTestVibrateButton();
+      setTestSfxButton();
+      setTestMusicButton();
       $('nav').hide().removeClass('hidden').hide().show(300);
       $('body').hide().removeClass('hidden').hide().show(500);
-
     });
   })(window, $);
 
