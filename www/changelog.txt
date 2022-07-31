@@ -1,3 +1,7 @@
+31.7.2022
+=========
++ modifikace UI
+
 30.7.2022
 =========
 + modifikace UI
@@ -5,10 +9,10 @@
 28.7.2022
 =========
 + fn: parseBool()
-+ jednoduché VFX
++ VFX
 + Vibrate API
 + WebAudio API (nedokončeno)
-+ vylepšena karta Nastavení
++ karta Nastavení
 + základní barva "Kaufland rudá"
 
 27.7.2022
