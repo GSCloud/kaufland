@@ -70,3 +70,6 @@ l:
   title: "LAHVÁRNA"
   webshare_button: "<i>share</i>&nbsp;&nbsp;sdílej"
   
+swpreload: [
+  '/sfx/laser.mp3'
+]
