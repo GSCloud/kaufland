@@ -5,6 +5,7 @@
 + XHR event handlers
 + XHR comm icon
 + API: GetVersion
++ notifikace nové verze
 
 31.7.2022
 =========
