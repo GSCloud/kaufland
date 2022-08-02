@@ -255,26 +255,28 @@
       $('.nav_test_sfx').click(function () {
         if (GSC.sfx) {
           console.log('sfx');
-          if (sfxbuffer) {
+          if (GSC.audioctx && sfxbuffer) {
             source = GSC.audioctx.createBufferSource();
             source.buffer = sfxbuffer;
             source.connect(GSC.audioctx.destination);
             source.start();   
-            return true;
+            return;
           }
-          // load laser sound from network
+          // XHR load laser sound from network
           var request = new XMLHttpRequest();
           request.open('GET', '/sfx/laser.mp3', true);
           request.responseType = 'arraybuffer';
           request.onload = function() {
-            GSC.audioctx.decodeAudioData(request.response, function(buffer) {
-                sfxbuffer = buffer;
+            GSC.audioctx && GSC.audioctx.decodeAudioData(request.response, function(buf) {
                 source = GSC.audioctx.createBufferSource();
-                source.buffer = sfxbuffer;
+                sfxbuffer = buf;
+                source.buffer = buf;
                 source.connect(GSC.audioctx.destination);
-                source.start();   
+                source.start();
+                GSC.ComOff();
             });
           }
+          GSC.ComOn();
           request.send();
         }
       });

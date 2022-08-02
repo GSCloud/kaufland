@@ -1,3 +1,9 @@
+2.8.2022
+========
++ sfx audio test
++ fn: ComOn(), ComOff()
++ XHR communication icon
+
 31.7.2022
 =========
 + modifikace UI
@@ -20,7 +26,6 @@
 + WebShare API
 + skupiny uživatelů: admin, lahvař, tester
 + tester: CSS debugger v kartě Uživatel
-
 
 26.7.2022
 =========
