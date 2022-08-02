@@ -1,11 +1,11 @@
 2.8.2022
 ========
-+ sfx audio test
 + fn: ComOn(), ComOff()
 + API: GetVersion
 + XHR event handlers
 + XHR comm icon
 + notifikace nové verze / test každých 30 sec.
++ SFX test
 
 31.7.2022
 =========
