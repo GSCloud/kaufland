@@ -193,7 +193,7 @@
         .find("a")
         .each(function () {
           var h = $(this).attr("href");
-          var nonce = "?nonce=" + Math.round(Math.random() * 10000);
+          var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
           if (h.indexOf("?") == -1 && h.indexOf("http") != -1) {
             $(this).attr("href", h + nonce);
           }
@@ -216,7 +216,7 @@
       // check version through API call
       function checkVersion() {
         if (GSC.offline) return;
-        var nonce = "?nonce=" + Math.round(Math.random() * 10000);
+        var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetVersion' + nonce, function(data) {
           if (data && data.data && data.data.version) {
             if (data.data.version != "{{ VERSION }}") {
