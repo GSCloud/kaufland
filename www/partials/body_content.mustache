@@ -213,10 +213,19 @@
 
     // get current version from the server
     GSC._fn.push(function () {
-      var nonce = "?nonce=" + Math.round(Math.random() * 10000);
-      $.get('/api/v1/GetVersion' + nonce, function(data) {
-        if (data && data.data) console.log(data.data.version);
-      });
+      function checkVersion() {
+        var nonce = "?nonce=" + Math.round(Math.random() * 10000);
+        $.get('/api/v1/GetVersion' + nonce, function(data) {
+          if (data && data.data && data.data.version) {
+            if (data.data.version != "{{ VERSION }}") {
+              $('.nav_app>span.badge').removeClass('hidden');
+            }
+          }
+        });
+      }
+      setInterval(function() {
+        checkVersion()
+      }, 10000);
     });
 
     GSC._fn.push(function () {
