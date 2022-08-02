@@ -1,11 +1,11 @@
 2.8.2022
 ========
-+ fn: ComOn(), ComOff()
++ fn: GSC.ComOn(), GSC.ComOff()
 + API: GetVersion
 + XHR event handlers
 + XHR comm icon
 + notifikace nové verze / test každých 30 sec.
-+ SFX test
++ test SFX
 
 31.7.2022
 =========
@@ -17,12 +17,13 @@
 
 28.7.2022
 =========
++ Vibrate API
++ WebAudio API
 + fn: parseBool()
 + VFX
-+ Vibrate API
-+ WebAudio API (nedokončeno)
 + karta Nastavení
 + základní barva "Kaufland rudá"
++ test VIBRACE
 
 27.7.2022
 =========
@@ -32,7 +33,7 @@
 
 26.7.2022
 =========
-+ dokončeno základní responzivní Beercss UI
++ základní responzivní Beercss UI
++ informační modal box pod ikonou K
++ aktualizace PWA
 + Google OAuth 2.0 login
-+ informační modal box pod K ikonou
-+ nový způsob aktualizace PWA
