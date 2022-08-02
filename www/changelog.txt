@@ -2,7 +2,9 @@
 ========
 + sfx audio test
 + fn: ComOn(), ComOff()
-+ XHR communication icon
++ XHR event handlers
++ XHR comm icon
++ API: GetVersion
 
 31.7.2022
 =========

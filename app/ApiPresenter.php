@@ -101,10 +101,16 @@ class ApiPresenter extends APresenter
         switch ($view) {
         case "GetUUID":
             $data = [
-                "uuid" => $this->getUID()
+                "uuid" => $this->getUID(),
             ];
             return $this->writeJsonData($data, $extras);
-        break;
+            break;
+        case "GetVersion":
+            $data = [
+                "version" => $this->getData('VERSION'),
+            ];
+            return $this->writeJsonData($data, $extras);
+            break;
 
         default:
             // TODO: uncomment in production

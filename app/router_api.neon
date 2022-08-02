@@ -2,18 +2,29 @@ GetUUID:
   path: "/api/v1/GetUUID"
   method: GET
   api_description: "Get UUID"
-  api_info: "Returns (JSON): UUID string"
+  api_info: "Returns (JSON): UUID (string)"
   api: true
   assert_json: true
   assert_httpcode: 200
   finished: true
   presenter: api
 
-GetUserClass:
-  path: "/api/v1/GetUserClass"
+GetVersion:
+  path: "/api/v1/GetVersion"
   method: GET
-  api_description: "Get user class"
-  api_info: "Returns (JSON): class string"
+  api_description: "Get version"
+  api_info: "Returns (JSON): git hash version (string)"
+  api: true
+  assert_json: true
+  assert_httpcode: 200
+  finished: true
+  presenter: api
+
+GetUser:
+  path: "/api/v1/GetUser"
+  method: GET
+  api_description: "Get user information"
+  api_info: "Returns (JSON): user information (array)"
   api: true
   assert_json: false
   assert_httpcode: 403

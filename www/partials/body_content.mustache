@@ -199,6 +199,26 @@
         });
     });
 
+    // global AJAX event handlers
+    GSC._fn.push(function () {
+      $(document).ajaxSend(function() {
+        console.log('XHR on');
+        GSC.ComOn();
+      });
+      $(document).ajaxComplete(function() {
+        console.log('XHR off');
+        GSC.ComOff();
+      });
+    });
+
+    // get current version from the server
+    GSC._fn.push(function () {
+      var nonce = "?nonce=" + Math.round(Math.random() * 10000);
+      $.get('/api/v1/GetVersion' + nonce, function(data) {
+        if (data && data.data) console.log(data.data.version);
+      });
+    });
+
     GSC._fn.push(function () {
       // set UI theme colors
       ui("theme", {
