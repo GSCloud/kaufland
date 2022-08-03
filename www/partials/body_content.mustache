@@ -220,6 +220,7 @@
             if (data.data.version != "{{ VERSION }}") {
               $('.nav_app>span.badge').removeClass('hidden');
               $('.nav_update').removeClass('blue').addClass('red');
+              $('.nav_app').click();
               clearInterval(GSC.chverint);
             }
           }
