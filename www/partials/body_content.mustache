@@ -175,14 +175,12 @@
     // GSC.ComOn() - communication icon ON
     if (typeof GSC.ComOn !== "function") GSC.ComOn = function() {
       if (GSC.offline) return;
-      $('#comm').removeClass('hidden').fadeIn('fast');
-      return;
+      $('#comm').removeClass('hidden').fadeIn(10);
     }
 
     // GSC.ComOff() - communication icon OFF
     if (typeof GSC.ComOff !== "function") GSC.ComOff = function() {
       $('#comm').removeClass('hidden').fadeOut('slow');
-      return;
     }
 
     // *** DELAYED FUNCTIONS ***

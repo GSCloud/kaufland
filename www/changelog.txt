@@ -1,3 +1,7 @@
+3.8.2022
+========
++ modifikace UI
+
 2.8.2022
 ========
 + fn: GSC.ComOn(), GSC.ComOff()
