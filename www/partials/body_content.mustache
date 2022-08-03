@@ -175,13 +175,13 @@
     // GSC.ComOn() - communication icon ON
     if (typeof GSC.ComOn !== "function") GSC.ComOn = function() {
       if (GSC.offline) return;
-      $('#comm').removeClass('hidden').show(10);
+      $('#comm').removeClass('hidden').fadeIn('fast');
       return;
     }
 
     // GSC.ComOff() - communication icon OFF
     if (typeof GSC.ComOff !== "function") GSC.ComOff = function() {
-      $('#comm').removeClass('hidden').hide(10);
+      $('#comm').removeClass('hidden').fadeOut('slow');
       return;
     }
 
@@ -222,15 +222,19 @@
             if (data.data.version != "{{ VERSION }}") {
               $('.nav_app>span.badge').removeClass('hidden');
               $('.nav_update').removeClass('blue').addClass('red');
+              clearInterval(GSC.chverint);
             }
           }
         });
       }
 
-      // check for new app version every 30 secs.
-      setInterval(function() {
+      // check version every 30 secs.
+      GSC.chverint = setInterval(function() {
         checkVersion()
       }, 30000);
+
+      // check version now
+      checkVersion();
     });
 
     GSC._fn.push(function () {
