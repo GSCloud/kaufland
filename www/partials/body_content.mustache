@@ -169,16 +169,16 @@
   (function (w, $, undefined) {
     "use strict";
 
-    // AudioContext
+    // AudioContext object
     GSC.audioctx = null;
 
-    // GSC.ComOn() - communication icon ON
+    // GSC.ComOn() - communication icon fade-in = ON
     if (typeof GSC.ComOn !== "function") GSC.ComOn = function() {
       if (GSC.offline) return;
       $('#comm').removeClass('hidden').fadeIn(10);
     }
 
-    // GSC.ComOff() - communication icon OFF
+    // GSC.ComOff() - communication icon fade-out = OFF
     if (typeof GSC.ComOff !== "function") GSC.ComOff = function() {
       $('#comm').removeClass('hidden').fadeOut('slow');
     }
@@ -221,7 +221,10 @@
               $('.nav_app>span.badge').removeClass('hidden');
               $('.nav_update').removeClass('blue').addClass('red');
               $('.nav_app').click();
-              clearInterval(GSC.chverint);
+              if (GSC.chverint) {
+                clearInterval(GSC.chverint);
+                GSC.chverint = null;
+              }
             }
           }
         });
