@@ -105,6 +105,21 @@ class ApiPresenter extends APresenter
             ];
             return $this->writeJsonData($data, $extras);
             break;
+        case "GetUser":
+            $data = [
+                "name" => $this->getIdentity()["name"] ?? null,
+                "email" => $this->getIdentity()["email"] ?? null,
+                "country" => $this->getIdentity()["country"] ?? null,
+                "role" => null,
+                "avatar" => $this->getIdentity()["avatar"] ?? null,
+                "login_type" => $this->getIdentity()["id"] ?
+                    "Google OAuth 2.0" : null,
+                "security_level" => $this->getIdentity()["id"] ?
+                    "advanced" : null,
+                "permissions" => [],
+            ];
+            return $this->writeJsonData($data, $extras);
+            break;
         case "GetVersion":
             $data = [
                 "version" => $this->getData('VERSION'),

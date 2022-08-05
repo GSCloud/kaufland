@@ -26,10 +26,9 @@ GetUser:
   api_description: "Get user information"
   api_info: "Returns (JSON): user information (array)"
   api: true
-  assert_json: false
-  assert_httpcode: 403
+  assert_json: true
+  assert_httpcode: 200
   finished: false
-  use_key: true
   presenter: api
 
 GetSupportInfo:
