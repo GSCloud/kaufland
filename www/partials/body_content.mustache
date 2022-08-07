@@ -165,6 +165,8 @@
         <button class="nav_update responsive blue bold white-text">CSS debugger</button>
       </a>
     </div>
+    <div id="debuglist" class="left-align small-text" tabindex="-1">
+    </div>
 {{/admin_group_tester}}
   </div>
 </div>
@@ -187,6 +189,12 @@
       $('#comm').removeClass('hidden').fadeOut('slow');
     }
 
+    // GSC.D() - add text to debug list
+    if (typeof GSC.D !== "function") GSC.D = function(x) {
+      if (x === undefined) return;
+      $('#debuglist').append('<p>' + x + '</p>');
+    }
+
     // *** DELAYED FUNCTIONS ***
 
     GSC._fn.push(function () {
@@ -204,8 +212,9 @@
 
     // global AJAX event handlers
     GSC._fn.push(function () {
-      $(document).ajaxSend(function() {
+      $(document).ajaxSend(function(evt, request, settings) {
         GSC.ComOn();
+        GSC.D(settings.type + ' ' + settings.url);
       });
       $(document).ajaxComplete(function() {
         GSC.ComOff();
@@ -224,7 +233,9 @@
             if (data.data.version != "{{ VERSION }}") {
               $('.nav_app>span.badge').removeClass('hidden');
               $('.nav_update').removeClass('blue').addClass('red');
-              $('.nav_app').click();
+              $('#appinfo_modal').toggleClass('active');
+              GSC.D('a new app version is available!');
+              GSC.modals.push('appinfo_modal');
               if (GSC.chverint) {
                 clearInterval(GSC.chverint);
                 GSC.chverint = null;

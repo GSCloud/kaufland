@@ -264,6 +264,7 @@
           // XHR load laser sound from network
           var request = new XMLHttpRequest();
           request.open('GET', '/sfx/laser.mp3', true);
+          GSC.D('GET /sfx/laser.mp3');
           request.responseType = 'arraybuffer';
           request.onload = function() {
             GSC.audioctx && GSC.audioctx.decodeAudioData(request.response, function(buf) {
