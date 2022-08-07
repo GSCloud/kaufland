@@ -159,7 +159,7 @@
 
       // K - logo
       $('.nav_app').click(function () {
-        $('#appinfo_modal').toggleClass('active').removeClass('hidden');
+        $('#appinfo_modal').toggleClass('active');
         GSC.modals.push('appinfo_modal');
       });
 
@@ -317,9 +317,6 @@
         }
       });
 
-      // show version modal box on load
-      //$('.nav_app').click();
-
       // set switches
       $('.music').prop('checked', localStorage["music"] == "true");
       $('.sfx').prop('checked', localStorage["sfx"] == "true");
@@ -362,8 +359,13 @@
       setTestVibrateButton();
       setTestSfxButton();
       setTestMusicButton();
+      $('#appinfo_modal').removeClass('hidden');
+      $('#offline').removeClass('hidden');
       $('nav').hide().removeClass('hidden').hide().show(300);
       $('body').hide().removeClass('hidden').hide().show(500);
+
+      // show version modal box
+      //$('.nav_app').click();
     });
   })(window, $);
 
