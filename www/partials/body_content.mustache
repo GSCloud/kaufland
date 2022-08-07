@@ -192,7 +192,9 @@
     // GSC.D() - add text to debug list
     if (typeof GSC.D !== "function") GSC.D = function(x) {
       if (x === undefined) return;
-      $('#debuglist').append('<p>' + x + '</p>');
+      var current = new Date();
+      var t = current.toLocaleTimeString(); 
+      $('#debuglist').prepend('<p><span class="green-text">' + t + '</span>&nbsp;' + x + '</p>');
     }
 
     // *** DELAYED FUNCTIONS ***
