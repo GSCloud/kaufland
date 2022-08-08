@@ -1,8 +1,9 @@
 8.8.2022
 ========
++ opravy chyb
++ aktualizace UI
 + fn: GSC.D()
 + tester: debug list
-+ opravy chyb
 
 5.8.2022
 ========
