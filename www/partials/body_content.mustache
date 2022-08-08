@@ -255,8 +255,7 @@
         $.get('/api/v1/GetUser' + nonce, function(data) {
           if (data && data.data && data.data.user) {
             GSC.user = data.data.user;
-            console.log(GSC.user);
-            if (GSC.user.avatar) {
+            if (GSC.user.avatar && GSC.user.avatar.startsWith('https://')) {
               $('#avatar').attr('src', GSC.user.avatar);
               $('.nav_user>i').remove();
               $('#avatar').removeClass('hidden');
