@@ -216,7 +216,7 @@
     GSC._fn.push(function () {
       $(document).ajaxSend(function(evt, request, settings) {
         GSC.ComOn();
-        GSC.D(settings.type + ' <a class="blue-text" target=_blank href="' + settings.url + '">' + settings.url + '</a>');
+        GSC.D(settings.type + ' <a class="blue-text underline" target=_blank href="' + settings.url + '">' + settings.url + '</a>');
       });
       $(document).ajaxComplete(function() {
         GSC.ComOff();
