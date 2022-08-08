@@ -6,7 +6,7 @@
         <h5 class="bold white-text" tabindex="-1">{{ l.tit_appinfo }}</h5>
         <div>
           <b>
-            <a rel=nofollow target=_blank class="green-text" href="https://github.com/GSCloud/kaufland">https://github.com/GSCloud/kaufland</a>
+            <a rel=nofollow target=_blank class="blue-text" href="https://github.com/GSCloud/kaufland">https://github.com/GSCloud/kaufland</a>
           </b>
           <br>
           <br>
@@ -17,11 +17,11 @@
             <br>
             <br>
             přehled změn:
-            <b><a target=_blank class="green-text bold" href="/changelog.txt">/changelog.txt</a></b>
+            <b><a target=_blank class="blue-text bold" href="/changelog.txt">/changelog.txt</a></b>
             <br>
             <br>
             REST API:
-            <b><a target=_blank class="green-text bold" href="/api">/api</a></b>
+            <b><a target=_blank class="blue-text bold" href="/api">/api</a></b>
             <br>
             <br>
             <div class="center bold orange-text">
@@ -165,8 +165,8 @@
         <button class="responsive blue bold white-text">CSS debugger</button>
       </a>
     </div>
-    <div id="debuglist" class="left-align small-text" tabindex="-1">
-    </div>
+    <article id="debuglist" class="left-align black small-padding small-text" tabindex="-1">
+    </article>
 {{/admin_group_tester}}
   </div>
 </div>
@@ -216,7 +216,7 @@
     GSC._fn.push(function () {
       $(document).ajaxSend(function(evt, request, settings) {
         GSC.ComOn();
-        GSC.D(settings.type + ' ' + settings.url);
+        GSC.D(settings.type + ' <a class="blue-text" target=_blank href="' + settings.url + '">' + settings.url + '</a>');
       });
       $(document).ajaxComplete(function() {
         GSC.ComOff();
