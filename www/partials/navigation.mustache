@@ -90,12 +90,14 @@
       if (localStorage && localStorage['navigation']) {
         localStorage['scroll_' + localStorage['navigation']] = parseInt(scroll);
       }
-      // show/hide top navigation on touch enabled devices
+      // manipulate top navigation and comm icon on touch enabled devices
       if (GSC.touch) {
-        if (scroll > 300) {
+        if (scroll > 200) {
           $("#top_nav").hide(250);
+          $("#comm").css('top', 0);
         } else {
           $("#top_nav").show(100);
+          $("#comm").css('top', '85px');
         }
       }
     };
