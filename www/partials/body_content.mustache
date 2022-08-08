@@ -226,7 +226,7 @@
     // get current version from the server
     GSC._fn.push(function () {
 
-      // check version through API call
+      // check version
       function checkVersion() {
         if (GSC.offline) return;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
@@ -247,12 +247,23 @@
         });
       }
 
+      // get server UUID
+      function getServerUUID() {
+        if (GSC.offline) return;
+        var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
+        $.get('/api/v1/GetUUID' + nonce, function(data) {
+          if (data && data.data && data.data.uuid) {
+            localStorage['server-uuid'] = data.data.uuid;
+            GSC.D('server UUID: ' + data.data.uuid);
+          }
+        });
+      }
+      getServerUUID();
+
       // check version every 30 secs.
       GSC.chverint = setInterval(function() {
         checkVersion()
       }, 30000);
-
-      // check version now
       checkVersion();
     });
 
