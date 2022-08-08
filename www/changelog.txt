@@ -4,6 +4,7 @@
 + aktualizace UI
 + fn: GSC.D()
 + tester: debug list
++ Google avatar
 
 5.8.2022
 ========

@@ -20,9 +20,9 @@ GetUser:
   finished: false
   presenter: api
 
-GetSupportInfo:
-  path: "/api/v1/GetSupportInfo"
-  api_description: "Get support information"
+GetInfo:
+  path: "/api/v1/GetInfo"
+  api_description: "Get general information"
   api_info: "Returns (JSON): array of strings"
   api: true
   assert_json: false
@@ -31,8 +31,8 @@ GetSupportInfo:
   use_key: true
   presenter: api
 
-GetBottlesInfo:
-  path: "/api/v1/GetBottlesInfo"
+GetBottles:
+  path: "/api/v1/GetBottles"
   api_description: "Get bottles information"
   api_info: "Returns (JSON): array of data"
   api: true
@@ -42,8 +42,8 @@ GetBottlesInfo:
   use_key: true
   presenter: api
 
-GetCratesInfo:
-  path: "/api/v1/GetCratesInfo"
+GetCrates:
+  path: "/api/v1/GetCrates"
   api_description: "Get crates information"
   api_info: "Returns (JSON): array of data"
   api: true

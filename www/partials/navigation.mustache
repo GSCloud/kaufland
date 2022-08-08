@@ -13,6 +13,7 @@
   </a>
   <a class="nav_user">
     <i tabindex="-1" class="large" data-color="grey-text">face</i>
+    <img id="avatar" class="circle no-margin hidden" src=""/>
     <div>
       <span tabindex="-1">{{ l.nav_user }}</span>
     </div>
@@ -366,6 +367,8 @@
       $('#offline').removeClass('hidden');
       $('nav').hide().removeClass('hidden').hide().show(300);
       $('body').hide().removeClass('hidden').hide().show(500);
+
+      // debug UUID
       GSC.D('UUID: ' + localStorage["uuid"]);
 
       // show version modal box

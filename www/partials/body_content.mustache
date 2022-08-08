@@ -228,7 +228,7 @@
 
       // check version
       function checkVersion() {
-        if (GSC.offline) return;
+        if (GSC.offline) return false;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetVersion' + nonce, function(data) {
           if (data && data.data && data.data.version) {
@@ -249,12 +249,18 @@
 
       // get user information
       function getUser() {
-        if (GSC.offline) return;
+        if (GSC.offline) return false;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
+        GSC.user = null;
         $.get('/api/v1/GetUser' + nonce, function(data) {
           if (data && data.data && data.data.user) {
             GSC.user = data.data.user;
             console.log(GSC.user);
+            if (GSC.user.avatar) {
+              $('#avatar').attr('src', GSC.user.avatar);
+              $('.nav_user>i').remove();
+              $('#avatar').removeClass('hidden');
+            }
           }
         });
       }
