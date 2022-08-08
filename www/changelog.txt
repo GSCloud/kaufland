@@ -1,3 +1,8 @@
+8.8.2022
+========
++ tester: debug list
++ opravy chyb
+
 5.8.2022
 ========
 + API: GetUser
@@ -13,7 +18,7 @@
 + XHR event handlers
 + XHR comm icon
 + notifikace nové verze / test každých 30 sec.
-+ test SFX
++ tester: test SFX
 
 31.7.2022
 =========
