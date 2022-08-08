@@ -247,18 +247,18 @@
         });
       }
 
-      // get server UUID
-      function getServerUUID() {
+      // get user information
+      function getUser() {
         if (GSC.offline) return;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
-        $.get('/api/v1/GetUUID' + nonce, function(data) {
-          if (data && data.data && data.data.uuid) {
-            localStorage['server-uuid'] = data.data.uuid;
-            GSC.D('server UUID: ' + data.data.uuid);
+        $.get('/api/v1/GetUser' + nonce, function(data) {
+          if (data && data.data && data.data.user) {
+            GSC.user = data.data.user;
+            console.log(GSC.user);
           }
         });
       }
-      getServerUUID();
+      getUser();
 
       // check version every 30 secs.
       GSC.chverint = setInterval(function() {

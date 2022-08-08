@@ -1,14 +1,3 @@
-GetUUID:
-  path: "/api/v1/GetUUID"
-  method: GET
-  api_description: "Get UUID"
-  api_info: "Returns (JSON): UUID (string)"
-  api: true
-  assert_json: true
-  assert_httpcode: 200
-  finished: true
-  presenter: api
-
 GetVersion:
   path: "/api/v1/GetVersion"
   method: GET

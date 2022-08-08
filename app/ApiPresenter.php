@@ -99,14 +99,8 @@ class ApiPresenter extends APresenter
 
         // process API calls
         switch ($view) {
-        case "GetUUID":
-            $data = [
-                "uuid" => $this->getUID(),
-            ];
-            return $this->writeJsonData($data, $extras);
-            break;
         case "GetUser":
-            $data = [
+            $data["user"] = [
                 "name" => $this->getIdentity()["name"] ?? null,
                 "email" => $this->getIdentity()["email"] ?? null,
                 "country" => $this->getIdentity()["country"] ?? null,
