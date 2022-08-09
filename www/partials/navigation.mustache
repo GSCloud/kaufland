@@ -103,7 +103,6 @@
       }
     };
 
-
     // *** DELAYED FUNCTIONS ***
     GSC._fn.push(function () {
 
@@ -115,9 +114,11 @@
         if (parseBool(localStorage["ui"])) {
           ui("mode", "light");
           $(".white-text").removeClass('white-text').addClass('black-text');
+          $('#debuglist').addClass('white-text');
         } else {
           ui("mode", "dark");
           $(".black-text").removeClass('black-text').addClass('white-text');
+          $('#debuglist').addClass('white-text');
         }
       }
 
@@ -156,7 +157,6 @@
         $('.' + el + '>i').addClass($('.' + el + '>i').data('color')).addClass('large');
         $('.' + el + '>div').addClass($('.' + el + '>i').data('color')).addClass('bold');
       }
-
 
       // NAVIGATION CLICK HANDLERS
 
@@ -291,7 +291,6 @@
         }
       });
 
-
       // OTHER HANDLERS AND RUNTIMES
 
       // set navigation to the saved state
@@ -306,7 +305,6 @@
         if (!GSC.audioctx) {
           try {
             GSC.audioctx = new AudioContext();
-            //console.log('AudioContext created:');
             //console.log(GSC.audioctx);
           }
           catch(e) {
@@ -368,8 +366,8 @@
       $('nav').hide().removeClass('hidden').hide().show(300);
       $('body').hide().removeClass('hidden').hide().show(500);
 
-      // debug UUID
-      GSC.D('UUID: ' + localStorage["uuid"]);
+      // UUID
+      GSC.D('<b>UUID</b>: ' + localStorage["uuid"]);
 
       // show version modal box
       //$('.nav_app').click();

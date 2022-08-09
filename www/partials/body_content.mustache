@@ -199,8 +199,8 @@
 
     // *** DELAYED FUNCTIONS ***
 
+    // add nonce to all anchors
     GSC._fn.push(function () {
-      // add nonce to all anchors
       $("main")
         .find("a")
         .each(function () {
@@ -216,7 +216,11 @@
     GSC._fn.push(function () {
       $(document).ajaxSend(function(evt, request, settings) {
         GSC.ComOn();
-        GSC.D(settings.type + ' <a class="blue-text underline" target=_blank href="' + settings.url + '">' + settings.url + '</a>');
+        GSC.D('<b>'
+          + settings.type
+          + '</b> <a class="blue-text underline" target=_blank href="'
+          + settings.url + '">'
+          + settings.url + '</a>');
       });
       $(document).ajaxComplete(function() {
         GSC.ComOff();
@@ -236,7 +240,7 @@
               $('.nav_app>span.badge').removeClass('hidden');
               $('.nav_update').removeClass('blue').addClass('red');
               $('#appinfo_modal').toggleClass('active');
-              GSC.D('NEW VERSION IS AVAILABLE!');
+              GSC.D('<span class="red bold white-text">NEW VERSION IS AVAILABLE!</span>');
               GSC.modals.push('appinfo_modal');
               if (GSC.chverint) {
                 clearInterval(GSC.chverint);
@@ -258,6 +262,7 @@
             if (GSC.user.avatar && GSC.user.avatar.startsWith('https://')) {
               $('#avatar').attr('src', GSC.user.avatar);
               $('.nav_user>i').remove();
+              $('.nav_user>div').remove();
               $('#avatar').removeClass('hidden');
             }
           }
