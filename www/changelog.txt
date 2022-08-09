@@ -1,9 +1,15 @@
+9.8.2022
+========
++ opravy chyb
++ aktualizace UI
++ API: GetChangeLog
+
 8.8.2022
 ========
 + opravy chyb
 + aktualizace UI
 + fn: GSC.D()
-+ tester: debug list
++ TESTER: debug list
 + Google avatar
 
 5.8.2022
@@ -21,7 +27,7 @@
 + XHR event handlers
 + XHR comm icon
 + notifikace nové verze / test každých 30 sec.
-+ tester: test SFX
++ TESTER: test SFX
 
 31.7.2022
 =========
@@ -45,7 +51,7 @@
 =========
 + WebShare API
 + skupiny uživatelů: admin, lahvař, tester
-+ tester: tlačítko "CSS debugger" v kartě Uživatel
++ TESTER: tlačítko "CSS debugger" v kartě Uživatel
 
 26.7.2022
 =========
