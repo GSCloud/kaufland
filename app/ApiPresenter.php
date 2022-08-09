@@ -121,6 +121,13 @@ class ApiPresenter extends APresenter
             return $this->writeJsonData($data, $extras);
             break;
 
+        case "GetChangeLog":
+            $data = [
+                "changelog" => str_replace("\n", '<br>', file_get_contents(WWW . '/changelog.txt')),
+            ];
+            return $this->writeJsonData($data, $extras);
+            break;
+
         default:
             // TODO: uncomment in production
             //sleep(5);

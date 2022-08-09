@@ -9,6 +9,17 @@ GetVersion:
   finished: true
   presenter: api
 
+GetChangeLog:
+  path: "/api/v1/GetChangeLog"
+  method: GET
+  api_description: "Get changelog content"
+  api_info: "Returns (JSON): changelog (string)"
+  api: true
+  assert_json: true
+  assert_httpcode: 200
+  finished: true
+  presenter: api
+
 GetUser:
   path: "/api/v1/GetUser"
   method: GET
