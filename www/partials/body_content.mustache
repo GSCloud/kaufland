@@ -147,6 +147,12 @@
       </div>
       {{/user.id}}
 
+      <div class="center-align padding" tabindex="-1">
+        <span id="login_type_row" class="hidden">typ přihlášení: <b id="login_type"></b><br></span>
+        <span id="security_level_row" class="hidden">úroveň zabezpečení: <b id="security_level"></b><br></span>
+        <span id="role_row" class="hidden">role: <b id="role"></b><br></span>
+      </div>
+
       {{#user.id}}
       <article class="border">
         <div class="row">
@@ -259,16 +265,39 @@
         $.get('/api/v1/GetUser' + nonce, function(data) {
           if (data && data.data && data.data.user) {
             GSC.user = data.data.user;
+            // avatar
             if (GSC.user.avatar && GSC.user.avatar.startsWith('https://')) {
               $('#avatar').attr('src', GSC.user.avatar);
               $('.nav_user>i').remove();
               $('.nav_user>div').remove();
               $('#avatar').removeClass('hidden');
             }
+            // login type
+            if (GSC.user.login_type) {
+              $('#login_type').html(GSC.user.login_type);
+              $('#login_type_row').removeClass('hidden');
+            }
+            // security level
+            if (GSC.user.security_level) {
+              $('#security_level').html(GSC.user.security_level);
+              $('#security_level_row').removeClass('hidden');
+            }
+            // role
+            if (GSC.user.role) {
+              $('#role').html(GSC.user.role);
+              $('#role_row').removeClass('hidden');
+            }
+
+
           }
         });
       }
       getUser();
+
+      // global fn
+      if (typeof GSC.getUser !== "function") GSC.getUser = function() {
+        getUser();
+      }
 
       // check version every 30 secs.
       GSC.chverint = setInterval(function() {

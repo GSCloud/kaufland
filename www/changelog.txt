@@ -1,3 +1,8 @@
+11.8.2022
+========
++ opravy chyb
++ vylepšení API
+
 9.8.2022
 ========
 + opravy chyb
