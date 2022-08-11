@@ -28,23 +28,22 @@ GetUser:
   api: true
   assert_json: true
   assert_httpcode: 200
-  finished: false
+  finished: true
   presenter: api
 
-GetInfo:
-  path: "/api/v1/GetInfo"
-  api_description: "Get general information"
-  api_info: "Returns (JSON): array of strings"
+GetPublicInfo:
+  path: "/api/v1/GetPublicInfo"
+  api_description: "Get general public information"
+  api_info: "Returns (JSON): array of data"
   api: true
   assert_json: false
   assert_httpcode: 403
   finished: false
-  use_key: true
   presenter: api
 
-GetBottles:
-  path: "/api/v1/GetBottles"
-  api_description: "Get bottles information"
+GetPrivateInfo:
+  path: "/api/v1/GetPrivateInfo"
+  api_description: "Get general information incl. private parts"
   api_info: "Returns (JSON): array of data"
   api: true
   assert_json: false
@@ -53,13 +52,22 @@ GetBottles:
   use_key: true
   presenter: api
 
-GetCrates:
-  path: "/api/v1/GetCrates"
-  api_description: "Get crates information"
+GetBottlesInfo:
+  path: "/api/v1/GetBottlesInfo"
+  api_description: "Get general bottles information"
   api_info: "Returns (JSON): array of data"
   api: true
   assert_json: false
   assert_httpcode: 403
   finished: false
-  use_key: true
+  presenter: api
+
+GetCratesInfo:
+  path: "/api/v1/GetCratesInfo"
+  api_description: "Get general crates information"
+  api_info: "Returns (JSON): array of data"
+  api: true
+  assert_json: false
+  assert_httpcode: 403
+  finished: false
   presenter: api
