@@ -37,7 +37,7 @@ GetPublicInfo:
   api_info: "Returns (JSON): array of data"
   api: true
   assert_json: false
-  assert_httpcode: 403
+  assert_httpcode: 404
   finished: false
   presenter: api
 
@@ -58,7 +58,7 @@ GetBottlesInfo:
   api_info: "Returns (JSON): array of data"
   api: true
   assert_json: false
-  assert_httpcode: 403
+  assert_httpcode: 404
   finished: false
   presenter: api
 
@@ -68,6 +68,6 @@ GetCratesInfo:
   api_info: "Returns (JSON): array of data"
   api: true
   assert_json: false
-  assert_httpcode: 403
+  assert_httpcode: 404
   finished: false
   presenter: api
