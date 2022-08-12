@@ -163,12 +163,6 @@
       // K - logo
       $('.nav_app').click(function () {
         $('#appinfo_modal').toggleClass('active');
-        if (GSC.modals.length) {
-          GSC.modals.forEach(el => {
-            $('#' + el).removeClass('active');
-          });
-          GSC.modals = [];
-        }
         GSC.modals.push('appinfo_modal');
       });
 
