@@ -1,20 +1,14 @@
 11.8.2022
 ========
-+ opravy chyb
-+ aktualizace UI
-+ fn: GSC.getUser()
++ fn: GSC.GetUser()
 + vylepšení API roadmap
 
 9.8.2022
 ========
-+ opravy chyb
-+ aktualizace UI
 + API: GetChangeLog
 
 8.8.2022
 ========
-+ opravy chyb
-+ aktualizace UI
 + fn: GSC.D()
 + TESTER: debug list
 + Google avatar
@@ -22,10 +16,6 @@
 5.8.2022
 ========
 + API: GetUser
-
-3.8.2022
-========
-+ aktualizace UI
 
 2.8.2022
 ========
@@ -35,14 +25,6 @@
 + XHR comm icon
 + notifikace nové verze / test každých 30 sec.
 + TESTER: test SFX
-
-31.7.2022
-=========
-+ aktualizace UI
-
-30.7.2022
-=========
-+ aktualizace UI
 
 28.7.2022
 =========

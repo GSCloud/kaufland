@@ -146,13 +146,11 @@
         </div>
       </div>
       {{/user.id}}
-
       <div class="center-align padding" tabindex="-1">
         <span id="login_type_row" class="hidden">typ přihlášení: <b id="login_type"></b><br></span>
         <span id="security_level_row" class="hidden">úroveň zabezpečení: <b id="security_level"></b><br></span>
         <span id="role_row" class="hidden">role: <b id="role"></b><br></span>
       </div>
-
       {{#user.id}}
       <article class="border">
         <div class="row">
@@ -205,7 +203,7 @@
 
     // *** DELAYED FUNCTIONS ***
 
-    // add nonce to all anchors
+    // add nonce to anchors
     GSC._fn.push(function () {
       $("main")
         .find("a")
@@ -233,7 +231,7 @@
       });
     });
 
-    // get current version from the server
+    // get current application version from the server
     GSC._fn.push(function () {
 
       // check version
@@ -257,7 +255,7 @@
         });
       }
 
-      // get user information
+      // get user information from the server
       function getUser() {
         if (GSC.offline) return false;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
@@ -265,37 +263,37 @@
         $.get('/api/v1/GetUser' + nonce, function(data) {
           if (data && data.data && data.data.user) {
             GSC.user = data.data.user;
-            // avatar
             if (GSC.user.avatar && GSC.user.avatar.startsWith('https://')) {
               $('#avatar').attr('src', GSC.user.avatar);
               $('.nav_user>i').remove();
               $('.nav_user>div').remove();
               $('#avatar').removeClass('hidden');
             }
-            // login type
             if (GSC.user.login_type) {
               $('#login_type').html(GSC.user.login_type);
               $('#login_type_row').removeClass('hidden');
+            } else {              
+              $('#login_type_row').addClass('hidden');
             }
-            // security level
             if (GSC.user.security_level) {
               $('#security_level').html(GSC.user.security_level);
               $('#security_level_row').removeClass('hidden');
+            } else {
+              $('#security_level_row').addClass('hidden');
             }
-            // role
             if (GSC.user.role) {
               $('#role').html(GSC.user.role);
               $('#role_row').removeClass('hidden');
+            } else {
+              $('#role_row').addClass('hidden');
             }
-
-
           }
         });
       }
       getUser();
 
-      // GSC.getUser() - get user information and set UI elements
-      if (typeof GSC.getUser !== "function") GSC.getUser = function() {
+      // GSC.GetUser() - get user information and set UI elements
+      if (typeof GSC.GetUser !== "function") GSC.GetUser = function() {
         getUser();
       }
 
@@ -306,8 +304,8 @@
       checkVersion();
     });
 
+    // UI theme colors
     GSC._fn.push(function () {
-      // set UI theme colors
       ui("theme", {
         dark: "--primary:#c00000;--on-primary:#5f150d;--primary-container:#7d2b20;--on-primary-container:#ffdad3;--secondary:#e7bdb6;--on-secondary:#442925;--secondary-container:#5d3f3a;--on-secondary-container:#ffdad3;--tertiary:#dec48c;--on-tertiary:#3e2e04;--tertiary-container:#564418;--on-tertiary-container:#fbdfa5;--error:#ffb4a9;--error-container:#930006;--on-error:#680003;--on-error-container:#ffdad4;--background:#201a19;--on-background:#ede0de;--surface:#201a19;--on-surface:#ede0de;--surface-variant:#534341;--on-surface-variant:#d8c2be;--outline:#a08c89;--inverse-on-surface:#201a19;--inverse-surface:#ede0de;--inverse-primary:#9c4235;--shadow:#000000;",
         light: "--primary:#c00000;--on-primary:#ffffff;--primary-container:#ffdad3;--on-primary-container:#410000;--secondary:#775752;--on-secondary:#ffffff;--secondary-container:#ffdad3;--on-secondary-container:#2c1511;--tertiary:#705c2e;--on-tertiary:#ffffff;--tertiary-container:#fbdfa5;--on-tertiary-container:#261a00;--error:#ba1b1b;--error-container:#ffdad4;--on-error:#ffffff;--on-error-container:#410001;--background:#fcfcfc;--on-background:#201a19;--surface:#fcfcfc;--on-surface:#201a19;--surface-variant:#f5deda;--on-surface-variant:#534341;--outline:#867370;--inverse-on-surface:#fbeeec;--inverse-surface:#362f2e;--inverse-primary:#ffb4a6;--shadow:#000000;"
