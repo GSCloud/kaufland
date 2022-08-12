@@ -241,7 +241,7 @@
       });
     });
 
-    // get current application version from the server
+    // get current application version
     GSC._fn.push(function () {
 
       // check version
@@ -271,7 +271,7 @@
         });
       }
 
-      // get user information from the server
+      // get user information
       function getUser() {
         if (GSC.offline) return false;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
@@ -306,6 +306,7 @@
           }
         });
       }
+      // get user information NOW!
       getUser();
 
       // GSC.GetUser() - get user information and set UI elements - closure
@@ -317,6 +318,7 @@
       GSC.chverint = setInterval(function() {
         checkVersion()
       }, 30000);
+      // check version NOW!
       checkVersion();
     });
 
