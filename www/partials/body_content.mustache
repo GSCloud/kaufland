@@ -255,6 +255,12 @@
               $('.nav_update').removeClass('blue').addClass('red');
               $('#appinfo_modal').toggleClass('active');
               GSC.D('<span class="red bold white-text">NEW VERSION IS AVAILABLE!</span>');
+              if (GSC.modals.length) {
+                GSC.modals.forEach(el => {
+                  $('#' + el).removeClass('active');
+                });
+                GSC.modals = [];
+              }
               GSC.modals.push('appinfo_modal');
               if (GSC.chverint) {
                 clearInterval(GSC.chverint);
