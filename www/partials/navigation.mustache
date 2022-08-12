@@ -169,7 +169,9 @@
           });
           GSC.modals = [];
         }
-        GSC.modals.push('appinfo_modal');
+        setTimeout(function() {
+          GSC.modals.push('appinfo_modal');
+        }, 1);
       });
 
       // update
