@@ -318,10 +318,10 @@
       }
       
       // click to remove modals, prepare AudioContext object (user action is mandatory)
-      $('.section,main,nav').click(function () {
+      $('.section,main,.nav_app').click(function () {
         if (GSC.modals.length) {
           GSC.modals.forEach(el => {
-            $('#' + el).removeClass('active');
+            $('#' + el).toggleClass('active');
           });
           GSC.modals = [];
         }
