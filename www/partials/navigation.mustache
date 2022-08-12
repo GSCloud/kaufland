@@ -77,7 +77,7 @@
   (function (w, $, undefined) {
     "use strict";
 
-    // show error page if there is no localStorage
+    // !!! show error page if there is no localStorage
     if (!localStorage) {
       window.location.href = '/err/500';
     }
@@ -219,7 +219,6 @@
         localStorage["ui"] = $(this).is(":checked");
         setUiMode();
       });
-
       // settings: VIBRATE
       $('.vibrate').click(function () {
         localStorage["vibrate"] = $(this).is(":checked");
@@ -229,14 +228,12 @@
         }
         setTestVibrateButton();
       });
-
       // settings: SFX
       $('.sfx').click(function () {
         localStorage["sfx"] = $(this).is(":checked");
         GSC.sfx = parseBool(localStorage["sfx"]);
         setTestSfxButton();
       });
-
       // settings: MUSIC
       $('.music').click(function () {
         localStorage["music"] = $(this).is(":checked");
@@ -244,15 +241,13 @@
         setTestMusicButton();
       });
 
-      // test: vibrate
+      // test: VIBRATE
       $('.nav_test_vib').click(function () {
         if (GSC.vibrate) {
-          console.log('vibrate');
           window.navigator.vibrate([100,50,100,50,100]);
         }
       });
-
-      // test: sfx
+      // test: SFX
       var source;
       var sfxbuffer = null;
       $('.nav_test_sfx').click(function () {
@@ -284,54 +279,50 @@
           request.send();
         }
       });
-
-      // test: music
+      // test: MUSIC
       $('.nav_test_music').click(function () {
         if (GSC.music) {
-          console.log('music');
         }
       });
 
       // OTHER HANDLERS AND RUNTIMES
 
-      // set navigation to the saved state
+      // navigate to the saved state
       if (localStorage['navigation']) {
         $('.' + localStorage['navigation']).click();
       } else {
         $('.nav_info').click();
       }
       
-      // click text to remove modals
+      // click to remove modals, prepare AudioContext object (user action is mandatory)
       $('.section,main').click(function () {
+        if (GSC.modals.length) {
+          GSC.modals.forEach(el => {
+            $('#' + el).removeClass('active');
+          });
+        }
         if (!GSC.audioctx) {
           try {
             GSC.audioctx = new AudioContext();
-            //console.log(GSC.audioctx);
           }
           catch(e) {
             console.log("AudioContext error:");
             console.log(e);
           }
         }
-        if (GSC.modals.length) {
-          GSC.modals.forEach(el => {
-            $('#' + el).removeClass('active');
-          });
-        }
       });
 
-      // set switches
+      // switches
       $('.music').prop('checked', localStorage["music"] == "true");
       $('.sfx').prop('checked', localStorage["sfx"] == "true");
       $('.ui').prop('checked', localStorage["ui"] == "true");
       $('.vibrate').prop('checked', localStorage["vibrate"] == "true");
-
-      // set GSC properties
+      // GSC properties
       GSC.music = parseBool(localStorage["music"]);
       GSC.sfx = parseBool(localStorage["sfx"]);
       GSC.vibrate = parseBool(localStorage["vibrate"]);
 
-      // test button #1
+      // test button VIBRATE
       function setTestVibrateButton() {
         if (GSC.vibrate) {
           $('.nav_test_vib').removeClass('grey').addClass('blue');
@@ -339,8 +330,7 @@
           $('.nav_test_vib').removeClass('blue').addClass('grey');
         }
       }
-
-      // test button #2
+      // test button SFX
       function setTestSfxButton() {
         if (GSC.sfx) {
           $('.nav_test_sfx').removeClass('grey').addClass('blue');
@@ -348,7 +338,7 @@
           $('.nav_test_sfx').removeClass('blue').addClass('grey');
         }
       }
-      // test button #3
+      // test button MUSIC
       function setTestMusicButton() {
         if (GSC.music) {
           $('.nav_test_music').removeClass('grey').addClass('blue');
@@ -366,11 +356,8 @@
       $('#offline').removeClass('hidden');
       $('nav').hide().removeClass('hidden').hide().show(300);
       $('body').hide().removeClass('hidden').hide().show(500);
-
       // UUID
       GSC.D('<b>UUID</b>: ' + localStorage["uuid"]);
-
-      // show version modal box
       //$('.nav_app').click();
     });
   })(window, $);
