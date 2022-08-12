@@ -1,41 +1,55 @@
 <div id="appinfo_modal" class="modal hidden">
-<article class="no-padding">
-  <div class="row no-wrap no-space">
-    <div class="col">
-      <div class="padding">
-        <h5 class="bold white-text" tabindex="-1">{{ l.tit_appinfo }}</h5>
-        <div>
-          <b>
-            <a rel=nofollow target=_blank class="blue-text" href="https://github.com/GSCloud/kaufland">https://github.com/GSCloud/kaufland</a>
-          </b>
-          <br>
-          <br>
-          <div class="small-text" tabindex="-1">
-            verze: <b class="white-text">{{ VERSION_SHORT }}</b>
-            <br>
-            datum vydání: <b class="white-text">{{ VERSION_DATE }}</b>
+  <article class="no-padding">
+    <div class="row no-wrap no-space">
+      <div class="col">
+        <div class="padding">
+          <h5 class="bold white-text" tabindex="-1">{{ l.tit_appinfo }}</h5>
+          <div>
+            <b>
+              <a rel=nofollow target=_blank class="blue-text" href="https://github.com/GSCloud/kaufland">https://github.com/GSCloud/kaufland</a>
+            </b>
             <br>
             <br>
-            přehled změn:
-            <b><a target=_blank class="blue-text bold" href="/changelog.txt">/changelog.txt</a></b>
-            <br>
-            <br>
-            REST API:
-            <b><a target=_blank class="blue-text bold" href="/api">/api</a></b>
-            <br>
-            <br>
-            <div class="center bold orange-text">
-            {{>webshare}}
+            <div class="small-text" tabindex="-1">
+              verze: <b class="white-text">{{ VERSION_SHORT }}</b>
+              <br>
+              datum vydání: <b class="white-text">{{ VERSION_DATE }}</b>
+              <br>
+              REST API:
+              <b><a target=_blank class="blue-text bold" href="/api">/api</a></b>
+              <br>
+              <div class="center bold orange-text">
+                {{>webshare}}
+              </div>
+              <br>
+              <!-- 
+              přehled změn:
+              <b><a target=_blank class="blue-text bold" href="/changelog.txt">/changelog.txt</a></b> -->
+              <nav class="container">
+                <button class="nav_changelog responsive blue bold white-text">PŘEHLED ZMĚN</button>
+              </nav>
             </div>
           </div>
+          <nav class="container">
+            <button class="nav_update responsive blue bold white-text">{{ l.but_update }}</button>
+          </nav>
         </div>
-        <nav class="container">
-          <button class="nav_update responsive blue bold white-text">{{ l.but_update }}</button>
-        </nav>
       </div>
     </div>
-  </div>
-</article>
+  </article>
+</div>
+
+<div id="changelog_modal" class="modal hidden">
+  <article class="no-padding">
+    <div class="row no-wrap no-space">
+      <div class="col">
+        <div class="no-padding">
+          <h5 class="bold white-text" tabindex="-1">Seznam změn</h5>
+          <div id="changelog_box" class="white-text padding"></div>
+        </div>
+      </div>
+    </div>
+  </article>
 </div>
 
 <div id="info" class="white-text hidden section">
@@ -182,17 +196,17 @@
     // AudioContext object
     GSC.audioctx = null;
 
+    // *** GSC FUNCTIONS ***
+
     // GSC.ComOn() - communication icon fade-in = ON
     if (typeof GSC.ComOn !== "function") GSC.ComOn = function() {
       if (GSC.offline) return;
       $('#comm').removeClass('hidden').fadeIn(10);
     }
-
     // GSC.ComOff() - communication icon fade-out = OFF
     if (typeof GSC.ComOff !== "function") GSC.ComOff = function() {
       $('#comm').removeClass('hidden').fadeOut('slow');
     }
-
     // GSC.D() - add text to debug list
     if (typeof GSC.D !== "function") GSC.D = function(x) {
       if (x === undefined) return;
@@ -216,7 +230,7 @@
         });
     });
 
-    // global AJAX event handlers
+    // AJAX event handlers
     GSC._fn.push(function () {
       $(document).ajaxSend(function(evt, request, settings) {
         GSC.ComOn();
@@ -292,12 +306,12 @@
       }
       getUser();
 
-      // GSC.GetUser() - get user information and set UI elements
+      // GSC.GetUser() - get user information and set UI elements - closure
       if (typeof GSC.GetUser !== "function") GSC.GetUser = function() {
         getUser();
       }
 
-      // check version every 30 secs.
+      // check version every 30 secs. - closure
       GSC.chverint = setInterval(function() {
         checkVersion()
       }, 30000);
