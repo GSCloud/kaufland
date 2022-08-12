@@ -165,7 +165,7 @@
         $('#appinfo_modal').toggleClass('active');
         if (GSC.modals.length) {
           GSC.modals.forEach(el => {
-          $('#' + el).removeClass('active');
+            $('#' + el).removeClass('active');
           });
           GSC.modals = [];
         }
@@ -184,7 +184,7 @@
         if (GSC.offline) return false;
         $('#changelog_modal').addClass('active');
         setTimeout(function() {
-            GSC.modals.push('changelog_modal');
+          GSC.modals.push('changelog_modal');
         }, 10);
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetChangeLog' + nonce, function(data) {
@@ -318,13 +318,14 @@
       }
       
       // click to remove modals, prepare AudioContext object (user action is mandatory)
-      $('.section,main').click(function () {
+      $('.section,main,nav').click(function () {
         if (GSC.modals.length) {
           GSC.modals.forEach(el => {
             $('#' + el).removeClass('active');
           });
           GSC.modals = [];
         }
+        // AudioContext
         if (!GSC.audioctx) {
           try {
             GSC.audioctx = new AudioContext();
