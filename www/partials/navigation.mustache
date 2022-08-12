@@ -171,7 +171,7 @@
         }
         setTimeout(function() {
           GSC.modals.push('appinfo_modal');
-        }, 1);
+        }, 10);
       });
 
       // update
@@ -185,7 +185,7 @@
         $('#changelog_modal').addClass('active');
         setTimeout(function() {
             GSC.modals.push('changelog_modal');
-        }, 1);
+        }, 10);
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetChangeLog' + nonce, function(data) {
           if (data && data.data && data.data.changelog) {
