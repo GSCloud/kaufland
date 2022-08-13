@@ -13,14 +13,18 @@
             <div class="small-text" tabindex="-1">
               verze: <b class="white-text">{{ VERSION_SHORT }}</b>
               <br>
-              datum vydání: <b class="white-text">{{ VERSION_DATE }}</b>
               <br>
-              REST API:
-              <b><a target=_blank class="blue-text bold" href="/api">/api</a></b>
+              datum vydání: <b class="white-text">{{ VERSION_DATE }}</b>
               <br>
               <div class="center bold orange-text">
                 {{>webshare}}
               </div>
+              <br>
+              <nav class="container">
+                <a target=_blank href="/api">
+                  <button class="grey responsive bold white-text">REST API</button>
+                </a>
+              </nav>
               <br>
               <nav class="container">
                 <button class="nav_changelog responsive blue bold white-text">{{ l.but_changelog }}</button>
