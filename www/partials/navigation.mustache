@@ -77,9 +77,12 @@
   (function (w, $, undefined) {
     "use strict";
 
-    // !!! show error page if there is no localStorage
+    // unsupported browser
     if (!localStorage) {
-      window.location.href = '/err/500';
+      window.location.href = '/err/600';
+    }
+    if (!localStorage["uuid"]) {
+      window.location.href = '/err/600';
     }
 
     // progress bar handler
