@@ -2,6 +2,7 @@
 ========
 + změny v UI
 + barvy ikon
++ API tlačítko
 
 12.8.2022
 ========

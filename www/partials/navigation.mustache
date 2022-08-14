@@ -176,6 +176,11 @@
         window.location.replace("?nonce={{ nonce }}");
       });
 
+      // API
+      $('.nav_api').click(function () {
+        location.href = '/api';
+      });
+
       // changelog
       $('.nav_changelog').click(function () {
         if (GSC.offline) return false;
