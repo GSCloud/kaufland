@@ -130,6 +130,7 @@
         if (!el) return false;
         if (!$('.' + el)) return false;
         localStorage['navigation'] = el;
+        $('#avatar').removeClass('large');
 
         // remove modals
         if (GSC.modals.length) {
@@ -208,6 +209,7 @@
       $('.nav_user').click(function () {
         setNavigation(this.className);
         $('#user').removeClass('hidden');
+        $('#avatar').addClass('large');
         if (GSC.GetUser) GSC.GetUser();
       });
 
