@@ -1,8 +1,9 @@
-13.8.2022
+14.8.2022
 ========
 + změny v UI
 + barvy ikon
 + API tlačítko
++ cookies info
 
 12.8.2022
 ========
