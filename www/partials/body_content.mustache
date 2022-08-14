@@ -246,7 +246,7 @@
       });
     });
 
-    // get current application version
+    // get current app version
     GSC._fn.push(function () {
 
       // check version
@@ -258,7 +258,7 @@
             if (data.data.version != "{{ VERSION }}") {
               $('.nav_app>span.badge').removeClass('hidden');
               $('.nav_update').removeClass('blue').addClass('red');
-              GSC.D('<span class="red bold white-text">NEW VERSION IS AVAILABLE!</span>');
+              GSC.D('<span class="red bold white-text">&nbsp;NEW VERSION IS AVAILABLE!&nbsp;</span>');
               if (GSC.modals.length) {
                 GSC.modals.forEach(el => {
                   $('#' + el).removeClass('active');
@@ -269,7 +269,6 @@
               $('#appinfo_modal').addClass('active');
               if (GSC.chverint) {
                 clearInterval(GSC.chverint);
-                GSC.chverint = null;
               }
             }
           }
@@ -311,19 +310,17 @@
           }
         });
       }
-      // get user information NOW!
       getUser();
 
-      // GSC.GetUser() - get user information and set UI elements - closure
+      // GSC.GetUser() - get user information and set UI elements
       if (typeof GSC.GetUser !== "function") GSC.GetUser = function() {
         getUser();
       }
 
-      // check version every 30 secs. - closure
+      // check version every 30 secs.
       GSC.chverint = setInterval(function() {
         checkVersion()
       }, 30000);
-      // check version NOW!
       checkVersion();
     });
 

@@ -1,18 +1,18 @@
 <!-- top navigation | all sizes -->
-<nav id="top_nav" class="top xmiddle hidden">
+<nav id="top_nav" class="top hidden">
   <a class="nav_app">
     <span class="badge circle left red bold white-text hidden">❕</span>
     <img id="logo" class="square large"
       src="{{ cdn }}/img/favicon-256.png"/>
   </a>
   <a class="nav_config">
-    <i tabindex="-1" class="large" data-color="red-text">build</i>
+    <i tabindex="-1" class="large" data-color="green-text">build</i>
     <div>
       <span tabindex="-1">{{ l.nav_config }}</span>
     </div>
   </a>
   <a class="nav_user">
-    <i tabindex="-1" class="large" data-color="red-text">face</i>
+    <i tabindex="-1" class="large" data-color="green-text">face</i>
     <img id="avatar" class="small circle no-margin hidden" src=""/>
     <div>
       <span tabindex="-1">{{ l.nav_user }}</span>
@@ -77,12 +77,12 @@
   (function (w, $, undefined) {
     "use strict";
 
-    // unsupported browser
+    // detection of unsupported browser
     if (!localStorage) {
-      window.location.href = '/err/600';
+      w.location.href = '/err/600';
     }
     if (!localStorage["uuid"]) {
-      window.location.href = '/err/600';
+      w.location.href = '/err/600';
     }
 
     // progress bar handler
@@ -173,11 +173,13 @@
 
       // update
       $('.nav_update').click(function () {
-        window.location.replace("?nonce={{ nonce }}");
+        if (GSC.offline) return;
+        location.replace("?nonce={{ nonce }}");
       });
 
       // API
       $('.nav_api').click(function () {
+        if (GSC.offline) return;
         location.href = '/api';
       });
 
@@ -187,7 +189,7 @@
         $('#changelog_modal').addClass('active');
         setTimeout(function() {
           GSC.modals.push('changelog_modal');
-        }, 10);
+        }, 1);
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetChangeLog' + nonce, function(data) {
           if (data && data.data && data.data.changelog) {
@@ -244,6 +246,7 @@
         localStorage["ui"] = $(this).is(":checked");
         setUiMode();
       });
+
       // settings: VIBRATE
       $('.vibrate').click(function () {
         localStorage["vibrate"] = $(this).is(":checked");
@@ -253,12 +256,14 @@
         }
         setTestVibrateButton();
       });
+
       // settings: SFX
       $('.sfx').click(function () {
         localStorage["sfx"] = $(this).is(":checked");
         GSC.sfx = parseBool(localStorage["sfx"]);
         setTestSfxButton();
       });
+
       // settings: MUSIC
       $('.music').click(function () {
         localStorage["music"] = $(this).is(":checked");
@@ -272,6 +277,7 @@
           window.navigator.vibrate([100,50,100,50,100]);
         }
       });
+
       // test: SFX
       var source;
       var sfxbuffer = null;
@@ -304,6 +310,7 @@
           request.send();
         }
       });
+
       // test: MUSIC
       $('.nav_test_music').click(function () {
         if (GSC.music) {
@@ -339,17 +346,23 @@
         }
       });
 
-      // switches
+      // switches - defaults
+      if (localStorage['music'] == null) localStorage["music"] = "true"
+      if (localStorage['sfx'] == null) localStorage["sfx"] = "true"
+      if (localStorage['vibrate'] == null) localStorage["vibrate"] = "true"
+
+      // switches - set UI
       $('.music').prop('checked', localStorage["music"] == "true");
       $('.sfx').prop('checked', localStorage["sfx"] == "true");
       $('.ui').prop('checked', localStorage["ui"] == "true");
       $('.vibrate').prop('checked', localStorage["vibrate"] == "true");
+
       // GSC properties
       GSC.music = parseBool(localStorage["music"]);
       GSC.sfx = parseBool(localStorage["sfx"]);
       GSC.vibrate = parseBool(localStorage["vibrate"]);
 
-      // test button VIBRATE
+      // test button - VIBRATE
       function setTestVibrateButton() {
         if (GSC.vibrate) {
           $('.nav_test_vib').removeClass('grey').addClass('blue');
@@ -357,7 +370,8 @@
           $('.nav_test_vib').removeClass('blue').addClass('grey');
         }
       }
-      // test button SFX
+
+      // test button - SFX
       function setTestSfxButton() {
         if (GSC.sfx) {
           $('.nav_test_sfx').removeClass('grey').addClass('blue');
@@ -365,7 +379,8 @@
           $('.nav_test_sfx').removeClass('blue').addClass('grey');
         }
       }
-      // test button MUSIC
+
+      // test button - MUSIC
       function setTestMusicButton() {
         if (GSC.music) {
           $('.nav_test_music').removeClass('grey').addClass('blue');
