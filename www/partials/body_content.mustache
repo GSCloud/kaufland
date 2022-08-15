@@ -25,6 +25,7 @@
                 <button class="nav_api grey responsive bold white-text"><i>settings_input_component</i>&nbsp;&nbsp;REST API</button>
               </nav>
               <br>
+              <br>
               <nav class="container">
                 <button class="nav_changelog responsive blue bold white-text">{{ l.but_changelog }}</button>
               </nav>
@@ -33,6 +34,9 @@
           <nav class="container">
             <button class="nav_update responsive blue bold white-text">{{ l.but_update }}</button>
           </nav>
+          <br>
+          <a href="https://web.dev/progressive-web-apps/"><img class="responsive" src="/img/pwa.png" alt="PWA"/></a>
+          <a href="https://beercss.com/"><img class="responsive" src="/img/beercss.png" alt="Beercss"/></a>
           <br>
           Aplikace nepoužívá cookies třetích stran.
         </div>
@@ -162,9 +166,10 @@
       </div>
       {{/user.id}}
       <div class="center-align padding" tabindex="-1">
-        <span id="login_type_row" class="hidden">typ přihlášení: <b id="login_type"></b><br></span>
-        <span id="security_level_row" class="hidden">úroveň zabezpečení: <b id="security_level"></b><br></span>
         <span id="role_row" class="hidden">role: <b id="role"></b><br></span>
+        <span id="login_type_row" class="hidden">typ přihlášení: <b id="login_type"></b><br></span>
+        <span id="security_level_row" class="hidden">úroveň zabezpečení: <b id="security_level"></b><br>
+        {{#user.id}}šifrování: <b>XChaCha20 + BLAKE2b-MAC</b><br>{{/user.id}}</span>
       </div>
       {{#user.id}}
       <article class="border">
@@ -285,8 +290,8 @@
             GSC.user = data.data.user;
             if (GSC.user.avatar && GSC.user.avatar.startsWith('https://')) {
               $('#avatar').attr('src', GSC.user.avatar);
-              $('.nav_user>i').remove();
-              $('.nav_user>div').remove();
+              $('.nav_user>i').addClass('hidden');
+              $('.nav_user>div').addClass('hidden');
               $('#avatar').removeClass('hidden');
             }
             if (GSC.user.login_type) {

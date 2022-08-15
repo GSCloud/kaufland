@@ -3,17 +3,19 @@
   <a class="nav_app">
     <span class="badge circle left red bold white-text hidden">❕</span>
     <img id="logo" class="square large"
-      src="{{ cdn }}/img/favicon-256.png"/>
+      src="{{ cdn }}/img/k-app-logo.png"/>
   </a>
   <a class="nav_config">
-    <i tabindex="-1" class="large" data-color="green-text">build</i>
+    <i tabindex="-1" class="large" data-color="lime-text">build</i>
     <div>
       <span tabindex="-1">{{ l.nav_config }}</span>
     </div>
   </a>
   <a class="nav_user">
-    <i tabindex="-1" class="large" data-color="green-text">face</i>
-    <img id="avatar" class="small circle no-margin hidden" src=""/>
+    <i tabindex="-1" class="large" data-color="lime-text">face</i>
+    <img id="avatar" class="small circle no-margin hidden" src=""
+      onerror="javascript:$(this).addClass('hidden');$('.nav_user>i').removeClass('hidden');$('.nav_user>div').removeClass('hidden');"
+    />
     <div>
       <span tabindex="-1">{{ l.nav_user }}</span>
     </div>
@@ -400,7 +402,6 @@
       $('#offline').removeClass('hidden');
       $('nav').hide().removeClass('hidden').hide().show(300);
       $('body').hide().removeClass('hidden').hide().show(500);
-      // UUID
       GSC.D('<b>UUID</b>: ' + localStorage["uuid"]);
       //$('.nav_app').click();
     });
