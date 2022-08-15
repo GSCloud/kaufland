@@ -14,7 +14,7 @@
   <a class="nav_user">
     <i tabindex="-1" class="large" data-color="lime-text">face</i>
     <img id="avatar" class="small circle no-margin hidden" src=""
-      onerror="javascript:$(this).addClass('hidden');$('.nav_user>i').removeClass('hidden');$('.nav_user>div').removeClass('hidden');"
+      onerror="javascript:$(this).addClass('hidden').append('<i tabindex=-1 class=large data-color=lime-text>face</i>');"
     />
     <div>
       <span tabindex="-1">{{ l.nav_user }}</span>

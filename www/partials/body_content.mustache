@@ -290,8 +290,8 @@
             GSC.user = data.data.user;
             if (GSC.user.avatar && GSC.user.avatar.startsWith('https://')) {
               $('#avatar').attr('src', GSC.user.avatar);
-              $('.nav_user>i').addClass('hidden');
-              $('.nav_user>div').addClass('hidden');
+              $('.nav_user>i').remove();
+              $('.nav_user>div').remove();
               $('#avatar').removeClass('hidden');
             }
             if (GSC.user.login_type) {
