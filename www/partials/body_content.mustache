@@ -11,9 +11,7 @@
             <br>
             <br>
             <div class="small-text" tabindex="-1">
-              verze: <b class="white-text">{{ VERSION_SHORT }}</b>
-              <br>
-              <br>
+              verze: <b class="white-text">{{ VERSION_SHORT }}</b><br>
               datum vydání: <b class="white-text">{{ VERSION_DATE }}</b>
               <br>
               <br>
@@ -43,7 +41,6 @@
               <a href="https://beercss.com/"><img class="responsive" src="{{ cdn }}/img/beercss.png" alt="Beercss"/></a>
             </div>
           </div>          
-          <br>
           Aplikace nepoužívá cookies třetích stran.
         </div>
       </div>
@@ -207,6 +204,11 @@
 
     // AudioContext object
     GSC.audioctx = null;
+
+    // disable long press menu
+    w.oncontextmenu = function() {
+      return false;
+    }
 
     // *** GSC FUNCTIONS ***
 
