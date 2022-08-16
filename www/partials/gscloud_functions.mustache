@@ -39,12 +39,14 @@ async function sha256(message) {
   function checkNetwork(e) {
     if ("onLine" in navigator) {
       if (navigator.onLine) {
+        console.log('ONLINE');
         d.getElementsByTagName("html")[0].setAttribute("offline", false);
         d.getElementsByTagName("html")[0].setAttribute("online", true);
         if (d.getElementById("offline-message")) d.getElementById("offline-message").setAttribute("aria-hidden", true);
         if (w.GSC) w.GSC.offline = false;
         if (w.GSC) w.GSC.online = true;
       } else {
+        console.log('OFFLINE');
         d.getElementsByTagName("html")[0].setAttribute("offline", true);
         d.getElementsByTagName("html")[0].setAttribute("online", false);
         if (d.getElementById("offline-message")) d.getElementById("offline-message").setAttribute("aria-hidden", false);

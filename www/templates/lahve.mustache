@@ -43,13 +43,16 @@ window.addEventListener('load', function() {
   } else {
     console.log("Service worker not supported!");
   }
+  console.log("Delayed functions: %s", window.GSC._fn.length);
   for (var fn = window.GSC._fn, i = 0, l = fn.length; i < l; i++) {
     try {
+      console.log(fn[i].name + '()');
       fn[i]();
     }
-    catch(e) {}
+    catch(e) {
+      console.log(fn[i].name + '()\n' + e);
+    }
   };
-  console.log("Delayed fn(s): %s", l);
 });
 </script>
 {{>gscloud_functions}}
