@@ -307,12 +307,12 @@
 
       // get user information
       function getUser() {
-        if (GSC.offline) return false;
-        var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         if (GSC.user) {
           setUserUI();
           return;
         }
+        if (GSC.offline) return;
+        var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetUser' + nonce, function(data) {
           if (data && data.data && data.data.user) {
             GSC.user = data.data.user;
@@ -360,7 +360,7 @@
       }, 30*1000);
       checkVersion();
 
-      // remove user information cache in an hour
+      // remove user information in an hour
       setInterval(function() {
         GSC.user = null;
       }, 3600*1000);
