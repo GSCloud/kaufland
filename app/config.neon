@@ -47,7 +47,7 @@ l:
   but_changelog: "<i>grading</i>&nbsp;&nbsp;PŘEHLED ZMĚN"
   but_update: "<i>refresh</i>&nbsp;&nbsp;AKTUALIZOVAT"
   description: "Aplikace Chytrá lahvárna PWA je určena pro interní použití v pobočce Kauflandu Brno-Slatina."
-  err_connection: "Chyba připojení!"
+  err_connection: "Chyba připojení k internetu!"
   keywords: "lahve,lahvárna,kauf,kaufland,fred,brooker,gscloud,gscloud.cz,mxd,mxd.cz,brno,pwa,recycling,bottles"
   nav_config: "Nastavení"
   nav_game: "Hry"
