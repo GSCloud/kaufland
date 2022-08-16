@@ -13,7 +13,8 @@
   </a>
   <a class="nav_user">
     <i tabindex="-1" class="large" data-color="lime-text">face</i>
-    <img id="avatar" class="small circle no-margin hidden" src=""
+    <img id="avatar" class="small circle no-margin hidden"
+      src=""
       onerror="javascript:if($(this).attr('src')){$(this).addClass('hidden');$('.nav_user').append('<i tabindex=-1 class=\'large lime-text\'>face</i>');}"
     />
   </a>
@@ -75,14 +76,6 @@
 <script>
   (function (w, $, undefined) {
     "use strict";
-
-    // detection of unsupported browser
-    if (!localStorage) {
-      w.location.href = '/err/600';
-    }
-    if (!localStorage["uuid"]) {
-      w.location.href = '/err/600';
-    }
 
     // progress bar handler
     w.onscroll = function() {
@@ -401,6 +394,21 @@
       $('body').hide().removeClass('hidden').hide().show(500);
       GSC.D('<b>UUID</b> ' + localStorage["uuid"]);
       //$('.nav_app').click();
+
+      // SHA-256 test
+      try {
+        sha256('hash test').then(function (hash) {
+            if (hash == 'cd5e9b1a6c3c37593b8b622b2921ee5320944192acb48b55155cbe8d32dc5ea1') {
+              GSC.D('SHA-256 test OK');
+            } else {
+              w.location.href = '/err/600';
+            }
+          }
+        );
+      } catch(e) {
+        w.location.href = '/err/600';
+      }
+
     });
   })(window, $);
 </script>

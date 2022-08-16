@@ -202,8 +202,17 @@
   (function (w, $, undefined) {
     "use strict";
 
+    // unsupported browser
+    if (!localStorage) {
+      w.location.href = '/err/600';
+    }
+    if (!localStorage["uuid"]) {
+      w.location.href = '/err/600';
+    }
+
     // AudioContext object
     GSC.audioctx = null;
+
     // user object
     GSC.user = null;
 
