@@ -14,7 +14,7 @@
   <a class="nav_user">
     <i tabindex="-1" class="large" data-color="lime-text">face</i>
     <img id="avatar" class="small circle no-margin hidden" src=""
-      onerror="javascript:console.log(this);$(this).addClass('hidden');$('.nav_user').append('<i tabindex=-1 class=large data-color=lime-text>face</i>');"
+      onerror="javascript:if($(this).attr('src')){$(this).addClass('hidden');$('.nav_user').append('<i tabindex=-1 class=\'large lime-text\'>face</i>');}"
     />
   </a>
 </nav>
