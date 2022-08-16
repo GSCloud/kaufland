@@ -166,23 +166,38 @@
 
       // update
       $('.nav_update').click(function () {
-        if (GSC.offline) return;
+        if (GSC.offline) {
+          setTimeout(function () {
+            $('#err_connection').addClass('active');
+          }, 10);
+          return;
+        }
         location.replace("?nonce={{ nonce }}");
       });
 
       // API
       $('.nav_api').click(function () {
-        if (GSC.offline) return;
+        if (GSC.offline) {
+          setTimeout(function () {
+            $('#err_connection').addClass('active');
+          }, 10);
+          return;
+        }
         location.href = '/api';
       });
 
       // changelog
       $('.nav_changelog').click(function () {
-        if (GSC.offline) return false;
+        if (GSC.offline) {
+          setTimeout(function () {
+            $('#err_connection').addClass('active');
+          }, 10);
+          return;
+        }
         $('#changelog_modal').addClass('active');
         setTimeout(function() {
           GSC.modals.push('changelog_modal');
-        }, 1);
+        }, 10);
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetChangeLog' + nonce, function(data) {
           if (data && data.data && data.data.changelog) {
@@ -320,8 +335,9 @@
         $('.nav_info').click();
       }
       
-      // click to remove modals, prepare AudioContext object (user action is mandatory)
+      // click to remove modals and toasts, prepare AudioContext object (user action is mandatory)
       $('.section,main').click(function () {
+        $('.toast').removeClass('active');
         if (GSC.modals.length) {
           GSC.modals.forEach(el => {
             $('#' + el).removeClass('active');
@@ -388,7 +404,7 @@
       setTestVibrateButton();
       setTestSfxButton();
       setTestMusicButton();
-      $('.modal').removeClass('hidden');
+      $('.modal,.toast').removeClass('hidden');
       $('#offline').removeClass('hidden');
       $('nav').hide().removeClass('hidden').hide().show(300);
       $('body').hide().removeClass('hidden').hide().show(500);

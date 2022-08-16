@@ -3,6 +3,7 @@
 + context menu: disabled (mobile long press)
 + fn: setUserUI(), private
 + SHA-256 fn test
++ network error notif.
 
 15.8.2022
 ========
