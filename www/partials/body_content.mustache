@@ -11,8 +11,8 @@
             <br>
             <br>
             <div class="small-text" tabindex="-1">
-              verze: <b class="white-text">{{ VERSION_SHORT }}</b><br>
-              datum vydání: <b class="white-text">{{ VERSION_DATE }}</b>
+              {{ l.txt_version }} <b class="white-text">{{ VERSION_SHORT }}</b><br>
+              {{ l.txt_date }} <b class="white-text">{{ VERSION_DATE }}</b>
               <br>
               <br>
               <div class="center bold large-text orange-text">
@@ -20,7 +20,7 @@
               </div>
               <br>
               <nav class="container">
-                <button class="nav_api grey responsive bold white-text"><i>settings_input_component</i>&nbsp;&nbsp;REST API</button>
+                <button class="nav_api grey responsive bold white-text">{{ l.but_api }}</button>
               </nav>
               <br>
               <br>
@@ -41,7 +41,7 @@
               <a href="https://beercss.com/"><img class="responsive" src="{{ cdn }}/img/beercss.png" alt="Beercss"/></a>
             </div>
           </div>          
-          Aplikace nepoužívá cookies třetích stran.
+          {{ l.no_cookies }}
         </div>
       </div>
     </div>

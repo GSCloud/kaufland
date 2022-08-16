@@ -42,10 +42,11 @@ data: [
 # localization
 lang: cs
 l:
-  author: "Fred Brooker @ GS Cloud Ltd."
+  author: "Fred Brooker @ GS Cloud Ltd. 2022"
+  but_api: "<i>settings_input_component</i>&nbsp;&nbsp;REST API"
   but_changelog: "<i>grading</i>&nbsp;&nbsp;PŘEHLED ZMĚN"
   but_update: "<i>refresh</i>&nbsp;&nbsp;AKTUALIZOVAT"
-  description: "Aplikace Chytrá lahvárna PWA je určena pro interní použití v Kauflandu Brno-Slatina."
+  description: "Aplikace Chytrá lahvárna PWA je určena pro interní použití v pobočce Kauflandu Brno-Slatina."
   keywords: "lahve,lahvárna,kauf,kaufland,fred,brooker,gscloud,gscloud.cz,mxd,mxd.cz,brno,pwa,recycling,bottles"
   nav_config: "Nastavení"
   nav_game: "Hry"
@@ -53,6 +54,7 @@ l:
   nav_message: "Zprávy"
   nav_price: "Akce"
   nav_warehouse: "Sklad"
+  no_cookies: "Aplikace nepoužívá cookies třetích stran."
   noscript: "Povolte, prosím, JavaScript!<br>Bez něj je tato aplikace zcela nefunkční."
   switch_design: "🔳🔲 design"
   switch_music: "🎹 hudba"
@@ -65,9 +67,11 @@ l:
   tit_info: "Informace"
   tit_message: "Zprávy a&nbsp;logy"
   tit_price: "Akční ceny"
-  tit_user: "Informace o&nbsp;uživateli"
+  tit_user: "Uživatel"
   tit_warehouse: "Sklad"
   title: "LAHVÁRNA"
+  txt_date: "datum vydání:"
+  txt_version: "verze:"
   webshare_button: "<i>share</i>&nbsp;&nbsp;sdílej"
   
 swpreload: [
