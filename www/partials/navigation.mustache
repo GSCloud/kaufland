@@ -14,11 +14,8 @@
   <a class="nav_user">
     <i tabindex="-1" class="large" data-color="lime-text">face</i>
     <img id="avatar" class="small circle no-margin hidden" src=""
-      onerror="javascript:$(this).addClass('hidden').append('<i tabindex=-1 class=large data-color=lime-text>face</i>');"
+      onerror="javascript:console.log(this);$(this).addClass('hidden');$('.nav_user').append('<i tabindex=-1 class=large data-color=lime-text>face</i>');"
     />
-    <div>
-      <span tabindex="-1">{{ l.nav_user }}</span>
-    </div>
   </a>
 </nav>
 
@@ -402,7 +399,7 @@
       $('#offline').removeClass('hidden');
       $('nav').hide().removeClass('hidden').hide().show(300);
       $('body').hide().removeClass('hidden').hide().show(500);
-      GSC.D('<b>UUID</b>: ' + localStorage["uuid"]);
+      GSC.D('<b>UUID</b> ' + localStorage["uuid"]);
       //$('.nav_app').click();
     });
   })(window, $);

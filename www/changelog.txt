@@ -1,3 +1,8 @@
+16.8.2022
+========
++ context menu: disabled (mobile long press)
++ fn: setUserUI(), private
+
 15.8.2022
 ========
 + změny v UI

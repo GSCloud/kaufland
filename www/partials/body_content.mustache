@@ -204,10 +204,15 @@
 
     // AudioContext object
     GSC.audioctx = null;
+    // user object
+    GSC.user = null;
 
-    // disable long press menu
-    w.oncontextmenu = function() {
-      return false;
+    // disable context menu
+    w.oncontextmenu = function(e) {
+      if (e.target && e.target.id) {
+        console.log(e.target.id, e.target.className);
+      }
+      return false; // set false to prevent context menu
     }
 
     // *** GSC FUNCTIONS ***
@@ -217,10 +222,12 @@
       if (GSC.offline) return;
       $('#comm').removeClass('hidden').fadeIn(10);
     }
+
     // GSC.ComOff() - communication icon fade-out = OFF
     if (typeof GSC.ComOff !== "function") GSC.ComOff = function() {
       $('#comm').removeClass('hidden').fadeOut('slow');
     }
+
     // GSC.D() - add text to debug list
     if (typeof GSC.D !== "function") GSC.D = function(x) {
       if (x === undefined) return;
@@ -292,36 +299,43 @@
       function getUser() {
         if (GSC.offline) return false;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
-        GSC.user = null;
+        if (GSC.user) {
+          setUserUI();
+          return;
+        }
         $.get('/api/v1/GetUser' + nonce, function(data) {
           if (data && data.data && data.data.user) {
             GSC.user = data.data.user;
-            if (GSC.user.avatar && GSC.user.avatar.startsWith('https://')) {
-              $('#avatar').attr('src', GSC.user.avatar);
-              $('.nav_user>i').remove();
-              $('.nav_user>div').remove();
-              $('#avatar').removeClass('hidden');
-            }
-            if (GSC.user.login_type) {
-              $('#login_type').html(GSC.user.login_type);
-              $('#login_type_row').removeClass('hidden');
-            } else {              
-              $('#login_type_row').addClass('hidden');
-            }
-            if (GSC.user.security_level) {
-              $('#security_level').html(GSC.user.security_level);
-              $('#security_level_row').removeClass('hidden');
-            } else {
-              $('#security_level_row').addClass('hidden');
-            }
-            if (GSC.user.role) {
-              $('#role').html(GSC.user.role);
-              $('#role_row').removeClass('hidden');
-            } else {
-              $('#role_row').addClass('hidden');
-            }
+            setUserUI();
           }
         });
+      }
+
+      // set user information UI
+      function setUserUI() {
+        if (!GSC.user) return false;
+        if (GSC.user.avatar && GSC.user.avatar.startsWith('https://')) {
+          $('#avatar').attr('src', GSC.user.avatar).removeClass('hidden');
+          $('.nav_user>i').remove();
+        }
+        if (GSC.user.login_type) {
+          $('#login_type').html(GSC.user.login_type);
+          $('#login_type_row').removeClass('hidden');
+        } else {              
+          $('#login_type_row').addClass('hidden');
+        }
+        if (GSC.user.security_level) {
+          $('#security_level').html(GSC.user.security_level);
+          $('#security_level_row').removeClass('hidden');
+        } else {
+          $('#security_level_row').addClass('hidden');
+        }
+        if (GSC.user.role) {
+          $('#role').html(GSC.user.role);
+          $('#role_row').removeClass('hidden');
+        } else {
+          $('#role_row').addClass('hidden');
+        }
       }
       getUser();
 
@@ -333,8 +347,13 @@
       // check version every 30 secs.
       GSC.chverint = setInterval(function() {
         checkVersion()
-      }, 30000);
+      }, 30*1000);
       checkVersion();
+
+      // remove user information cache in an hour
+      setInterval(function() {
+        GSC.user = null;
+      }, 3600*1000);
     });
 
     // UI theme colors
