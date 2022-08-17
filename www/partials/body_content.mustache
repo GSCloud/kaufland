@@ -11,7 +11,8 @@
             <br>
             <br>
             <div class="small-text" tabindex="-1">
-              {{ l.txt_version }} <b class="white-text">{{ VERSION_SHORT }}</b><br>
+              {{ l.txt_version }} <b class="white-text">{{ VERSION_SHORT }}</b>
+              &nbsp;&nbsp;
               {{ l.txt_date }} <b class="white-text">{{ VERSION_DATE }}</b>
               <br>
               <br>
@@ -48,7 +49,7 @@
   </article>
 </div>
 
-<div id="changelog_modal" class="modal hidden">
+<div id="changelog_modal" class="modal medium hidden">
   <article class="no-padding">
     <div class="row no-wrap no-space">
       <div class="col">
@@ -221,6 +222,12 @@
     // user object
     GSC.user = null;
 
+    var security_levels = {};
+    security_levels["high"] = "{{ l.security_level_high }}";
+    security_levels["low"] = "{{ l.security_level_low }}";
+    security_levels["none"] = "{{ l.security_level_none }}";
+    security_levels["pin"] = "{{ l.security_level_pin }}";
+
     // disable context menu
     w.oncontextmenu = function(e) {
       if (e.target && e.target.id) {
@@ -340,7 +347,7 @@
           $('#login_type_row').addClass('hidden');
         }
         if (GSC.user.security_level) {
-          $('#security_level').html(GSC.user.security_level);
+          $('#security_level').html(security_levels[GSC.user.security_level]);
           $('#security_level_row').removeClass('hidden');
         } else {
           $('#security_level_row').addClass('hidden');
