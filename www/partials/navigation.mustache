@@ -271,6 +271,9 @@
         localStorage["sfx"] = $(this).is(":checked");
         GSC.sfx = parseBool(localStorage["sfx"]);
         setTestSfxButton();
+        if (GSC.sfx) {
+          playSound('click');
+        }
       });
 
       // settings: MUSIC
@@ -287,36 +290,42 @@
         }
       });
 
+      // load sfx by filename without extension
+      function playSound(filename) {
+        if (GSC.sfxbuffers && GSC.sfxbuffers[filename + '.mp3']) {
+          var sfx = GSC.audioctx.createBufferSource();
+          sfx.buffer = GSC.sfxbuffers[filename + '.mp3'];
+          sfx.connect(GSC.audioctx.destination);
+          sfx.start();
+          return;
+        }
+        GSC.D('SFX loading ' + filename + '.mp3');
+        var req = new XMLHttpRequest();
+        req.open('GET', '/sfx/' + filename + '.mp3', true);
+        req.responseType = 'arraybuffer';
+        req.onload = function() {
+          GSC.ComOff();
+          var filename = req.responseURL.substring(req.responseURL.lastIndexOf('/')+1);
+          GSC.audioctx && GSC.audioctx.decodeAudioData(req.response, function(buf) {
+              console.log(filename);
+              GSC.sfxbuffers[filename] = buf;
+              var sfx = GSC.audioctx.createBufferSource();
+              sfx.buffer = buf;
+              sfx.connect(GSC.audioctx.destination);
+              sfx.start();
+          });
+        }
+        GSC.ComOn();
+        req.send();
+      }
+
+      // SFX audio buffers
+      GSC.sfxbuffers = [];
+
       // test: SFX
-      var source;
-      var sfxbuffer = null;
       $('.nav_test_sfx').click(function () {
         if (GSC.sfx) {
-          console.log('sfx');
-          if (GSC.audioctx && sfxbuffer) {
-            source = GSC.audioctx.createBufferSource();
-            source.buffer = sfxbuffer;
-            source.connect(GSC.audioctx.destination);
-            source.start();   
-            return;
-          }
-          // XHR load laser sound from network
-          var request = new XMLHttpRequest();
-          request.open('GET', '/sfx/laser.mp3', true);
-          GSC.D('GET /sfx/laser.mp3');
-          request.responseType = 'arraybuffer';
-          request.onload = function() {
-            GSC.audioctx && GSC.audioctx.decodeAudioData(request.response, function(buf) {
-                source = GSC.audioctx.createBufferSource();
-                sfxbuffer = buf;
-                source.buffer = buf;
-                source.connect(GSC.audioctx.destination);
-                source.start();
-                GSC.ComOff();
-            });
-          }
-          GSC.ComOn();
-          request.send();
+          playSound('laser');
         }
       });
 
