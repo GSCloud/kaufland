@@ -1,6 +1,6 @@
-### KAUFLAND LAHVÁRNA
+### CHYTRÁ LAHVÁRNA
 
-# uncomment to force debugging !!!
+# uncomment to force debugger !!!
 #dbg: TRUE
 dbg: FALSE
 
@@ -25,7 +25,7 @@ local_goauth_redirect: "http://localhost:8002/login"
 
 # Google properties
 google: [
-#  UA: "UA-89950317-17"
+#  UA: "UA-xxx"
 ]
 
 # cache profiles
@@ -39,7 +39,7 @@ data: [
   prepravky: "2PACX-1vTVRFD-DghrRMEECMr06ZaxiP-VPMQ2_EL7wk-18mBm8LYFXnNssv97lqzHHwXH8_BEP4FvNgNDyD_C"
 ]
 
-# localization
+# locale
 lang: cs
 l:
   author: "Fred Brooker @ GS Cloud Ltd. 2022"
@@ -81,4 +81,5 @@ l:
   
 swpreload: [
   '/sfx/laser.mp3'
+  '/sfx/click.mp3'
 ]

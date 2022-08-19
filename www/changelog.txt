@@ -1,29 +1,34 @@
+19.8.2022
+=========
++ opravy chyb
++ obnovení informací o uživateli každých 10 minut
+
 16.8.2022
-========
-+ context menu disabled (mobile long press)
+=========
++ disable context menu (mobile long press)
 + fn: setUserUI(), private
 + SHA-256 fn test
-+ network error notif.
++ network error notification
 + Dev Console: delayed function names 
 
 15.8.2022
-========
+=========
 + změny v UI
 + ikony PWA a Beercss
 + failed avatar image error handler
 
 14.8.2022
-========
+=========
 + změny v UI
 + API tlačítko
 + cookies info
 
 12.8.2022
-========
+=========
 + modal changelog
 
 11.8.2022
-========
+=========
 + fn: GSC.GetUser()
 + vylepšení API roadmap
 
@@ -43,7 +48,8 @@
 
 2.8.2022
 ========
-+ fn: GSC.ComOn(), GSC.ComOff()
++ fn: GSC.ComOn()
++ fn: GSC.ComOff()
 + API: GetVersion
 + XHR event handlers
 + XHR comm icon

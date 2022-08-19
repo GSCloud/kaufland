@@ -105,7 +105,7 @@
       GSC.modals = [];
 
       // set UI mode
-      function setUiMode() {
+      function setUImode() {
         if (parseBool(localStorage["ui"])) {
           ui("mode", "light");
           $(".white-text").removeClass('white-text').addClass('black-text');
@@ -253,7 +253,7 @@
       // settings: UI
       $('.ui').click(function () {
         localStorage["ui"] = $(this).is(":checked");
-        setUiMode();
+        setUImode();
       });
 
       // settings: VIBRATE
@@ -400,14 +400,13 @@
       }
 
       // UI quirks
-      setUiMode();
+      setUImode();
       setTestVibrateButton();
       setTestSfxButton();
       setTestMusicButton();
-      $('.modal,.toast').removeClass('hidden');
-      $('#offline').removeClass('hidden');
-      $('nav').hide().removeClass('hidden').hide().show(300);
-      $('body').hide().removeClass('hidden').hide().show(500);
+      $('nav,body,#offline,.modal,.toast').removeClass('hidden');
+      $('nav').hide().show(300);
+      $('body').hide().show(500);
       GSC.D('<b>UUID</b> ' + localStorage["uuid"]);
 
       // SHA-256 test
