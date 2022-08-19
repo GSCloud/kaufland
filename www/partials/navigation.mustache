@@ -217,7 +217,7 @@
         setNavigation(this.className);
         $('#user').removeClass('hidden');
         $('#avatar').addClass('large');
-        if (GSC.GetUser) GSC.GetUser();
+        if (typeof GSC.GetUser == "function") GSC.GetUser();
       });
 
       // info
@@ -405,8 +405,7 @@
       setTestSfxButton();
       setTestMusicButton();
       $('nav,body,#offline,.modal,.toast').removeClass('hidden');
-      $('nav').hide().show(300);
-      $('body').hide().show(500);
+      $('nav,body').hide().show(300);
       GSC.D('<b>UUID</b> ' + localStorage["uuid"]);
 
       // SHA-256 test
