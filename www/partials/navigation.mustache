@@ -251,7 +251,7 @@
       $('.ui').click(function () {
         localStorage["ui"] = $(this).is(":checked");
         setUImode();
-        playSound('click');
+        playSound('click4');
       });
 
       // settings: VIBRATE
@@ -260,9 +260,9 @@
         GSC.vibrate = parseBool(localStorage["vibrate"]);
         if (GSC.vibrate) {
           window.navigator.vibrate(100);
-        }
+          playSound('click5');
+        } else playSound('click3');
         setTestVibrateButton();
-        playSound('click');
       });
 
       // settings: SFX
@@ -270,7 +270,13 @@
         localStorage["sfx"] = $(this).is(":checked");
         GSC.sfx = parseBool(localStorage["sfx"]);
         setTestSfxButton();
-        playSound('click');
+        if (GSC.sfx) {
+          playSound('click5');
+        } else {
+          GSC.sfx = true;
+          playSound('click3');
+          GSC.sfx = false;
+        }
       });
 
       // settings: MUSIC
@@ -278,14 +284,17 @@
         localStorage["music"] = $(this).is(":checked");
         GSC.music = parseBool(localStorage["music"]);
         setTestMusicButton();
-        playSound('click');
+        if (GSC.music) {
+          playSound('click5');
+        } else playSound('click3');
       });
 
       // test: VIBRATE
       $('.nav_test_vib').click(function () {
         if (GSC.vibrate) {
           window.navigator.vibrate([100,50,100,50,100]);
-        }
+          playSound('click5');
+        } else playSound('click3');
       });
 
       // play sfx by filename without extension

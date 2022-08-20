@@ -81,5 +81,9 @@ l:
   
 swpreload: [
   '/sfx/laser.mp3'
-  '/sfx/click.mp3'
+  '/sfx/click1.mp3'
+  '/sfx/click2.mp3'
+  '/sfx/click3.mp3'
+  '/sfx/click4.mp3'
+  '/sfx/click5.mp3'
 ]
