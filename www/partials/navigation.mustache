@@ -101,9 +101,6 @@
     // *** DELAYED FUNCTIONS ***
     GSC._fn.push(function UIhandlers() {
 
-      // array of modals
-      GSC.modals = [];
-
       // set UI mode
       function setUImode() {
         if (parseBool(localStorage["ui"])) {
@@ -254,6 +251,7 @@
       $('.ui').click(function () {
         localStorage["ui"] = $(this).is(":checked");
         setUImode();
+        playSound('click');
       });
 
       // settings: VIBRATE
@@ -264,6 +262,7 @@
           window.navigator.vibrate(100);
         }
         setTestVibrateButton();
+        playSound('click');
       });
 
       // settings: SFX
@@ -271,9 +270,7 @@
         localStorage["sfx"] = $(this).is(":checked");
         GSC.sfx = parseBool(localStorage["sfx"]);
         setTestSfxButton();
-        if (GSC.sfx) {
-          playSound('click');
-        }
+        playSound('click');
       });
 
       // settings: MUSIC
@@ -281,6 +278,7 @@
         localStorage["music"] = $(this).is(":checked");
         GSC.music = parseBool(localStorage["music"]);
         setTestMusicButton();
+        playSound('click');
       });
 
       // test: VIBRATE
@@ -290,16 +288,17 @@
         }
       });
 
-      // load sfx by filename without extension
+      // play sfx by filename without extension
       function playSound(filename) {
-        if (GSC.sfxbuffers && GSC.sfxbuffers[filename + '.mp3']) {
+        if (GSC.sfx && GSC.sfxbuffers && GSC.sfxbuffers[filename + '.mp3']) {
           var sfx = GSC.audioctx.createBufferSource();
           sfx.buffer = GSC.sfxbuffers[filename + '.mp3'];
           sfx.connect(GSC.audioctx.destination);
           sfx.start();
           return;
         }
-        GSC.D('SFX loading ' + filename + '.mp3');
+        if (!GSC.sfx) return;
+        GSC.D('loading: ' + filename + '.mp3');
         var req = new XMLHttpRequest();
         req.open('GET', '/sfx/' + filename + '.mp3', true);
         req.responseType = 'arraybuffer';
@@ -307,7 +306,6 @@
           GSC.ComOff();
           var filename = req.responseURL.substring(req.responseURL.lastIndexOf('/')+1);
           GSC.audioctx && GSC.audioctx.decodeAudioData(req.response, function(buf) {
-              console.log(filename);
               GSC.sfxbuffers[filename] = buf;
               var sfx = GSC.audioctx.createBufferSource();
               sfx.buffer = buf;
@@ -319,14 +317,9 @@
         req.send();
       }
 
-      // SFX audio buffers
-      GSC.sfxbuffers = [];
-
       // test: SFX
       $('.nav_test_sfx').click(function () {
-        if (GSC.sfx) {
-          playSound('laser');
-        }
+        playSound('laser');
       });
 
       // test: MUSIC
