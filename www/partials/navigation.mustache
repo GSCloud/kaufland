@@ -114,7 +114,7 @@
         }
       }
 
-      // set navigation by element
+      // set active navigation by element
       function setNavigation(el) {
         if (!el) return false;
         if (!$('.' + el)) return false;
@@ -273,7 +273,7 @@
         if (GSC.sfx) {
           playSound('click5');
         } else {
-          GSC.sfx = true;
+          GSC.sfx = true; // hack :)
           playSound('click3');
           GSC.sfx = false;
         }
@@ -297,8 +297,15 @@
         } else playSound('click3');
       });
 
-      // play sfx by filename without extension
-      function playSound(filename) {
+      // load sfx - array
+      function loadSound(arr) {
+        for (var i = 0; i < arr.length; i++) {
+          playSound(arr[i], true);
+        }
+      }
+
+      // play sfx - filename without extension
+      function playSound(filename, preload) {
         if (GSC.sfx && GSC.sfxbuffers && GSC.sfxbuffers[filename + '.mp3']) {
           var sfx = GSC.audioctx.createBufferSource();
           sfx.buffer = GSC.sfxbuffers[filename + '.mp3'];
@@ -306,18 +313,20 @@
           sfx.start();
           return;
         }
-        if (!GSC.sfx) return;
-        GSC.D('loading: ' + filename + '.mp3');
+        GSC.D('<b>SFX</b> ' + filename + '.mp3');
         var req = new XMLHttpRequest();
-        req.open('GET', '/sfx/' + filename + '.mp3', true);
+        req.open('GET', '{{ cdn }}/sfx/' + filename + '.mp3', true);
         req.responseType = 'arraybuffer';
         req.onload = function() {
           GSC.ComOff();
           var filename = req.responseURL.substring(req.responseURL.lastIndexOf('/')+1);
-          GSC.audioctx && GSC.audioctx.decodeAudioData(req.response, function(buf) {
-              GSC.sfxbuffers[filename] = buf;
+          GSC.audioctx && GSC.audioctx.decodeAudioData(req.response, function(buffer) {
+              // store loaded sound buffer
+              GSC.sfxbuffers[filename] = buffer;
+              if (!GSC.sfx || preload) return;
+              // play audio buffer
               var sfx = GSC.audioctx.createBufferSource();
-              sfx.buffer = buf;
+              sfx.buffer = buffer;
               sfx.connect(GSC.audioctx.destination);
               sfx.start();
           });
@@ -334,19 +343,17 @@
       // test: MUSIC
       $('.nav_test_music').click(function () {
         if (GSC.music) {
+          alert('🎹 not implemented!');
         }
       });
 
       // OTHER HANDLERS AND RUNTIMES
 
       // navigate to the saved state
-      if (localStorage['navigation']) {
-        $('.' + localStorage['navigation']).click();
-      } else {
-        $('.nav_info').click();
-      }
+      if (localStorage['navigation']) $('.' + localStorage['navigation']).click();
+        else ('.nav_info').click();
       
-      // click to remove modals and toasts, prepare AudioContext object (user action is mandatory)
+      // click to remove modals and toasts, prepare AudioContext object (user action mandatory!)
       $('.section,main').click(function () {
         $('.toast').removeClass('active');
         if (GSC.modals.length) {
@@ -359,15 +366,20 @@
         if (!GSC.audioctx) {
           try {
             GSC.audioctx = new AudioContext();
+            loadSound([
+              'laser',
+              'click1',
+              'click2',
+              'click3'
+            ]);
           }
           catch(e) {
-            console.log("AudioContext error:");
-            console.log(e);
+            console.log("AudioContext error:", e);
           }
         }
       });
 
-      // switches - defaults
+      // switches - set defaults
       if (localStorage['music'] == null) localStorage["music"] = "true"
       if (localStorage['sfx'] == null) localStorage["sfx"] = "true"
       if (localStorage['vibrate'] == null) localStorage["vibrate"] = "true"
@@ -415,21 +427,24 @@
       setTestVibrateButton();
       setTestSfxButton();
       setTestMusicButton();
+      // enable UI
       $('nav,body,#offline,.modal,.toast').removeClass('hidden');
-      $('nav,body').hide().show(300);
+      // UI animation
+      $('nav,body').hide().show(250);
       GSC.D('<b>UUID</b> ' + localStorage["uuid"]);
 
-      // SHA-256 test
+      // SHA-256 self-test
       try {
         sha256('hash test').then(function (hash) {
             if (hash == 'cd5e9b1a6c3c37593b8b622b2921ee5320944192acb48b55155cbe8d32dc5ea1') {
-              GSC.D('SHA-256 test OK');
+              GSC.D('SHA-256 self-test OK');
             } else {
               w.location.href = '/err/600';
             }
           }
         );
       } catch(e) {
+        // unsupported browser
         w.location.href = '/err/600';
       }
 
