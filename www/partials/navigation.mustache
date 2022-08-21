@@ -307,6 +307,7 @@
       // play sfx - filename without extension
       function playSound(filename, preload) {
         if (GSC.sfx && GSC.sfxbuffers && GSC.sfxbuffers[filename + '.mp3']) {
+          // play stored audio buffer
           var sfx = GSC.audioctx.createBufferSource();
           sfx.buffer = GSC.sfxbuffers[filename + '.mp3'];
           sfx.connect(GSC.audioctx.destination);
@@ -322,7 +323,7 @@
           GSC.ComOff();
           var filename = req.responseURL.substring(req.responseURL.lastIndexOf('/')+1);
           GSC.audioctx && GSC.audioctx.decodeAudioData(req.response, function(buffer) {
-              // store loaded sound buffer
+              // store sound buffer
               GSC.sfxbuffers[filename] = buffer;
               if (!GSC.sfx || preload) return;
               // play audio buffer
