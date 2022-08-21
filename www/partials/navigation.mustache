@@ -289,14 +289,6 @@
         } else playSound('click3');
       });
 
-      // test: VIBRATE
-      $('.nav_test_vib').click(function () {
-        if (GSC.vibrate) {
-          window.navigator.vibrate([100,50,100,50,100]);
-          playSound('click5');
-        } else playSound('click3');
-      });
-
       // load sfx - array
       function loadSound(arr) {
         for (var i = 0; i < arr.length; i++) {
@@ -336,6 +328,11 @@
         GSC.ComOn();
         req.send();
       }
+
+      // test: VIBRATE
+      $('.nav_test_vib').click(function () {
+        if (GSC.vibrate) window.navigator.vibrate([100,50,100,50,100]);
+      });
 
       // test: SFX
       $('.nav_test_sfx').click(function () {
