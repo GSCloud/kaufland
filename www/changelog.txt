@@ -1,5 +1,6 @@
 21.8.2022
 =========
++ optimalizace zvuku
 + fn: loadSound(), private
 
 19.8.2022
