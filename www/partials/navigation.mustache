@@ -315,7 +315,8 @@
         }
         GSC.D('<b>SFX</b> ' + filename + '.mp3');
         var req = new XMLHttpRequest();
-        req.open('GET', '{{ cdn }}/sfx/' + filename + '.mp3', true);
+        req.open('GET', '/sfx/' + filename + '.mp3', true);
+        //req.open('GET', '{{ cdn }}/sfx/' + filename + '.mp3', true);
         req.responseType = 'arraybuffer';
         req.onload = function() {
           GSC.ComOff();
@@ -370,7 +371,9 @@
               'laser',
               'click1',
               'click2',
-              'click3'
+              'click3',
+              'click4',
+              'click5',
             ]);
           }
           catch(e) {
