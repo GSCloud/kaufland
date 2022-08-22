@@ -311,8 +311,8 @@
               $('.nav_update').removeClass('blue').addClass('red');
               GSC.D('<span class="red bold white-text">&nbsp;NEW VERSION IS AVAILABLE!&nbsp;</span>');
               GSC.PlaySound('update');
-              return;
-              // FIX: skip the modal dialog
+              // skip the modal dialog if user interaction is under 60 seconds
+              if (GSC.lastclick && (+new Date() < (GSC.lastclick + 60*1000))) return;
               if (GSC.modals.length) {
                 GSC.modals.forEach(el => {
                   $('#' + el).removeClass('active');
