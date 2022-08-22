@@ -1,4 +1,4 @@
-21.8.2022
+22.8.2022
 =========
 + fn: GSC.PlaySound()
 + GSC.lastclick - poslední kliknutí uživatele v ms
