@@ -79,6 +79,7 @@
 
     // bottom progress bar
     w.onscroll = function() {
+      GSC.lastclick = +new Date();
       var scroll = document.body.scrollTop || document.documentElement.scrollTop;
       var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       var scrolled = (scroll / height) * 100;
@@ -86,6 +87,7 @@
       if (localStorage && localStorage['navigation']) {
         localStorage['scroll_' + localStorage['navigation']] = parseInt(scroll);
       }
+
       // manipulate top navigation and comm icon on touch enabled devices
       if (GSC.touch) {
         if (scroll > 100) {
