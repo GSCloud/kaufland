@@ -3,6 +3,7 @@
 + fn: GSC.PlaySound()
 + GSC.lastclick - poslední klik uživatele
 + vylepšený updater
++ vylepšený přehled změn
 
 21.8.2022
 =========
