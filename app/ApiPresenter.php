@@ -119,16 +119,13 @@ class ApiPresenter extends APresenter
             ];
             return $this->writeJsonData($data, $extras);
             break;
-
         case "GetChangeLog":
+            $log = file_get_contents(WWW . '/changelog.txt');
+            $log = preg_replace('/\n=+\n/', '<hr>', $log);
+            $log = preg_replace('/([0-9]+\.[0-9]+\.[0-9]+)/', '<b>$1</b>', $log);
+            $log = str_replace("\n", '<br>', $log);
             $data = [
-                "changelog" => str_replace(
-                    "\n",
-                    '<br>',
-                    file_get_contents(
-                        WWW . '/changelog.txt'
-                    )
-                ),
+                "changelog" => $log,
             ];
             return $this->writeJsonData($data, $extras);
             break;
