@@ -337,6 +337,8 @@
       // test: SFX
       $('.nav_test_sfx').click(function () {
         playSound('laser');
+        setTimeout(function(){playSound('laser')}, 150);
+        setTimeout(function(){playSound('laser')}, 300);
       });
 
       // test: MUSIC
@@ -346,7 +348,7 @@
         }
       });
 
-      // OTHER HANDLERS AND RUNTIMES
+      // OTHER HANDLERS AND RUNTIME
 
       // navigate to the saved state
       if (localStorage['navigation']) $('.' + localStorage['navigation']).click();
@@ -354,6 +356,7 @@
       
       // click to remove modals and toasts, prepare AudioContext object (user action mandatory!)
       $('.section,main').click(function () {
+        GSC.lastClick = +new Date();
         $('.toast').removeClass('active');
         if (GSC.modals.length) {
           GSC.modals.forEach(el => {
@@ -396,12 +399,10 @@
         ]);
       });
 
-      // switches - set defaults
+      // switches
       if (localStorage['music'] == null) localStorage["music"] = "true"
       if (localStorage['sfx'] == null) localStorage["sfx"] = "true"
       if (localStorage['vibrate'] == null) localStorage["vibrate"] = "true"
-
-      // switches - set UI
       $('.music').prop('checked', localStorage["music"] == "true");
       $('.sfx').prop('checked', localStorage["sfx"] == "true");
       $('.ui').prop('checked', localStorage["ui"] == "true");
@@ -412,7 +413,7 @@
       GSC.sfx = parseBool(localStorage["sfx"]);
       GSC.vibrate = parseBool(localStorage["vibrate"]);
 
-      // test button - VIBRATE
+      // set test button - VIBRATE
       function setTestVibrateButton() {
         if (GSC.vibrate) {
           $('.nav_test_vib').removeClass('grey').addClass('blue');
@@ -421,7 +422,7 @@
         }
       }
 
-      // test button - SFX
+      // set test button - SFX
       function setTestSfxButton() {
         if (GSC.sfx) {
           $('.nav_test_sfx').removeClass('grey').addClass('blue');
@@ -430,7 +431,7 @@
         }
       }
 
-      // test button - MUSIC
+      // set test button - MUSIC
       function setTestMusicButton() {
         if (GSC.music) {
           $('.nav_test_music').removeClass('grey').addClass('blue');
@@ -439,16 +440,13 @@
         }
       }
 
-      // UI quirks
+      // UI
       setUImode();
       setTestVibrateButton();
       setTestSfxButton();
       setTestMusicButton();
-      // enable UI
       $('nav,body,#offline,.modal,.toast').removeClass('hidden');
-      // UI animation
-      $('nav,body').hide().show(250);
-      GSC.D('<b>UUID</b> ' + localStorage["uuid"]);
+      $('nav,body').hide().show(350);
 
       // SHA-256 self-test
       try {
@@ -465,7 +463,8 @@
         w.location.href = '/err/600';
       }
 
-      //$('.nav_app').click();
+      // UUID
+      GSC.D('<b>UUID</b> ' + localStorage["uuid"]);
     });
   })(window, $);
 </script>
