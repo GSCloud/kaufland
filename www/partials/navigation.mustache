@@ -329,6 +329,11 @@
         req.send();
       }
 
+      // GSC.PlaySound
+      if (typeof GSC.PlaySound !== "function") GSC.PlaySound = function(sound) {
+        playSound(sound);
+      }
+
       // test: VIBRATE
       $('.nav_test_vib').click(function () {
         if (GSC.vibrate) window.navigator.vibrate([100,50,100,50,100]);
