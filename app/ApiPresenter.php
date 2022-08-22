@@ -99,6 +99,7 @@ class ApiPresenter extends APresenter
 
         // process API calls
         switch ($view) {
+
         case "GetUser":
             $data["user"] = [
                 "name" => $this->getIdentity()["name"] ?? null,
@@ -113,12 +114,14 @@ class ApiPresenter extends APresenter
             ];
             return $this->writeJsonData($data, $extras);
             break;
+
         case "GetVersion":
             $data = [
                 "version" => $this->getData('VERSION'),
             ];
             return $this->writeJsonData($data, $extras);
             break;
+
         case "GetChangeLog":
             $log = file_get_contents(WWW . '/changelog.txt');
             $log = preg_replace('/\n=+\n/', '<hr>', $log);
