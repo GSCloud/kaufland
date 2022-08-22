@@ -1,43 +1,49 @@
 21.8.2022
 =========
-+ optimalizace zvuku
++ fn: GSC.PlaySound()
++ GSC.lastclick - poslední kliknutí uživatele v ms
+
+21.8.2022
+=========
++ optimalizace zvukového engine
 + fn: loadSound(), private
 
 19.8.2022
 =========
-+ obnovení informací o uživateli každých 10 minut
 + fn: playSound(), private
-+ GSC.sfxbuffers
++ GSC.sfxbuffers - zvukové buffery
++ GSC.audioctx - AudioContext
 
 16.8.2022
 =========
 + disable context menu (mobile long press)
 + fn: setUserUI(), private
-+ SHA-256 fn test
++ SHA-256 self-test
 + network error notification
 + Dev Console: delayed function names 
 
 15.8.2022
 =========
-+ změny v UI
-+ ikony PWA a Beercss
++ doplněny ikony PWA a Beercss
 + failed avatar image error handler
 
 14.8.2022
 =========
 + změny v UI
 + API tlačítko
-+ cookies info
++ informace o cookies
 
 12.8.2022
 =========
++ fn: checkVersion(), private
 + modal changelog
 
 11.8.2022
 =========
++ fn: getUser(), private
 + fn: GSC.GetUser()
-+ GSC.user
-+ vylepšení API roadmap
++ GSC.user - informace o uživateli
++ nová API roadmap
 
 9.8.2022
 ========
@@ -71,7 +77,7 @@
 + VFX
 + karta Nastavení
 + základní barva "Kaufland rudá"
-+ test VIBRACE
++ TESTER: test VIBRACE
 
 27.7.2022
 =========

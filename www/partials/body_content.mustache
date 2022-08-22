@@ -224,8 +224,8 @@
     GSC.modals = [];
     // SFX audio buffers
     GSC.sfxbuffers = [];
-    // last user's click
-    GSC.lastClick = null
+    // user's last click time in ms
+    GSC.lastclick = null
 
     // API translations
     var security_levels = {};
@@ -312,7 +312,7 @@
               GSC.D('<span class="red bold white-text">&nbsp;NEW VERSION IS AVAILABLE!&nbsp;</span>');
               GSC.PlaySound('update');
               return;
-              // skip the modal dialog
+              // FIX: skip the modal dialog
               if (GSC.modals.length) {
                 GSC.modals.forEach(el => {
                   $('#' + el).removeClass('active');
@@ -341,6 +341,12 @@
           }
         });
       }
+      getUser();
+
+      // GSC.GetUser() - get user information and set UI elements
+      if (typeof GSC.GetUser !== "function") GSC.GetUser = function() {
+        getUser();
+      }
 
       // set user information UI
       function setUserUI() {
@@ -367,13 +373,7 @@
         } else {
           $('#role_row').addClass('hidden');
         }
-      }
-      getUser();
-
-      // GSC.GetUser() - get user information and set UI elements
-      if (typeof GSC.GetUser !== "function") GSC.GetUser = function() {
-        getUser();
-      }
+      }      
 
       // check version every 30 secs.
       GSC.chverint = setInterval(function() {

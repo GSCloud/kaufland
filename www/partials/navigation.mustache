@@ -359,7 +359,7 @@
       
       // click to remove modals and toasts, prepare AudioContext object (user action mandatory!)
       $('.section,main').click(function () {
-        GSC.lastClick = +new Date();
+        GSC.lastclick = +new Date();
         $('.toast').removeClass('active');
         if (GSC.modals.length) {
           GSC.modals.forEach(el => {
