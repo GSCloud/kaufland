@@ -298,6 +298,7 @@
 
       // play sfx - filename without extension
       function playSound(filename, preload) {
+        if (!filename) return;
         if (GSC.sfx && GSC.sfxbuffers && GSC.sfxbuffers[filename + '.mp3']) {
           // play stored audio buffer
           var sfx = GSC.audioctx.createBufferSource();
@@ -306,11 +307,16 @@
           sfx.start();
           return;
         }
-        GSC.D('<b>SFX</b> ' + filename + '.mp3');
+        // check whether the audio buffer already exists
+        if (GSC.sfxbuffers && GSC.sfxbuffers[filename + '.mp3']) return;
+
+        // load the audio buffer from network
         var req = new XMLHttpRequest();
         req.open('GET', '/sfx/' + filename + '.mp3', true);
-        //req.open('GET', '{{ cdn }}/sfx/' + filename + '.mp3', true);
         req.responseType = 'arraybuffer';
+        GSC.D('<b>SFX</b> ' + filename + '.mp3');
+
+        // onload handler
         req.onload = function() {
           GSC.ComOff();
           var filename = req.responseURL.substring(req.responseURL.lastIndexOf('/')+1);
@@ -325,6 +331,7 @@
               sfx.start();
           });
         }
+
         GSC.ComOn();
         req.send();
       }
