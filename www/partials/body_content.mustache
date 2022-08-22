@@ -312,7 +312,7 @@
               GSC.D('<span class="red bold white-text">&nbsp;NEW VERSION IS AVAILABLE!&nbsp;</span>');
               GSC.PlaySound('update');
               return;
-              // skip showing the modal dialog
+              // skip the modal dialog
               if (GSC.modals.length) {
                 GSC.modals.forEach(el => {
                   $('#' + el).removeClass('active');
