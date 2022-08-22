@@ -361,23 +361,39 @@
           });
           GSC.modals = [];
         }
-        // AudioContext
+        // return if we already have AudioContext
+        if (GSC.audioctx) return;
+
+        // get AudioContext with hinting
         if (!GSC.audioctx) {
           try {
-            GSC.audioctx = new AudioContext();
-            loadSound([
-              'laser',
-              'click1',
-              'click2',
-              'click3',
-              'click4',
-              'click5',
-            ]);
+            GSC.audioctx = new AudioContext({
+              latencyHint: 'interactive',
+              sampleRate: 44100,
+            });
           }
           catch(e) {
             console.log("AudioContext error:", e);
           }
         }
+        // get AudioContext without hinting
+        if (!GSC.audioctx) {
+          try {
+            GSC.audioctx = new AudioContext();
+          }
+          catch(e) {
+            console.log("AudioContext error:", e);
+          }
+        }
+        // preload sounds
+        loadSound([
+          'laser',
+          'click1',
+          'click2',
+          'click3',
+          'click4',
+          'click5',
+        ]);
       });
 
       // switches - set defaults
