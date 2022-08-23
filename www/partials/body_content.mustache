@@ -208,7 +208,7 @@
   (function (w, $, undefined) {
     "use strict";
 
-    // unsupported browser
+    // unsupported browser = something is really broken
     if (!localStorage) {
       w.location.href = '/err/600';
     }
@@ -218,14 +218,14 @@
 
     // AudioContext
     GSC.audioctx = null;
-    // user
+    // last interaction time
+    GSC.lastclick = null
+    // user information
     GSC.user = null;
-    // modals
+    // list of modals
     GSC.modals = [];
     // audio buffers
     GSC.sfxbuffers = [];
-    // user's last click time
-    GSC.lastclick = null
 
     // API translations
     var security_levels = {};
