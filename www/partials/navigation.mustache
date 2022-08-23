@@ -79,6 +79,7 @@
 
     // bottom progress bar
     w.onscroll = function() {
+      // update user interaction time
       GSC.lastclick = +new Date();
       var scroll = document.body.scrollTop || document.documentElement.scrollTop;
       var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -88,9 +89,9 @@
         localStorage['scroll_' + localStorage['navigation']] = parseInt(scroll);
       }
 
-      // manipulate top navigation and comm icon on touch enabled devices
+      // fix top navigation and comm icon on touch enabled devices
       if (GSC.touch) {
-        if (scroll > 100) {
+        if (scroll > 200) {
           $("#top_nav").hide(250);
           $("#comm").css('top', 0);
         } else {
@@ -291,7 +292,7 @@
         } else playSound('click3');
       });
 
-      // load sfx - array
+      // load sfx - array of filenames
       function loadSound(arr) {
         for (var i = 0; i < arr.length; i++) {
           playSound(arr[i], true);
@@ -367,7 +368,8 @@
         else ('.nav_info').click();
       
       // click to remove modals and toasts, prepare AudioContext object (user action mandatory!)
-      $('.section,main').click(function () {
+      $('.section,main,body').click(function () {
+        // update user interaction time
         GSC.lastclick = +new Date();
         $('.toast').removeClass('active');
         if (GSC.modals.length) {
@@ -378,7 +380,6 @@
         }
         // return if we already have AudioContext
         if (GSC.audioctx) return;
-
         // get AudioContext with hinting
         if (!GSC.audioctx) {
           try {
