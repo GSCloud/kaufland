@@ -256,12 +256,18 @@
       $('#comm').removeClass('hidden').fadeOut('slow');
     }
 
-    // GSC.D() - add text to debug list
+    // GSC.D() - add text to debug list (string)
     if (typeof GSC.D !== "function") GSC.D = function(x) {
       if (x === undefined) return;
       var current = new Date();
       var t = current.toLocaleTimeString(); 
       $('#debuglist').prepend('<p><span class="green-text">' + t + '</span>&nbsp;' + x + '</p>');
+    }
+
+    // GSC.Vibrate() - vibration (array)
+    if (typeof GSC.Vibrate !== "function") GSC.Vibrate = function(x) {
+      if (x === undefined) return;
+      window.navigator.vibrate(x);
     }
 
     // *** DELAYED FUNCTIONS ***
