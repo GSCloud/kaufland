@@ -368,7 +368,7 @@
         else ('.nav_info').click();
       
       // click to remove modals and toasts, prepare AudioContext object (user action mandatory!)
-      $('.section,main,body').click(function () {
+      $('.section,main').click(function () {
         // update user interaction time
         GSC.lastclick = +new Date();
         $('.toast').removeClass('active');
