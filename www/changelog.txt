@@ -1,3 +1,7 @@
+24.8.2022
+=========
++ UI: PIN (zatím pouze HTML elementy)
+
 23.8.2022
 =========
 + fn: GSC.Vibrate()

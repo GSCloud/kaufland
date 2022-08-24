@@ -162,7 +162,24 @@
 <div id="user" class="white-text hidden section">
   <div class="center-align padding">
     <h4 class="center-align" tabindex="-1">{{ l.tit_user }}</h4>
-    <div class="left-align padding" tabindex="-1">
+    <div class="left-align no-padding" tabindex="-1">
+      <div class="row">
+        <div class="col s6">
+          <div class="small field label prefix border">
+            <i>password</i>
+            <input id="pin" type="password">
+            <label>PIN</label>
+          </div>
+        </div>
+        <div class="col s6">
+          <button class="responsive sendpin">
+            <i>send</i>
+          </button>
+        </div>
+      </div>
+      <div class="center padding">
+        Pro účely demoverze zadejte PIN "<b>demo</b>".
+      </div>
       {{^user.id}}
       <div class="container">
         <div class="row">
@@ -174,7 +191,7 @@
         </div>
       </div>
       {{/user.id}}
-      <div class="center-align padding" tabindex="-1">
+      <div class="center-align small-padding" tabindex="-1">
         <span id="role_row" class="hidden">role: <b id="role"></b><br></span>
         <span id="login_type_row" class="hidden">typ přihlášení: <b id="login_type"></b><br></span>
         <span id="security_level_row" class="hidden">úroveň zabezpečení: <b id="security_level"></b><br>
