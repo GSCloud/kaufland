@@ -73,11 +73,12 @@ l:
   title: "LAHVÁRNA"
   txt_date: "datum vydání:"
   txt_version: "verze:"
-  webshare_button: "<i>share</i>&nbsp;&nbsp;sdílej"
+  webshare_button: "<i>share</i>&nbsp;&nbsp;SDÍLEJ"
   security_level_high: "vysoká"
   security_level_low: "nízká"
   security_level_none: "žádná / TLS"
   security_level_pin: "PIN"
+  save_pin: "💾&nbsp;&nbsp;ULOŽIT"
   
 swpreload: [
   '/sfx/laser.mp3'
