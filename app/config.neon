@@ -73,7 +73,7 @@ l:
   title: "LAHVÁRNA"
   txt_date: "datum vydání:"
   txt_version: "verze:"
-  webshare_button: "<i>share</i>&nbsp;&nbsp;SDÍLEJ"
+  webshare_button: "<i>share</i>&nbsp;&nbsp;sdílet!"
   security_level_high: "vysoká"
   security_level_low: "nízká"
   security_level_none: "žádná / TLS"
