@@ -164,7 +164,7 @@
         GSC.modals.push('appinfo_modal');
       });
 
-      // update
+      // application update
       $('.nav_update').click(function () {
         if (GSC.offline) {
           setTimeout(function () {
@@ -174,6 +174,23 @@
         }
         location.replace("?nonce={{ nonce }}");
       });
+
+      // save PIN
+      $('.save_pin').click(function () {
+        GSC.pin = $('#pin').val().toLowerCase().trim();
+        localStorage["pin"] = GSC.pin;
+        GSC.D('PIN saved');
+      });
+
+      // PIN focus in
+      $('#pin').focus(function () {
+        $('#pin').attr('type', 'text');
+      })
+
+      // PIN focus out
+      $('#pin').focusout(function () {
+        $('#pin').attr('type', 'password');
+      })
 
       // API
       $('.nav_api').click(function () {
@@ -420,6 +437,12 @@
       $('.sfx').prop('checked', localStorage["sfx"] == "true");
       $('.ui').prop('checked', localStorage["ui"] == "true");
       $('.vibrate').prop('checked', localStorage["vibrate"] == "true");
+
+      // PIN
+      if (localStorage['pin'] && localStorage['pin'].length) {
+        GSC.pin = localStorage['pin'];
+        $('#pin').val(GSC.pin);
+      }
 
       // GSC properties
       GSC.music = parseBool(localStorage["music"]);
