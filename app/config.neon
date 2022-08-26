@@ -79,6 +79,7 @@ l:
   security_level_none: "žádná / TLS"
   security_level_pin: "PIN"
   save_pin: "💾&nbsp;&nbsp;ULOŽIT"
+  info_pin_saved: "PIN uložen!"
   
 swpreload: [
   '/sfx/laser.mp3'

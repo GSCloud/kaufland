@@ -180,6 +180,9 @@
         GSC.pin = $('#pin').val().toLowerCase().trim();
         localStorage["pin"] = GSC.pin;
         GSC.D('PIN saved');
+        setTimeout(function () {
+          $('#pin_saved').addClass('active');
+        }, 10);
       });
 
       // PIN focus in
