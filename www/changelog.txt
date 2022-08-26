@@ -1,6 +1,10 @@
+26.8.2022
+=========
++ ukládání PIN do local storage
+
 24.8.2022
 =========
-+ UI: PIN (zatím pouze HTML elementy)
++ UI: PIN
 
 23.8.2022
 =========
