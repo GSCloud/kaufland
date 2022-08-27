@@ -374,6 +374,7 @@
         });
       }
       getUser();
+
       // GSC.GetUser() - get user information and set UI elements
       if (typeof GSC.GetUser !== "function") GSC.GetUser = function() {
         getUser();
@@ -405,6 +406,7 @@
         });
       }
       getSalt();
+
       // GSC.GetSalt() - get salt information
       if (typeof GSC.GetSalt !== "function") GSC.GetSalt = function() {
         getSalt();
@@ -428,6 +430,7 @@
           w.location.href = '/err/600';
         }
       }
+
       // GSC.GetAPIkey() - get API key information
       if (typeof GSC.GetAPIkey !== "function") GSC.GetAPIkey = function() {
         getAPIkey();
