@@ -164,9 +164,10 @@
         GSC.modals.push('appinfo_modal');
       });
 
-      // application update
+      // app update
       $('.nav_update').click(function () {
         if (GSC.offline) {
+          // toast
           setTimeout(function () {
             $('#err_connection').addClass('active');
           }, 10);
@@ -176,18 +177,39 @@
       });
 
       // save PIN
-      $('.save_pin').click(function () {
+      $('button.save_pin').click(function () {
         GSC.pin = $('#pin').val().toLowerCase().trim();
         localStorage["pin"] = GSC.pin;
-        GSC.D('PIN saved');
+        $('#pin').val(GSC.pin);
+        GSC.D('<b>PIN</b> saved');
+        GSC.PlaySound('click4');
+        // toast
         setTimeout(function () {
           $('#pin_saved').addClass('active');
         }, 10);
+        // no PIN - no fun
+        if (!GSC.pin.length) {
+          GSC.apikey = null;
+          return;
+        }
+        // get SHA-256 hash of the PIN
+        try {
+          sha256(GSC.pin).then(function (hash) {
+            if (hash.length) {
+              GSC.apikey = hash;
+              GSC.D('<b>API</b> key saved: ' + GSC.apikey);
+            }
+          });
+        } catch(e) {
+          // unsupported browser
+          w.location.href = '/err/600';
+        }
       });
 
       // PIN focus in
       $('#pin').focus(function () {
         $('#pin').attr('type', 'text');
+        $('.toast').removeClass('active');
       })
 
       // PIN focus out
@@ -198,6 +220,7 @@
       // API
       $('.nav_api').click(function () {
         if (GSC.offline) {
+          // toast
           setTimeout(function () {
             $('#err_connection').addClass('active');
           }, 10);
@@ -209,6 +232,7 @@
       // changelog
       $('.nav_changelog').click(function () {
         if (GSC.offline) {
+          // toast
           setTimeout(function () {
             $('#err_connection').addClass('active');
           }, 10);
@@ -387,7 +411,8 @@
       if (localStorage['navigation']) $('.' + localStorage['navigation']).click();
         else ('.nav_info').click();
       
-      // click to remove modals and toasts, prepare AudioContext object (user action mandatory!)
+      // remove modals and toasts on every click
+      // prepare AudioContext object (preceding user action is mandatory!)
       $('.section,main').click(function () {
         // update user interaction time
         GSC.lastclick = +new Date();
@@ -400,7 +425,8 @@
         }
         // return if we already have AudioContext
         if (GSC.audioctx) return;
-        // get AudioContext with hinting
+
+        // try to get AudioContext with hinting
         if (!GSC.audioctx) {
           try {
             GSC.audioctx = new AudioContext({
@@ -412,7 +438,8 @@
             console.log("AudioContext error:", e);
           }
         }
-        // get AudioContext without hinting
+
+        // try to get AudioContext without hinting
         if (!GSC.audioctx) {
           try {
             GSC.audioctx = new AudioContext();
@@ -421,6 +448,7 @@
             console.log("AudioContext error:", e);
           }
         }
+
         // preload sounds
         loadSound([
           'laser',
@@ -490,13 +518,12 @@
       // SHA-256 self-test
       try {
         sha256('hash test').then(function (hash) {
-            if (hash == 'cd5e9b1a6c3c37593b8b622b2921ee5320944192acb48b55155cbe8d32dc5ea1') {
-              GSC.D('<b>SHA-256 self-test 😄</b>');
-            } else {
-              w.location.href = '/err/600';
-            }
+          if (hash == 'cd5e9b1a6c3c37593b8b622b2921ee5320944192acb48b55155cbe8d32dc5ea1') {
+            GSC.D('<b>SHA-256 self-test 😄</b>');
+          } else {
+            w.location.href = '/err/600';
           }
-        );
+        });
       } catch(e) {
         // unsupported browser
         w.location.href = '/err/600';
