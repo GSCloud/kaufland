@@ -122,6 +122,18 @@ class ApiPresenter extends APresenter
             return $this->writeJsonData($data, $extras);
             break;
 
+        case "GetSalt":
+            $today = date('Y-m-d');
+            $data = [
+                "salt" => hash(
+                    'sha256', hash('sha256', $today)
+                    . $this->getData('daily_salt_seed')
+                ),
+                "today" => $today,
+            ];
+            return $this->writeJsonData($data, $extras);
+            break;
+
         case "GetChangeLog":
             $log = file_get_contents(WWW . '/changelog.txt');
             $log = preg_replace('/\n=+\n/', '<hr>', $log);

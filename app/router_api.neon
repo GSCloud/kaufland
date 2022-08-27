@@ -9,6 +9,17 @@ GetVersion:
   finished: true
   presenter: api
 
+GetSalt:
+  path: "/api/v1/GetSalt"
+  method: GET
+  api_description: "Get daily salt"
+  api_info: "Returns (JSON): array[salt (string), today (string)]"
+  api: true
+  assert_json: true
+  assert_httpcode: 200
+  finished: true
+  presenter: api
+
 GetChangeLog:
   path: "/api/v1/GetChangeLog"
   method: GET

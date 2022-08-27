@@ -248,6 +248,10 @@
     GSC.modals = [];
     // audio buffers
     GSC.sfxbuffers = [];
+    // today date
+    GSC.today = null;
+    // today salt
+    GSC.salt = null;
 
     // API translations
     var security_levels = {};
@@ -376,6 +380,33 @@
         getUser();
       }
 
+      // get daily salt
+      function getSalt() {
+        var d = new Date();
+        var dd = d.getDate();
+        var mm = d.getMonth() + 1; 
+        var yyyy = d.getFullYear();
+        if (dd < 10) dd = '0' + dd; 
+        if (mm < 10) mm = '0' + mm; 
+        var d = yyyy + '-' + mm + '-' + dd;
+        if (GSC.today && GSC.today == d) return;
+        if (GSC.offline) return;
+        var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
+        $.get('/api/v1/GetSalt' + nonce, function(data) {
+          if (data && data.data && data.data.salt && data.data.today) {
+            GSC.salt = data.data.salt;
+            GSC.today = data.data.today;
+            GSC.D('<b>' + GSC.today + ' salt</b>: ' + GSC.salt);
+          }
+        });
+      }
+      getSalt();
+
+      // GSC.GetSalt() - get salt information
+      if (typeof GSC.GetSalt !== "function") GSC.GetSalt = function() {
+        getSalt();
+      }
+
       // set user information UI
       function setUserUI() {
         if (!GSC.user) return false;
@@ -409,10 +440,11 @@
       }, 30*1000);
       checkVersion();
 
-      // refresh user information every 10 mins.
+      // refresh user and salt information every 10 mins.
       setInterval(function() {
         GSC.user = null;
         getUser();
+        getSalt();
       }, 600*1000);
     });
 

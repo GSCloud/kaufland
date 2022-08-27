@@ -194,9 +194,9 @@
         setTimeout(function () {
           $('#pin_saved').addClass('active');
         }, 10);
-        // get SHA-256 hash of the PIN
+        // get SHA-256 hash of the PIN + salt
         try {
-          sha256(GSC.pin).then(function (hash) {
+          sha256(GSC.pin + GSC.salt).then(function (hash) {
             if (hash.length == 64) {
               GSC.apikey = hash;
               localStorage['apikey'] = GSC.apikey;
@@ -414,6 +414,11 @@
         if (GSC.music) {
           alert('🎹 not implemented!');
         }
+      });
+
+      // navigation click - remove all toasts
+      $('nav').click(function () {
+        $('.toast').removeClass('active');
       });
 
       // OTHER HANDLERS AND RUNTIME
