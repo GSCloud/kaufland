@@ -1,6 +1,7 @@
 27.8.2022
 =========
-+ generování API klíče z PINu a soli
++ generování API klíče z PINu a denní soli, kterou poskytuje backend
++ API: GetSalt
 + fn: GSC.GetSalt()
 + GSC.apikey
 + GSC.today
