@@ -240,16 +240,22 @@
 
     // AudioContext
     GSC.audioctx = null;
+
     // last interaction time
     GSC.lastclick = null
+
     // user information
     GSC.user = null;
+
     // list of modals
     GSC.modals = [];
+
     // audio buffers
     GSC.sfxbuffers = [];
+
     // today date
     GSC.today = null;
+
     // today salt
     GSC.salt = null;
 
@@ -389,7 +395,7 @@
         var yyyy = d.getFullYear();
         if (dd < 10) dd = '0' + dd; 
         if (mm < 10) mm = '0' + mm; 
-        var d = yyyy + '-' + mm + '-' + dd;
+        d = yyyy + '-' + mm + '-' + dd;
         if (GSC.today && GSC.today == d) {
           GSC.D('<b>' + GSC.today + ' salt</b> ' + GSC.salt);
           return;
@@ -421,8 +427,8 @@
           sha256(GSC.pin + GSC.salt).then(function (hash) {
             if (hash.length == 64) {
               GSC.apikey = hash;
-              localStorage['apikey'] = GSC.apikey;
-              GSC.D('<b>API key</b> ' + GSC.apikey);
+              localStorage['apikey'] = hash;
+              GSC.D('<b>API key</b> ' + hash);
             }
           });
         } catch(e) {
