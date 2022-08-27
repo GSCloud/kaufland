@@ -374,7 +374,6 @@
         });
       }
       getUser();
-
       // GSC.GetUser() - get user information and set UI elements
       if (typeof GSC.GetUser !== "function") GSC.GetUser = function() {
         getUser();
@@ -397,14 +396,33 @@
             GSC.salt = data.data.salt;
             GSC.today = data.data.today;
             GSC.D('<b>' + GSC.today + ' salt</b> ' + GSC.salt);
+            GSC.GetAPIkey();
           }
         });
       }
       getSalt();
-
       // GSC.GetSalt() - get salt information
       if (typeof GSC.GetSalt !== "function") GSC.GetSalt = function() {
         getSalt();
+      }
+
+      // GSC.GetAPIkey() - get API key information
+      if (typeof GSC.GetAPIkey !== "function") GSC.GetAPIkey = function() {
+        if (!GSC.pin) return false;
+        if (!GSC.salt) return false;
+        // get SHA-256 hash of PIN + salt
+        try {
+          sha256(GSC.pin + GSC.salt).then(function (hash) {
+            if (hash.length == 64) {
+              GSC.apikey = hash;
+              localStorage['apikey'] = GSC.apikey;
+              GSC.D('<b>API key</b> ' + GSC.apikey);
+            }
+          });
+        } catch(e) {
+          // unsupported browser
+          w.location.href = '/err/600';
+        }
       }
 
       // set user information UI

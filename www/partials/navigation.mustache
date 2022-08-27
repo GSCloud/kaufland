@@ -184,7 +184,7 @@
         localStorage["pin"] = GSC.pin;
         $('#pin').val(GSC.pin);
         GSC.PlaySound('click4');
-        // no PIN - no fun
+        // no PIN, no fun
         if (!GSC.pin.length) {
           GSC.apikey = null;
           return;
@@ -194,19 +194,7 @@
         setTimeout(function () {
           $('#pin_saved').addClass('active');
         }, 10);
-        // get SHA-256 hash of the PIN + salt
-        try {
-          sha256(GSC.pin + GSC.salt).then(function (hash) {
-            if (hash.length == 64) {
-              GSC.apikey = hash;
-              localStorage['apikey'] = GSC.apikey;
-              GSC.D('<b>API</b> key ' + GSC.apikey);
-            }
-          });
-        } catch(e) {
-          // unsupported browser
-          w.location.href = '/err/600';
-        }
+        GSC.GetAPIkey();
       });
 
       // PIN focus in
@@ -427,6 +415,7 @@
       if (localStorage['navigation']) $('.' + localStorage['navigation']).click();
         else ('.nav_info').click();
       
+
       // remove modals and toasts on every click
       // prepare AudioContext object (preceding user action is mandatory!)
       $('.section,main').click(function () {
