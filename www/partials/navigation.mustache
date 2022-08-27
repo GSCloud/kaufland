@@ -107,12 +107,14 @@
       // set UI mode
       function setUImode() {
         if (parseBool(localStorage["ui"])) {
-          ui("mode", "light");
-          $(".white-text").removeClass('white-text').addClass('black-text');
+          GSC.ui = 'light';
+          ui('mode', 'light');
+          $('.white-text').removeClass('white-text').addClass('black-text');
           $('#debuglist').addClass('white-text');
         } else {
-          ui("mode", "dark");
-          $(".black-text").removeClass('black-text').addClass('white-text');
+          GSC.ui = 'dark';
+          ui('mode', 'dark');
+          $('.black-text').removeClass('black-text').addClass('white-text');
           $('#debuglist').addClass('white-text');
         }
       }
@@ -478,13 +480,18 @@
       $('.ui').prop('checked', localStorage["ui"] == "true");
       $('.vibrate').prop('checked', localStorage["vibrate"] == "true");
 
-      // PIN
+      // set PIN
       if (localStorage['pin'] && localStorage['pin'].length) {
         GSC.pin = localStorage['pin'];
         $('#pin').val(GSC.pin);
       }
 
-      // GSC properties
+      // set API key
+      if (localStorage['apikey'] && (localStorage['apikey'].length == 64)) {
+        GSC.apikey = localStorage['apikey'];
+      }
+
+      // set GSC settings properties
       GSC.music = parseBool(localStorage["music"]);
       GSC.sfx = parseBool(localStorage["sfx"]);
       GSC.vibrate = parseBool(localStorage["vibrate"]);

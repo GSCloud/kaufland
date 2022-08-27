@@ -2,10 +2,12 @@
 =========
 + generování API klíče
 + GSC.apikey
++ GSC.ui
 
 26.8.2022
 =========
 + ukládání PIN do local storage
++ GSC.pin
 
 24.8.2022
 =========
