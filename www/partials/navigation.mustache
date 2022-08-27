@@ -178,7 +178,7 @@
         location.replace("?nonce={{ nonce }}");
       });
 
-      // save PIN
+      // save PIN / API key
       $('button.save_pin').click(function () {
         GSC.pin = $('#pin').val().toLowerCase().trim();
         localStorage["pin"] = GSC.pin;
@@ -200,7 +200,7 @@
             if (hash.length == 64) {
               GSC.apikey = hash;
               localStorage['apikey'] = GSC.apikey;
-              GSC.D('<b>API</b> key saved: ' + GSC.apikey);
+              GSC.D('<b>API</b> key: ' + GSC.apikey);
             }
           });
         } catch(e) {
