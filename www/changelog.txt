@@ -3,11 +3,10 @@
 + generování API klíče z PINu a soli
 + API: GetSalt
 + fn: GSC.GetSalt()
++ fn: getSalt(), private
 + fn: GSC.GetAPIkey()
-+ GSC.apikey
-+ GSC.today
-+ GSC.salt
-+ GSC.ui
++ fn: getAPIkey(), private
++ GSC.apikey, GSC.today, GSC.salt, GSC.ui
 
 26.8.2022
 =========
@@ -26,8 +25,7 @@
 =========
 + fn: GSC.PlaySound()
 + GSC.lastclick - poslední interakce uživatele (scroll, klik)
-+ vylepšený updater
-+ vylepšený přehled změn
++ vylepšený updater a přehled změn
 
 21.8.2022
 =========
