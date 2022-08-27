@@ -458,12 +458,12 @@
       }, 30*1000);
       checkVersion();
 
-      // refresh user and salt information every 10 mins.
+      // refresh user and salt information
       setInterval(function() {
         GSC.user = null;
-        getUser();
         getSalt();
-      }, 600*1000);
+        getUser();
+      }, 60*1000);
     });
 
     // UI theme
