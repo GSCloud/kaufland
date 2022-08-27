@@ -381,6 +381,7 @@
 
       // get daily salt
       function getSalt() {
+        // compute today date
         var d = new Date();
         var dd = d.getDate();
         var mm = d.getMonth() + 1; 
@@ -388,7 +389,10 @@
         if (dd < 10) dd = '0' + dd; 
         if (mm < 10) mm = '0' + mm; 
         var d = yyyy + '-' + mm + '-' + dd;
-        if (GSC.today && GSC.today == d) return;
+        if (GSC.today && GSC.today == d) {
+          GSC.D('<b>' + GSC.today + ' salt</b> ' + GSC.salt);
+          return;
+        }
         if (GSC.offline) return;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetSalt' + nonce, function(data) {
@@ -406,8 +410,8 @@
         getSalt();
       }
 
-      // GSC.GetAPIkey() - get API key information
-      if (typeof GSC.GetAPIkey !== "function") GSC.GetAPIkey = function() {
+      // get API key
+      function getAPIkey() {
         if (!GSC.pin) return false;
         if (!GSC.salt) return false;
         // get SHA-256 hash of PIN + salt
@@ -423,6 +427,10 @@
           // unsupported browser
           w.location.href = '/err/600';
         }
+      }
+      // GSC.GetAPIkey() - get API key information
+      if (typeof GSC.GetAPIkey !== "function") GSC.GetAPIkey = function() {
+        getAPIkey();
       }
 
       // set user information UI
