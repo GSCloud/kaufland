@@ -12,7 +12,7 @@ GetVersion:
 GetSalt:
   path: "/api/v1/GetSalt"
   method: GET
-  api_description: "Get daily salt"
+  api_description: "Get salt"
   api_info: "Returns (JSON): array[salt (string), today (string)]"
   api: true
   assert_json: true

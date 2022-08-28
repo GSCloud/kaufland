@@ -43,6 +43,7 @@ class ApiPresenter extends APresenter
     public function process()
     {
         \setlocale(LC_ALL, 'cs_CZ.utf8');
+        \error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 
         $cfg = $this->getCfg();
         $d = $this->getData();
@@ -125,16 +126,16 @@ class ApiPresenter extends APresenter
         case "GetSalt":
             $today = date('Y-m-d');
             $data = [
-                "salt" => hash(
-                    'sha256', hash('sha256', $today)
-                    . $this->getData('daily_salt_seed')
-                ),
-                "today" => $today,
+                "salt" => $this->getSalt(),
+                "today" => $this->getToday(),
             ];
             return $this->writeJsonData($data, $extras);
             break;
 
         case "GetChangeLog":
+            if (!file_exists(WWW . '/changelog.txt')) {
+                return ErrorPresenter::getInstance()->process(500);
+            }
             $log = file_get_contents(WWW . '/changelog.txt');
             $log = preg_replace('/\n=+\n/', '<hr>', $log);
             $log = preg_replace('/([0-9]+\.[0-9]+\.[0-9]+)/', '<b>$1</b>', $log);
@@ -166,6 +167,33 @@ class ApiPresenter extends APresenter
     }
 
     /**
+     * Get current date
+     *
+     * @return string current date as YYYY-MM-DD
+     */
+    public function getToday()
+    {
+        return date('Y-m-d');
+    }
+
+    /**
+     * Get daily salt
+     *
+     * @return string salt as SHA-256 hash
+     */
+    public function getSalt()
+    {
+        return hash(
+            'sha256',
+            hash(
+                'sha256',
+                $this->getToday()
+            )
+            . $this->getData('daily_salt_seed') ?? 'RandomSaltSeed'
+        );
+    }
+
+    /**
      * Redis access limiter
      *
      * @return mixed access count or null
@@ -175,6 +203,7 @@ class ApiPresenter extends APresenter
         $hour = date("H");
         $uid = $this->getUID();
         $key = "access_limiter_" . SERVER . "_" . PROJECT . "_${hour}_${uid}";
+        \error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
         $redis = new RedisClient(
             [
             'server' => 'localhost:6377',
