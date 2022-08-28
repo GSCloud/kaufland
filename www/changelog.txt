@@ -1,6 +1,6 @@
 28.8.2022
 =========
-+ vypnutý autocomplete
++ vypnutý INPUT autocomplete
 
 27.8.2022
 =========
@@ -10,7 +10,10 @@
 + fn: getSalt(), private
 + fn: GSC.GetAPIkey()
 + fn: getAPIkey(), private
-+ GSC.apikey, GSC.today, GSC.salt, GSC.ui
++ GSC.apikey - API klíč
++ GSC.salt - denní sůl
++ GSC.today - dnešní datum
++ GSC.ui - režim UI
 
 26.8.2022
 =========
