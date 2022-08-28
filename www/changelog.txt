@@ -1,3 +1,7 @@
+28.8.2022
+=========
++ vypnutý autocomplete
+
 27.8.2022
 =========
 + generování API klíče z PINu a soli
