@@ -178,23 +178,22 @@
         location.replace("?nonce={{ nonce }}");
       });
 
-      // save PIN / API key
+      // save PIN / generate API key
       $('button.save_pin').click(function () {
         GSC.pin = $('#pin').val().toLowerCase().trim();
         localStorage["pin"] = GSC.pin;
         $('#pin').val(GSC.pin);
         GSC.PlaySound('click4');
-        // no PIN, no fun
+        // no PIN - no fun
         if (!GSC.pin.length) {
           GSC.apikey = null;
           return;
         }
-        GSC.D('<b>PIN</b> saved');
         // toast
         setTimeout(function () {
           $('#pin_saved').addClass('active');
         }, 10);
-        GSC.GetAPIkey();
+        GSC.GenerateAPIkey();
       });
 
       // PIN focus in

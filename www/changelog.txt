@@ -1,24 +1,28 @@
+29.8.2022
+=========
++ nový formát changelogu
+
 28.8.2022
 =========
-+ vypnutý INPUT autocomplete
++ INPUT autocomplete off
 
 27.8.2022
 =========
++ [API] GetSalt
++ [fn,priv] generateAPIkey()
++ [fn,priv] getSalt()
++ [fn] GSC.GenerateAPIkey() - generování API klíče z PINu a soli
++ [fn] GSC.GetSalt() - stažení denní soli
++ [var] GSC.apikey - API klíč
++ [var] GSC.salt - sůl
++ [var] GSC.today - datum soli
++ [var] GSC.ui - režim UI
 + generování API klíče z PINu a soli
-+ API: GetSalt
-+ fn: GSC.GetSalt()
-+ fn: getSalt(), private
-+ fn: GSC.GetAPIkey()
-+ fn: getAPIkey(), private
-+ GSC.apikey - API klíč
-+ GSC.salt - denní sůl
-+ GSC.today - dnešní datum
-+ GSC.ui - režim UI
 
 26.8.2022
 =========
++ [var] GSC.pin
 + ukládání PIN do local storage
-+ GSC.pin
 
 24.8.2022
 =========
@@ -26,32 +30,32 @@
 
 23.8.2022
 =========
-+ fn: GSC.Vibrate()
++ [fn] GSC.Vibrate() - mobilní vibrace
 
 22.8.2022
 =========
-+ fn: GSC.PlaySound()
-+ GSC.lastclick - poslední interakce uživatele (scroll, klik)
++ [fn] GSC.PlaySound()
++ [var] GSC.lastclick - poslední interakce uživatele
 + vylepšený updater a přehled změn
 
 21.8.2022
 =========
++ [fn,priv] loadSound()
 + optimalizace zvukového engine
-+ fn: loadSound(), private
 
 19.8.2022
 =========
-+ fn: playSound(), private
-+ GSC.sfxbuffers - zvukové buffery
-+ GSC.audioctx - AudioContext
++ [fn,priv] playSound()
++ [var] GSC.audioctx - AudioContext
++ [var] GSC.sfxbuffers - zvukové buffery
 
 16.8.2022
 =========
-+ disable context menu (mobile long press)
-+ fn: setUserUI(), private
-+ SHA-256 self-test
-+ network error notification
 + Dev Console: delayed function names 
++ SHA-256 self-test
++ [fn,priv] setUserUI()
++ disable context menu (mobile long press)
++ network error notification
 
 15.8.2022
 =========
@@ -60,65 +64,63 @@
 
 14.8.2022
 =========
-+ změny v UI
 + API tlačítko
 + informace o cookies
 
 12.8.2022
 =========
-+ fn: checkVersion(), private
++ [fn,priv] checkVersion()
 + modal changelog
 
 11.8.2022
 =========
-+ fn: getUser(), private
-+ fn: GSC.GetUser()
-+ GSC.user - informace o uživateli
-+ nová API roadmap
++ [fn,priv] getUser()
++ [fn] GSC.GetUser()
++ [var] GSC.user - informace o uživateli
++ aktualizace API roadmap
 
 9.8.2022
 ========
-+ API: GetChangeLog
++ [API] GetChangeLog
 
 8.8.2022
 ========
-+ fn: GSC.D()
-+ TESTER: debug list
 + Google avatar
++ [TESTER] debug list
++ [fn] GSC.D() - debugger message
 
 5.8.2022
 ========
-+ API: GetUser
++ [API] GetUser
 
 2.8.2022
 ========
-+ fn: GSC.ComOn()
-+ fn: GSC.ComOff()
-+ API: GetVersion
-+ XHR event handlers
 + XHR comm icon
++ XHR event handlers
++ [API] GetVersion
++ [TESTER] test SFX
++ [fn] GSC.ComOff()
++ [fn] GSC.ComOn()
 + notifikace nové verze / test každých 30 sec.
-+ TESTER: test SFX
 
 28.7.2022
 =========
 + Vibrate API
 + WebAudio API
-+ fn: parseBool()
-+ VFX
++ [TESTER] test VIBRACE
++ [fn] parseBool()
 + karta Nastavení
 + základní barva "Kaufland rudá"
-+ TESTER: test VIBRACE
 
 27.7.2022
 =========
 + WebShare API
++ [TESTER] tlačítko "CSS debugger" v kartě Uživatel
 + skupiny uživatelů: admin, lahvař, tester
-+ TESTER: tlačítko "CSS debugger" v kartě Uživatel
 
 26.7.2022
 =========
-+ základní responzivní Beercss UI
-+ informační modal box pod ikonou K
-+ aktualizace PWA
 + Google OAuth 2.0 login
++ aktualizace PWA
++ informační modal box pod ikonou K
++ základní responzivní Beercss UI

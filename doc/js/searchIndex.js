@@ -16,6 +16,16 @@ Search.appendIndex(
             "summary": "Check\u0020REST\u0020API\u0020key\u0020validity",
             "url": "classes/GSC-ApiPresenter.html#method_checkKey"
         },                {
+            "fqsen": "\\GSC\\ApiPresenter\u003A\u003AgetToday\u0028\u0029",
+            "name": "getToday",
+            "summary": "Get\u0020current\u0020date",
+            "url": "classes/GSC-ApiPresenter.html#method_getToday"
+        },                {
+            "fqsen": "\\GSC\\ApiPresenter\u003A\u003AgetSalt\u0028\u0029",
+            "name": "getSalt",
+            "summary": "Get\u0020daily\u0020salt",
+            "url": "classes/GSC-ApiPresenter.html#method_getSalt"
+        },                {
             "fqsen": "\\GSC\\ApiPresenter\u003A\u003AaccessLimiter\u0028\u0029",
             "name": "accessLimiter",
             "summary": "Redis\u0020access\u0020limiter",

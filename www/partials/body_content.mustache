@@ -407,7 +407,7 @@
             GSC.salt = data.data.salt;
             GSC.today = data.data.today;
             GSC.D('<b>' + GSC.today + ' salt</b> ' + GSC.salt);
-            GSC.GetAPIkey();
+            GSC.GenerateAPIkey();
           }
         });
       }
@@ -419,7 +419,7 @@
       }
 
       // get API key
-      function getAPIkey() {
+      function generateAPIkey() {
         if (!GSC.pin) return false;
         if (!GSC.salt) return false;
         // get SHA-256 hash of PIN + salt
@@ -437,9 +437,9 @@
         }
       }
 
-      // GSC.GetAPIkey() - get API key information
-      if (typeof GSC.GetAPIkey !== "function") GSC.GetAPIkey = function() {
-        getAPIkey();
+      // GSC.GenerateAPIkey() - get API key information
+      if (typeof GSC.GenerateAPIkey !== "function") GSC.GenerateAPIkey = function() {
+        generateAPIkey();
       }
 
       // set user information UI
