@@ -158,7 +158,6 @@ class ApiPresenter extends APresenter
             $log = implode('<br>', $log);
             $log = preg_replace('/\n=+\n/', '<hr>', $log);
             $log = preg_replace('/([0-9]+\.[0-9]+\.[0-9]+)/', '<b>$1</b>', $log);
-            //$log = str_replace("\n", '<br>', $log);
             $data = [
                 "changelog" => $log,
             ];
