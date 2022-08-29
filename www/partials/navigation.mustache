@@ -183,12 +183,12 @@
         GSC.pin = $('#pin').val().toLowerCase().trim();
         localStorage["pin"] = GSC.pin;
         $('#pin').val(GSC.pin);
-        GSC.PlaySound('click4');
         // no PIN - no fun
         if (!GSC.pin.length) {
           GSC.apikey = null;
           return;
         }
+        GSC.PlaySound('click4');
         // toast
         setTimeout(function () {
           $('#pin_saved').addClass('active');
