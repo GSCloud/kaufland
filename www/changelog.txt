@@ -1,6 +1,6 @@
 29.8.2022
 =========
-+ nový formát changelogu
++ barevný formát changelogu
 
 28.8.2022
 =========
@@ -12,10 +12,10 @@
 + [fn,priv] generateAPIkey()
 + [fn,priv] getSalt()
 + [fn] GSC.GenerateAPIkey() - generování API klíče z PINu a soli
-+ [fn] GSC.GetSalt() - stažení denní soli
-+ [var] GSC.apikey - API klíč
-+ [var] GSC.salt - sůl
-+ [var] GSC.today - datum soli
++ [fn] GSC.GetSalt() - stažení soli
++ [var] GSC.apikey - API key
++ [var] GSC.salt - salt
++ [var] GSC.today - salt date
 + [var] GSC.ui - režim UI
 + generování API klíče z PINu a soli
 
@@ -75,7 +75,7 @@
 11.8.2022
 =========
 + [fn,priv] getUser()
-+ [fn] GSC.GetUser()
++ [fn] GSC.GetUser() - stažení informací o uživateli
 + [var] GSC.user - informace o uživateli
 + aktualizace API roadmap
 
@@ -99,9 +99,9 @@
 + XHR event handlers
 + [API] GetVersion
 + [TESTER] test SFX
-+ [fn] GSC.ComOff()
-+ [fn] GSC.ComOn()
-+ notifikace nové verze / test každých 30 sec.
++ [fn] GSC.ComOff() - vypnutí kom. ikony
++ [fn] GSC.ComOn() - zapnutí kom. ikony
++ test / notifikace nové verze
 
 28.7.2022
 =========

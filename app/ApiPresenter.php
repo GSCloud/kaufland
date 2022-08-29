@@ -136,10 +136,29 @@ class ApiPresenter extends APresenter
             if (!file_exists(WWW . '/changelog.txt')) {
                 return ErrorPresenter::getInstance()->process(500);
             }
-            $log = file_get_contents(WWW . '/changelog.txt');
+            $log = file(WWW . '/changelog.txt');
+            foreach ($log as $k => $v) {
+                $v = trim($v);
+                if (strpos($v, '[var]')) {
+                    $log[$k] = "<span class=yellow10>$v</span>";
+                }
+                if (strpos($v, '[fn]')) {
+                    $log[$k] = "<span class=blue8>$v</span>";
+                }
+                if (strpos($v, '[fn,priv]')) {
+                    $log[$k] = "<span class=indigo10>$v</span>";
+                }
+                if (strpos($v, '[API]')) {
+                    $log[$k] = "<span class=green6>$v</span>";
+                }
+                if (strpos($v, '[TESTER]')) {
+                    $log[$k] = "<span class=teal10>$v</span>";
+                }
+            }
+            $log = implode('<br>', $log);
             $log = preg_replace('/\n=+\n/', '<hr>', $log);
             $log = preg_replace('/([0-9]+\.[0-9]+\.[0-9]+)/', '<b>$1</b>', $log);
-            $log = str_replace("\n", '<br>', $log);
+            //$log = str_replace("\n", '<br>', $log);
             $data = [
                 "changelog" => $log,
             ];
@@ -157,11 +176,11 @@ class ApiPresenter extends APresenter
     /**
      * Check REST API key validity
      *
-     * @param [string] $api_key REST API key
+     * @param [string] $apikey API key
      * 
      * @return true
      */
-    public function checkKey($api_key)
+    public function checkKey($apikey)
     {
         return true;
     }
@@ -189,7 +208,7 @@ class ApiPresenter extends APresenter
                 'sha256',
                 $this->getToday()
             )
-            . $this->getData('daily_salt_seed') ?? 'RandomSaltSeed'
+            . $this->getData('daily_salt_seed') ?? 'RandomSaltSeedIsInPrivateConfig'
         );
     }
 
