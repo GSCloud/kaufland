@@ -6,26 +6,26 @@ dbg: FALSE
 
 # CORE
 app: lahvarna
-date_default_timezone: "Europe/Prague"
+date_default_timezone: 'Europe/Prague'
 project: TESSERACT
 secret_cookie_key: secure.key
 version: v1
-canonical_url: "https://1950.mxd.cz/"
+canonical_url: 'https://1950.mxd.cz/'
 
 # GCP ID
-gcp_project_id: "gscloudcz-163314"
+gcp_project_id: 'gscloudcz-163314'
 
 # Google OAUTH 2.0
-goauth_origin: "https://1950.mxd.cz"
-goauth_redirect: "https://1950.mxd.cz/login"
+goauth_origin: 'https://1950.mxd.cz'
+goauth_redirect: 'https://1950.mxd.cz/login'
 
 # local Google OAUTH 2.0
-local_goauth_origin: "http://localhost:8002"
-local_goauth_redirect: "http://localhost:8002/login"
+local_goauth_origin: 'http://localhost:8002'
+local_goauth_redirect: 'http://localhost:8002/login'
 
 # Google properties
 google: [
-#  UA: "UA-xxx"
+#  UA: 'UA-xxx'
 ]
 
 # cache profiles
@@ -34,52 +34,57 @@ cache_profiles: [
 
 # CSV data
 data: [
-  texty: "2PACX-1vTDkEIbLHxadWBps7cvWNN6699wlsCB7GpwBlJ_-M_TObHnMzNG_b1jnDFu6XoVIrXjQYyepKqOTLw_"
-  lahve: "2PACX-1vQmC2JG3i-NGdqSUTyAmXBmx_5A4oanfJBEqwCDHYFMVlTSHGmQ5CpJX5gxeqaHgiLTB8NhhDLxiPu4"
-  prepravky: "2PACX-1vTVRFD-DghrRMEECMr06ZaxiP-VPMQ2_EL7wk-18mBm8LYFXnNssv97lqzHHwXH8_BEP4FvNgNDyD_C"
+  texty: '2PACX-1vTDkEIbLHxadWBps7cvWNN6699wlsCB7GpwBlJ_-M_TObHnMzNG_b1jnDFu6XoVIrXjQYyepKqOTLw_'
+  lahve: '2PACX-1vQmC2JG3i-NGdqSUTyAmXBmx_5A4oanfJBEqwCDHYFMVlTSHGmQ5CpJX5gxeqaHgiLTB8NhhDLxiPu4'
+  prepravky: '2PACX-1vTVRFD-DghrRMEECMr06ZaxiP-VPMQ2_EL7wk-18mBm8LYFXnNssv97lqzHHwXH8_BEP4FvNgNDyD_C'
 ]
 
 # locale
 lang: cs
 l:
-  author: "Fred Brooker @ GS Cloud Ltd. 2022"
-  but_api: "<i>settings_input_component</i>&nbsp;&nbsp;REST API"
-  but_changelog: "<i>grading</i>&nbsp;&nbsp;PŘEHLED ZMĚN"
-  but_update: "<i>refresh</i>&nbsp;&nbsp;AKTUALIZOVAT"
-  description: "Aplikace Chytrá lahvárna PWA je určena pro interní použití v pobočce Kauflandu Brno-Slatina."
-  err_connection: "Chyba připojení k internetu!"
-  keywords: "flašky,lahve,lahvárna,kauf,kaufland,fred,brooker,gscloud,gscloud.cz,mxd,mxd.cz,brno,pwa,recycling,bottles"
-  nav_config: "Nastavení"
-  nav_game: "Hry"
-  nav_info: "Info"
-  nav_message: "Zprávy"
-  nav_price: "Akce"
-  nav_warehouse: "Sklad"
-  no_cookies: "Aplikace nepoužívá cookies třetích stran."
-  noscript: "Povolte, prosím, JavaScript!<br>Bez něj je tato aplikace zcela nefunkční."
-  switch_design: "🔳🔲 design"
-  switch_music: "🎹 hudba"
-  switch_sfx: "🔊 zvuky"
-  switch_vibrate: "📳 vibrace"
-  theme_color: "#000"
-  tit_appinfo: "Chytrá lahvárna PWA"
-  tit_config: "Nastavení aplikace"
-  tit_game: "Kvízy a&nbsp;hry"
-  tit_info: "Informace"
-  tit_message: "Zprávy a&nbsp;logy"
-  tit_price: "Akční ceny"
-  tit_user: "Uživatel"
-  tit_warehouse: "Sklad"
-  title: "LAHVÁRNA"
-  txt_date: "datum vydání:"
-  txt_version: "verze:"
-  webshare_button: "<i>share</i>&nbsp;&nbsp;sdílej"
-  security_level_high: "vysoká"
-  security_level_low: "nízká"
-  security_level_none: "TLS"
-  security_level_pin: "PIN"
-  butt_save_pin: "💾&nbsp;&nbsp;ULOŽIT"
-  info_pin_saved: "PIN uložen!"
+  author: 'Fred Brooker @ GS Cloud Ltd. 2022'
+  but_api: '<i>settings_input_component</i>&nbsp;&nbsp;REST API'
+  but_changelog: '<i>grading</i>&nbsp;&nbsp;PŘEHLED ZMĚN'
+  but_update: '<i>refresh</i>&nbsp;&nbsp;AKTUALIZOVAT'
+  butt_save_pin: '💾&nbsp;&nbsp;ULOŽIT'
+  description: 'Aplikace Chytrá lahvárna PWA je určena pro interní použití v pobočce Kauflandu Brno-Slatina.'
+  err_connection: 'Chyba připojení k internetu!'
+  info_demo: 'Pro účely demoverze zadejte PIN "<b>demo</b>".'
+  info_pin_saved: 'PIN uložen!'
+  keywords: 'flašky,lahve,lahvárna,kauf,kaufland,fred,brooker,gscloud,gscloud.cz,mxd,mxd.cz,brno,pwa,recycling,bottles'
+  nav_config: 'Nastavení'
+  nav_game: 'Hry'
+  nav_info: 'Info'
+  nav_message: 'Zprávy'
+  nav_price: 'Akce'
+  nav_warehouse: 'Sklad'
+  no_cookies: 'Aplikace nepoužívá cookies třetích stran.'
+  noscript: 'Povolte, prosím, JavaScript!<br>Bez něj je tato aplikace zcela nefunkční.'
+  security_level_high: 'vysoká'
+  security_level_low: 'nízká'
+  security_level_none: 'TLS'
+  security_level_pin: 'PIN'
+  switch_design: '🔳🔲 design'
+  switch_music: '🎹 hudba'
+  switch_sfx: '🔊 zvuky'
+  switch_vibrate: '📳 vibrace'
+  text.encryption: 'šifrování:'
+  text_login_type: 'typ přihlášení:'
+  text_role: 'role:'
+  text_security_level: 'úroveň zabezpečení:'
+  theme_color: '#000'
+  tit_appinfo: 'Chytrá lahvárna PWA'
+  tit_config: 'Nastavení aplikace'
+  tit_game: 'Kvízy a&nbsp;hry'
+  tit_info: 'Informace'
+  tit_message: 'Zprávy a&nbsp;logy'
+  tit_price: 'Akční ceny'
+  tit_user: 'Uživatel'
+  tit_warehouse: 'Sklad'
+  title: 'LAHVÁRNA'
+  txt_date: 'datum vydání:'
+  txt_version: 'verze:'
+  webshare_button: '<i>share</i>&nbsp;&nbsp;sdílej'
   
 swpreload: [
   '/sfx/laser.mp3'
