@@ -79,8 +79,8 @@
 
     // bottom progress bar
     w.onscroll = function() {
-      // update user interaction time
       GSC.lastclick = +new Date();
+      $('.toast').removeClass('active');
       var scroll = document.body.scrollTop || document.documentElement.scrollTop;
       var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       var scrolled = (scroll / height) * 100;
@@ -418,7 +418,6 @@
       // remove modals and toasts on every click
       // prepare AudioContext object (preceding user action is mandatory!)
       $('.section,main').click(function () {
-        // update user interaction time
         GSC.lastclick = +new Date();
         $('.toast').removeClass('active');
         if (GSC.modals.length) {
