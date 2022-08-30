@@ -152,7 +152,7 @@ class ApiPresenter extends APresenter
                     $log[$k] = "<span class=green6>$v</span>";
                 }
                 if (strpos($v, '[TESTER]')) {
-                    $log[$k] = "<span class=teal10>$v</span>";
+                    $log[$k] = "<span class=teal8>$v</span>";
                 }
             }
             $log = implode('<br>', $log);
