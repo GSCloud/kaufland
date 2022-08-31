@@ -24,14 +24,14 @@ if [ -f "gulpfile.js" ]; then
   command -v gulp >/dev/null 2>&1 && gulp
 fi
 
+# prices
+wget -O akce.html 'https://www.kupi.cz/hledej?f=pivo&vse=0'
+
 # favicons recalculation
 cd www/img && . ./create_favicons.sh
 
 # CRLF normalization
 git add --renormalize .
-
-# adding new files
-git add -A
 
 # commit changes
 git commit -am "automatic update"
