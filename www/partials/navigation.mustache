@@ -203,12 +203,12 @@
       })
 
       // PIN focus out
-      $('#pin').focusout(function () {
+      $('#pin').focusout(function() {
         $('#pin').attr('type', 'password');
       })
 
       // save PIN on Enter key
-      $('#pin').keypress(function (e) {
+      $('#pin').keypress(function(e) {
         if (e.which == 13) {
           $('button.save_pin').click();
           return false;
@@ -216,7 +216,7 @@
       });
 
       // API
-      $('.nav_api').click(function () {
+      $('.nav_api').click(function() {
         if (GSC.offline) {
           // toast
           setTimeout(function () {
@@ -228,7 +228,7 @@
       });
 
       // changelog
-      $('.nav_changelog').click(function () {
+      $('.nav_changelog').click(function() {
         if (GSC.offline) {
           // toast
           setTimeout(function () {
@@ -249,13 +249,13 @@
       });
       
       // config
-      $('.nav_config').click(function () {
+      $('.nav_config').click(function() {
         setNavigation(this.className);
         $('#config').removeClass('hidden');
       });
       
       // user
-      $('.nav_user').click(function () {
+      $('.nav_user').click(function() {
         setNavigation(this.className);
         $('#user').removeClass('hidden');
         $('#avatar').addClass('large');
@@ -263,44 +263,44 @@
       });
 
       // info
-      $('.nav_info').click(function () {
+      $('.nav_info').click(function() {
         setNavigation(this.className);
         $('#info').removeClass('hidden');
       });
       
       // game
-      $('.nav_game').click(function () {
+      $('.nav_game').click(function() {
         setNavigation(this.className);
         $('#game').removeClass('hidden');
       });
       
       // message
-      $('.nav_message').click(function () {
+      $('.nav_message').click(function() {
         setNavigation(this.className);
         $('#message').removeClass('hidden');
       });
       
       // price
-      $('.nav_price').click(function () {
+      $('.nav_price').click(function() {
         setNavigation(this.className);
         $('#price').removeClass('hidden');
       });
       
       // warehouse
-      $('.nav_warehouse').click(function () {
+      $('.nav_warehouse').click(function() {
         setNavigation(this.className);
         $('#warehouse').removeClass('hidden');
       });
 
       // settings: UI
-      $('.ui').click(function () {
+      $('.ui').click(function() {
         localStorage["ui"] = $(this).is(":checked");
         setUImode();
         playSound('click4');
       });
 
       // settings: VIBRATE
-      $('.vibrate').click(function () {
+      $('.vibrate').click(function() {
         localStorage["vibrate"] = $(this).is(":checked");
         GSC.vibrate = parseBool(localStorage["vibrate"]);
         if (GSC.vibrate) {
@@ -311,7 +311,7 @@
       });
 
       // settings: SFX
-      $('.sfx').click(function () {
+      $('.sfx').click(function() {
         localStorage["sfx"] = $(this).is(":checked");
         GSC.sfx = parseBool(localStorage["sfx"]);
         setTestSfxButton();
@@ -325,7 +325,7 @@
       });
 
       // settings: MUSIC
-      $('.music').click(function () {
+      $('.music').click(function() {
         localStorage["music"] = $(this).is(":checked");
         GSC.music = parseBool(localStorage["music"]);
         setTestMusicButton();
@@ -387,24 +387,24 @@
       }
 
       // test: VIBRATE
-      $('.nav_test_vib').click(function () {
+      $('.nav_test_vib').click(function() {
         if (GSC.vibrate && GSC.Vibrate) GSC.Vibrate([100,50,100,50,100]);
       });
 
       // test: SFX
-      $('.nav_test_sfx').click(function () {
+      $('.nav_test_sfx').click(function() {
         playSound('laser');
       });
 
       // test: MUSIC
-      $('.nav_test_music').click(function () {
+      $('.nav_test_music').click(function() {
         if (GSC.music) {
           alert('🎹 not implemented!');
         }
       });
 
       // navigation click - remove all toasts
-      $('nav').click(function () {
+      $('nav').click(function() {
         $('.toast').removeClass('active');
       });
 
@@ -417,7 +417,7 @@
 
       // remove modals and toasts on every click
       // prepare AudioContext object (preceding user action is mandatory!)
-      $('.section,main').click(function () {
+      $('.section,main').click(function() {
         GSC.lastclick = +new Date();
         $('.toast').removeClass('active');
         if (GSC.modals.length) {
