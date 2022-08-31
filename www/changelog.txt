@@ -2,6 +2,7 @@
 =========
 + data "akce.html" z Kupi
 + aktualizace update.sh / sync.sh
++ oprava kódu - crash
 
 29.8.2022
 =========
