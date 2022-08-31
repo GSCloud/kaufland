@@ -125,14 +125,12 @@
         if (!$('.' + el)) return false;
         localStorage['navigation'] = el;
         $('#avatar').removeClass('large');
-
         // remove modals
         if (GSC.modals.length) {
           GSC.modals.forEach(el => {
             $('#' + el).removeClass('active');
           });
         }
-
         // compute vertical offset
         var offset = localStorage['scroll_' + el];
         if (isNaN(offset)) offset = 0;
@@ -148,8 +146,7 @@
           left: 0,
           behavior: 'smooth'
         });
-
-        // set view design
+        // set design
         $('nav i, nav div').removeClass();
         $('.section').addClass('hidden');
         $('.' + el + '>i').addClass($('.' + el + '>i').data('color')).addClass('large');
@@ -412,7 +409,7 @@
 
       // navigate to the saved state
       if (localStorage['navigation']) $('.' + localStorage['navigation']).click();
-        else ('.nav_info').click();
+        //else ('.nav_info').click();
       
 
       // remove modals and toasts on every click
