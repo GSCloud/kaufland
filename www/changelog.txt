@@ -2,7 +2,7 @@
 =========
 + data "akce.html" z Kupi
 + aktualizace update.sh / sync.sh
-+ oprava kódu - crash
++ oprava kódu - black screen (JS error)
 
 29.8.2022
 =========

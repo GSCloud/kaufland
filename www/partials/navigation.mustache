@@ -408,7 +408,13 @@
       // OTHER HANDLERS AND RUNTIME
 
       // navigate to the saved state
-      if (localStorage['navigation']) $('.' + localStorage['navigation']).click();
+      if (localStorage['navigation']) {
+        $('.' + localStorage['navigation']).click();
+      } else {
+        setTimeout(function() {
+          $('.nav_info').click();
+        }, 10);
+      }
 
       // remove modals and toasts on every click
       // prepare AudioContext object (preceding user action is mandatory!)
