@@ -411,6 +411,7 @@
       if (localStorage['navigation']) {
         $('.' + localStorage['navigation']).click();
       } else {
+        // deferred info page
         setTimeout(function() {
           $('.nav_info').click();
         }, 10);
