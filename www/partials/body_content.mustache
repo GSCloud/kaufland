@@ -464,9 +464,12 @@
           $('#role').html(GSC.user.role);
           $('#user_role').html(GSC.user.role.toUpperCase()).removeClass('hidden').addClass('active');
           $('#role_row').removeClass('hidden');
+          $('.nav_app').css('position', 'relative').css('top', '-5px');
         } else {
-          $('#role_row').addClass('hidden');
+          $('#role').html('');
           $('#user_role').html('').addClass('hidden').removeClass('active');
+          $('#role_row').addClass('hidden');
+          $('.nav_app').css('position', 'relative').css('top', '0');
         }
       }      
 
