@@ -462,9 +462,11 @@
         }
         if (GSC.user.role) {
           $('#role').html(GSC.user.role);
+          $('#avatar_role').html(GSC.user.role.toUpperCase()).removeClass('hidden').addClass('active');
           $('#role_row').removeClass('hidden');
         } else {
           $('#role_row').addClass('hidden');
+          $('#avatar_role').html('').addClass('hidden').removeClass('active');
         }
       }      
 
