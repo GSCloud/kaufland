@@ -68,7 +68,7 @@ l:
   switch_music: '🎹 hudba'
   switch_sfx: '🔊 zvuky'
   switch_vibrate: '📳 vibrace'
-  text_encryption: 'úroveň šifrování:'
+  text_encryption: 'typ šifrování:'
   text_login_type: 'typ přihlášení:'
   text_role: 'role:'
   text_security_level: 'úroveň zabezpečení:'
