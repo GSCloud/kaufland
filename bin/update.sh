@@ -24,8 +24,10 @@ if [ -f "gulpfile.js" ]; then
   command -v gulp >/dev/null 2>&1 && gulp
 fi
 
-# prices
+# get beer prices HTML
 wget -O akce.html 'https://www.kupi.cz/hledej?f=pivo&vse=0'
+
+# parse prices HTML using Red-lang
 ./akce > akce.data
 
 # favicons recalculation
