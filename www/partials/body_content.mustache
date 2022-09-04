@@ -419,9 +419,9 @@
 
       // get API key
       function generateAPIkey() {
-        if (!GSC.pin) return false;
-        if (!GSC.salt) return false;
-        // get SHA-256 hash of PIN + salt
+        if (!GSC.pin) return;
+        if (!GSC.salt) return;
+        // generate SHA-256 hash of PIN + salt
         try {
           sha256(GSC.pin + GSC.salt).then(function (hash) {
             if (hash.length == 64) {
