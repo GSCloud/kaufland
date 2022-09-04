@@ -6,7 +6,7 @@ dq: #"^""
 ws: charset " ^/^-^M"
 
 store: func [value] [
-    append data replace/all value "&nbsp;" #" "
+    append data value
 ]
 
 parse source [
@@ -15,20 +15,31 @@ parse source [
         some [
             some ws
             {<tr}
-            thru {<a}
-            thru {data-product="}
+            thru {data-product="} ; id
             copy value to dq
             (store value)
-            thru {title="}
+            thru {id="} ; id
+            copy value to dq
+            (store value)
+            thru {<a}
+            thru {data-product="} ; produkt
+            copy value to dq
+            (store value)
+            thru {<a}
+            thru {data-shop="} ; shop
             copy value to dq
             (store value)
             thru <td class="text-left discounts_price">
-            thru <strong class="discount_price_value">
+            thru <strong class="discount_price_value"> ; cena
             copy value to </strong>
+            (store value)
+            thru <div class="discount_percentage"> ; sleva
+            copy value to </div>
             (store value)
             thru </tr>
         ]
     ]
 ]
 
-write-stdout data
+;write-stdout data
+foreach x data [print x]
