@@ -17,9 +17,7 @@ parse source [
             {<tr}
             thru {data-product="} ; id
             copy value to dq
-            (store value)
-            thru {id="} ; id
-            copy value to dq
+            (store "-")
             (store value)
             thru {<a}
             thru {data-product="} ; produkt
@@ -36,7 +34,7 @@ parse source [
             thru <div class="discount_percentage"> ; sleva
             copy value to </div>
             (store value)
-            thru </table>
+            thru </tr>
         ]
     ]
 ]
