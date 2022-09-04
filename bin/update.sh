@@ -26,6 +26,7 @@ fi
 
 # prices
 wget -O akce.html 'https://www.kupi.cz/hledej?f=pivo&vse=0'
+./akce > akce.data
 
 # favicons recalculation
 cd www/img && . ./create_favicons.sh
