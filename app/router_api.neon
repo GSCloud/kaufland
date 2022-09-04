@@ -31,6 +31,17 @@ GetChangeLog:
   finished: true
   presenter: api
 
+GetDiscounts:
+  path: "/api/v1/GetDiscounts"
+  method: GET
+  api_description: "Get beer discounts"
+  api_info: "Returns (JSON): discounts (array)"
+  api: true
+  assert_json: true
+  assert_httpcode: 200
+  finished: false
+  presenter: api
+
 GetUser:
   path: "/api/v1/GetUser"
   method: GET

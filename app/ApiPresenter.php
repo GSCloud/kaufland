@@ -132,9 +132,19 @@ class ApiPresenter extends APresenter
             return $this->writeJsonData($data, $extras);
             break;
 
+        case "GetDiscounts":
+            if (!file_exists(ROOT . '/akce.data')) {
+                return ErrorPresenter::getInstance()->process(404);
+            }
+            $data = [
+                "discounts" => $this->getDiscounts(),
+            ];
+            return $this->writeJsonData($data, $extras);
+            break;
+
         case "GetChangeLog":
             if (!file_exists(WWW . '/changelog.txt')) {
-                return ErrorPresenter::getInstance()->process(500);
+                return ErrorPresenter::getInstance()->process(404);
             }
             $log = file(WWW . '/changelog.txt');
             foreach ($log as $k => $v) {
@@ -182,6 +192,65 @@ class ApiPresenter extends APresenter
     public function checkKey($apikey)
     {
         return true;
+    }
+
+    /**
+     * Get beer discounts
+     *
+     * @return array
+     */
+    public function getDiscounts()
+    {
+        $discounts = [];
+        $file = ROOT . "/akce.data";
+        if (file_exists($file)) {
+            $arr = file($file);
+            $c = 0;
+            $count = 0;
+            foreach ($arr ?? [] as $s) {
+                $s = trim($s);
+                // new element
+                if ($s == '---') {
+                    $c = 1;
+                    $count++;
+                    $el = [];
+                    $el["id"] = $count;
+                    continue;
+                }
+                // article
+                if ($c == 1) {
+                    $el["article"] = $s;
+                    $c++;
+                    continue;
+                }
+                // title
+                if ($c == 2) {
+                    $el["title"] = $s;
+                    $c++;
+                    continue;
+                }
+                // market
+                if ($c == 3) {
+                    $el["market"] = $s;
+                    $c++;
+                    continue;
+                }
+                // price
+                if ($c == 4) {
+                    $el["price"] = $s;
+                    $c++;
+                    continue;
+                }
+                // discount
+                if ($c == 5) {
+                    $el["discount"] = $s;
+                    $c++;
+                    array_push($discounts, $el);
+                    continue;
+                }
+            }
+        }        
+        return $discounts;
     }
 
     /**
