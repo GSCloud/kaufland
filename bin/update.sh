@@ -24,11 +24,11 @@ if [ -f "gulpfile.js" ]; then
   command -v gulp >/dev/null 2>&1 && gulp
 fi
 
-# get beer prices HTML
+# get beer prices HTML5
 wget -O akce.html 'https://www.kupi.cz/hledej?f=pivo&vse=0'
 
-# parse prices HTML using Red-lang
-./akce > akce.data
+# parse prices using Red-lang
+./akce | sed 's/&nbsp;/ /g' | sed 's/&ndash;//g' > akce.data
 
 # favicons recalculation
 cd www/img && . ./create_favicons.sh
