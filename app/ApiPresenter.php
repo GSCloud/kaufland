@@ -32,7 +32,7 @@ class ApiPresenter extends APresenter
     const ACCESS_TIME_LIMIT = 3599;
     const API_CACHE = 'tenminutes';
     const MAX_API_HITS = 1000;
-    const MAX_RECORDS = 200;
+    const MAX_RECORDS = 300;
     const USE_CACHE = true;
 
     /**
@@ -136,8 +136,10 @@ class ApiPresenter extends APresenter
             if (!file_exists(ROOT . '/akce.data')) {
                 return ErrorPresenter::getInstance()->process(404);
             }
+            $discounts = $this->getDiscounts();
             $data = [
-                "discounts" => $this->getDiscounts(),
+                "records" => count($discounts),
+                "discounts" => $discounts,
             ];
             return $this->writeJsonData($data, $extras);
             break;
@@ -249,6 +251,9 @@ class ApiPresenter extends APresenter
                     $c++;
                     array_push($discounts, $el);
                     $count++;
+                    if ($count == self::MAX_RECORDS) {
+                        break;
+                    }
                     continue;
                 }
             }
