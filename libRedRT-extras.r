@@ -1,1 +1,1 @@
-red/symbol/make-opt red/none/make-in red/image/any-resize red/OS-image/to-pixbuf red/OS-image/delete red/OS-image/width? red/OS-image/height? red/unicode/utf8-char-size? red/date/make-at red/file/to-OS-path red/ownership/unbind-each red/collector/keep red/collector/register red/symbol/get-c-string red/OS-image/load-pixbuf red/cycles/find? red/cycles/reset red/cycles/push red/cycles/pop red/string/overwrite-char
+red/symbol/make-opt

@@ -2,7 +2,7 @@
 red: context [
     #include %$ROOT-PATH$runtime/definitions.reds 
     #include %$ROOT-PATH$runtime/macros.reds 
-    #include %$ROOT-PATH$runtime/datatypes/structures.reds 
+    #include %$ROOT-PATH$runtime/structures.reds 
     cell!: alias struct! [
         header [integer!] 
         data1 [integer!] 
@@ -53,7 +53,6 @@ red: context [
             set-type: "red/set-type" [cell [cell!] type [integer!]] 
             report: "red/report" [type [cell!] id [cell!] arg1 [cell!] arg2 [cell!] arg3 [cell!]] 
             f_routine: "f_routine" [] 
-            f_alert: "f_alert" [] 
             f_also: "f_also" [] 
             f_attempt: "f_attempt" [] 
             f_comment: "f_comment" [] 
@@ -174,7 +173,7 @@ red: context [
             f_replace: "f_replace" [] 
             f_math: "f_math" [] 
             f_charset: "f_charset" [] 
-            f_ctx||175~on-parse-event: "f_ctx||175~on-parse-event" [octx [pointer! [integer!]]] 
+            f_ctx||174~on-parse-event: "f_ctx||174~on-parse-event" [octx [pointer! [integer!]]] 
             f_parse-trace: "f_parse-trace" [octx [pointer! [integer!]]] 
             f_suffix?: "f_suffix?" [] 
             f_scan: "f_scan" [] 
@@ -221,6 +220,7 @@ red: context [
             f_average: "f_average" [] 
             f_last?: "f_last?" [] 
             f_dt: "f_dt" [] 
+            f_clock: "f_clock" [] 
             f_ctx||256~interpreted?: "f_ctx||256~interpreted?" [octx [pointer! [integer!]]] 
             f_ctx||259~on-change*: "f_ctx||259~on-change*" [octx [pointer! [integer!]]] 
             f_ctx||266~on-change*: "f_ctx||266~on-change*" [octx [pointer! [integer!]]] 
@@ -363,31 +363,32 @@ red: context [
             f_request-dir: "f_request-dir" [] 
             f_set-focus: "f_set-focus" [] 
             f_foreach-face: "f_foreach-face" [] 
-            f_ctx||505~encode: "f_ctx||505~encode" [octx [pointer! [integer!]]] 
-            f_ctx||505~decode: "f_ctx||505~decode" [octx [pointer! [integer!]]] 
-            f_ctx||512~to-csv-line: "f_ctx||512~to-csv-line" [octx [pointer! [integer!]]] 
-            f_ctx||512~escape-value: "f_ctx||512~escape-value" [octx [pointer! [integer!]]] 
-            f_ctx||512~next-column-name: "f_ctx||512~next-column-name" [octx [pointer! [integer!]]] 
-            f_ctx||512~make-header: "f_ctx||512~make-header" [octx [pointer! [integer!]]] 
-            f_ctx||512~get-columns: "f_ctx||512~get-columns" [octx [pointer! [integer!]]] 
-            f_ctx||512~encode-map: "f_ctx||512~encode-map" [octx [pointer! [integer!]]] 
-            f_ctx||512~encode-maps: "f_ctx||512~encode-maps" [octx [pointer! [integer!]]] 
-            f_ctx||512~encode-flat: "f_ctx||512~encode-flat" [octx [pointer! [integer!]]] 
-            f_ctx||512~encode-blocks: "f_ctx||512~encode-blocks" [octx [pointer! [integer!]]] 
+            f_alert: "f_alert" [] 
+            f_ctx||506~encode: "f_ctx||506~encode" [octx [pointer! [integer!]]] 
+            f_ctx||506~decode: "f_ctx||506~decode" [octx [pointer! [integer!]]] 
+            f_ctx||513~to-csv-line: "f_ctx||513~to-csv-line" [octx [pointer! [integer!]]] 
+            f_ctx||513~escape-value: "f_ctx||513~escape-value" [octx [pointer! [integer!]]] 
+            f_ctx||513~next-column-name: "f_ctx||513~next-column-name" [octx [pointer! [integer!]]] 
+            f_ctx||513~make-header: "f_ctx||513~make-header" [octx [pointer! [integer!]]] 
+            f_ctx||513~get-columns: "f_ctx||513~get-columns" [octx [pointer! [integer!]]] 
+            f_ctx||513~encode-map: "f_ctx||513~encode-map" [octx [pointer! [integer!]]] 
+            f_ctx||513~encode-maps: "f_ctx||513~encode-maps" [octx [pointer! [integer!]]] 
+            f_ctx||513~encode-flat: "f_ctx||513~encode-flat" [octx [pointer! [integer!]]] 
+            f_ctx||513~encode-blocks: "f_ctx||513~encode-blocks" [octx [pointer! [integer!]]] 
             f_load-csv: "f_load-csv" [octx [pointer! [integer!]]] 
             f_to-csv: "f_to-csv" [octx [pointer! [integer!]]] 
-            f_ctx||525~decode-unicode-char: "f_ctx||525~decode-unicode-char" [octx [pointer! [integer!]]] 
-            f_ctx||525~push: "f_ctx||525~push" [octx [pointer! [integer!]]] 
-            f_ctx||525~pop: "f_ctx||525~pop" [octx [pointer! [integer!]]] 
-            f_ctx||525~emit: "f_ctx||525~emit" [octx [pointer! [integer!]]] 
+            f_ctx||526~decode-unicode-char: "f_ctx||526~decode-unicode-char" [octx [pointer! [integer!]]] 
+            f_ctx||526~push: "f_ctx||526~push" [octx [pointer! [integer!]]] 
+            f_ctx||526~pop: "f_ctx||526~pop" [octx [pointer! [integer!]]] 
+            f_ctx||526~emit: "f_ctx||526~emit" [octx [pointer! [integer!]]] 
             f_load-json: "f_load-json" [octx [pointer! [integer!]]] 
-            f_ctx||532~init-state: "f_ctx||532~init-state" [octx [pointer! [integer!]]] 
-            f_ctx||532~emit-indent: "f_ctx||532~emit-indent" [octx [pointer! [integer!]]] 
-            f_ctx||532~emit-key-value: "f_ctx||532~emit-key-value" [octx [pointer! [integer!]]] 
-            f_ctx||532~red-to-json-value: "f_ctx||532~red-to-json-value" [octx [pointer! [integer!]]] 
+            f_ctx||533~init-state: "f_ctx||533~init-state" [octx [pointer! [integer!]]] 
+            f_ctx||533~emit-indent: "f_ctx||533~emit-indent" [octx [pointer! [integer!]]] 
+            f_ctx||533~emit-key-value: "f_ctx||533~emit-key-value" [octx [pointer! [integer!]]] 
+            f_ctx||533~red-to-json-value: "f_ctx||533~red-to-json-value" [octx [pointer! [integer!]]] 
             f_to-json: "f_to-json" [octx [pointer! [integer!]]] 
-            f_ctx||539~encode: "f_ctx||539~encode" [octx [pointer! [integer!]]] 
-            f_ctx||539~decode: "f_ctx||539~decode" [octx [pointer! [integer!]]] 
+            f_ctx||540~encode: "f_ctx||540~encode" [octx [pointer! [integer!]]] 
+            f_ctx||540~decode: "f_ctx||540~decode" [octx [pointer! [integer!]]] 
             f_keep: "f_keep" [] 
             quit-return: "quit-return" [status [integer!]] 
             set-quiet: "set-quiet" [word [cell!] value [cell!] return: [cell!]] 
@@ -403,6 +404,7 @@ red: context [
             os-info: "os-info" [] 
             as-color: "as-color" [r [integer!] g [integer!] b [integer!]] 
             as-ipv4: "as-ipv4" [a [integer!] b [integer!] c [integer!] d [integer!]] 
+            as-rgba: "as-rgba" [r [integer!] g [integer!] b [integer!] a [integer!]] 
             count-chars: "count-chars" [start [red-binary!] pos [red-binary!] return: [integer!]] 
             stack-size?: "stack-size?" [return: [integer!]] 
             pick-stack: "pick-stack" [idx [integer!]] 
@@ -460,8 +462,7 @@ red: context [
             parse-draw: "parse-draw" [DC [draw-ctx!] cmds [red-block!] catch? [logic!]] 
             do-draw: "do-draw" [handle [pointer! [integer!]] img [red-image!] cmds [red-block!] on-graphic? [logic!] cache? [logic!] paint? [logic!] catch? [logic!]] 
             parse-text-styles: "parse-text-styles" [dc [pointer! [integer!]] layout [pointer! [integer!]] cmds [red-block!] text [red-string!] catch? [logic!]] 
-            ctx||525~unescape: "ctx||525~unescape" [str [red-string!] return: [red-string!]] 
-            as-rgba: "as-ipv4" [a [integer!] b [integer!] c [integer!] d [integer!]] 
+            ctx||526~unescape: "ctx||526~unescape" [str [red-string!] return: [red-string!]] 
             f_time-it: "f_dt" [] 
             f_single?: "f_last?" [] 
             f_keys-of: "f_words-of" [] 
@@ -532,7 +533,8 @@ red: context [
     none: context [
         #import [libRedRT-file stdcall [
                 push-last: "red/none/push-last" [return: [cell!]] 
-                push: "red/none/push" [return: [cell!]]
+                push: "red/none/push" [return: [cell!]] 
+                make-in: "red/none/make-in" [parent [red-block!] return: [cell!]]
             ]]
     ] 
     logic: context [
@@ -597,7 +599,8 @@ red: context [
     ] 
     date: context [
         #import [libRedRT-file stdcall [
-                push: "red/date/push" [date [integer!] time [float!] return: [red-date!]]
+                push: "red/date/push" [date [integer!] time [float!] return: [red-date!]] 
+                make-at: "red/date/make-at" [slot [cell!] year [integer!] month [integer!] day [integer!] tm [float!] TZ-h [integer!] TZ-m [integer!] time? [logic!] TZ? [logic!] return: [red-date!]]
             ]]
     ] 
     email: context [
@@ -607,7 +610,8 @@ red: context [
     ] 
     file: context [
         #import [libRedRT-file stdcall [
-                push: "red/file/push" [file [red-file!]]
+                push: "red/file/push" [file [red-file!]] 
+                to-OS-path: "red/file/to-OS-path" [src [red-file!] return: [c-string!]]
             ]]
     ] 
     float: context [
@@ -670,7 +674,7 @@ red: context [
     object: context [
         #import [libRedRT-file stdcall [
                 push: "red/object/push" [ctx [pointer! [integer!]] evt [pointer! [integer!]] class [integer!] idx-s [integer!] loc-s [integer!] idx-d [integer!] loc-d [integer!] return: [red-object!]] 
-                duplicate: "red/object/duplicate" [src [pointer! [integer!]] dst [pointer! [integer!]] copy? [logic!]] 
+                clone-series: "red/object/clone-series" [src [pointer! [integer!]] dst [pointer! [integer!]] copy? [logic!]] 
                 transfer: "red/object/transfer" [src [pointer! [integer!]] dst [pointer! [integer!]]] 
                 init-push: "red/object/init-push" [node [pointer! [integer!]] class [integer!] return: [red-object!]] 
                 init-events: "red/object/init-events" [ctx [pointer! [integer!]] idx-s [integer!] loc-s [integer!] idx-d [integer!] loc-d [integer!] return: [pointer! [integer!]]] 
@@ -754,7 +758,8 @@ red: context [
                 to-hex: "red/string/to-hex" [value [integer!] char? [logic!] return: [c-string!]] 
                 make-at: "red/string/make-at" [slot [cell!] size [integer!] unit [integer!] return: [red-string!]] 
                 load: "red/string/load" [src [c-string!] size [integer!] encoding [integer!] return: [red-string!]] 
-                load-at: "red/string/load-at" [src [c-string!] size [integer!] slot [cell!] encoding [integer!] return: [red-string!]]
+                load-at: "red/string/load-at" [src [c-string!] size [integer!] slot [cell!] encoding [integer!] return: [red-string!]] 
+                overwrite-char: "red/string/overwrite-char" [s [series-buffer!] offset [integer!] cp [integer!] return: [series-buffer!]]
             ]]
     ] 
     tag: context [
@@ -850,7 +855,9 @@ red: context [
     symbol: context [
         #import [libRedRT-file stdcall [
                 make: "red/symbol/make" [s [c-string!] return: [integer!]] 
-                resolve: "red/symbol/resolve" [id [integer!] return: [integer!]]
+                resolve: "red/symbol/resolve" [id [integer!] return: [integer!]] 
+                make-opt: "red/symbol/make-opt" [s [c-string!] return: [integer!]] 
+                get-c-string: "red/symbol/get-c-string" [id [integer!] return: [c-string!]]
             ]]
     ] 
     unicode: context [
@@ -859,7 +866,8 @@ red: context [
                 decode-utf8-char: "red/unicode/decode-utf8-char" [src [c-string!] cnt [pointer! [integer!]] return: [integer!]] 
                 to-utf8: "red/unicode/to-utf8" [str [red-string!] len [pointer! [integer!]] return: [c-string!]] 
                 load-utf8-buffer: "red/unicode/load-utf8-buffer" [src [c-string!] size [integer!] dst [series-buffer!] remain [pointer! [integer!]] convert? [logic!] return: [pointer! [integer!]]] 
-                load-utf8-stream: "red/unicode/load-utf8-stream" [src [c-string!] size [integer!] output [red-string!] remain [pointer! [integer!]] return: [pointer! [integer!]]]
+                load-utf8-stream: "red/unicode/load-utf8-stream" [src [c-string!] size [integer!] output [red-string!] remain [pointer! [integer!]] return: [pointer! [integer!]]] 
+                utf8-char-size?: "red/unicode/utf8-char-size?" [byte-1st [integer!] return: [integer!]]
             ]]
     ] 
     natives: context [
@@ -1048,23 +1056,41 @@ red: context [
     ownership: context [
         #import [libRedRT-file stdcall [
                 bind: "red/ownership/bind" [container [cell!] owner [red-object!] word [red-word!]] 
-                check: "red/ownership/check" [value [cell!] action [red-word!] new [cell!] index [integer!] part [integer!] return: [logic!]]
+                check: "red/ownership/check" [value [cell!] action [red-word!] new [cell!] index [integer!] part [integer!] return: [logic!]] 
+                unbind-each: "red/ownership/unbind-each" [list [red-block!] index [integer!] nb [integer!]]
             ]]
     ] 
     image: context [
         #import [libRedRT-file stdcall [
-                init-image: "red/image/init-image" [img [red-image!] handle [pointer! [integer!]] return: [red-image!]]
+                init-image: "red/image/init-image" [img [red-image!] handle [pointer! [integer!]] return: [red-image!]] 
+                any-resize: "red/image/any-resize" [src [red-image!] dst [red-image!] crop1 [red-pair!] start [red-pair!] end [red-pair!] rect.x [pointer! [integer!]] rect.y [pointer! [integer!]] rect.w [pointer! [integer!]] rect.h [pointer! [integer!]]]
             ]]
     ] 
     OS-image: context [
         #import [libRedRT-file stdcall [
                 lock-bitmap: "red/OS-image/lock-bitmap" [img [red-image!] write? [logic!] return: [integer!]] 
                 get-data: "red/OS-image/get-data" [handle [integer!] stride [pointer! [integer!]] return: [pointer! [integer!]]] 
-                unlock-bitmap: "red/OS-image/unlock-bitmap" [img [red-image!] data [integer!]]
+                unlock-bitmap: "red/OS-image/unlock-bitmap" [img [red-image!] data [integer!]] 
+                to-pixbuf: "red/OS-image/to-pixbuf" [img [red-image!] return: [pointer! [integer!]]] 
+                delete: "red/OS-image/delete" [img [red-image!]] 
+                width?: "red/OS-image/width?" [handle [pointer! [integer!]] return: [integer!]] 
+                height?: "red/OS-image/height?" [handle [pointer! [integer!]] return: [integer!]] 
+                load-pixbuf: "red/OS-image/load-pixbuf" [h [pointer! [integer!]] return: [pointer! [integer!]]]
             ]]
-    ] collector: context [
+    ] 
+    collector: context [
         #import [libRedRT-file stdcall [
+                keep: "red/collector/keep" [node [pointer! [integer!]] return: [logic!]] 
+                register: "red/collector/register" [cb [pointer! [integer!]]] 
                 active?: "red/collector/active?" [logic!]
+            ]]
+    ] 
+    cycles: context [
+        #import [libRedRT-file stdcall [
+                find?: "red/cycles/find?" [node [pointer! [integer!]] return: [logic!]] 
+                reset: "red/cycles/reset" [] 
+                push: "red/cycles/push" [node [pointer! [integer!]]] 
+                pop: "red/cycles/pop" []
             ]]
     ] 
     words: context [
