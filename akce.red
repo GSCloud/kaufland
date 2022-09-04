@@ -1,7 +1,7 @@
 Red[]
 
 source: read %akce.html
-data: make block! 100
+data: make block! 200
 dq: #"^""
 ws: charset " ^/^-^M"
 
@@ -31,4 +31,6 @@ parse source [
     ]
 ]
 
-write %akce.csv to-csv/skip data 3
+;probe data
+;write %akce.csv to-csv/skip data 3
+write %akce.data data
