@@ -1,6 +1,7 @@
 4.9.2022
 ========
-+ Red-lang parse experimenty
++ Red-lang parse experiment
++ [API] GetDiscounts
 
 3.9.2022
 ========
