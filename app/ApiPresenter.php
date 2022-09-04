@@ -209,23 +209,25 @@ class ApiPresenter extends APresenter
             $count = 0;
             foreach ($arr ?? [] as $s) {
                 $s = trim($s);
-                // new element
+                if (!strlen($s)) {
+                    continue;
+                }
+                // separator
                 if ($s == '---') {
                     $c = 1;
-                    $count++;
                     $el = [];
                     $el["id"] = $count;
                     continue;
                 }
-                // article
+                // product
                 if ($c == 1) {
-                    $el["article"] = $s;
+                    $el["product"] = (int) $s;
                     $c++;
                     continue;
                 }
                 // title
                 if ($c == 2) {
-                    $el["title"] = $s;
+                    $el["title"] = strtolower($s);
                     $c++;
                     continue;
                 }
@@ -243,9 +245,10 @@ class ApiPresenter extends APresenter
                 }
                 // discount
                 if ($c == 5) {
-                    $el["discount"] = $s;
+                    $el["discount"] = (int) trim(str_replace('%', '', $s));
                     $c++;
                     array_push($discounts, $el);
+                    $count++;
                     continue;
                 }
             }

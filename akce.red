@@ -1,7 +1,7 @@
 Red[]
 
 source: read %akce.html
-data: make block! 10000
+data: make block! 1000
 dq: #"^""
 ws: charset " ^/^-^M"
 
@@ -26,12 +26,12 @@ parse source [
         (store value)
         thru <td class="text-left discounts_price">
         thru <strong class="discount_price_value"> ; price
-        copy value to </strong>
+        copy value to {</strong>}
         (store value)
         thru <div class="discount_percentage"> ; discount
-        copy value to </div>
+        copy value to {</div>}
         (store value)
-        thru </tr>
+        thru {</tr>}
     ]
 ]
 
