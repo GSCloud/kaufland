@@ -31,6 +31,4 @@ parse source [
     ]
 ]
 
-;probe data
-;write %akce.csv to-csv/skip data 3
-write %akce.data data
+write-stdout data
