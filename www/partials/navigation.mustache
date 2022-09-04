@@ -122,8 +122,8 @@
 
       // set active navigation by element
       function setNavigation(el) {
-        if (!el) return false;
-        if (!$('.' + el)) return false;
+        if (!el) return;
+        if (!$('.' + el)) return;
         localStorage['navigation'] = el;
         $('#avatar').removeClass('large');
         // remove modals
@@ -429,7 +429,7 @@
           });
           GSC.modals = [];
         }
-        // return if we already have AudioContext
+        // exit if we already have AudioContext
         if (GSC.audioctx) return;
 
         // try to get AudioContext with hinting

@@ -336,7 +336,7 @@
 
       // check version
       function checkVersion() {
-        if (GSC.offline) return false;
+        if (GSC.offline) return;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetVersion' + nonce, function(data) {
           if (data && data.data && data.data.version) {
