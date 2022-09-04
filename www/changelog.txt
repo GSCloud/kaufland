@@ -1,3 +1,7 @@
+4.9.2022
+========
++ Red-lang parse experimenty
+
 3.9.2022
 ========
 + úpravy UI
