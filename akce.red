@@ -12,24 +12,24 @@ store: func [value] [
 parse source [
     some [
         thru {<tr}
-        thru {data-product="} ; id
-        copy value to dq
+        thru {data-product="}
+        copy value to dq ; id
         (store "---")
         (store value)
         thru {<a}
-        thru {data-product="} ; produkt
-        copy value to dq
+        thru {data-product="}
+        copy value to dq ; produkt
         (store value)
         thru {<a}
-        thru {data-shop="} ; shop
-        copy value to dq
+        thru {data-shop="}
+        copy value to dq ; shop
         (store value)
         thru <td class="text-left discounts_price">
-        thru <strong class="discount_price_value"> ; price
-        copy value to {</strong>}
+        thru <strong class="discount_price_value">
+        copy value to {</strong>} ; price
         (store value)
-        thru <div class="discount_percentage"> ; discount
-        copy value to {</div>}
+        thru <div class="discount_percentage">
+        copy value to {</div>} ; discount
         (store value)
         thru {</tr>}
     ]
