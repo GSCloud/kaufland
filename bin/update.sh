@@ -27,7 +27,7 @@ fi
 # get beer prices HTML5
 wget -O akce.html 'https://www.kupi.cz/hledej?f=pivo&vse=0'
 
-# parse prices using Red-lang
+# parse prices using Red-lang + fix text
 ./akce | sed 's/&nbsp;/ /g' | sed 's/&ndash;//g' > akce.data
 
 # favicons recalculation

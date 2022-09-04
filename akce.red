@@ -11,6 +11,7 @@ store: func [value] [
 
 parse source [
     some [
+        thru {<tr}
         thru {data-product="} ; id
         copy value to dq
         (store "---")
