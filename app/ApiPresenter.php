@@ -241,7 +241,7 @@ class ApiPresenter extends APresenter
                 }
                 // price
                 if ($c == 4) {
-                    $el["price"] = $s;
+                    $el["price"] = (int) trim(str_replace('Kč', '', $s));
                     $c++;
                     continue;
                 }
