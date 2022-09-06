@@ -1,7 +1,11 @@
 6.9.2022
 ========
-+ [fn] GSC.DefClick - přehraje zvuk základního kliknutí
++ main API calls limiter (10 secs.)
 + [API] používání "apikey" při volání GetUser
++ [fn] GSC.DefClick() - zvuk základního kliknutí
++ [var] GSC.salt_timestamp - Unix timestamp poslední žádosti
++ [var] GSC.user_timestamp - Unix timestamp poslední žádosti
++ [var] GSC.version_timestamp - Unix timestamp poslední žádosti
 
 4.9.2022
 ========

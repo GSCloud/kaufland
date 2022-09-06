@@ -342,8 +342,11 @@
       // check version
       function checkVersion() {
         if (GSC.offline) return;
+        // 10 secs. timeout limiter
+        if (GSC.version_timestamp && (GSC.version_timestamp + 10*1000 > +new Date())) return false;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetVersion' + nonce, function(data) {
+          GSC.version_timestamp = +new Date();
           if (data && data.data && data.data.version) {
             if (data.data.version != "{{ VERSION }}") {
               if (GSC.chverint) {
@@ -375,10 +378,13 @@
           return;
         }
         if (GSC.offline) return;
+        // 10 secs. timeout limiter
+        if (GSC.user_timestamp && (GSC.user_timestamp + 10*1000 > +new Date())) return false;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         var apikey = GSC.apikey ? '&apikey=' + GSC.apikey : '';
         $.get('/api/v1/GetUser' + nonce + apikey, function(data) {
           if (data && data.data && data.data.user) {
+            GSC.user_timestamp = +new Date();
             GSC.user = data.data.user;
             setUserUI();
           }
@@ -401,14 +407,14 @@
         if (dd < 10) dd = '0' + dd; 
         if (mm < 10) mm = '0' + mm; 
         d = yyyy + '-' + mm + '-' + dd;
-        if (GSC.today && GSC.today == d) {
-          GSC.D('<b>' + GSC.today + ' salt</b> ' + GSC.salt);
-          return;
-        }
+        if (GSC.salt && GSC.today && GSC.today == d) return true;
         if (GSC.offline) return;
+        // 10 secs. timeout limiter
+        if (GSC.salt_timestamp && (GSC.salt_timestamp + 10*1000 > +new Date())) return false;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetSalt' + nonce, function(data) {
           if (data && data.data && data.data.salt && data.data.today) {
+            GSC.salt_timestamp = +new Date();
             GSC.salt = data.data.salt;
             GSC.today = data.data.today;
             GSC.D('<b>' + GSC.today + ' salt</b> ' + GSC.salt);
