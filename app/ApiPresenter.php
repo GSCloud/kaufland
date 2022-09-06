@@ -151,6 +151,9 @@ class ApiPresenter extends APresenter
             $log = file(WWW . '/changelog.txt');
             foreach ($log as $k => $v) {
                 $v = trim($v);
+                if (strpos($v, '[fix]')) {
+                    $log[$k] = "<span class=red8>$v</span>";
+                }
                 if (strpos($v, '[var]')) {
                     $log[$k] = "<span class=yellow10>$v</span>";
                 }

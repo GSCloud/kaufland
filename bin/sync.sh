@@ -48,7 +48,7 @@ ln -s ../. www/cdn-assets/$VERSION >/dev/null 2>&1
 info "Version: $VERSION Revisions: $REVISIONS"
 
 # transfering
-rsync -ahz --progress --delete-after --delay-updates --exclude "www/upload" \
+rsync -ahz --progress --delete-after --delay-updates --exclude "www/upload" --exclude "www/proxyimg" \
   .env \
   *.json \
   *.pdf \

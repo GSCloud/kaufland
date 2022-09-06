@@ -16,6 +16,11 @@ Search.appendIndex(
             "summary": "Check\u0020REST\u0020API\u0020key\u0020validity",
             "url": "classes/GSC-ApiPresenter.html#method_checkKey"
         },                {
+            "fqsen": "\\GSC\\ApiPresenter\u003A\u003AgetDiscounts\u0028\u0029",
+            "name": "getDiscounts",
+            "summary": "Get\u0020beer\u0020discounts",
+            "url": "classes/GSC-ApiPresenter.html#method_getDiscounts"
+        },                {
             "fqsen": "\\GSC\\ApiPresenter\u003A\u003AgetToday\u0028\u0029",
             "name": "getToday",
             "summary": "Get\u0020current\u0020date",

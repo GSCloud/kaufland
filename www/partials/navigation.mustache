@@ -186,7 +186,7 @@
           GSC.apikey = null;
           return;
         }
-        GSC.PlaySound('click4');
+        GSC.DefClick();
         // toast
         setTimeout(function () {
           $('#pin_saved').addClass('active');
@@ -294,7 +294,7 @@
       $('.ui').click(function() {
         localStorage["ui"] = $(this).is(":checked");
         setUImode();
-        playSound('click4');
+        GSC.DefClick();
       });
 
       // settings: VIBRATE

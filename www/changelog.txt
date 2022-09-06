@@ -1,3 +1,7 @@
+6.9.2022
+========
++ [fn] GSC.DefClick - přehraje zvuk základního kliknutí
+
 4.9.2022
 ========
 + Red-lang parse experiment
@@ -9,9 +13,9 @@
 
 31.8.2022
 =========
-+ data file "akce.html" z Kupi
-+ aktualizace update.sh / sync.sh
-+ oprava kódu - black screen (JS error)
++ data file "akce.html" z Kupi.cz
++ aktualizace: update.sh / sync.sh
++ [fix] black screen (JS error)
 
 29.8.2022
 =========

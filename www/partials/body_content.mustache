@@ -301,6 +301,11 @@
       window.navigator.vibrate(x);
     }
 
+    // GSC.DefClick() - default sound click
+    if (typeof GSC.DefClick !== "function") GSC.DefClick = function() {
+      GSC.PlaySound('click4');
+    }
+
     // *** DELAYED FUNCTIONS ***
 
     // add nonce to anchors
@@ -371,7 +376,8 @@
         }
         if (GSC.offline) return;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
-        $.get('/api/v1/GetUser' + nonce, function(data) {
+        var apikey = GSC.apikey ? '&apikey=' + GSC.apikey : '';
+        $.get('/api/v1/GetUser' + nonce + apikey, function(data) {
           if (data && data.data && data.data.user) {
             GSC.user = data.data.user;
             setUserUI();
