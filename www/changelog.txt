@@ -1,6 +1,7 @@
 6.9.2022
 ========
 + [fn] GSC.DefClick - přehraje zvuk základního kliknutí
++ [API] používání "apikey" při volání GetUser
 
 4.9.2022
 ========

@@ -434,6 +434,8 @@
               GSC.apikey = hash;
               localStorage['apikey'] = hash;
               GSC.D('<b>API key</b> ' + hash);
+              GSC.user = null;
+              GSC.GetUser();
             }
           });
         } catch(e) {
@@ -484,13 +486,6 @@
         checkVersion()
       }, 30*1000);
       checkVersion();
-
-      // refresh user and salt information
-      setInterval(function() {
-        GSC.user = null;
-        getSalt();
-        getUser();
-      }, 600*1000);
     });
 
     // UI theme
