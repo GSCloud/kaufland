@@ -147,8 +147,8 @@ class ApiPresenter extends APresenter
                 "country" => $this->getIdentity()["country"] ?? null,
                 "role" => $access,
                 "avatar" => $this->getIdentity()["avatar"] ?? null,
-                "login_type" => $this->getIdentity()["id"] ?
-                    "Google OAuth 2.0" : null,
+                "login_type" => $this->getIdentity()["id"]
+                    ? "Google OAuth 2.0" : ($access ? "PIN" : null),
                 "security_level" => $this->getIdentity()["id"]
                     ? "high" : ($access ? "low" : "none"),
             ];
