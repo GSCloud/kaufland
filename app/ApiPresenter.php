@@ -256,7 +256,7 @@ class ApiPresenter extends APresenter
         if (!$apikey) {
             return false;
         }
-        $pins = (array) $this->getData("security_pin");
+        $pins = (array) $this->getData("security_pin") ?? [];
         $salt = $this->getSalt();
         foreach ($pins as $k => $v) {
             if (hash("sha256", $v . $salt) === $apikey) {
