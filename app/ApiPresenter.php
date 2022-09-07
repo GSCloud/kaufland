@@ -79,23 +79,39 @@ class ApiPresenter extends APresenter
             "uuid" => $this->getUID(),
         ];
 
-        // access validation
-        if (($priv) && (!$user_id)) {
+        // ACCESS VALIDATION
+        $access = null;
+
+        // PRIVATE & NOT OAUTH2
+        if ($priv && !$user_id) {
             return $this->writeJsonData(401, $extras);
         }
-        if (($priv) && ($user_id) && (!$user_group)) {
+        // PRIVATE && OAUTH2 && NOT ALLOWED
+        if ($priv && $user_id && !$user_group) {
             return $this->writeJsonData(401, $extras);
         }
-        if (($use_key) && (!$api_key)) {
+        // NO API KEY
+        if ($use_key && !$api_key) {
             return $this->writeJsonData(403, $extras);
         }
-        if (($use_key) && ($api_key)) {
-            $test = $this->checkKey($api_key);
-            if (\is_null($test)) {
+        // API KEY MANDATORY
+        if ($use_key && $api_key) {
+            $check = $this->checkKey($api_key);
+            // NO GROUP && API KEY FAILED
+            if (!$user_group && $check === false) {
                 return $this->writeJsonData(401, $extras);
             }
-            if ($test["valid"] !== true) {
-                return $this->writeJsonData(401, $extras);
+            // IN GROUP && API KEY FAILED
+            if ($user_group && $check === false) {
+                $access = strtoupper($user_group);
+            }
+            // IN GROUP && API KEY SUCCESS
+            if ($user_group && $check) {
+                $access = strtoupper($check) . '&nbsp;' . strtoupper($user_group);
+            }
+            // NOT IN GROUP && API KEY SUCCESS
+            if (!$user_group && $check) {
+                $access = strtoupper($check);
             }
         }
 
@@ -110,7 +126,7 @@ class ApiPresenter extends APresenter
                 "name" => $this->getIdentity()["name"] ?? null,
                 "email" => $this->getIdentity()["email"] ?? null,
                 "country" => $this->getIdentity()["country"] ?? null,
-                "role" => $user_group,
+                "role" => $access,
                 "avatar" => $this->getIdentity()["avatar"] ?? null,
                 "login_type" => $this->getIdentity()["id"] ?
                     "Google OAuth 2.0" : null,
@@ -218,7 +234,15 @@ class ApiPresenter extends APresenter
      */
     public function checkKey($apikey)
     {
-        return true;
+        $pins = (array) $this->getData("security_pin");
+        $salt = $this->getSalt();
+        foreach ($pins as $k => $v) {
+            $hash = hash("sha256", $v . $salt);
+            if ($hash === $apikey) {
+                return $k;
+            }
+        }
+        return false;
     }
 
     /**
@@ -299,7 +323,7 @@ class ApiPresenter extends APresenter
     /**
      * Get daily salt
      *
-     * @return string salt as SHA-256 hash
+     * @return string SHA-256 hash = salt
      */
     public function getSalt()
     {
@@ -309,7 +333,7 @@ class ApiPresenter extends APresenter
                 'sha256',
                 $this->getToday()
             )
-            . $this->getData('daily_salt_seed') ?? 'RandomSaltSeedIsInPrivateConfig'
+            . $this->getData('daily_salt_seed') ?? 'SALT_SEED_IS_IN_PRIVATE_CONFIG!'
         );
     }
 

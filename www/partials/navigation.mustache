@@ -2,7 +2,7 @@
 <nav id="top_nav" class="top hidden">
   <a class="nav_app">
     <span class="badge circle left red bold white-text hidden">❕</span>
-    <span id="user_role" class="badge bottom small transparent bold white-text hidden"></span>
+    <span id="user_role" class="badge bottom small transparent white-text hidden"></span>
     <img id="logo" class="square large"
       src="{{ cdn }}/img/k-app-logo.png"/>
   </a>
@@ -191,6 +191,7 @@
         setTimeout(function () {
           $('#pin_saved').addClass('active');
         }, 10);
+        GSC.user_timestamp = null;
         GSC.GenerateAPIkey();
       });
 
