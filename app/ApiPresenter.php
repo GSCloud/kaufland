@@ -249,15 +249,14 @@ class ApiPresenter extends APresenter
      *
      * @param [string] $apikey API key
      * 
-     * @return true
+     * @return [nixed] role by PIN or false
      */
     public function checkKey($apikey)
     {
         $pins = (array) $this->getData("security_pin");
         $salt = $this->getSalt();
         foreach ($pins as $k => $v) {
-            $hash = hash("sha256", $v . $salt);
-            if ($hash === $apikey) {
+            if (hash("sha256", $v . $salt) === $apikey) {
                 return $k;
             }
         }
