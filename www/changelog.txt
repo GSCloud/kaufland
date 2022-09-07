@@ -1,3 +1,8 @@
+7.9.2022
+========
++ [API] ukládání "last_seen" Unix timestamp do data/
++ [API] přidán "cached" flag do hlaviček
+
 6.9.2022
 ========
 + main API calls limiter (10 secs.)

@@ -72,6 +72,7 @@ class ApiPresenter extends APresenter
             "api_usage" => $this->accessLimiter(),
             "access_time_limit" => self::ACCESS_TIME_LIMIT,
             "cache_time_limit" => $this->getData("cache_profiles")[self::API_CACHE],
+            "cached" => false,
             "records_quota" => self::MAX_RECORDS,
             "private" => $priv,
             "use_key" => $use_key,
@@ -120,6 +121,12 @@ class ApiPresenter extends APresenter
             $data = [
                 "version" => $this->getData('VERSION'),
             ];
+            // save last_seen unix timestamp
+            if ($this->getIdentity()["email"]) {
+                @file_put_contents(
+                    DATA . "/last_seen." . $this->getIdentity()["email"], time()
+                );
+            }
             return $this->writeJsonData($data, $extras);
             break;
 
@@ -133,6 +140,7 @@ class ApiPresenter extends APresenter
             break;
 
         case "GetDiscounts":
+            $extras["cached"] = false;
             if (!file_exists(ROOT . '/akce.data')) {
                 return ErrorPresenter::getInstance()->process(404);
             }
