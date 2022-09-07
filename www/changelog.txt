@@ -2,6 +2,7 @@
 ========
 + [API] ukládání "last_seen" Unix timestamp do data/
 + [API] přidán "cached" flag do hlaviček
++ [API] aktualizace rolí (funkční PIN!)
 
 6.9.2022
 ========
