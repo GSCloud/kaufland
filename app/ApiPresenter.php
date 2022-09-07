@@ -99,6 +99,9 @@ class ApiPresenter extends APresenter
             }
         }
 
+        // svae last_seen Unix timestamp
+        $this->saveLastSeen();
+
         // process API calls
         switch ($view) {
 
@@ -121,12 +124,6 @@ class ApiPresenter extends APresenter
             $data = [
                 "version" => $this->getData('VERSION'),
             ];
-            // save last_seen unix timestamp
-            if ($this->getIdentity()["email"]) {
-                @file_put_contents(
-                    DATA . "/last_seen." . $this->getIdentity()["email"], time()
-                );
-            }
             return $this->writeJsonData($data, $extras);
             break;
 
@@ -191,6 +188,23 @@ class ApiPresenter extends APresenter
             // TODO: uncomment in production
             //sleep(5);
             return ErrorPresenter::getInstance()->process(404);
+        }
+        return $this;
+    }
+
+    /**
+     * Save last seen Unix timestamp to data/
+     *
+     * @return self
+     */
+    public function saveLastSeen()
+    {
+        if ($email = $this->getIdentity()["email"]) {
+            @file_put_contents(
+                DATA . "/last_seen." . $email,
+                time(),
+                LOCK_EX
+            );
         }
         return $this;
     }
