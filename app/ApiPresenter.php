@@ -253,6 +253,9 @@ class ApiPresenter extends APresenter
      */
     public function checkKey($apikey)
     {
+        if (!$apikey) {
+            return false;
+        }
         $pins = (array) $this->getData("security_pin");
         $salt = $this->getSalt();
         foreach ($pins as $k => $v) {
