@@ -49,7 +49,7 @@ GetUser:
   api_info: "Returns (JSON): user information (array)"
   api: true
   assert_json: false
-  assert_httpcode: 403
+  assert_httpcode: 200
   finished: true
   allow_key: true
   presenter: api
