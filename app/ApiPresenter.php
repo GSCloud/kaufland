@@ -149,8 +149,8 @@ class ApiPresenter extends APresenter
                 "avatar" => $this->getIdentity()["avatar"] ?? null,
                 "login_type" => $this->getIdentity()["id"] ?
                     "Google OAuth 2.0" : null,
-                "security_level" => $this->getIdentity()["id"] ?
-                    "high" : "none",
+                "security_level" => $this->getIdentity()["id"]
+                    ? "high" : ($access ? "low" : "none"),
             ];
             return $this->writeJsonData($data, $extras);
             break;
