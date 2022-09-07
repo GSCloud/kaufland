@@ -53,6 +53,7 @@ class ApiPresenter extends APresenter
         // view properties
         $presenter = $this->getPresenter();
         $use_key = $presenter[$view]["use_key"] ?? false;
+        $allow_key = $presenter[$view]["allow_key"] ?? false;
         $priv = $presenter[$view]["private"] ?? false;
 
         // user data, permissions and authorizations
@@ -94,6 +95,7 @@ class ApiPresenter extends APresenter
         if ($use_key && !$api_key) {
             return $this->writeJsonData(403, $extras);
         }
+
         // API KEY MANDATORY
         if ($use_key && $api_key) {
             $check = $this->checkKey($api_key);
@@ -101,6 +103,23 @@ class ApiPresenter extends APresenter
             if (!$user_group && $check === false) {
                 return $this->writeJsonData(401, $extras);
             }
+            // IN GROUP && API KEY FAILED
+            if ($user_group && $check === false) {
+                $access = strtoupper($user_group);
+            }
+            // IN GROUP && API KEY SUCCESS
+            if ($user_group && $check) {
+                $access = strtoupper($check) . '&nbsp;' . strtoupper($user_group);
+            }
+            // NOT IN GROUP && API KEY SUCCESS
+            if (!$user_group && $check) {
+                $access = strtoupper($check);
+            }
+        }
+
+        // API KEY ALLOWED
+        if ($allow_key && $api_key) {
+            $check = $this->checkKey($api_key);
             // IN GROUP && API KEY FAILED
             if ($user_group && $check === false) {
                 $access = strtoupper($user_group);

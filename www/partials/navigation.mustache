@@ -184,7 +184,7 @@
         // no PIN - no fun
         if (!GSC.pin.length) {
           GSC.apikey = null;
-          return;
+          GSC.pin = 'pin is not set';
         }
         GSC.DefClick();
         // toast

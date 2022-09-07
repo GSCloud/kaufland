@@ -51,7 +51,7 @@ GetUser:
   assert_json: false
   assert_httpcode: 403
   finished: true
-  use_key: true
+  allow_key: true
   presenter: api
 
 GetPublicInfo:
