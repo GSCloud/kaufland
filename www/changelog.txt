@@ -1,6 +1,6 @@
 7.9.2022
 ========
-+ [API] ukládání "last_seen" Unix timestamp do data/
++ [API] ukládání "last_seen" timestamp do data/
 + [API] přidán "cached" flag do hlaviček
 + [API] aktualizace rolí (funkční PIN!)
 
@@ -9,9 +9,9 @@
 + main API calls limiter (10 secs.)
 + [API] používání "apikey" při volání GetUser
 + [fn] GSC.DefClick() - zvuk základního kliknutí
-+ [var] GSC.salt_timestamp - Unix timestamp poslední žádosti
-+ [var] GSC.user_timestamp - Unix timestamp poslední žádosti
-+ [var] GSC.version_timestamp - Unix timestamp poslední žádosti
++ [var] GSC.salt_timestamp - timestamp poslední žádosti
++ [var] GSC.user_timestamp - timestamp poslední žádosti
++ [var] GSC.version_timestamp - timestamp poslední žádosti
 
 4.9.2022
 ========
