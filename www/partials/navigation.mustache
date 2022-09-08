@@ -207,6 +207,7 @@
       $('#pin').keypress(function(e) {
         if (e.which == 13) {
           $('button.save_pin').click();
+          $('#pin').blur();
           return false;
         }
       });
