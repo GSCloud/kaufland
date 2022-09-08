@@ -82,6 +82,7 @@ class ApiPresenter extends APresenter
 
         // ACCESS VALIDATION
         $access = null;
+        $pin = null;
 
         // PRIVATE & NOT OAUTH2
         if ($priv && !$user_id) {
@@ -98,7 +99,7 @@ class ApiPresenter extends APresenter
 
         // API KEY MANDATORY
         if ($use_key && $api_key) {
-            $check = $this->checkKey($api_key);
+            $pin = $check = $this->checkKey($api_key);
             // NO GROUP && API KEY FAILED
             if (!$user_group && $check === false) {
                 return $this->writeJsonData(401, $extras);
@@ -119,14 +120,14 @@ class ApiPresenter extends APresenter
 
         // API KEY ALLOWED
         if ($allow_key && $api_key) {
-            $check = $this->checkKey($api_key);
+            $pin = $check = $this->checkKey($api_key);
             // IN GROUP && API KEY FAILED
             if ($user_group && $check === false) {
                 $access = strtoupper($user_group);
             }
             // IN GROUP && API KEY SUCCESS
             if ($user_group && $check) {
-                $access = strtoupper($check) . '&nbsp;' . strtoupper($user_group);
+                $access = strtoupper($check) . ' ' . strtoupper($user_group);
             }
             // NOT IN GROUP && API KEY SUCCESS
             if (!$user_group && $check) {
@@ -146,9 +147,10 @@ class ApiPresenter extends APresenter
                 "email" => $this->getIdentity()["email"] ?? null,
                 "country" => $this->getIdentity()["country"] ?? null,
                 "role" => $access,
+                "pin" => $pin,
                 "avatar" => $this->getIdentity()["avatar"] ?? null,
                 "login_type" => $this->getIdentity()["id"]
-                    ? "Google OAuth 2.0" : ($access ? "PIN" : null),
+                    ? "Google OAuth 2.0" : ($pin ? "PIN" : null),
                 "security_level" => $this->getIdentity()["id"]
                     ? "high" : ($access ? "low" : "none"),
             ];
@@ -249,7 +251,7 @@ class ApiPresenter extends APresenter
      *
      * @param [string] $apikey API key
      * 
-     * @return [nixed] role by PIN or false
+     * @return [nixed] user role by PIN or false if check failed
      */
     public function checkKey($apikey)
     {
