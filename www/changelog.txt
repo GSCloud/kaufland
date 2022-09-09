@@ -1,44 +1,37 @@
-8.9.2022
+9.9.2022
 ========
-+ refresh
++ nový preprocessor akčních cen piva
++ mírná redukce changelogu
 
 7.9.2022
 ========
-+ [API] ukládání "last_seen" timestamp do data/
-+ [API] přidán "cached" flag do hlaviček
-+ [API] aktualizace rolí (funkční PIN!)
++ [API] ukládání "last_seen" timestamp
++ [API] "cached" flag
++ [API] aktualizace uživatelských rolí
++ !!! funkční PIN + kombinace s OAuth 2.0
 
 6.9.2022
 ========
-+ main API calls limiter (10 secs.)
++ API calls limiter (10 secs.)
 + [API] používání "apikey" při volání GetUser
-+ [fn] GSC.DefClick() - zvuk základního kliknutí
-+ [var] GSC.salt_timestamp - timestamp poslední žádosti
-+ [var] GSC.user_timestamp - timestamp poslední žádosti
-+ [var] GSC.version_timestamp - timestamp poslední žádosti
++ [fn] GSC.DefClick() - přehraje zvuk kliknutí
++ [var] GSC.salt_timestamp - timestamp žádosti
++ [var] GSC.user_timestamp - timestamp žádosti
++ [var] GSC.version_timestamp - timestamp žádosti
 
 4.9.2022
 ========
-+ Red-lang parse experiment
++ !!! Red-lang parse experiment
 + [API] GetDiscounts
-
-3.9.2022
-========
-+ úpravy UI
 
 31.8.2022
 =========
-+ data file "akce.html" z Kupi.cz
-+ aktualizace: update.sh / sync.sh
-+ [fix] black screen (JS error)
++ data file "akce.html"
++ [fix] black screen (vyřešen JS error)
 
 29.8.2022
 =========
-+ barevný formát changelogu
-
-28.8.2022
-=========
-+ INPUT autocomplete off
++ !!! barevný formát changelogu
 
 27.8.2022
 =========
@@ -48,15 +41,15 @@
 + [fn] GSC.GenerateAPIkey() - generování API klíče z PINu a soli
 + [fn] GSC.GetSalt() - stažení soli
 + [var] GSC.apikey - API key
-+ [var] GSC.salt - salt
-+ [var] GSC.today - salt date
++ [var] GSC.salt - sůl
++ [var] GSC.today - datum vytvoření soli
 + [var] GSC.ui - režim UI
-+ generování API klíče z PINu a soli
++ generování API klíče
 
 26.8.2022
 =========
 + [var] GSC.pin
-+ ukládání PIN do local storage
++ ukládání PINu do local storage
 
 24.8.2022
 =========
