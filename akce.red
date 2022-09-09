@@ -1,7 +1,7 @@
 Red[]
 
 source: read %akce.html
-data: make block! 1000
+data: make block! 10000
 dq: #"^""
 ws: charset " ^/^-^M"
 
@@ -18,7 +18,7 @@ parse source [
         (store value)
         thru {<a}
         thru {data-product="}
-        copy value to dq ; produkt
+        copy value to dq ; product
         (store value)
         thru {<a}
         thru {data-shop="}

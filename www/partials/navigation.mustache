@@ -541,6 +541,11 @@
 
       // UUID
       GSC.D('<b>UUID</b> ' + localStorage["uuid"]);
+
+      // changelog fix
+      if (GSC.touch) {
+        $('#changelog_modal').removeClass('medium');
+      }
     });
   })(window, $);
 </script>

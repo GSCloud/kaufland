@@ -212,6 +212,7 @@ class ApiPresenter extends APresenter
                     $log[$k] = "<span class=teal8>$v</span>";
                 }
                 if (strpos($v, '!!!')) {
+                    $v = str_replace('!!!', '', $v);
                     $log[$k] = "<span class='red bold'>$v</span>";
                 }
             }

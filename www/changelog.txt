@@ -1,7 +1,7 @@
 9.9.2022
 ========
 + nový preprocessor akčních cen piva
-+ mírná redukce changelogu
++ redukce changelogu
 
 7.9.2022
 ========
@@ -13,11 +13,11 @@
 6.9.2022
 ========
 + API calls limiter (10 secs.)
-+ [API] používání "apikey" při volání GetUser
++ [API] "apikey" při volání GetUser
 + [fn] GSC.DefClick() - přehraje zvuk kliknutí
-+ [var] GSC.salt_timestamp - timestamp žádosti
-+ [var] GSC.user_timestamp - timestamp žádosti
-+ [var] GSC.version_timestamp - timestamp žádosti
++ [var] GSC.salt_timestamp - timestamp
++ [var] GSC.user_timestamp - timestamp
++ [var] GSC.version_timestamp - timestamp
 
 4.9.2022
 ========
