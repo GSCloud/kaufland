@@ -1,6 +1,7 @@
 10.9.2022
 =========
 + [fix] zpracování akčních cen piva
++ [API] GetDiscountsAll - všechny slevy na pivo
 
 9.9.2022
 ========
@@ -26,7 +27,7 @@
 4.9.2022
 ========
 + !!! Red-lang parse experiment
-+ [API] GetDiscounts
++ [API] GetDiscounts - slevy na lahvové pivo
 
 31.8.2022
 =========

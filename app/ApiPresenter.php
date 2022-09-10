@@ -175,10 +175,25 @@ class ApiPresenter extends APresenter
 
         case "GetDiscounts":
             $extras["cached"] = false;
-            if (!file_exists(ROOT . '/akce.data')) {
+            $file = ROOT . '/akce.data';
+            if (!file_exists($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
-            $discounts = $this->getDiscounts();
+            $discounts = $this->getDiscounts($file);
+            $data = [
+                "records" => count($discounts),
+                "discounts" => $discounts,
+            ];
+            return $this->writeJsonData($data, $extras);
+            break;
+
+        case "GetDiscountsAll":
+            $extras["cached"] = false;
+            $file = ROOT . '/akce-all.data';
+            if (!file_exists($file)) {
+                return ErrorPresenter::getInstance()->process(404);
+            }
+            $discounts = $this->getDiscounts($file);
             $data = [
                 "records" => count($discounts),
                 "discounts" => $discounts,
@@ -255,7 +270,7 @@ class ApiPresenter extends APresenter
      *
      * @param [string] $apikey API key
      * 
-     * @return [nixed] user role by PIN or false if check failed
+     * @return [mixed] user role by PIN or false if check failed
      */
     public function checkKey($apikey)
     {
@@ -273,14 +288,15 @@ class ApiPresenter extends APresenter
     }
 
     /**
-     * Get beer discounts
+     * Get beer discounts from a file
      *
-     * @return array
+     * @param [string] $file filename
+     * 
+     * @return [array] discounts
      */
-    public function getDiscounts()
+    public function getDiscounts($file)
     {
         $discounts = [];
-        $file = ROOT . "/akce.data";
         if (file_exists($file)) {
             $arr = file($file);
             $c = 0;
@@ -327,7 +343,7 @@ class ApiPresenter extends APresenter
                 }
             }
         }        
-        return $discounts;
+        return (array) $discounts;
     }
 
     /**

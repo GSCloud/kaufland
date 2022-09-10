@@ -34,7 +34,18 @@ GetChangeLog:
 GetDiscounts:
   path: "/api/v1/GetDiscounts"
   method: GET
-  api_description: "Get beer discounts"
+  api_description: "Get beer discounts (bottles)"
+  api_info: "Returns (JSON): discounts (array)"
+  api: true
+  assert_json: true
+  assert_httpcode: 200
+  finished: false
+  presenter: api
+
+GetDiscountsAll:
+  path: "/api/v1/GetDiscountsAll"
+  method: GET
+  api_description: "Get beer discounts (all beer)"
   api_info: "Returns (JSON): discounts (array)"
   api: true
   assert_json: true
