@@ -5,7 +5,7 @@
 
 9.9.2022
 ========
-+ nový preprocessor akčních cen piva
++ preprocessor akčních cen piva
 + redukce changelogu
 
 7.9.2022
@@ -27,7 +27,7 @@
 4.9.2022
 ========
 + !!! Red-lang parse experiment
-+ [API] GetDiscounts - slevy na lahvové pivo
++ [API] GetDiscounts - slevy na lahvové pivo (filtrování podle zálohy na lahev)
 
 31.8.2022
 =========

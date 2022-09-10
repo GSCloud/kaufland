@@ -51,7 +51,7 @@ l:
   err_connection: 'Chyba připojení k internetu!'
   info_demo: 'Pro zapnutí demoverze zadej PIN "<b>demo</b>".'
   info_pin_saved: 'PIN uložen!'
-  keywords: 'flašky,lahve,lahvárna,kauf,kaufland,fred,brooker,gscloud,gscloud.cz,mxd,mxd.cz,brno,pwa,recycling,bottles'
+  keywords: 'flašky,lahve,lahvárna,kauf,kaufland,fred,brooker,gscloud,gscloud.cz,mxd,mxd.cz,brno,pwa,recycling,bottles,rebolek,red,red-lang'
   nav_game: 'Hry'
   nav_info: 'Info'
   nav_message: 'Zprávy'
