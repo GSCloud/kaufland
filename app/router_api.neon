@@ -39,7 +39,7 @@ GetDiscounts:
   api: true
   assert_json: true
   assert_httpcode: 200
-  finished: false
+  finished: true
   presenter: api
 
 GetDiscountsAll:
@@ -50,7 +50,7 @@ GetDiscountsAll:
   api: true
   assert_json: true
   assert_httpcode: 200
-  finished: false
+  finished: true
   presenter: api
 
 GetUser:
