@@ -30,7 +30,7 @@ for i in {2..5}; do wget -O "beer$i.html" 'https://www.kupi.cz/hledej?page='$i'&
 cat beer*.html | tr '\n' ' ' | sed 's/<tr/\n<tr/g' > akce.html
 
 # parse prices using Red-lang + fix text
-./akce | sed 's/&nbsp;/ /g' | sed 's/&ndash;//g' > akce.data
+./akce | grep 'záloha' | sed 's/&nbsp;/ /g' | sed 's/&ndash;//g' > akce.data
 
 # favicons recalculation
 cd www/img && . ./create_favicons.sh
