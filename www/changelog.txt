@@ -1,3 +1,7 @@
+10.9.2022
+=========
++ [fix] zpracování akčních cen piva
+
 9.9.2022
 ========
 + nový preprocessor akčních cen piva
