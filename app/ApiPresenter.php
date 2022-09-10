@@ -297,7 +297,7 @@ class ApiPresenter extends APresenter
     public function getDiscounts($file)
     {
         $discounts = [];
-        if (file_exists($file)) {
+        if (file_exists($file) && is_readable($file)) {
             $arr = file($file);
             $c = 0;
             $count = 0;
