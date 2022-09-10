@@ -32,7 +32,7 @@ class ApiPresenter extends APresenter
     const ACCESS_TIME_LIMIT = 3599;
     const API_CACHE = 'tenminutes';
     const MAX_API_HITS = 1000;
-    const MAX_RECORDS = 250;
+    const MAX_RECORDS = 500;
     const USE_CACHE = true;
 
     /**
