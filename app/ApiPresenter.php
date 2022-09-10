@@ -208,26 +208,39 @@ class ApiPresenter extends APresenter
             $log = file(WWW . '/changelog.txt');
             foreach ($log as $k => $v) {
                 $v = trim($v);
-                if (strpos($v, '[fix]')) {
+                $x = '[fix]';
+                if (strpos($v, $x)) {
+                    $v = str_replace($x, '', $v);
                     $log[$k] = "<span class=red8>$v</span>";
                 }
-                if (strpos($v, '[var]')) {
+                $x = '[var]';
+                if (strpos($v, $x)) {
+                    $v = str_replace($x, '', $v);
                     $log[$k] = "<span class=yellow10>$v</span>";
                 }
-                if (strpos($v, '[fn]')) {
+                $x = '[fn]';
+                if (strpos($v, $x)) {
+                    $v = str_replace($x, '', $v);
                     $log[$k] = "<span class=blue8>$v</span>";
                 }
-                if (strpos($v, '[fn,priv]')) {
+                $x = '[fn,priv]';
+                if (strpos($v, $x)) {
+                    $v = str_replace($x, '', $v);
                     $log[$k] = "<span class=indigo10>$v</span>";
                 }
+                $x = '[API]';
                 if (strpos($v, '[API]')) {
+                    $v = str_replace($x, '', $v);
                     $log[$k] = "<span class=green6>$v</span>";
                 }
+                $x = '[TESTER]';
                 if (strpos($v, '[TESTER]')) {
+                    $v = str_replace($x, '', $v);
                     $log[$k] = "<span class=teal8>$v</span>";
                 }
+                $x = '!!!';
                 if (strpos($v, '!!!')) {
-                    $v = str_replace('!!!', '', $v);
+                    $v = str_replace($x, '', $v);
                     $log[$k] = "<span class='red bold'>$v</span>";
                 }
             }
