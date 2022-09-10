@@ -55,6 +55,7 @@ rsync -ahz --progress --delete-after --delay-updates --exclude "www/upload" --ex
   *.php \
   *.txt \
   akce.data \
+  akce-all.data \
   app \
   bin \
   cli.sh \
