@@ -27,10 +27,10 @@ fi
 # get beer prices HTML5 raw data + preprocess
 wget -O beer1.html 'https://www.kupi.cz/hledej?f=pivo&vse=0'
 for i in {2..5}; do wget -O "beer$i.html" 'https://www.kupi.cz/hledej?page='$i'&f=pivo&vse=0'; sleep 1; done
-cat beer*.html | tr '\n' ' ' | sed 's/<tr/\n<tr/g' > akce.html
+cat beer*.html | tr '\n' ' ' | sed 's/<tr/\n<tr/g' | grep 'záloha' > akce.html
 
 # parse prices using Red-lang + fix text
-./akce | grep 'záloha' | sed 's/&nbsp;/ /g' | sed 's/&ndash;//g' > akce.data
+./akce | sed 's/&nbsp;/ /g' | sed 's/&ndash;//g' > akce.data
 
 # favicons recalculation
 cd www/img && . ./create_favicons.sh
