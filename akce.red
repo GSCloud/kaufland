@@ -28,9 +28,9 @@ parse source [
         thru <strong class="discount_price_value">
         copy value to {</strong>} ; price
         (store value)
-        thru <div class="discount_percentage">
-        copy value to {</div>} ; discount
-        (store value)
+;        thru <div class="discount_percentage">
+;        copy value to {</div>} ; discount
+;        (store value)
         thru {</tr>}
     ]
 ]

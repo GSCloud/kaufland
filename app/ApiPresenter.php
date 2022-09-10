@@ -32,7 +32,7 @@ class ApiPresenter extends APresenter
     const ACCESS_TIME_LIMIT = 3599;
     const API_CACHE = 'tenminutes';
     const MAX_API_HITS = 1000;
-    const MAX_RECORDS = 300;
+    const MAX_RECORDS = 500;
     const USE_CACHE = true;
 
     /**
@@ -318,13 +318,6 @@ class ApiPresenter extends APresenter
                 // price
                 if ($c == 4) {
                     $el["price"] = (int) trim(str_replace('Kč', '', $s));
-                    $c++;
-                    continue;
-                }
-                // discount
-                if ($c == 5) {
-                    $el["discount"] = (int) trim(str_replace('%', '', $s));
-                    $c++;
                     array_push($discounts, $el);
                     $count++;
                     if ($count == self::MAX_RECORDS) {
