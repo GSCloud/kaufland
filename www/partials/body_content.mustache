@@ -161,7 +161,7 @@
         <div class="col s6">
           <div class="small field label prefix border">
             <i>password</i>
-            <input id="pin" autocomplete="off" name="pin" type="password">
+            <input id="pin" autocomplete="off" name="pin" type="password"/>
             <label>PIN</label>
           </div>
         </div>
@@ -200,6 +200,7 @@
       </article>
       {{/user.id}}
     </div>
+  </div>
 {{#admin_group_tester}}
     <div class="center-align padding" tabindex="-1">
       <a href="?cssdebug=1&nonce={{ nonce }}" class="">
@@ -209,7 +210,6 @@
     <article id="debuglist" class="truncate left-align black small-padding small-text" tabindex="-1">
     </article>
 {{/admin_group_tester}}
-  </div>
 </div>
 <script>
   (function (w, $, undefined) {
