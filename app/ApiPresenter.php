@@ -215,27 +215,22 @@ class ApiPresenter extends APresenter
                 }
                 $x = '[var]';
                 if (strpos($v, $x)) {
-                    $v = str_replace($x, '', $v);
                     $log[$k] = "<span class=yellow10>$v</span>";
                 }
                 $x = '[fn]';
                 if (strpos($v, $x)) {
-                    $v = str_replace($x, '', $v);
                     $log[$k] = "<span class=blue8>$v</span>";
                 }
                 $x = '[fn,priv]';
                 if (strpos($v, $x)) {
-                    $v = str_replace($x, '', $v);
                     $log[$k] = "<span class=indigo10>$v</span>";
                 }
                 $x = '[API]';
                 if (strpos($v, '[API]')) {
-                    $v = str_replace($x, '', $v);
                     $log[$k] = "<span class=green6>$v</span>";
                 }
                 $x = '[TESTER]';
                 if (strpos($v, '[TESTER]')) {
-                    $v = str_replace($x, '', $v);
                     $log[$k] = "<span class=teal8>$v</span>";
                 }
                 $x = '!!!';
