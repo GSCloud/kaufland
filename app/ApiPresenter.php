@@ -221,9 +221,9 @@ class ApiPresenter extends APresenter
     /**
      * Get colorized changelog
      *
-     * @param [string] $file filename of the changelog
+     * @param string $file filename of the changelog
      * 
-     * @return [mixed] HTML5 changelog or false
+     * @return mixed HTML5 changelog or false
      */
     public function getChangelog($file)
     {
@@ -277,8 +277,9 @@ class ApiPresenter extends APresenter
         }
         return false;
     }
+
     /**
-     * Save last seen Unix timestamp to data/
+     * Save last seen Unix timestamp
      *
      * @return self
      */
@@ -297,9 +298,9 @@ class ApiPresenter extends APresenter
     /**
      * Check REST API key validity
      *
-     * @param [string] $apikey API key
+     * @param string $apikey API key (SHA-256 hash)
      * 
-     * @return [mixed] user role by PIN or false if check failed
+     * @return mixed user role by PIN or false if check failed
      */
     public function checkKey($apikey)
     {
@@ -319,9 +320,9 @@ class ApiPresenter extends APresenter
     /**
      * Get beer discounts from a file
      *
-     * @param [string] $file filename
+     * @param string $file filename of the datafile
      * 
-     * @return [array] discounts
+     * @return array discounts
      */
     public function getDiscounts($file)
     {
@@ -390,7 +391,7 @@ class ApiPresenter extends APresenter
     /**
      * Get daily salt
      *
-     * @return string SHA-256 hash = salt
+     * @return string salt as SHA-256 hash
      */
     public function getSalt()
     {
