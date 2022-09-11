@@ -211,36 +211,39 @@ class ApiPresenter extends APresenter
                 $x = '[fix]';
                 if (strpos($v, $x)) {
                     $v = str_replace($x, '', $v);
-                    $log[$k] = "<span class=red8>$v</span>";
+                    $log[$k] = "<div class=red8>$v</div>";
                 }
                 $x = '[var]';
                 if (strpos($v, $x)) {
-                    $log[$k] = "<span class=yellow10>$v</span>";
+                    $log[$k] = "<div class=yellow10>$v</div>";
                 }
                 $x = '[fn]';
                 if (strpos($v, $x)) {
-                    $log[$k] = "<span class=blue8>$v</span>";
+                    $log[$k] = "<div class=blue8>$v</div>";
                 }
                 $x = '[fn,priv]';
                 if (strpos($v, $x)) {
-                    $log[$k] = "<span class=indigo10>$v</span>";
+                    $log[$k] = "<div class=indigo10>$v</div>";
                 }
                 $x = '[API]';
                 if (strpos($v, '[API]')) {
-                    $log[$k] = "<span class=green6>$v</span>";
+                    $log[$k] = "<div class=green6>$v</div>";
                 }
                 $x = '[TESTER]';
                 if (strpos($v, '[TESTER]')) {
-                    $log[$k] = "<span class=teal8>$v</span>";
+                    $log[$k] = "<div class=teal8>$v</div>";
                 }
                 $x = '!!!';
                 if (strpos($v, '!!!')) {
                     $v = str_replace($x, '', $v);
-                    $log[$k] = "<span class='red bold'>$v</span>";
+                    $log[$k] = "<div class='red bold'>$v</div>";
                 }
             }
             $log = implode('<br>', $log);
-            $log = preg_replace('/\n=+\n/', '<hr>', $log);
+            $log = preg_replace('/==+/', '<hr>', $log);
+            $log = str_replace("\n", '', $log);
+            $log = str_replace('</div><br>', '</div>', $log);
+            $log = str_replace('<br><hr><br>', '<hr>', $log);
             $log = preg_replace('/([0-9]+\.[0-9]+\.[0-9]+)/', '<b>$1</b>', $log);
             $data = [
                 "changelog" => $log,
