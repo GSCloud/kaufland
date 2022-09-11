@@ -174,7 +174,6 @@ class ApiPresenter extends APresenter
             break;
 
         case "GetDiscounts":
-            $extras["cached"] = false;
             $file = ROOT . '/akce.data';
             if (!file_exists($file)) {
                 return ErrorPresenter::getInstance()->process(404);
@@ -188,7 +187,6 @@ class ApiPresenter extends APresenter
             break;
 
         case "GetDiscountsAll":
-            $extras["cached"] = false;
             $file = ROOT . '/akce-all.data';
             if (!file_exists($file)) {
                 return ErrorPresenter::getInstance()->process(404);
@@ -223,58 +221,61 @@ class ApiPresenter extends APresenter
     /**
      * Get colorized changelog
      *
-     * @param [string] $file filename of changelog
+     * @param [string] $file filename of the changelog
      * 
-     * @return [string] HTML5 changelog
+     * @return [mixed] HTML5 changelog or false
      */
     public function getChangelog($file)
     {
-        $log = file($file);
-        foreach ($log as $k => $v) {
-            $v = trim($v);
-            $x = '[fix]';
-            if (strpos($v, $x)) {
-                $v = str_replace($x, '[<b>fix</b>]', $v);
-                $log[$k] = "<div class=red8>$v</div>";
+        if (file_exists($file) && is_readable($file)) {
+            $log = file($file);
+            foreach ($log as $k => $v) {
+                $v = trim($v);
+                $x = '[fix]';
+                if (strpos($v, $x)) {
+                    $v = str_replace($x, '[<b>fix</b>]', $v);
+                    $log[$k] = "<div class=red8>$v</div>";
+                }
+                $x = '[var]';
+                if (strpos($v, $x)) {
+                    $v = str_replace($x, '[<b>var</b>]', $v);
+                    $log[$k] = "<div class=yellow10>$v</div>";
+                }
+                $x = '[fn]';
+                if (strpos($v, $x)) {
+                    $v = str_replace($x, '[<b>fn</b>]', $v);
+                    $log[$k] = "<div class=blue8>$v</div>";
+                }
+                $x = '[fn,priv]';
+                if (strpos($v, $x)) {
+                    $v = str_replace($x, '[<b>fn,priv</b>]', $v);
+                    $log[$k] = "<div class=indigo10>$v</div>";
+                }
+                $x = '[API]';
+                if (strpos($v, '[API]')) {
+                    $v = str_replace($x, '[<b>API</b>]', $v);
+                    $log[$k] = "<div class=green6>$v</div>";
+                }
+                $x = '[TESTER]';
+                if (strpos($v, '[TESTER]')) {
+                    $v = str_replace($x, '[<b>TESTER</b>]', $v);
+                    $log[$k] = "<div class=teal8>$v</div>";
+                }
+                $x = '!!!';
+                if (strpos($v, '!!!')) {
+                    $v = str_replace($x, '', $v);
+                    $log[$k] = "<div class='red bold'>$v</div>";
+                }
             }
-            $x = '[var]';
-            if (strpos($v, $x)) {
-                $v = str_replace($x, '[<b>var</b>]', $v);
-                $log[$k] = "<div class=yellow10>$v</div>";
-            }
-            $x = '[fn]';
-            if (strpos($v, $x)) {
-                $v = str_replace($x, '[<b>fn</b>]', $v);
-                $log[$k] = "<div class=blue8>$v</div>";
-            }
-            $x = '[fn,priv]';
-            if (strpos($v, $x)) {
-                $v = str_replace($x, '[<b>fn,priv</b>]', $v);
-                $log[$k] = "<div class=indigo10>$v</div>";
-            }
-            $x = '[API]';
-            if (strpos($v, '[API]')) {
-                $v = str_replace($x, '[<b>API</b>]', $v);
-                $log[$k] = "<div class=green6>$v</div>";
-            }
-            $x = '[TESTER]';
-            if (strpos($v, '[TESTER]')) {
-                $v = str_replace($x, '[<b>TESTER</b>]', $v);
-                $log[$k] = "<div class=teal8>$v</div>";
-            }
-            $x = '!!!';
-            if (strpos($v, '!!!')) {
-                $v = str_replace($x, '', $v);
-                $log[$k] = "<div class='red bold'>$v</div>";
-            }
+            $log = implode('<br>', $log);
+            $log = preg_replace('/==+/', '<hr>', $log);
+            $log = str_replace("\n", '', $log);
+            $log = str_replace('</div><br>', '</div>', $log);
+            $log = str_replace('<br><hr><br>', '<hr>', $log);
+            $log = preg_replace('/([0-9]+\.[0-9]+\.[0-9]+)/', '<b>$1</b>', $log);
+            return $log;
         }
-        $log = implode('<br>', $log);
-        $log = preg_replace('/==+/', '<hr>', $log);
-        $log = str_replace("\n", '', $log);
-        $log = str_replace('</div><br>', '</div>', $log);
-        $log = str_replace('<br><hr><br>', '<hr>', $log);
-        $log = preg_replace('/([0-9]+\.[0-9]+\.[0-9]+)/', '<b>$1</b>', $log);
-        return $log;
+        return false;
     }
     /**
      * Save last seen Unix timestamp to data/
