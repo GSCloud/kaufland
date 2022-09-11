@@ -2,6 +2,7 @@
 =========
 + [fix] správné zaokrouhlení cen piva
 + [fix] vzhled changelogu
++ částečný překlad názvů piva
 
 10.9.2022
 =========
