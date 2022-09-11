@@ -42,7 +42,7 @@ class ApiPresenter extends APresenter
      */
     public function process()
     {
-        \setlocale(LC_ALL, 'cs_CZ.utf8');
+        \setlocale(LC_ALL, 'cs_CZ.UTF-8');
         \error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 
         $cfg = $this->getCfg();
