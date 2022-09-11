@@ -1,12 +1,12 @@
 11.9.2022
 =========
-+ [fix] vzhled changelogu
 + [fix] správné zaokrouhlení cen piva
++ [fix] vzhled changelogu
 
 10.9.2022
 =========
-+ [fix] zpracování akčních cen piva
 + [API] GetDiscountsAll - všechny slevy na pivo
++ [fix] zpracování akčních cen piva
 
 9.9.2022
 ========
@@ -22,7 +22,7 @@
 
 6.9.2022
 ========
-+ API calls limiter (10 secs.)
++ [API] interní limiter volání (10 secs.)
 + [API] use "apikey" při volání GetUser
 + [fn] GSC.DefClick() - zvuk kliknutí
 + [var] GSC.salt_timestamp - timestamp
