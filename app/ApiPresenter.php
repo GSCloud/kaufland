@@ -344,7 +344,9 @@ class ApiPresenter extends APresenter
                 }
                 // price
                 if ($c == 4) {
-                    $el["price"] = (int) trim(str_replace('Kč', '', $s));
+                    $s = str_replace(',', '.', $s);
+                    $s = str_replace('Kč', '', $s);
+                    $el["price"] = (int) ceil(floatval(trim($s)));
                     array_push($discounts, $el);
                     $count++;
                     if ($count == self::MAX_RECORDS) {

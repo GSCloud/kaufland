@@ -1,6 +1,7 @@
 11.9.2022
 =========
 + [fix] vzhled changelogu
++ [fix] správné zaokrouhlení cen piva
 
 10.9.2022
 =========
