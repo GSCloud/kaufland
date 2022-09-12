@@ -1,3 +1,7 @@
+12.9.2022
+=========
++ zálohování data souboru s cenami lahvového piva
+
 11.9.2022
 =========
 + [fix] správné zaokrouhlení cen piva

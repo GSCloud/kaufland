@@ -245,11 +245,16 @@
     GSC.salt = null;
 
     // API translations
-    var security_levels = {};
+    var security_levels = [];
     security_levels["high"] = "{{ l.security_level_high }}";
     security_levels["low"] = "{{ l.security_level_low }}";
     security_levels["none"] = "{{ l.security_level_none }}";
     security_levels["pin"] = "{{ l.security_level_pin }}";
+
+    // markets allowed
+    var markets_allowed = [
+      'Kaufland', 'Lidl', 'Penny Market', 'Albert'
+    ];
 
     // disable context menu
     w.oncontextmenu = function(e) {
