@@ -174,27 +174,31 @@ class ApiPresenter extends APresenter
             break;
 
         case "GetDiscounts":
-            $file = ROOT . '/akce.data';
-            if (!file_exists($file)) {
+            $f = 'akce.data';
+            $file = ROOT . '/' . $f;
+            if (!file_exists($file) || !is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
             $discounts = $this->getDiscounts($file);
             $data = [
+                "datafile" => $f,
                 "records" => count($discounts),
                 "discounts" => $discounts,
             ];
             return $this->writeJsonData($data, $extras);
             break;
-
+            
         case "GetDiscountsAll":
-            $file = ROOT . '/akce-all.data';
-            if (!file_exists($file)) {
+            $f = 'akce-all.data';
+            $file = ROOT . '/' . $f;
+            if (!file_exists($file) || !is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
             $discounts = $this->getDiscounts($file);
             $data = [
-                "records" => count($discounts),
-                "discounts" => $discounts,
+            "datafile" => $f,
+            "records" => count($discounts),
+            "discounts" => $discounts,
             ];
             return $this->writeJsonData($data, $extras);
             break;
