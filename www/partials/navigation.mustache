@@ -165,6 +165,7 @@
       // app update
       $('.nav_update').click(function () {
         if (GSC.offline) {
+          if (typeof GSC.DefClick == "function") GSC.DefClick();
           // toast
           setTimeout(function () {
             $('#err_connection').addClass('active');
@@ -217,6 +218,7 @@
       $('.nav_api').click(function() {
         if (GSC.offline) {
           // toast
+          if (typeof GSC.DefClick == "function") GSC.DefClick();
           setTimeout(function () {
             $('#err_connection').addClass('active');
           }, 10);
@@ -234,8 +236,9 @@
           }, 10);
           return;
         }
-        $('#changelog_modal').addClass('active');
+        if (typeof GSC.DefClick == "function") GSC.DefClick();
         setTimeout(function() {
+          $('#changelog_modal').addClass('active');
           GSC.modals.push('changelog_modal');
         }, 10);
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
