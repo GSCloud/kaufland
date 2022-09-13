@@ -8,7 +8,7 @@
 
 12.9.2022
 =========
-+ sofistikované zálohování datafiles s cenami piva
++ sofistikované zálohování datafiles cen piva
 
 11.9.2022
 =========
