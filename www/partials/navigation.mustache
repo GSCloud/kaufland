@@ -237,6 +237,7 @@
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetChangeLog' + nonce, function(data) {
           if (data && data.data && data.data.changelog) {
+            // render changelog
             $('#changelog_box').html(data.data.changelog);
           }
         });
@@ -536,10 +537,7 @@
         w.location.href = '/err/600';
       }
 
-      // UUID
-      GSC.D('<b>UUID</b> ' + localStorage["uuid"]);
-
-      // changelog fix
+      // changelog UI fix for touch devices
       if (GSC.touch) {
         $('#changelog_modal').removeClass('medium');
       }
