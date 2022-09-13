@@ -2,6 +2,7 @@
 =========
 + [fix] K modal box
 + [fix] použití DefClick()
++ UI experiment - výpis akčních cen
 + composer core upgrade
 + překlad názvů piva (111 položek): app/beer-translation.neon
 + překlad názvů piva v rámci REST API
