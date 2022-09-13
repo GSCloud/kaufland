@@ -153,6 +153,7 @@
 
       // K - logo
       $('.nav_app').click(function () {
+        if (typeof GSC.DefClick == "function") GSC.DefClick();
         setTimeout(function() {
           $('#appinfo_modal').toggleClass('active');
           $('#changelog_modal').removeClass('active');
@@ -183,7 +184,7 @@
           GSC.apikey = null;
           GSC.pin = 'pin is not set';
         }
-        GSC.DefClick();
+        if (typeof GSC.DefClick == "function") GSC.DefClick();
         // toast
         setTimeout(function () {
           $('#pin_saved').addClass('active');
@@ -294,7 +295,7 @@
       $('.ui').click(function() {
         localStorage["ui"] = $(this).is(":checked");
         setUImode();
-        GSC.DefClick();
+        if (typeof GSC.DefClick == "function") GSC.DefClick();
       });
 
       // settings: VIBRATE
