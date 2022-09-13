@@ -146,6 +146,7 @@
         $('.section').addClass('hidden');
         $('.' + el + '>i').addClass($('.' + el + '>i').data('color')).addClass('large');
         $('.' + el + '>div').addClass($('.' + el + '>i').data('color')).addClass('bold');
+        if (typeof GSC.DefClick == "function") GSC.DefClick();
       }
 
       // NAVIGATION CLICK HANDLERS
@@ -354,7 +355,7 @@
         var req = new XMLHttpRequest();
         req.open('GET', '/sfx/' + filename + '.mp3', true);
         req.responseType = 'arraybuffer';
-        GSC.D('<b>SFX</b> ' + filename + '.mp3');
+        //GSC.D('<b>SFX</b> ' + filename + '.mp3');
 
         // onload handler
         req.onload = function() {
