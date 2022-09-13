@@ -418,7 +418,7 @@
 
       // remove modals and toasts on every click
       // prepare AudioContext object (preceding user action is mandatory!)
-      $('.section,main').click(function() {
+      $('.section,main,nav').click(function() {
         GSC.lastclick = +new Date();
         $('.toast').removeClass('active');
         if (GSC.modals.length) {
