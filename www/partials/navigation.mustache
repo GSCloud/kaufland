@@ -218,7 +218,6 @@
       $('.nav_api').click(function() {
         if (GSC.offline) {
           // toast
-          if (typeof GSC.DefClick == "function") GSC.DefClick();
           setTimeout(function () {
             $('#err_connection').addClass('active');
           }, 10);
