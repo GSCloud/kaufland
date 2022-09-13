@@ -11,6 +11,16 @@ Search.appendIndex(
             "summary": "Main\u0020controller",
             "url": "classes/GSC-ApiPresenter.html#method_process"
         },                {
+            "fqsen": "\\GSC\\ApiPresenter\u003A\u003AgetChangelog\u0028\u0029",
+            "name": "getChangelog",
+            "summary": "Get\u0020colorized\u0020changelog",
+            "url": "classes/GSC-ApiPresenter.html#method_getChangelog"
+        },                {
+            "fqsen": "\\GSC\\ApiPresenter\u003A\u003AsaveLastSeen\u0028\u0029",
+            "name": "saveLastSeen",
+            "summary": "Save\u0020last\u0020seen\u0020Unix\u0020timestamp",
+            "url": "classes/GSC-ApiPresenter.html#method_saveLastSeen"
+        },                {
             "fqsen": "\\GSC\\ApiPresenter\u003A\u003AcheckKey\u0028\u0029",
             "name": "checkKey",
             "summary": "Check\u0020REST\u0020API\u0020key\u0020validity",
@@ -18,7 +28,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\GSC\\ApiPresenter\u003A\u003AgetDiscounts\u0028\u0029",
             "name": "getDiscounts",
-            "summary": "Get\u0020beer\u0020discounts",
+            "summary": "Get\u0020beer\u0020discounts\u0020from\u0020a\u0020file",
             "url": "classes/GSC-ApiPresenter.html#method_getDiscounts"
         },                {
             "fqsen": "\\GSC\\ApiPresenter\u003A\u003AgetToday\u0028\u0029",

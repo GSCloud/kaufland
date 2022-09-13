@@ -108,7 +108,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 
@@ -360,7 +360,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/GSC-ApiPresenter.html#constant_MAX_RECORDS">MAX_RECORDS</a>
     <span>
-        &nbsp;= 300                    </span>
+        &nbsp;= 500                    </span>
 </dt>
 <dd></dd>
 
@@ -514,7 +514,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/GSC-ApiPresenter.html#method_checkKey">checkKey()</a>
     <span>
-                        &nbsp;: true    </span>
+                        &nbsp;: mixed    </span>
 </dt>
 <dd>Check REST API key validity</dd>
 
@@ -568,6 +568,13 @@
 <dd>Cfg getter</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/GSC-ApiPresenter.html#method_getChangelog">getChangelog()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd>Get colorized changelog</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/GSC-APresenter.html#method_getCookie">getCookie()</a>
     <span>
                         &nbsp;: mixed    </span>
@@ -600,7 +607,7 @@
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Get beer discounts</dd>
+<dd>Get beer discounts from a file</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/GSC-APresenter.html#method_getErrors">getErrors()</a>
@@ -771,6 +778,13 @@
 <dd>Render HTML content from given template</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/GSC-ApiPresenter.html#method_saveLastSeen">saveLastSeen()</a>
+    <span>
+                        &nbsp;: self    </span>
+</dt>
+<dd>Save last seen Unix timestamp</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/GSC-APresenter.html#method_setCookie">setCookie()</a>
     <span>
                         &nbsp;: self    </span>
@@ -908,7 +922,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
@@ -937,7 +951,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">34</span>
 
     </aside>
 
@@ -1636,7 +1650,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">34</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 
     </aside>
 
@@ -1665,7 +1679,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 
     </aside>
 
@@ -1674,7 +1688,7 @@
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">MAX_RECORDS</span>
-    = <span class="phpdocumentor-signature__default-value">300</span>
+    = <span class="phpdocumentor-signature__default-value">500</span>
 </code>
 
 
@@ -1694,7 +1708,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
@@ -2282,7 +2296,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">296</span>
+    <span class="phpdocumentor-element-found-in__line">426</span>
 
     </aside>
 
@@ -2497,7 +2511,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">194</span>
+    <span class="phpdocumentor-element-found-in__line">310</span>
 
     </aside>
 
@@ -2505,17 +2519,18 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">checkKey</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$apikey</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">true</span></code>
+                <span class="phpdocumentor-signature__name">checkKey</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$apikey</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$apikey</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>API key (SHA-256 hash)</p>
+</section>
 
             </dd>
             </dl>
@@ -2523,9 +2538,11 @@
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">true</span>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>user role by PIN or false if check failed</p>
+</section>
+
     
 </article>
                     <article
@@ -2852,6 +2869,53 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getChangelog">
+        getChangelog()
+        <a href="classes/GSC-ApiPresenter.html#method_getChangelog" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">233</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Get colorized changelog</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getChangelog</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$file</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>filename of the changelog</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>HTML5 changelog or false</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getCookie">
         getCookie()
         <a href="classes/GSC-APresenter.html#method_getCookie" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3023,24 +3087,38 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">204</span>
+    <span class="phpdocumentor-element-found-in__line">332</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Get beer discounts</p>
+        <p class="phpdocumentor-summary">Get beer discounts from a file</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">getDiscounts</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                <span class="phpdocumentor-signature__name">getDiscounts</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     
-    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$file</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>filename of the datafile</p>
+</section>
+
+            </dd>
+            </dl>
+
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>discounts</p>
+</section>
+
     
 </article>
                     <article
@@ -3480,7 +3558,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">279</span>
+    <span class="phpdocumentor-element-found-in__line">409</span>
 
     </aside>
 
@@ -3570,7 +3648,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">269</span>
+    <span class="phpdocumentor-element-found-in__line">399</span>
 
     </aside>
 
@@ -3875,7 +3953,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">43</span>
+    <span class="phpdocumentor-element-found-in__line">44</span>
 
     </aside>
 
@@ -3987,6 +4065,39 @@
             <section class="phpdocumentor-description"><p>HTML output</p>
 </section>
 
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_saveLastSeen">
+        saveLastSeen()
+        <a href="classes/GSC-ApiPresenter.html#method_saveLastSeen" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/ApiPresenter.php"><a href="files/app-apipresenter.html"><abbr title="app/ApiPresenter.php">ApiPresenter.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">291</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Save last seen Unix timestamp</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">saveLastSeen</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">self</span>
+            &mdash;
+        
     
 </article>
                     <article
