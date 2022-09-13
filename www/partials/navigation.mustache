@@ -153,10 +153,12 @@
 
       // K - logo
       $('.nav_app').click(function () {
-        $('#appinfo_modal').toggleClass('active');
-        $('#changelog_modal').removeClass('active');
-        GSC.modals = [];
-        GSC.modals.push('appinfo_modal');
+        setTimeout(function() {
+          $('#appinfo_modal').toggleClass('active');
+          $('#changelog_modal').removeClass('active');
+          GSC.modals = [];
+          GSC.modals.push('appinfo_modal');
+        }, 10)
       });
 
       // app update

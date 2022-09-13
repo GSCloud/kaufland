@@ -3,6 +3,8 @@
 + překlad názvů piva (111 položek): app/beer-translation.neon
 + překlad názvů piva v rámci REST API
 + composer core upgrade
++ [fix] K logo modal box
++ [fix] DefClick sound
 
 12.9.2022
 =========
