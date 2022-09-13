@@ -1,7 +1,7 @@
 13.9.2022
 =========
-+ dokončen překlad názvů piva (111 položek)
-+ překlad názvů v rámci REST API
++ překlad názvů piva (111 položek): app/beer-translation.neon
++ překlad názvů piva v rámci REST API
 + composer core upgrade
 
 12.9.2022
