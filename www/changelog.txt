@@ -1,12 +1,17 @@
+13.9.2022
+=========
++ dokončen překlad názvů piva (111 položek)
++ překlad názvů v rámci REST API
++ composer core upgrade
+
 12.9.2022
 =========
-+ zálohování data souboru s cenami lahvového piva
++ sofistikované zálohování datafiles s cenami piva
 
 11.9.2022
 =========
 + [fix] správné zaokrouhlení cen piva
 + [fix] vzhled changelogu
-+ částečný překlad názvů piva
 
 10.9.2022
 =========

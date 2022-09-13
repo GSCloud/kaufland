@@ -13,6 +13,7 @@
 namespace GSC;
 
 use Cake\Cache\Cache;
+use Nette\Neon\Neon;
 use RedisClient\RedisClient;
 use Symfony\Component\Lock\Factory;
 use Symfony\Component\Lock\Store\FlockStore;
@@ -332,6 +333,14 @@ class ApiPresenter extends APresenter
     {
         $discounts = [];
         if (file_exists($file) && is_readable($file)) {
+            // load beer title translations
+            $trans = [];
+            $trans_file = APP . '/beer-translation.neon';
+            if (file_exists($trans_file) && is_readable($trans_file)) {
+                $trans = Neon::decode(
+                    file_get_contents($trans_file)
+                );
+            }
             $arr = file($file);
             $c = 0;
             $count = 0;
@@ -355,7 +364,7 @@ class ApiPresenter extends APresenter
                 }
                 // title
                 if ($c == 2) {
-                    $el["title"] = strtolower($s);
+                    $el["title"] = $trans[strtolower($s)] ?? strtolower($s);
                     $c++;
                     continue;
                 }
