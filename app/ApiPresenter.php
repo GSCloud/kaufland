@@ -77,6 +77,7 @@ class ApiPresenter extends APresenter
             "cached" => false,
             "records_quota" => self::MAX_RECORDS,
             "private" => $priv,
+            "allow_key" => $allow_key,
             "use_key" => $use_key,
             "uuid" => $this->getUID(),
         ];
