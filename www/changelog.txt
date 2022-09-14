@@ -4,12 +4,11 @@
 + [fix] použití DefClick()
 + UI experiment - výpis akčních cen
 + composer core upgrade
-+ překlad názvů piva (111 položek): app/beer-translation.neon
-+ překlad názvů piva v rámci REST API
++ překlad názvů piva v rámci REST API (111 položek): app/beer-translation.neon
 
 12.9.2022
 =========
-+ sofistikované zálohování datafiles cen piva
++ zálohování datafiles
 
 11.9.2022
 =========
