@@ -92,9 +92,9 @@
   UI Discount Experiment
   <br>
   <br>
-  <div id="beer_discount_template">
-    <div class="white red-text small-padding">1.&nbsp;<b class="beer_title">Pilsner Urquell</b></div>
-    <div class="row tiny-padding">
+  <div id="discount_template" class="xhidden">
+    <div class="white red-text no-padding">&nbsp;<span class="count">1</span>/<span class="count_all">99</span>&nbsp;<b class="title">Pilsner Urquell</b></div>
+    <div class="row no-padding">
       <div class="col s1 kaufland"><img class="square responsive" src="/img/markets/kaufland.webp"></div>
       <div class="col s2 center-align"><b class="kaufland_price">50&nbsp;Kč</b></div>
       <div class="col s1 lidl"><img  class="square responsive" src="/img/markets/lidl.webp"></div>
@@ -374,6 +374,38 @@
             }
           }
         });
+      }
+
+      // get discounts
+      function getDiscounts() {
+        if (GSC.offline) return;
+        // 10 secs. timeout limiter
+        if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 10*1000 > +new Date())) return false;
+        var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
+        $.get('/api/v1/GetDiscounts' + nonce, function(data) {
+          GSC.discounts_timestamp = +new Date();
+          if (data && data.data) {
+            localStorage["discounts"] = JSON.stringify(data.data);
+          }
+        });
+      }
+      // GSC.GetDiscounts() - get beer price discounts
+      if (typeof GSC.GetDiscounts !== "function") GSC.GetDiscounts = function() {
+        getDiscounts();
+      }
+
+      // render discounts
+      function renderDiscounts() {
+        if (localStorage["discounts"]) {
+          var discounts = JSON.parse(localStorage["discounts"]);
+          if (discounts) {
+            console.log(discounts);
+          }
+        }
+      }
+      // GSC.RenderDiscounts() - render beer price discounts from local storage
+      if (typeof GSC.RenderDiscounts !== "function") GSC.RenderDiscounts = function() {
+        renderDiscounts();
       }
 
       // get user information

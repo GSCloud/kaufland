@@ -1,3 +1,10 @@
+14.9.2022
+=========
++ [fn,priv] getDiscounts()
++ [fn,priv] renderDiscounts()
++ [fn] GSC.GetDiscounts() - stažení slez z API
++ [fn] GSC.RenderDiscounts() - renderování výstupu
+
 13.9.2022
 =========
 + [fix] K modal box

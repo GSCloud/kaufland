@@ -290,6 +290,7 @@
       $('.nav_price').click(function() {
         setNavigation(this.className);
         $('#price').removeClass('hidden');
+        if (typeof GSC.GetDiscounts == "function") GSC.DeDiscounts();
       });
       
       // warehouse
