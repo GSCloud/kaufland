@@ -172,7 +172,11 @@
           }, 10);
           return;
         }
-        location.replace("?nonce={{ nonce }}");
+        playSound('laser');
+        $('nav,body').hide(200);
+        setTimeout(function () {
+          top.location.replace("?nonce={{ nonce }}");
+        }, 200);
       });
 
       // save PIN / generate API key
