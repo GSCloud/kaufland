@@ -2,8 +2,8 @@
 =========
 + [fn,priv] getDiscounts()
 + [fn,priv] renderDiscounts()
-+ [fn] GSC.GetDiscounts() - stažení slez z API
-+ [fn] GSC.RenderDiscounts() - renderování výstupu
++ [fn] GSC.GetDiscounts() - stažení slev
++ [fn] GSC.RenderDiscounts() - renderování výstupu slev
 
 13.9.2022
 =========
