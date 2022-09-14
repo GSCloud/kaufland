@@ -93,16 +93,16 @@
   <br>
   <br>
   <div id="beer_discount_template">
-    <div class="white red-text small-padding">1.&nbsp;<b>Pilsner Urquell</b></div>
+    <div class="white red-text small-padding">1.&nbsp;<b class="title">Pilsner Urquell</b></div>
     <div class="row tiny-padding">
       <div class="col s1 kaufland"><img class="square responsive" src="/img/markets/kaufland.webp"></div>
-      <div class="col s2 center-align"><b>50&nbsp;Kč</b><br>20&nbsp;%</div>
+      <div class="col s2 center-align"><b class="kaufland_price">50&nbsp;Kč</b><br><span class="kaufland_discount">20&nbsp;%</span></div>
       <div class="col s1 lidl"><img  class="square responsive" src="/img/markets/lidl.webp"></div>
-      <div class="col s2 center-align"><b>13&nbsp;Kč</b><br>20&nbsp;%</div>
+      <div class="col s2 center-align"><b class="lidl_price">13&nbsp;Kč</b><br><span class="lidl_discount">20&nbsp;%</span></div>
       <div class="col s1 penny"><img  class="square responsive" src="/img/markets/penny-market.webp"></div>
-      <div class="col s2 center-align"><b>9&nbsp;Kč</b><br>20&nbsp;%</div>
+      <div class="col s2 center-align"><b class="penny_price">9&nbsp;Kč</b><br><span class="penny_discount">20&nbsp;%</span></div>
       <div class="col s1 albert"><img  class="square responsive" src="/img/markets/albert-supermarket.webp"></div>
-      <div class="col s2 center-align"><b>20&nbsp;Kč</b><br>20&nbsp;%</div>
+      <div class="col s2 center-align"><b class="albert_price">20&nbsp;Kč</b><br><span class="albert_discount">20&nbsp;%</span></div>
     </div>
   </div>
 </div>
@@ -197,6 +197,7 @@
         <span id="login_type_row" class="hidden">{{ l.text_login_type }} <b id="login_type"></b><br></span>
         <span id="security_level_row" class="hidden">{{ l.text_security_level }} <b id="security_level"></b><br>
         {{#user.id}}{{ l.text_encryption }} <b>XChaCha20 + BLAKE2b-MAC</b><br>{{/user.id}}</span>
+        <br>
       </div>
       {{#user.id}}
       <article class="border">
