@@ -371,6 +371,7 @@ class ApiPresenter extends APresenter
                 }
                 // market
                 if ($c == 3) {
+                    $s = str_replace('Penny market', 'Penny', $s);
                     $el["market"] = $s;
                     $c++;
                     continue;
