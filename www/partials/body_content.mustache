@@ -89,22 +89,20 @@
   </div>
 </div>
 <div id="price" class="white-text hidden section">
-  UI Discount Experiment
-  <br>
-  <br>
-  <div id="discount_template" class="xhidden">
-    <div class="white red-text no-padding">&nbsp;<span class="grey-text count">1</span><span class="grey-text">/</span><span class="grey-text count_all">99</span>&nbsp;<b class="title truncate">Velkopopovický Kozel Medium světlý ležák 11°</b></div>
+  <div id="discount_template" class="hidden">
+    <div class="white red-text no-padding">&nbsp;<span class="grey-text counter"></span><span class="grey-text">/</span><span class="grey-text counter_all"></span>&nbsp;<b class="title truncate"></b></div>
     <div class="row no-padding">
-      <div class="col s1 kaufland"><img class="square responsive" src="/img/markets/kaufland.webp"></div>
-      <div class="col s2 center-align"><b class="kaufland_price">50&nbsp;Kč</b></div>
-      <div class="col s1 lidl"><img  class="square responsive" src="/img/markets/lidl.webp"></div>
-      <div class="col s2 center-align"><b class="lidl_price">13&nbsp;Kč</b></div>
-      <div class="col s1 penny"><img  class="square responsive" src="/img/markets/penny-market.webp"></div>
-      <div class="col s2 center-align"><b class="penny_price">9&nbsp;Kč</b></div>
-      <div class="col s1 albert"><img  class="square responsive" src="/img/markets/albert-supermarket.webp"></div>
-      <div class="col s2 center-align"><b class="albert_price">20&nbsp;Kč</b></div>
+      <div class="col s1 kaufland hidden"><img class="square responsive" src="/img/markets/kaufland.webp"></div>
+      <div class="col s2 center-align"><b class="kaufland_price"></b></div>
+      <div class="col s1 lidl hidden"><img  class="square responsive" src="/img/markets/lidl.webp"></div>
+      <div class="col s2 center-align"><b class="lidl_price"></b></div>
+      <div class="col s1 penny hidden"><img  class="square responsive" src="/img/markets/penny-market.webp"></div>
+      <div class="col s2 center-align"><b class="penny_price"></b></div>
+      <div class="col s1 albert hidden"><img  class="square responsive" src="/img/markets/albert-supermarket.webp"></div>
+      <div class="col s2 center-align"><b class="albert_price"></b></div>
     </div>
   </div>
+  <div id="discounts"></div>
 </div>
 <div id="warehouse" class="white-text hidden section">
   <div class="center-align padding">
@@ -278,8 +276,8 @@
       if (e.target && e.target.id) {
         console.log(e.target.id, e.target.className);
       }
-      return false; // false = prevent context menu
-      //return true; // true = enable context menu
+      //return false; // false = prevent context menu
+      return true; // true = enable context menu
     }
 
     // *** GSC FUNCTIONS ***
@@ -383,7 +381,12 @@
 
       // get discounts
       function getDiscounts() {
-        if (GSC.offline) return;
+        if (GSC.offline) {
+          GSC.RenderDiscounts();
+          return;
+        }
+        // invalidate local storage discounts after 10 minutes
+        if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 600*1000 < +new Date())) GSC.discounts_timestamp = null;
         // 10 secs. timeout limiter
         if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 10*1000 > +new Date())) return false;
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
@@ -394,6 +397,7 @@
           if (data && data.data) {
             localStorage["discounts"] = JSON.stringify(data.data);
           }
+          GSC.RenderDiscounts();
         });
       }
       // GSC.GetDiscounts() - get beer price discounts
@@ -405,8 +409,21 @@
       function renderDiscounts() {
         if (localStorage["discounts"]) {
           var discounts = JSON.parse(localStorage["discounts"]);
-          if (discounts) {
-            console.log(discounts);
+          if (discounts && discounts.discounts) {
+            $('#discounts').html('');
+            var products = [];
+            var c = 0;
+            for (var el in discounts.discounts) {
+              var item = discounts.discounts[el];
+              if (!products[item.product]) {
+                c++;
+                $('#discount_template').clone().appendTo('#discounts').removeClass('hidden').attr('id', 'beer_' + item.product);
+                $('#beer_' + item.product + ' .title').text(item.title);
+                $('#beer_' + item.product + ' .counter').text(c);
+                products[item.product] = true;
+              }
+            }
+            $('#discounts .counter_all').text(c);
           }
         }
       }

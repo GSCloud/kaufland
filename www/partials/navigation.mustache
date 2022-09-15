@@ -219,7 +219,7 @@
         }
       });
 
-      // API
+      // go to API page
       $('.nav_api').click(function() {
         if (GSC.offline) {
           // toast
@@ -248,7 +248,7 @@
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetChangeLog' + nonce, function(data) {
           $('.quota_actual').html(data.api_usage);
-          $('.quota_total').html(data.api_api_quota);
+          $('.quota_total').html(data.api_quota);
           if (data && data.data && data.data.changelog) {
             // render changelog
             $('#changelog_box').html(data.data.changelog);
@@ -292,7 +292,7 @@
       $('.nav_price').click(function() {
         setNavigation(this.className);
         $('#price').removeClass('hidden');
-        if (typeof GSC.GetDiscounts == "function") GSC.DeDiscounts();
+        if (typeof GSC.GetDiscounts == "function") GSC.GetDiscounts();
       });
       
       // warehouse
@@ -421,9 +421,10 @@
 
       // navigate to the saved state
       if (localStorage['navigation']) {
-        $('.' + localStorage['navigation']).click();
+        setTimeout(function() {
+          $('.' + localStorage['navigation']).click();
+        }, 10);
       } else {
-        // deferred info page
         setTimeout(function() {
           $('.nav_info').click();
         }, 10);
