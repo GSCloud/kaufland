@@ -1,3 +1,7 @@
+15.9.2022
+=========
++ zobrazování stavu API kvóty v kartě USER
+
 14.9.2022
 =========
 + [fn,priv] getDiscounts()

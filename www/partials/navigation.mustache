@@ -247,6 +247,8 @@
         }, 10);
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetChangeLog' + nonce, function(data) {
+          $('.quota_actual').html(data.api_usage);
+          $('.quota_total').html(data.api_api_quota);
           if (data && data.data && data.data.changelog) {
             // render changelog
             $('#changelog_box').html(data.data.changelog);
