@@ -1,7 +1,11 @@
+16.9.2022
+=========
++ [var] GSC.preventclick
++ rendering akčních cen
+
 15.9.2022
 =========
 + zobrazování stavu API kvóty v kartě USER
-+ základ renderingu slev
 
 14.9.2022
 =========

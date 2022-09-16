@@ -90,16 +90,16 @@
 </div>
 <div id="price" class="white-text hidden section">
   <div id="discount_template" class="hidden">
-    <div class="white red-text no-padding">&nbsp;<span class="grey-text counter"></span><span class="grey-text">/</span><span class="grey-text counter_all"></span>&nbsp;<b class="title truncate"></b></div>
+    <div class="white-text no-padding">&nbsp;<span class="grey-text counter"></span><span class="grey-text">/</span><span class="grey-text counter_all"></span>&nbsp;<b class="title truncate"></b></div>
     <div class="row no-padding">
       <div class="col s1 kaufland hidden"><img class="square responsive" src="/img/markets/kaufland.webp"></div>
-      <div class="col s2 center-align"><b class="kaufland_price"></b></div>
+      <div class="col s2 kaufland center-align hidden"><b class="kaufland_price"></b></div>
       <div class="col s1 lidl hidden"><img  class="square responsive" src="/img/markets/lidl.webp"></div>
-      <div class="col s2 center-align"><b class="lidl_price"></b></div>
+      <div class="col s2 lidl center-align hidden"><b class="lidl_price"></b></div>
       <div class="col s1 penny hidden"><img  class="square responsive" src="/img/markets/penny-market.webp"></div>
-      <div class="col s2 center-align"><b class="penny_price"></b></div>
+      <div class="col s2 penny center-align hidden"><b class="penny_price"></b></div>
       <div class="col s1 albert hidden"><img  class="square responsive" src="/img/markets/albert-supermarket.webp"></div>
-      <div class="col s2 center-align"><b class="albert_price"></b></div>
+      <div class="col s2 albert center-align hidden"><b class="albert_price"></b></div>
     </div>
   </div>
   <div id="discounts"></div>
@@ -309,6 +309,10 @@
 
     // GSC.DefClick() - default sound click
     if (typeof GSC.DefClick !== "function") GSC.DefClick = function() {
+      if (GSC.preventclick) {
+        GSC.preventclick = null;
+        return;
+      }
       GSC.PlaySound('click4');
     }
 
@@ -389,15 +393,18 @@
         if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 600*1000 < +new Date())) GSC.discounts_timestamp = null;
         // 10 secs. timeout limiter
         if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 10*1000 > +new Date())) return false;
+        GSC.discounts_timestamp = +new Date();
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
-        $.get('/api/v1/GetDiscounts' + nonce, function(data) {
+        $.get('/api/v1/GetDiscounts' + nonce).done(function(data) {
           $('.quota_actual').html(data.api_usage);
           $('.quota_total').html(data.api_quota);
-          GSC.discounts_timestamp = +new Date();
           if (data && data.data) {
             localStorage["discounts"] = JSON.stringify(data.data);
           }
           GSC.RenderDiscounts();
+        }).fail(function(jqXHR, status, error) {
+          GSC.discounts_timestamp = null;
+          console.log(status, error);
         });
       }
       // GSC.GetDiscounts() - get beer price discounts
@@ -415,12 +422,27 @@
             var c = 0;
             for (var el in discounts.discounts) {
               var item = discounts.discounts[el];
+              // element not cloned  yet
               if (!products[item.product]) {
+                var skip = true;
+                for (var m in markets_allowed) {
+                  if (item.market == markets_allowed[m]) {
+                    skip = false;
+                    continue;
+                  }
+                }
+                if (skip) continue;
                 c++;
+                products[item.product] = c;
                 $('#discount_template').clone().appendTo('#discounts').removeClass('hidden').attr('id', 'beer_' + item.product);
                 $('#beer_' + item.product + ' .title').text(item.title);
                 $('#beer_' + item.product + ' .counter').text(c);
-                products[item.product] = true;
+                $('#beer_' + item.product + ' .' + item.market.toLowerCase()).removeClass('hidden');
+                $('#beer_' + item.product + ' .' + item.market.toLowerCase() + '_price').html(item.price + '&nbsp;Kč');
+              } else {
+                // element already cloned
+                $('#beer_' + item.product + ' .' + item.market.toLowerCase()).removeClass('hidden');
+                $('#beer_' + item.product + ' .' + item.market.toLowerCase() + '_price').html(item.price + '&nbsp;Kč');
               }
             }
             $('#discounts .counter_all').text(c);
