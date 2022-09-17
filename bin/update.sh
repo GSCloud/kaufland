@@ -36,12 +36,14 @@ if [ ! -f "akce-$d.data" ]; then
   cat beer*.html | tr '\n' ' ' | sed 's/<tr/\n<tr/g' > akce.html
   ./akce | sed 's/&nbsp;/ /g' | sed 's/&ndash;//g' > akce-all.data
 fi
+
 # make data backup
 cp akce.data akce-$d.data
 cp akce-all.data akce-all-$d.data
 mkdir -p akce_archiv/
 cp akce-$d.data akce_archiv/
 cp akce-all-$d.data akce_archiv/
+git add -A
 
 # cleaning
 rm akce.html beer*.html >/dev/null 2>&1 
