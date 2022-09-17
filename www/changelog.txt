@@ -1,6 +1,8 @@
 17.9.2022
 =========
 + [fix] tab scrolling bug
++ optimalizace kódu
++ export chybějících překladů názvů piv
 
 16.9.2022
 =========
