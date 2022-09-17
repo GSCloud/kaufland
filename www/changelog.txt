@@ -1,3 +1,7 @@
+17.9.2022
+=========
++ [fix] tab scrolling bug
+
 16.9.2022
 =========
 + [var] GSC.preventclick

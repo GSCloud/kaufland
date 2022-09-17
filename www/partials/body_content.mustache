@@ -230,9 +230,9 @@
     // something is really broken = unsupported browser
     if (!localStorage) {
       w.location.href = '/err/600';
-    }
-    if (!localStorage["uuid"]) {
-      w.location.href = '/err/600';
+      if (!localStorage["uuid"]) {
+        w.location.href = '/err/600';
+      }
     }
 
     // AudioContext
@@ -276,8 +276,8 @@
       if (e.target && e.target.id) {
         console.log(e.target.id, e.target.className);
       }
-      //return false; // false = prevent context menu
-      return true; // true = enable context menu
+      return false; // false = prevent context menu
+      //return true; // true = enable context menu
     }
 
     // *** GSC FUNCTIONS ***
@@ -419,7 +419,8 @@
           if (discounts && discounts.discounts) {
             var c = 0;
             var products = [];
-            $('#discounts').html('');
+            // no re-rendering
+            if ($('#discounts').html()) return;
             for (var el in discounts.discounts) {
               var item = discounts.discounts[el];
               // element not cloned yet
@@ -429,17 +430,19 @@
                 for (var m in markets_allowed) {
                   if (item.market == markets_allowed[m]) {
                     skip = false;
-                    continue;
+                    break;
                   }
                 }
-                // go to next discount
+                // next discount
                 if (skip) continue;
+                // clone element
                 c++;
                 products[item.product] = c;
                 $('#discount_template').clone().appendTo('#discounts').removeClass('hidden').attr('id', 'beer_' + item.product);
                 $('#beer_' + item.product + ' .counter').text(c);
                 $('#beer_' + item.product + ' .title').text(item.title);
               }
+              // set cloned element extra properties
               $('#beer_' + item.product + ' .' + item.market.toLowerCase()).removeClass('hidden');
               $('#beer_' + item.product + ' .' + item.market.toLowerCase() + '_price').html(item.price + '&nbsp;Kč');
             }

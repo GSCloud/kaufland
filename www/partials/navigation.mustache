@@ -74,20 +74,20 @@
     "use strict";
 
     // bottom progress bar
-    w.onscroll = function() {
+    w.onscroll = onscroll;
+    function onscroll() {
       GSC.lastclick = +new Date();
       $('.toast').removeClass('active');
       var scroll = document.body.scrollTop || document.documentElement.scrollTop;
       var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       var scrolled = (scroll / height) * 100;
       if (document.getElementById("progressbar")) document.getElementById("progressbar").style.width = scrolled + "%";
-      if (localStorage && localStorage['navigation']) {
+      if (localStorage && localStorage['navigation'] && (localStorage['scroll_' + localStorage['navigation']])) {
         localStorage['scroll_' + localStorage['navigation']] = parseInt(scroll);
       }
-
       // fix top navigation and comm icon on touch enabled devices
       if (GSC.touch) {
-        if (scroll > 200) {
+        if (scroll > 100) {
           $("#top_nav").hide(250);
           $("#comm").css('top', 0);
         } else {
@@ -127,22 +127,25 @@
             $('#' + el).removeClass('active');
           });
         }
-        // compute vertical offset
+        // compute scroll offset
         var offset = localStorage['scroll_' + el];
+        var lastoffset = localStorage['scroll_last_' + el];
         if (isNaN(offset)) offset = 0;
-        var last = localStorage['scroll_last_' + el];
-        if (isNaN(last)) last = 0;
-        if (localStorage['navigation_last'] == el) {
-          if (offset == last) offset = 0;
+        if (isNaN(lastoffset)) last = 0;
+        if (localStorage['navigation_last'] == localStorage['navigation']) {
+          if (offset == lastoffset) offset = 0;
         }
         localStorage['scroll_last_' + el] = offset;
         localStorage['navigation_last'] = el;
-        window.scrollTo({
-          top: offset,
-          left: 0,
-          behavior: 'smooth'
-        });
-        // set design
+        setTimeout(function() {
+          window.scrollTo({
+            top: offset,
+            left: 0,
+            behavior: 'smooth'
+          });
+          document.getElementById("progressbar").style.width = 0;
+        }, 10);
+        // set UI
         $('nav i, nav div').removeClass();
         $('.section').addClass('hidden');
         $('.' + el + '>i').addClass($('.' + el + '>i').data('color')).addClass('large');
