@@ -333,6 +333,8 @@ class ApiPresenter extends APresenter
     public function getDiscounts($file)
     {
         $discounts = [];
+        // missing translations file
+        \file_put_contents(DATA . '/missing_translations.txt', '');
         if (file_exists($file) && is_readable($file)) {
             // load beer title translations
             $trans = [];
@@ -365,7 +367,15 @@ class ApiPresenter extends APresenter
                 }
                 // title
                 if ($c == 2) {
-                    $el["title"] = $trans[strtolower($s)] ?? strtolower($s);
+                    $s = strtolower($s);
+                    $el["title"] = $trans[$s] ?? $s;
+                    if (!array_key_exists($s, $trans)) {
+                        // export missing translations
+                        \file_put_contents(
+                            DATA . '/missing_translations.txt',
+                            $s . "\n", FILE_APPEND|LOCK_EX
+                        );
+                    }
                     $c++;
                     continue;
                 }

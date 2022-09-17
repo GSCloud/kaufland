@@ -179,6 +179,7 @@
         playSound('laser');
         $('nav,body').hide(200);
         setTimeout(function () {
+          localStorage["discounts"] = null;
           top.location.replace("?nonce={{ nonce }}");
         }, 200);
       });
