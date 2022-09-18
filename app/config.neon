@@ -82,7 +82,7 @@ l:
   tit_warehouse: 'Sklad'
   title: 'LAHVÁRNA'
   txt_date: 'datum vydání:'
-  txt_quota: 'kvóta API volání (1 hodina):'
+  txt_quota: 'stav hodinové kvóty API:'
   txt_version: 'verze:'
   webshare_button: '<i>share</i>&nbsp;&nbsp;sdílej'
   

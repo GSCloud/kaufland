@@ -162,9 +162,6 @@
 <div id="user" class="white-text hidden section">
   <div class="center-align padding">
     <div class="left-align no-padding" tabindex="-1">
-      <div>
-        {{l.txt_quota }}&nbsp;<span class="bold quota_actual"></span>/<span class="bold quota_total"></span>
-      </div>
       <div class="center padding">
         {{ l.info_demo }}
       </div>
@@ -194,11 +191,13 @@
       </div>
       {{/user.id}}
       <div class="center-align small-padding" tabindex="-1">
-        <span id="role_row" class="hidden">{{ l.text_role }} <b id="role"></b><br></span>
-        <span id="login_type_row" class="hidden">{{ l.text_login_type }} <b id="login_type"></b><br></span>
-        <span id="security_level_row" class="hidden">{{ l.text_security_level }} <b id="security_level"></b><br>
-        {{#user.id}}{{ l.text_encryption }} <b>XChaCha20 + BLAKE2b-MAC</b><br>{{/user.id}}</span>
-        <br>
+        <div id="role_row" class="hidden">{{ l.text_role }} <b id="role"></b><br></div>
+        <div id="login_type_row" class="hidden">{{ l.text_login_type }} <b id="login_type"></b><br></div>
+        <div id="security_level_row" class="hidden">
+          {{ l.text_security_level }} <b id="security_level"></b><br>
+          {{#user.id}}{{ l.text_encryption }} <b>XChaCha20 + BLAKE2b-MAC</b><br>{{/user.id}}
+        </div>
+        {{l.txt_quota }}&nbsp;<span class="bold quota_actual"></span>/<span class="bold quota_total"></span>
       </div>
       {{#user.id}}
       <article class="border">
