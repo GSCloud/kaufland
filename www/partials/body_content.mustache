@@ -309,7 +309,6 @@
     // GSC.DefClick() - default sound click
     if (typeof GSC.DefClick !== "function") GSC.DefClick = function() {
       if (GSC.preventclick) {
-        GSC.preventclick = null;
         return;
       }
       GSC.PlaySound('click4');

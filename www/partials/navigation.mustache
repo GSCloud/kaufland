@@ -151,6 +151,7 @@
         $('.' + el + '>i').addClass($('.' + el + '>i').data('color')).addClass('large');
         $('.' + el + '>div').addClass($('.' + el + '>i').data('color')).addClass('bold');
         if (typeof GSC.DefClick == "function") GSC.DefClick();
+        GSC.preventclick = null;
       }
 
       // NAVIGATION CLICK HANDLERS
@@ -367,13 +368,10 @@
         }
         // check whether the audio buffer already exists
         if (GSC.sfxbuffers && GSC.sfxbuffers[filename + '.mp3']) return;
-
         // load the audio buffer from network
         var req = new XMLHttpRequest();
         req.open('GET', '/sfx/' + filename + '.mp3', true);
         req.responseType = 'arraybuffer';
-        //GSC.D('<b>SFX</b> ' + filename + '.mp3');
-
         // onload handler
         req.onload = function() {
           GSC.ComOff();
@@ -389,7 +387,6 @@
               sfx.start();
           });
         }
-
         GSC.ComOn();
         req.send();
       }
