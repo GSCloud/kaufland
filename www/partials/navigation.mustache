@@ -131,7 +131,7 @@
         var offset = localStorage['scroll_' + el];
         var lastoffset = localStorage['scroll_last_' + el];
         if (isNaN(offset)) offset = 0;
-        if (isNaN(lastoffset)) last = 0;
+        if (isNaN(lastoffset)) lastoffset = 0;
         if (localStorage['navigation_last'] == localStorage['navigation']) {
           if (offset == lastoffset) offset = 0;
         }
