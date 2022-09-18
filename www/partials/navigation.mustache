@@ -151,7 +151,11 @@
         $('.' + el + '>i').addClass($('.' + el + '>i').data('color')).addClass('large');
         $('.' + el + '>div').addClass($('.' + el + '>i').data('color')).addClass('bold');
         if (typeof GSC.DefClick == "function") GSC.DefClick();
-        GSC.preventclick = null;
+        if (GSC.preventclick) {
+          setTimeout(function() {
+            GSC.preventclick = null;
+          }, 100);
+        }
       }
 
       // NAVIGATION CLICK HANDLERS
