@@ -13,7 +13,7 @@ GetSalt:
   path: "/api/v1/GetSalt"
   method: GET
   api_description: "Get salt"
-  api_info: "Returns (JSON): array[salt (string), today (string)]"
+  api_info: "Returns (JSON): salt (string), today (string)"
   api: true
   assert_json: true
   assert_httpcode: 200
@@ -34,7 +34,7 @@ GetChangeLog:
 GetDiscounts:
   path: "/api/v1/GetDiscounts"
   method: GET
-  api_description: "Get beer discounts (bottles)"
+  api_description: "Get beer discounts (bottled beer)"
   api_info: "Returns (JSON): discounts (array)"
   api: true
   assert_json: true
@@ -45,7 +45,7 @@ GetDiscounts:
 GetDiscountsAll:
   path: "/api/v1/GetDiscountsAll"
   method: GET
-  api_description: "Get beer discounts (all beer)"
+  api_description: "Get beer discounts (all beer products)"
   api_info: "Returns (JSON): discounts (array)"
   api: true
   assert_json: true
