@@ -137,6 +137,7 @@
         }
         localStorage['scroll_last_' + el] = offset;
         localStorage['navigation_last'] = el;
+        // delayed scroll & set progress bar
         setTimeout(function() {
           window.scrollTo({
             top: offset,
@@ -419,7 +420,7 @@
 
       // OTHER HANDLERS AND RUNTIME
 
-      // navigate to the saved state
+      // delayed navigate to the saved state
       if (!localStorage['navigation']) {
         localStorage['navigation'] = 'nav_info';
       }
