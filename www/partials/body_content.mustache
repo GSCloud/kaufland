@@ -88,15 +88,16 @@
     </div>
   </div>
 </div>
-<div id="price" class="white-text hidden section">
+<div id="price" class="hidden section">
   <div id="discount_template" class="hidden">
-    <div class="white-text no-padding"><span class="grey-text counter"></span><span class="grey-text">/</span><span class="grey-text counter_all"></span>&nbsp;<b class="title truncate"></b></div>
-    <div class="row no-padding" style="background-color:#303030;color:#fff">
+    <div class="no-padding" style="border-top:2px solid #202020;">
+      <span class="grey-text bold monospace counter"></span><span class="grey-text monospace">/</span><span class="grey-text monospace counter_all"></span>&nbsp;&nbsp;<b class="title truncate"></b></div>
+    <div class="row no-padding" style="color:#fff;border-bottom:2px solid #000">
       <div class="col s1 kaufland hidden"><img class="square responsive" src="/img/markets/kaufland.webp"></div>
       <div class="col s2 kaufland left-align hidden"><b class="kaufland_price"></b></div>
       <div class="col s1 lidl hidden"><img  class="square responsive" src="/img/markets/lidl.webp"></div>
       <div class="col s2 lidl left-align hidden"><b class="lidl_price"></b></div>
-      <div class="col s1 penny hidden"><img  class="square responsive" src="/img/markets/penny-market.webp"></div>
+      <div class="col s1 penny hidden"><img  class="square responsive" src="/img/markets/penny.webp"></div>
       <div class="col s2 penny left-align hidden"><b class="penny_price"></b></div>
       <div class="col s1 albert hidden"><img  class="square responsive" src="/img/markets/albert-supermarket.webp"></div>
       <div class="col s2 albert left-align hidden"><b class="albert_price"></b></div>
@@ -264,10 +265,10 @@
 
     // markets allowed
     var markets_allowed = [
-      'Kaufland',
-      'Lidl',
-      'Penny',
-      'Albert'
+      'kaufland',
+      'lidl',
+      'penny',
+      'albert'
     ];
 
     // disable context menu
@@ -441,8 +442,8 @@
                 $('#beer_' + item.product + ' .title').text(item.title);
               }
               // set cloned element extra properties
-              $('#beer_' + item.product + ' .' + item.market.toLowerCase()).removeClass('hidden');
-              $('#beer_' + item.product + ' .' + item.market.toLowerCase() + '_price').html(item.price + '&nbsp;Kč');
+              $('#beer_' + item.product + ' .' + item.market).removeClass('hidden');
+              $('#beer_' + item.product + ' .' + item.market + '_price').html(item.price + '&nbsp;Kč');
             }
             $('#discounts .counter_all').text(c);
           }

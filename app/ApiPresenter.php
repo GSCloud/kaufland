@@ -376,13 +376,18 @@ class ApiPresenter extends APresenter
                             $s . "\n", FILE_APPEND|LOCK_EX
                         );
                     }
+                    if (file_exists(WWW . '/img/bottles/' . $s . '.webp')) {
+                        $el["image"] = $s. '.webp';
+                    }
                     $c++;
                     continue;
                 }
                 // market
                 if ($c == 3) {
-                    $s = str_replace('Penny Market', 'Penny', $s);
-                    $el["market"] = $s;
+                    $s = str_ireplace('eso market', 'eso', $s);
+                    $s = str_ireplace('penny market', 'penny', $s);
+                    $s = str_ireplace('tamda foods', 'tamda', $s);
+                    $el["market"] = strtolower($s);
                     $c++;
                     continue;
                 }
