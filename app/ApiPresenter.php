@@ -345,7 +345,7 @@ class ApiPresenter extends APresenter
                 );
             }
             $c = 0;
-            $count = 0;
+            $count = 1;
             $arr = file($file);
             // parse data file
             foreach ($arr ?? [] as $s) {
@@ -369,6 +369,7 @@ class ApiPresenter extends APresenter
                 // title
                 if ($c == 2) {
                     $s = strtolower($s);
+                    $el["code"] = $s;
                     $el["title"] = $trans[$s] ?? $s;
                     if (!array_key_exists($s, $trans)) {
                         // export missing translation

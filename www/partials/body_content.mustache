@@ -308,9 +308,7 @@
 
     // GSC.DefClick() - default sound click
     if (typeof GSC.DefClick !== "function") GSC.DefClick = function() {
-      if (GSC.preventclick) {
-        return;
-      }
+      if (GSC.preventclick) return;
       GSC.PlaySound('click4');
     }
 
@@ -439,6 +437,7 @@
                 $('#discount_template').clone().appendTo('#discounts').removeClass('hidden').attr('id', 'beer_' + item.product);
                 $('#beer_' + item.product + ' .counter').text(c);
                 $('#beer_' + item.product + ' .title').text(item.title);
+                $('#beer_' + item.product).data('product', item.product).data('code', item.code);
               }
               // set cloned element extra properties
               $('#beer_' + item.product + ' .' + item.market).removeClass('hidden');
@@ -474,12 +473,11 @@
           }
         });
       }
-      getUser();
-
       // GSC.GetUser() - get user information and set UI elements
       if (typeof GSC.GetUser !== "function") GSC.GetUser = function() {
         getUser();
       }
+      getUser();
 
       // get daily salt
       function getSalt() {
@@ -508,12 +506,11 @@
           }
         });
       }
-      getSalt();
-
       // GSC.GetSalt() - get salt information
       if (typeof GSC.GetSalt !== "function") GSC.GetSalt = function() {
         getSalt();
       }
+      getSalt();
 
       // get API key
       function generateAPIkey() {
@@ -535,7 +532,6 @@
           w.location.href = '/err/600';
         }
       }
-
       // GSC.GenerateAPIkey() - get API key information
       if (typeof GSC.GenerateAPIkey !== "function") GSC.GenerateAPIkey = function() {
         generateAPIkey();
@@ -573,15 +569,15 @@
         }
       }      
 
-      // check version every 30 secs.
+      // check backend version every minute
       GSC.chverint = setInterval(function() {
         checkVersion()
-      }, 30*1000);
+      }, 60*1000);
       checkVersion();
     });
 
     // UI theme
-    GSC._fn.push(function setUI() {
+    GSC._fn.push(function SetUI() {
       ui("theme", {
         dark: "--primary:#c00000;--on-primary:#5f150d;--primary-container:#7d2b20;--on-primary-container:#ffdad3;--secondary:#e7bdb6;--on-secondary:#442925;--secondary-container:#5d3f3a;--on-secondary-container:#ffdad3;--tertiary:#dec48c;--on-tertiary:#3e2e04;--tertiary-container:#564418;--on-tertiary-container:#fbdfa5;--error:#ffb4a9;--error-container:#930006;--on-error:#680003;--on-error-container:#ffdad4;--background:#201a19;--on-background:#ede0de;--surface:#201a19;--on-surface:#ede0de;--surface-variant:#534341;--on-surface-variant:#d8c2be;--outline:#a08c89;--inverse-on-surface:#201a19;--inverse-surface:#ede0de;--inverse-primary:#9c4235;--shadow:#000000;",
         light: "--primary:#c00000;--on-primary:#ffffff;--primary-container:#ffdad3;--on-primary-container:#410000;--secondary:#775752;--on-secondary:#ffffff;--secondary-container:#ffdad3;--on-secondary-container:#2c1511;--tertiary:#705c2e;--on-tertiary:#ffffff;--tertiary-container:#fbdfa5;--on-tertiary-container:#261a00;--error:#ba1b1b;--error-container:#ffdad4;--on-error:#ffffff;--on-error-container:#410001;--background:#fcfcfc;--on-background:#201a19;--surface:#fcfcfc;--on-surface:#201a19;--surface-variant:#f5deda;--on-surface-variant:#534341;--outline:#867370;--inverse-on-surface:#fbeeec;--inverse-surface:#362f2e;--inverse-primary:#ffb4a6;--shadow:#000000;"
