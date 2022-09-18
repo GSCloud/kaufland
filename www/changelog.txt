@@ -6,7 +6,7 @@
 
 17.9.2022
 =========
-+ [fix] tab scrolling bug + bottom scroll bar
++ [fix] tab scrolling bug + bottom bar
 + export chybějících pivních překladů
 + optimalizace kódu
 
