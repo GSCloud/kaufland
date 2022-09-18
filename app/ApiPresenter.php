@@ -370,14 +370,11 @@ class ApiPresenter extends APresenter
                     $s = strtolower($s);
                     $el["title"] = $trans[$s] ?? $s;
                     if (!array_key_exists($s, $trans)) {
-                        // export missing translations
+                        // export missing translation
                         \file_put_contents(
                             DATA . '/missing_translations.txt',
                             $s . "\n", FILE_APPEND|LOCK_EX
                         );
-                    }
-                    if (file_exists(WWW . '/img/bottles/' . $s . '.webp')) {
-                        $el["image"] = $s. '.webp';
                     }
                     $c++;
                     continue;
