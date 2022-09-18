@@ -90,7 +90,7 @@
 </div>
 <div id="price" class="hidden section">
   <div id="discount_template" class="hidden">
-    <div class="no-padding" style="border-top:2px solid #202020;">
+    <div class="no-padding">
       <span class="grey-text bold monospace counter"></span><span class="grey-text monospace">/</span><span class="grey-text monospace counter_all"></span>&nbsp;&nbsp;<b class="title truncate"></b></div>
     <div class="row no-padding" style="color:#fff;border-bottom:2px solid #000">
       <div class="col s1 kaufland hidden"><img class="square responsive" src="/img/markets/kaufland.webp"></div>
@@ -275,8 +275,8 @@
       if (e.target && e.target.id) {
         console.log(e.target.id, e.target.className);
       }
-      //return false; // false = prevent context menu
-      return true; // true = enable context menu
+      return false; // false = prevent context menu
+      //return true; // true = enable context menu
     }
 
     // *** GSC FUNCTIONS ***
