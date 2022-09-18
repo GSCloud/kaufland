@@ -1,19 +1,19 @@
 18.9.2022
 =========
 + [fix] JS regrese
-+ [fix] preventclick
-+ aktualizace překladů
++ [fix] use preventclick
++ aktualizace pivních překladů
 
 17.9.2022
 =========
 + [fix] tab scrolling bug + bottom scroll bar
++ export chybějících pivních překladů
 + optimalizace kódu
-+ export chybějících překladů názvů piv
 
 16.9.2022
 =========
-+ [var] GSC.preventclick - potlačení zvuků pro prvních 100 ms běhu aplikace
-+ rendering akčních cen
++ [var] GSC.preventclick - potlačení zvuků pro prvních 100 ms běhu appky
++ !!! rendering akčních cen
 
 15.9.2022
 =========
@@ -28,9 +28,9 @@
 
 13.9.2022
 =========
++ UI experiment - výpis akčních cen
 + [fix] K modal box
 + [fix] použití DefClick()
-+ UI experiment - výpis akčních cen
 + composer core upgrade
 + překlad názvů piva v rámci REST API (111 položek): app/beer-translation.neon
 
@@ -55,10 +55,10 @@
 
 7.9.2022
 ========
-+ [API] ukládání "last_seen" timestamp
++ !!! funkční PIN + kombinace s OAuth 2.0
 + [API] "cached" flag
 + [API] aktualizace uživatelských rolí
-+ !!! funkční PIN + kombinace s OAuth 2.0
++ [API] ukládání "last_seen" timestamp
 
 6.9.2022
 ========
@@ -77,7 +77,7 @@
 31.8.2022
 =========
 + data file "akce.html"
-+ [fix] black screen (JS error)
++ [fix] JS regrese
 
 29.8.2022
 =========
