@@ -344,9 +344,10 @@ class ApiPresenter extends APresenter
                     file_get_contents($trans_file)
                 );
             }
-            $arr = file($file);
             $c = 0;
             $count = 0;
+            $arr = file($file);
+            // parse data file
             foreach ($arr ?? [] as $s) {
                 $s = trim($s);
                 if (!strlen($s)) {
