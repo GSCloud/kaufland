@@ -181,11 +181,12 @@ class ApiPresenter extends APresenter
             if (!file_exists($file) || !is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
-            $discounts = $this->getDiscounts($file);
+            $results = $this->getDiscounts($file);
             $data = [
                 "datafile" => $f,
-                "records" => count($discounts),
-                "discounts" => $discounts,
+                "records" => count($results["discounts"]),
+                "discounts" => $results["discounts"],
+                "groups" => $results["groups"],
             ];
             return $this->writeJsonData($data, $extras);
             break;
@@ -196,11 +197,12 @@ class ApiPresenter extends APresenter
             if (!file_exists($file) || !is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
-            $discounts = $this->getDiscounts($file);
+            $results = $this->getDiscounts($file);
             $data = [
-            "datafile" => $f,
-            "records" => count($discounts),
-            "discounts" => $discounts,
+                "datafile" => $f,
+                "records" => count($results["discounts"]),
+                "discounts" => $results["discounts"],
+                "groups" => $results["groups"],
             ];
             return $this->writeJsonData($data, $extras);
             break;
@@ -328,7 +330,7 @@ class ApiPresenter extends APresenter
      *
      * @param string $file filename of the datafile
      * 
-     * @return array discounts
+     * @return array discounts and groups
      */
     public function getDiscounts($file)
     {
@@ -345,6 +347,7 @@ class ApiPresenter extends APresenter
                 );
             }
             $c = 0;
+            $groups = [];
             $count = 1;
             $arr = file($file);
             // parse data file
@@ -366,10 +369,22 @@ class ApiPresenter extends APresenter
                     $c++;
                     continue;
                 }
-                // title
+                // code + title + groups
                 if ($c == 2) {
                     $s = strtolower($s);
                     $el["code"] = $s;
+                    // compute the groups
+                    $g = explode('-', $s);
+                    if (count($g)) {
+                        foreach ($g as $gname) {
+                            if (!array_key_exists($gname, $groups)) {
+                                $groups[$gname] = [];
+                            }
+                            if (!in_array($el["product"], $groups[$gname])) {
+                                array_push($groups[$gname], $el["product"]);
+                            }
+                        }
+                    }
                     $el["title"] = $trans[$s] ?? $s;
                     if (!array_key_exists($s, $trans)) {
                         // export missing translation
@@ -403,8 +418,30 @@ class ApiPresenter extends APresenter
                     continue;
                 }
             }
-        }        
-        return (array) $discounts;
+        }
+        foreach ($groups as $k => $v) {
+            if (count($v) < 3) {
+                unset($groups[$k]);
+            }
+        }
+        // remove vague group keys
+        unset($groups["brod"]);
+        unset($groups["havlickuv"]);
+        unset($groups["lezak"]);
+        unset($groups["ochucene"]);
+        unset($groups["original"]);
+        unset($groups["pivo"]);
+        unset($groups["pivovar"]);
+        unset($groups["premium"]);
+        unset($groups["svetle"]);
+        unset($groups["svetly"]);
+        unset($groups["velkopopovicky"]);
+        unset($groups["vycepni"]);
+
+        return [
+            "discounts" => $discounts,
+            "groups" => $groups,
+        ];
     }
 
     /**
