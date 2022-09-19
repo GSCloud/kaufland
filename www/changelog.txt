@@ -1,6 +1,7 @@
 19.9.2022
 =========
 + aktualizace pivních překladů
++ [API] pivní skupiny
 
 18.9.2022
 =========
@@ -22,7 +23,7 @@
 
 15.9.2022
 =========
-+ zobrazování stavu API kvóty v kartě USER
++ [API] zobrazování stavu kvóty v kartě USER
 
 14.9.2022
 =========
