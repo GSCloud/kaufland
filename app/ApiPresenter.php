@@ -428,6 +428,7 @@ class ApiPresenter extends APresenter
         unset($groups["brod"]);
         unset($groups["havlickuv"]);
         unset($groups["lezak"]);
+        unset($groups["nymburk"]);
         unset($groups["ochucene"]);
         unset($groups["original"]);
         unset($groups["pivo"]);
