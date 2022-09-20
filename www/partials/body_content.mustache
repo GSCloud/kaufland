@@ -273,7 +273,15 @@
     // disable context menu
     w.oncontextmenu = function(e) {
       if (e.target && e.target.id) {
-        console.log(e.target.id, e.target.className);
+        var id = e.target.id;
+        switch (id) {
+          case 'logo':
+            if (GSC.touch) $('.nav_update').click();
+            break;
+
+          default:
+            console.log(e.target.id);
+        }
       }
       return false; // false = prevent context menu
       //return true; // true = enable context menu
@@ -387,8 +395,8 @@
         }
         // invalidate local storage discounts after 10 minutes
         if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 600*1000 < +new Date())) GSC.discounts_timestamp = null;
-        // 10 secs. timeout limiter
-        if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 10*1000 > +new Date())) return false;
+        // 30 secs. timeout limiter
+        if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 30*1000 > +new Date())) return false;
         GSC.discounts_timestamp = +new Date();
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetDiscounts' + nonce).done(function(data) {
