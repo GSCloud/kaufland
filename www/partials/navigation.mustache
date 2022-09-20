@@ -163,7 +163,7 @@
 
       // K - logo
       $('.nav_app').click(function () {
-        if (typeof GSC.DefClick == "function") GSC.DefClick();
+        GSC.DefClick();
         setTimeout(function() {
           $('#appinfo_modal').toggleClass('active');
           $('#changelog_modal').removeClass('active');
@@ -175,7 +175,7 @@
       // app update
       $('.nav_update').click(function () {
         if (GSC.offline) {
-          if (typeof GSC.DefClick == "function") GSC.DefClick();
+          GSC.DefClick();
           // toast
           setTimeout(function () {
             $('#err_connection').addClass('active');
@@ -210,18 +210,18 @@
         GSC.GenerateAPIkey();
       });
 
-      // PIN focus in
+      // PIN focus-in
       $('#pin').focus(function () {
         $('#pin').attr('type', 'text');
         $('.toast').removeClass('active');
       })
 
-      // PIN focus out
+      // PIN focus-out
       $('#pin').focusout(function() {
         $('#pin').attr('type', 'password');
       })
 
-      // save PIN on Enter key
+      // save PIN on Enter
       $('#pin').keypress(function(e) {
         if (e.which == 13) {
           $('button.save_pin').click();
@@ -251,7 +251,7 @@
           }, 10);
           return;
         }
-        if (typeof GSC.DefClick == "function") GSC.DefClick();
+        GSC.DefClick();
         setTimeout(function() {
           $('#changelog_modal').addClass('active');
           GSC.modals.push('changelog_modal');
