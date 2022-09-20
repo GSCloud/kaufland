@@ -270,10 +270,10 @@
       'albert'
     ];
 
-    // context menu
+    // LP context menu
     w.oncontextmenu = function(e) {
       if (e.target && e.target.id) {
-        // switch by unique id
+        // switch by id
         switch (e.target.id) {
           case 'logo':
             if (GSC.touch) $('.nav_update').click();
@@ -387,19 +387,22 @@
         });
       }
 
-      // get discounts
-      function getDiscounts() {
+      // get beer price discounts by type and render the data
+      function getDiscounts(type) {
         if (GSC.offline) {
           GSC.RenderDiscounts();
           return;
         }
-        // invalidate local storage discounts after 10 minutes
+        // invalidate discounts timestamp after 10 minutes
         if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 600*1000 < +new Date())) GSC.discounts_timestamp = null;
         // 30 secs. timeout limiter
         if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 30*1000 > +new Date())) return false;
+        // prevent concurrent runtime
         GSC.discounts_timestamp = +new Date();
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
+        // TODO: set type
         $.get('/api/v1/GetDiscounts' + nonce).done(function(data) {
+          GSC.discounts_timestamp = +new Date();
           $('.quota_actual').html(data.api_usage);
           $('.quota_total').html(data.api_quota);
           if (data && data.data) {
@@ -411,14 +414,16 @@
           console.log(status, error);
         });
       }
-      // GSC.GetDiscounts() - get beer price discounts
-      if (typeof GSC.GetDiscounts !== "function") GSC.GetDiscounts = function() {
-        getDiscounts();
+      // GSC.GetDiscounts() - get beer price discounts by type and render the data
+      if (typeof GSC.GetDiscounts !== "function") GSC.GetDiscounts = function(type) {
+        getDiscounts(type);
       }
 
-      // render discounts
-      function renderDiscounts() {
+      // render beer price discounts by type from local storage
+      function renderDiscounts(type) {
+        // prevent re-rendering
         if ($('#discounts').html()) return;
+        // TODO: set type
         if (localStorage["discounts"]) {
           var discounts = JSON.parse(localStorage["discounts"]);
           if (discounts && discounts.discounts && discounts.groups) {
@@ -426,7 +431,6 @@
             GSC.groups = discounts.groups;
             var c = 0;
             var products = [];
-            // no re-rendering
             for (var el in GSC.discounts) {
               var item = GSC.discounts[el];
               // element not cloned yet
@@ -441,7 +445,7 @@
                 }
                 // next discount
                 if (skip) continue;
-                // clone element
+                // clone the element
                 c++;
                 products[item.product] = c;
                 $('#discount_template').clone().appendTo('#discounts').removeClass('hidden').attr('id', 'beer_' + item.product);
@@ -449,20 +453,21 @@
                 $('#beer_' + item.product + ' .title').text(item.title);
                 $('#beer_' + item.product).data('product', item.product).data('code', item.code);
               }
-              // set cloned element extra properties
+              // set element extra properties
               $('#beer_' + item.product + ' .' + item.market).removeClass('hidden');
               $('#beer_' + item.product + ' .' + item.market + '_price').html(item.price + '&nbsp;Kč');
             }
+            // final counter
             $('#discounts .counter_all').text(c);
           }
         }
       }
-      // GSC.RenderDiscounts() - render beer price discounts from local storage
-      if (typeof GSC.RenderDiscounts !== "function") GSC.RenderDiscounts = function() {
-        renderDiscounts();
+      // GSC.RenderDiscounts(type) - render beer price discounts by type from local storage
+      if (typeof GSC.RenderDiscounts !== "function") GSC.RenderDiscounts = function(type) {
+        renderDiscounts(type);
       }
 
-      // get user information
+      // get user information and set UI elements
       function getUser() {
         if (GSC.user) {
           setUserUI();

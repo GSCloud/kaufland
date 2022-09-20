@@ -4,8 +4,8 @@
 
 19.9.2022
 =========
-+ aktualizace pivních překladů
 + [API] pivní skupiny
++ aktualizace pivních překladů
 
 18.9.2022
 =========
