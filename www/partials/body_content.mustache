@@ -279,6 +279,11 @@
             if (GSC.touch) $('.nav_update').click();
             break;
 
+          case 'price1':
+          case 'price2':
+              alert('TODO: modal pricelist selector');
+            break;
+
           default:
             console.log(e.target.id);
         }
@@ -418,15 +423,17 @@
 
       // render discounts
       function renderDiscounts() {
+        if ($('#discounts').html()) return;
         if (localStorage["discounts"]) {
           var discounts = JSON.parse(localStorage["discounts"]);
-          if (discounts && discounts.discounts) {
+          if (discounts && discounts.discounts && discounts.groups) {
+            GSC.discounts = discounts.discounts;
+            GSC.groups = discounts.groups;
             var c = 0;
             var products = [];
             // no re-rendering
-            if ($('#discounts').html()) return;
-            for (var el in discounts.discounts) {
-              var item = discounts.discounts[el];
+            for (var el in GSC.discounts) {
+              var item = GSC.discounts[el];
               // element not cloned yet
               if (!products[item.product]) {
                 var skip = true;
