@@ -182,12 +182,13 @@
           }, 10);
           return;
         }
-        playSound('laser');
+        GSC.Vibrate([100]);
+        GSC.PlaySound('laser');
         $('nav,body').hide(200);
         setTimeout(function () {
           localStorage["discounts"] = null;
           top.location.replace("?nonce={{ nonce }}");
-        }, 200);
+        }, 250);
       });
 
       // save PIN / generate API key

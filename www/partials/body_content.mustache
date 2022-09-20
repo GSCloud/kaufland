@@ -270,11 +270,11 @@
       'albert'
     ];
 
-    // disable context menu
+    // context menu
     w.oncontextmenu = function(e) {
       if (e.target && e.target.id) {
-        var id = e.target.id;
-        switch (id) {
+        // switch by unique id
+        switch (e.target.id) {
           case 'logo':
             if (GSC.touch) $('.nav_update').click();
             break;
