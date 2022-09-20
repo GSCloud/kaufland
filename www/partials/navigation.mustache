@@ -182,11 +182,14 @@
           }, 10);
           return;
         }
-        GSC.Vibrate([100]);
+        GSC.Vibrate([200]);
         GSC.PlaySound('laser');
-        $('nav,body').hide(200);
+        $('nav,body').hide(250);
         setTimeout(function () {
           localStorage["discounts"] = null;
+          localStorage["discountsall"] = null;
+          localStorage["discountsallbyname"] = null;
+          localStorage["discountsbyname"] = null;
           top.location.replace("?nonce={{ nonce }}");
         }, 250);
       });
