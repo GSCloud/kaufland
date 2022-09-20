@@ -38,7 +38,7 @@
     </div>
   </a>
   <a class="nav_price">
-    <i id="price1" tabindex="-1" class="large" data-color="pink-text">paid</i>
+    <i tabindex="-1" class="large" data-color="pink-text">paid</i>
     <div>
       <span tabindex="-1">{{ l.nav_price }}</span>
     </div>
@@ -62,7 +62,7 @@
     <i tabindex="-1" class="large" data-color="green-text">message</i>
   </a>
   <a class="nav_price">
-    <i id="price2" tabindex="-1" class="large" data-color="pink-text">paid</i>
+    <i tabindex="-1" class="large" data-color="pink-text">paid</i>
   </a>
   <a class="nav_warehouse">
     <i tabindex="-1" class="large" data-color="orange-text">warehouse</i>
@@ -73,7 +73,7 @@
   (function (w, $, undefined) {
     "use strict";
 
-    // bottom progress bar
+    // green progress bar
     w.onscroll = onscroll;
     function onscroll() {
       GSC.lastclick = +new Date();
@@ -204,7 +204,7 @@
           GSC.apikey = null;
           GSC.pin = 'pin is not set';
         }
-        if (typeof GSC.DefClick == "function") GSC.DefClick();
+        GSC.DefClick();
         // toast
         setTimeout(function () {
           $('#pin_saved').addClass('active');
