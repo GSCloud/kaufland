@@ -183,7 +183,10 @@ class ApiPresenter extends APresenter
             }
             $results = $this->getDiscounts($file);
             $data = [
-                "datafile" => $f,
+                "file" => $f,
+                "timestamp" => filemtime($file),
+                "date" => date('d. n. Y', filemtime($file)),
+                "description" => 'lahvové pivo',
                 "records" => count($results["discounts"]),
                 "discounts" => $results["discounts"],
                 "groups" => $results["groups"],
@@ -199,7 +202,10 @@ class ApiPresenter extends APresenter
             }
             $results = $this->getDiscounts($file);
             $data = [
-                "datafile" => $f,
+                "file" => $f,
+                "timestamp" => filemtime($file),
+                "date" => date('d. n. Y', filemtime($file)),
+                "description" => 'pivo',
                 "records" => count($results["discounts"]),
                 "discounts" => $results["discounts"],
                 "groups" => $results["groups"],

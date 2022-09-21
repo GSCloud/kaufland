@@ -1,17 +1,22 @@
+21.9.2022
+=========
++ [API] aktualizace struktury GetDiscounts / GetDiscountsAll
++ aktualizace překladů
+
 20.9.2022
 =========
 + LP (long press) K logo = aktualizace appky
 
 19.9.2022
 =========
-+ [API] pivní skupiny
-+ aktualizace pivních překladů
++ [API] pivní skupiny (groups)
++ aktualizace překladů
 
 18.9.2022
 =========
 + [fix] JS regrese (crash)
-+ [fix] správné použití GSC.preventclick
-+ aktualizace pivních překladů
++ [fix] použití GSC.preventclick
++ aktualizace překladů
 + korekce UI
 
 17.9.2022

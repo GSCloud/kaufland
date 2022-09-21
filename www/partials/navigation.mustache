@@ -438,6 +438,8 @@
         GSC.lastclick = +new Date();
         $('.toast').removeClass('active');
         if (GSC.modals.length) {
+          // fix for K modal
+          if (GSC.modals[0] && GSC.modals[0] == 'appinfo_modal') return;
           GSC.modals.forEach(el => {
             $('#' + el).removeClass('active');
           });
