@@ -10,6 +10,7 @@
 19.9.2022
 =========
 + [API] pivní skupiny (groups)
++ [fix] K modal skrývání
 + aktualizace překladů
 
 18.9.2022
