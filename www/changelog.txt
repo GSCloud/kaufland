@@ -1,5 +1,6 @@
 22.9.2022
 =========
++ [API] třídění skupin
 + [var] GSC.discounts - slevy
 + [var] GSC.discounts_groups - skupiny slev
 + aktualizace překladů
