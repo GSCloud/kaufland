@@ -184,6 +184,7 @@
         }
         GSC.Vibrate([200]);
         GSC.PlaySound('laser');
+        $('#discount_groups').hide();
         $('nav,body').hide(250);
         setTimeout(function () {
           localStorage["discounts"] = null;

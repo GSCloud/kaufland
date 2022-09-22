@@ -27,6 +27,7 @@ fi
 # get beer prices HTML5 raw data + preprocess
 d=$(date +'%Y%m%d')
 if [ ! -f "akce-$d.data" ]; then
+  rm data/missing_translations.txt
   wget -O beer1.html 'https://www.kupi.cz/hledej?f=pivo&vse=0'
   for i in {2..8}; do wget -O "beer$i.html" 'https://www.kupi.cz/hledej?page='$i'&f=pivo&vse=0'; sleep 1; done
   # parse bottled prices using Red-lang + fix text

@@ -342,7 +342,10 @@ class ApiPresenter extends APresenter
     {
         $discounts = [];
         // missing translations file
-        \file_put_contents(DATA . '/missing_translations.txt', '');
+        $export = DATA . '/missing_translations.txt';
+        if (!file_exists($export)) {
+            \file_put_contents($export, '');
+        }
         if (file_exists($file) && is_readable($file)) {
             // load beer title translations
             $trans = [];
@@ -394,12 +397,9 @@ class ApiPresenter extends APresenter
                         }
                     }
                     $el["title"] = $trans[$s] ?? $s;
+                    // export missing translation
                     if (!array_key_exists($s, $trans)) {
-                        // export missing translation
-                        \file_put_contents(
-                            DATA . '/missing_translations.txt',
-                            $s . "\n", FILE_APPEND|LOCK_EX
-                        );
+                        \file_put_contents($export, $s . "\n", FILE_APPEND|LOCK_EX);
                     }
                     $c++;
                     continue;
