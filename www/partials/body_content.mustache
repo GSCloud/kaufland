@@ -89,6 +89,10 @@
   </div>
 </div>
 <div id="price" class="hidden section">
+  <div id="discount_filters"></div>
+  <div id="discount_groups" class="center"></div>
+  <div id="discounts"></div>
+  <button id="discount_group_template" class="filter_group hidden small secondary round"></button>
   <div id="discount_template" class="hidden">
     <div class="no-padding">
       <span class="grey-text bold monospace counter"></span><span class="grey-text monospace">/</span><span class="grey-text monospace counter_all"></span>&nbsp;&nbsp;<b class="title truncate"></b></div>
@@ -103,7 +107,6 @@
       <div class="col s2 albert left-align hidden"><b class="albert_price"></b></div>
     </div>
   </div>
-  <div id="discounts"></div>
 </div>
 <div id="warehouse" class="white-text hidden section">
   <div class="center-align padding">
@@ -428,7 +431,12 @@
           var discounts = JSON.parse(localStorage["discounts"]);
           if (discounts && discounts.discounts && discounts.groups) {
             GSC.discounts = discounts.discounts;
-            GSC.groups = discounts.groups;
+            GSC.discounts_groups = discounts.groups;
+            // render groups
+            for (var el in GSC.discounts_groups) {
+              $('#discount_group_template').clone().appendTo('#discount_groups').removeClass('hidden').attr('id', 'group_' + el);
+              $('#group_' + el).text(el).data('group', el);
+            }
             var c = 0;
             var products = [];
             for (var el in GSC.discounts) {
@@ -459,12 +467,23 @@
             }
             // final counter
             $('#discounts .counter_all').text(c);
+            updateDiscountFilters();
           }
         }
       }
       // GSC.RenderDiscounts(type) - render beer price discounts by type from local storage
       if (typeof GSC.RenderDiscounts !== "function") GSC.RenderDiscounts = function(type) {
         renderDiscounts(type);
+      }
+
+      // update discount filters
+      function updateDiscountFilters() {
+        $('.filter_group').click(function() {
+          var group = $(this).data('group');
+          if (group) {
+            GSC.discount_filter_group = group;
+          }
+        });
       }
 
       // get user information and set UI elements

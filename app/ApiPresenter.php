@@ -379,8 +379,10 @@ class ApiPresenter extends APresenter
                 if ($c == 2) {
                     $s = strtolower($s);
                     $el["code"] = $s;
+                    $gs = $s;
+                    $gs = str_replace('budweiser', 'budvar', $gs);
                     // compute the groups
-                    $g = explode('-', $s);
+                    $g = explode('-', $gs);
                     if (count($g)) {
                         foreach ($g as $gname) {
                             if (!array_key_exists($gname, $groups)) {
@@ -431,10 +433,7 @@ class ApiPresenter extends APresenter
             }
         }
         // remove vague group keys
-        unset($groups["brod"]);
-        unset($groups["havlickuv"]);
         unset($groups["lezak"]);
-        unset($groups["nymburk"]);
         unset($groups["ochucene"]);
         unset($groups["original"]);
         unset($groups["pivo"]);
@@ -442,6 +441,7 @@ class ApiPresenter extends APresenter
         unset($groups["premium"]);
         unset($groups["svetle"]);
         unset($groups["svetly"]);
+        unset($groups["urquell"]);
         unset($groups["velkopopovicky"]);
         unset($groups["vycepni"]);
 

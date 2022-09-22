@@ -1,6 +1,9 @@
 22.9.2022
 =========
++ [var] GSC.discounts - slevy
++ [var] GSC.discounts_groups - skupiny slev
 + aktualizace překladů
++ nástřel UI pro filtrování
 
 21.9.2022
 =========
