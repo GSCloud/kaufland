@@ -433,12 +433,16 @@ class ApiPresenter extends APresenter
             }
         }
         // remove vague group keys
+        unset($groups["classic"]);
         unset($groups["lezak"]);
+        unset($groups["medium"]);
+        unset($groups["nefiltrovane"]);
         unset($groups["ochucene"]);
         unset($groups["original"]);
         unset($groups["pivo"]);
         unset($groups["pivovar"]);
         unset($groups["premium"]);
+        unset($groups["psenicne"]);
         unset($groups["svetle"]);
         unset($groups["svetly"]);
         unset($groups["urquell"]);
