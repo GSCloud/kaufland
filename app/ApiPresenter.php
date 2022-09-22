@@ -187,7 +187,8 @@ class ApiPresenter extends APresenter
                 "timestamp" => filemtime($file),
                 "date" => date('d. n. Y', filemtime($file)),
                 "description" => 'lahvové pivo',
-                "records" => count($results["discounts"]),
+                "records_count" => count($results["discounts"]),
+                "groups_count" => count($results["groups"]),
                 "discounts" => $results["discounts"],
                 "groups" => $results["groups"],
             ];
@@ -206,7 +207,8 @@ class ApiPresenter extends APresenter
                 "timestamp" => filemtime($file),
                 "date" => date('d. n. Y', filemtime($file)),
                 "description" => 'pivo',
-                "records" => count($results["discounts"]),
+                "groups_count" => count($results["groups"]),
+                "records_count" => count($results["discounts"]),
                 "discounts" => $results["discounts"],
                 "groups" => $results["groups"],
             ];
@@ -341,27 +343,27 @@ class ApiPresenter extends APresenter
     public function getDiscounts($file)
     {
         $discounts = [];
-        // missing translations file
+        // missing translations
         $export = DATA . '/missing_translations.txt';
-        if (!file_exists($export)) {
+        if (!\file_exists($export)) {
             \file_put_contents($export, '');
         }
-        if (file_exists($file) && is_readable($file)) {
+        if (\file_exists($file) && \is_readable($file)) {
             // load beer title translations
             $trans = [];
             $trans_file = APP . '/beer-translation.neon';
-            if (file_exists($trans_file) && is_readable($trans_file)) {
+            if (\file_exists($trans_file) && \is_readable($trans_file)) {
                 $trans = Neon::decode(
-                    file_get_contents($trans_file)
+                    \file_get_contents($trans_file)
                 );
             }
             $c = 0;
             $groups = [];
             $count = 1;
-            $arr = file($file);
+            $arr = \file($file);
             // parse data file
             foreach ($arr ?? [] as $s) {
-                $s = trim($s);
+                $s = \trim($s);
                 if (!strlen($s)) {
                     continue;
                 }
@@ -380,25 +382,25 @@ class ApiPresenter extends APresenter
                 }
                 // code + title + groups
                 if ($c == 2) {
-                    $s = strtolower($s);
+                    $s = \strtolower($s);
                     $el["code"] = $s;
                     $gs = $s;
-                    $gs = str_replace('budweiser', 'budvar', $gs);
+                    $gs = \str_replace('budweiser', 'budvar', $gs);
                     // compute the groups
-                    $g = explode('-', $gs);
-                    if (count($g)) {
+                    $g = \explode('-', $gs);
+                    if (\count($g)) {
                         foreach ($g as $gname) {
-                            if (!array_key_exists($gname, $groups)) {
+                            if (!\array_key_exists($gname, $groups)) {
                                 $groups[$gname] = [];
                             }
-                            if (!in_array($el["product"], $groups[$gname])) {
-                                array_push($groups[$gname], $el["product"]);
+                            if (!\in_array($el["product"], $groups[$gname])) {
+                                \array_push($groups[$gname], $el["product"]);
                             }
                         }
                     }
                     $el["title"] = $trans[$s] ?? $s;
                     // export missing translation
-                    if (!array_key_exists($s, $trans)) {
+                    if (!\array_key_exists($s, $trans)) {
                         \file_put_contents($export, $s . "\n", FILE_APPEND|LOCK_EX);
                     }
                     $c++;
@@ -406,19 +408,19 @@ class ApiPresenter extends APresenter
                 }
                 // market
                 if ($c == 3) {
-                    $s = str_ireplace('eso market', 'eso', $s);
-                    $s = str_ireplace('penny market', 'penny', $s);
-                    $s = str_ireplace('tamda foods', 'tamda', $s);
-                    $el["market"] = strtolower($s);
+                    $s = \str_ireplace('eso market', 'eso', $s);
+                    $s = \str_ireplace('penny market', 'penny', $s);
+                    $s = \str_ireplace('tamda foods', 'tamda', $s);
+                    $el["market"] = \strtolower($s);
                     $c++;
                     continue;
                 }
                 // price
                 if ($c == 4) {
-                    $s = str_replace(',', '.', $s);
-                    $s = str_replace('Kč', '', $s);
-                    $el["price"] = (int) ceil(floatval(trim($s)));
-                    array_push($discounts, $el);
+                    $s = \str_replace(',', '.', $s);
+                    $s = \str_replace('Kč', '', $s);
+                    $el["price"] = (int) \ceil(\floatval(\trim($s)));
+                    \array_push($discounts, $el);
                     $count++;
                     if ($count == self::MAX_RECORDS) {
                         break;
@@ -428,7 +430,7 @@ class ApiPresenter extends APresenter
             }
         }
         foreach ($groups as $k => $v) {
-            if (count($v) < 3) {
+            if (\count($v) < 3) {
                 unset($groups[$k]);
             }
         }
@@ -448,7 +450,7 @@ class ApiPresenter extends APresenter
         unset($groups["urquell"]);
         unset($groups["velkopopovicky"]);
         unset($groups["vycepni"]);
-
+        \ksort($groups);
         return [
             "discounts" => $discounts,
             "groups" => $groups,
