@@ -430,7 +430,7 @@ class ApiPresenter extends APresenter
             }
         }
         foreach ($groups as $k => $v) {
-            if (\count($v) < 3) {
+            if (\count($v) < 2) {
                 unset($groups[$k]);
             }
         }

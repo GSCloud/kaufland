@@ -1,3 +1,7 @@
+23.9.2022
+=========
++ filtrování podle skupin
+
 22.9.2022
 =========
 + [API] třídění skupin
