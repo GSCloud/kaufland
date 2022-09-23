@@ -98,7 +98,7 @@
   </div>
   <div id="discounts"></div>
   <button id="discount_group_template" class="filter_group hidden small secondary round" style="margin:2px"></button>
-  <div id="discount_template" class="hidden">
+  <div id="discount_template" class="hidden beer_discount">
     <div class="no-padding" style="margin-top:5px">
       <span class="grey-text bold monospace counter"></span><span class="grey-text monospace">/</span><span class="grey-text monospace counter_all"></span>&nbsp;&nbsp;<b class="title truncate"></b></div>
     <div class="row no-padding" style="color:#fff;border-bottom:2px solid #000">
@@ -291,8 +291,8 @@
             console.log(e.target.id);
         }
       }
-      //return false; // false = prevent context menu
-      return true; // true = enable context menu
+      return false; // false = prevent context menu
+      //return true; // true = enable context menu
     }
 
     // *** GSC FUNCTIONS ***
@@ -490,7 +490,15 @@
           var group = $(this).data('group');
           if (group) {
             GSC.discount_filter_group = group;
+            $('.beer_discount').addClass('hidden');
+            GSC.discounts_groups[group].forEach(el => {
+              $('#beer_' + el).removeClass('hidden');
+            });
           }
+        });
+        $('.clear_groups_filtering').click(function() {
+          GSC.discount_filter_group = null;
+          $('.beer_discount').removeClass('hidden');
         });
       }
 
