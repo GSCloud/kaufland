@@ -484,8 +484,9 @@
         renderDiscounts(type);
       }
 
-      // update discount filters
+      // update discount filters + active filtering
       function updateDiscountFilters() {
+        // attach click handlers
         $('.filter_group').click(function() {
           var group = $(this).data('group');
           if (group) {
@@ -496,6 +497,7 @@
             });
           }
         });
+        // clear group filtering
         $('.clear_groups_filtering').click(function() {
           GSC.discount_filter_group = null;
           $('.beer_discount').removeClass('hidden');
