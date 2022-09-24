@@ -5,10 +5,9 @@
         <div class="padding">
           <h5 class="bold white-text" tabindex="-1">{{ l.tit_appinfo }}</h5>
           <div>
-            <b>
+            <div class="bold">
               <a rel=nofollow target=_blank class="green-text" href="https://github.com/GSCloud/kaufland">https://github.com/GSCloud/kaufland</a>
-            </b><br>
-            {{ l.author }}<br>
+            </div>
             <br>
             <div class="small-text" tabindex="-1">
               {{ l.txt_version }} <b class="white-text">{{ VERSION_SHORT }}</b>
@@ -38,8 +37,13 @@
             <div class="col s6">
               <a href="https://beercss.com/"><img class="responsive" src="{{ cdn }}/img/beercss.png" alt="Beercss"/></a>
             </div>
-          </div>          
-          {{ l.no_cookies }}
+          </div>
+          <div class="small-text center">
+            {{ l.no_cookies }}
+          </div>
+          <div class="small-text center">
+            {{ l.author }}
+          </div>
         </div>
       </div>
     </div>
