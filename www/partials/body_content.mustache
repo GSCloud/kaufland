@@ -291,8 +291,8 @@
             console.log(e.target.id);
         }
       }
-      return false; // false = prevent context menu
-      //return true; // true = enable context menu
+      //return false; // false = prevent context menu
+      return true; // true = enable context menu
     }
 
     // *** GSC FUNCTIONS ***
@@ -484,28 +484,27 @@
         renderDiscounts(type);
       }
 
-      // update discount filters handlers
+      // update filters handlers
       function updateDiscountFilters() {
-        // attach click handler
+        // FILTER: filter by group
         $('.filter_group').click(function() {
           var group = $(this).data('group');
           if (group) {
             GSC.discount_filter_group = group;
-            $('.beer_discount').addClass('hidden');
+            $('#discounts .beer_discount').addClass('hidden');
             GSC.discounts_groups[group].forEach(el => {
               $('#beer_' + el).removeClass('hidden');
             });
           }
         });
-        // clear groups filtering
+        // FILTER: clear filtering
         $('.clear_groups_filtering').click(function() {
           GSC.discount_filter_group = null;
-          $('.beer_discount').removeClass('hidden');
-          $('#discount_template').addClass('hidden'); // fix template
+          $('#discounts .beer_discount').removeClass('hidden');
         });
-        // toggle groups filtering visibility
+        // FILTER: toggle groups visibility
         $('.groups_filter').click(function() {
-          $('.filter_group').toggleClass('hidden');
+          $('#discounts_groups .filter_group').toggleClass('hidden');
         });
       }
 
