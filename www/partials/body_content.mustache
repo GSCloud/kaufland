@@ -491,6 +491,8 @@
           var group = $(this).data('group');
           if (group) {
             GSC.discount_filter_group = group;
+            $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary');
+            $(this).removeClass('secondary').addClass('blue');
             $('#discounts .beer_discount').addClass('hidden');
             GSC.discounts_groups[group].forEach(el => {
               $('#beer_' + el).removeClass('hidden');
@@ -501,6 +503,7 @@
         $('.clear_groups_filtering').click(function() {
           GSC.discount_filter_group = null;
           $('#discounts .beer_discount').removeClass('hidden');
+          $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary');
         });
         // FILTER: toggle groups visibility
         $('.groups_filter').click(function() {
