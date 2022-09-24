@@ -189,8 +189,8 @@
         setTimeout(function () {
           localStorage["discounts"] = null;
           localStorage["discountsall"] = null;
-          localStorage["discountsallbyname"] = null;
           localStorage["discountsbyname"] = null;
+          localStorage["discountsallbyname"] = null;
           top.location.replace("?nonce={{ nonce }}");
         }, 250);
       });
@@ -203,7 +203,7 @@
         // no PIN - no fun
         if (!GSC.pin.length) {
           GSC.apikey = null;
-          GSC.pin = 'pin is not set';
+          GSC.pin = null;
         }
         GSC.DefClick();
         // toast
@@ -360,9 +360,7 @@
 
       // load sfx - array of filenames
       function loadSound(arr) {
-        for (var i = 0; i < arr.length; i++) {
-          playSound(arr[i], true);
-        }
+        for (var i = 0; i < arr.length; i++) playSound(arr[i], true);
       }
 
       // play sfx - filename without extension
@@ -387,7 +385,7 @@
           GSC.ComOff();
           var filename = req.responseURL.substring(req.responseURL.lastIndexOf('/')+1);
           GSC.audioctx && GSC.audioctx.decodeAudioData(req.response, function(buffer) {
-              // store sound buffer
+              // store decoded sound buffer data
               GSC.sfxbuffers[filename] = buffer;
               if (!GSC.sfx || preload) return;
               // play audio buffer
@@ -542,20 +540,6 @@
       setTestMusicButton();
       $('nav,body,#offline,.modal,.toast').removeClass('hidden');
       $('nav,body').hide().show(350);
-
-      // SHA-256 self-test
-      try {
-        sha256('hash test').then(function (hash) {
-          if (hash == 'cd5e9b1a6c3c37593b8b622b2921ee5320944192acb48b55155cbe8d32dc5ea1') {
-            GSC.D('<b>SHA-256 self-test 😄</b>');
-          } else {
-            w.location.href = '/err/600';
-          }
-        });
-      } catch(e) {
-        // unsupported browser
-        w.location.href = '/err/600';
-      }
 
       // UI fix for touch devices
       if (GSC.touch) {
