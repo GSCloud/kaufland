@@ -295,8 +295,8 @@
             console.log(e.target.id);
         }
       }
-      return false; // false = prevent context menu
       //return true; // true = enable context menu
+      return false; // false = prevent context menu
     }
 
     // *** GSC FUNCTIONS ***
@@ -494,10 +494,10 @@
         $('.filter_group').click(function() {
           var group = $(this).data('group');
           if (group) {
-            GSC.discount_filter_group = group;
             $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary');
             $(this).removeClass('secondary').addClass('blue');
             $('#discounts .beer_discount').addClass('hidden');
+            GSC.discount_filter_group = group;
             GSC.discounts_groups[group].forEach(el => {
               $('#beer_' + el).removeClass('hidden');
             });
