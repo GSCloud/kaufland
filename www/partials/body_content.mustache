@@ -92,7 +92,7 @@
   <div class="center">
     <span class="bold" id="discounts_description"></span> &mdash; <span id="discounts_date"></span>
   </div>
-  <div class="center padding">
+  <div class="padding">
     <div id="discounts_filters"></div>
     <div id="discounts_groups"></div>
   </div>
@@ -484,9 +484,9 @@
         renderDiscounts(type);
       }
 
-      // update discount filters + active filtering
+      // update discount filters handlers
       function updateDiscountFilters() {
-        // attach click handlers
+        // attach click handler
         $('.filter_group').click(function() {
           var group = $(this).data('group');
           if (group) {
@@ -497,11 +497,15 @@
             });
           }
         });
-        // clear group filtering
+        // clear groups filtering
         $('.clear_groups_filtering').click(function() {
           GSC.discount_filter_group = null;
           $('.beer_discount').removeClass('hidden');
           $('#discount_template').addClass('hidden'); // fix template
+        });
+        // toggle groups filtering visibility
+        $('.groups_filter').click(function() {
+          $('.filter_group').toggleClass('hidden');
         });
       }
 
