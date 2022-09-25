@@ -3,13 +3,9 @@
 + [API] GetDiscountsByName - slevy na lahvové pivo dle názvu
 + [API] GetDiscountsAllByName - všechny slevy na pivo dle dle názvu
 
-24.9.2022
-=========
-+ korekce UI
-
 23.9.2022
 =========
-+ update jQuery na v3.6.1
++ update jQuery v3.6.1
 + korekce UI
 
 23.9.2022
@@ -114,7 +110,7 @@
 4.9.2022
 ========
 + !!! Red-lang parse experiment
-+ [API] GetDiscounts - slevy na lahvové pivo dle popularity (filtrováno podle zálohy na lahev)
++ [API] GetDiscounts - slevy na lahvové pivo dle popularity
 
 31.8.2022
 =========
