@@ -1,7 +1,7 @@
 25.9.2022
 =========
-+ [API] GetDiscountsByName
-+ [API] GetDiscountsAllByName
++ [API] GetDiscountsByName - slevy na lahvové pivo dle názvu
++ [API] GetDiscountsAllByName - všechny slevy na pivo dle dle názvu
 
 24.9.2022
 =========
@@ -87,7 +87,7 @@
 
 10.9.2022
 =========
-+ [API] GetDiscountsAll - všechny slevy na pivo
++ [API] GetDiscountsAll - všechny slevy na pivo dle popularity
 + [fix] zpracování akčních cen piva
 
 9.9.2022
@@ -114,7 +114,7 @@
 4.9.2022
 ========
 + !!! Red-lang parse experiment
-+ [API] GetDiscounts - slevy na lahvové pivo (filtrování podle zálohy na lahev)
++ [API] GetDiscounts - slevy na lahvové pivo dle popularity (filtrováno podle zálohy na lahev)
 
 31.8.2022
 =========
