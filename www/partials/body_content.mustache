@@ -509,7 +509,7 @@
         $('.clear_groups_filtering').click(function() {
           GSC.discount_filter_group = null;
           $('#discounts .beer_discount').removeClass('hidden');
-          $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary');
+          $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary hidden');
           $(this).removeClass('red').addClass('transparent').blur();
         });
         // FILTER: toggle groups visibility
