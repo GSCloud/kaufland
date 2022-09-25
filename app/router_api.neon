@@ -42,6 +42,17 @@ GetDiscounts:
   finished: true
   presenter: api
 
+GetDiscountsByName:
+  path: "/api/v1/GetDiscountsByName"
+  method: GET
+  api_description: "Get beer discounts sorted by name (bottled beer)"
+  api_info: "Returns (JSON): discounts (array), groups (array)"
+  api: true
+  assert_json: true
+  assert_httpcode: 200
+  finished: false
+  presenter: api
+
 GetDiscountsAll:
   path: "/api/v1/GetDiscountsAll"
   method: GET
@@ -51,6 +62,17 @@ GetDiscountsAll:
   assert_json: true
   assert_httpcode: 200
   finished: true
+  presenter: api
+
+GetDiscountsAllByName:
+  path: "/api/v1/GetDiscountsAllByName"
+  method: GET
+  api_description: "Get beer discounts sorted by name (all beer products)"
+  api_info: "Returns (JSON): discounts (array), groups (array)"
+  api: true
+  assert_json: true
+  assert_httpcode: 200
+  finished: false
   presenter: api
 
 GetUser:

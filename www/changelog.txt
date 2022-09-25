@@ -1,6 +1,15 @@
+25.9.2022
+=========
++ [API] GetDiscountsByName
++ [API] GetDiscountsAllByName
+
+24.9.2022
+=========
++ korekce UI
+
 23.9.2022
 =========
-+ jQuery 3.6.1
++ update jQuery na v3.6.1
 + korekce UI
 
 23.9.2022

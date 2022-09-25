@@ -186,7 +186,7 @@ class ApiPresenter extends APresenter
                 "file" => $f,
                 "timestamp" => filemtime($file),
                 "date" => date('d. n. Y', filemtime($file)),
-                "description" => 'lahvové pivo',
+                "description" => 'lahvové pivo dle popularity',
                 "records_count" => count($results["discounts"]),
                 "groups_count" => count($results["groups"]),
                 "discounts" => $results["discounts"],
@@ -206,7 +206,47 @@ class ApiPresenter extends APresenter
                 "file" => $f,
                 "timestamp" => filemtime($file),
                 "date" => date('d. n. Y', filemtime($file)),
-                "description" => 'pivo',
+                "description" => 'pivo dle popularity',
+                "groups_count" => count($results["groups"]),
+                "records_count" => count($results["discounts"]),
+                "discounts" => $results["discounts"],
+                "groups" => $results["groups"],
+            ];
+            return $this->writeJsonData($data, $extras);
+            break;
+
+        case "GetDiscountsByName":
+            $f = 'akce.data';
+            $file = ROOT . '/' . $f;
+            if (!file_exists($file) || !is_readable($file)) {
+                return ErrorPresenter::getInstance()->process(404);
+            }
+            $results = $this->getDiscounts($file);
+            $data = [
+                "file" => $f,
+                "timestamp" => filemtime($file),
+                "date" => date('d. n. Y', filemtime($file)),
+                "description" => 'lahvové pivo dle názvu',
+                "records_count" => count($results["discounts"]),
+                "groups_count" => count($results["groups"]),
+                "discounts" => $results["discounts"],
+                "groups" => $results["groups"],
+            ];
+            return $this->writeJsonData($data, $extras);
+            break;
+            
+        case "GetDiscountsAllByName":
+            $f = 'akce-all.data';
+            $file = ROOT . '/' . $f;
+            if (!file_exists($file) || !is_readable($file)) {
+                return ErrorPresenter::getInstance()->process(404);
+            }
+            $results = $this->getDiscounts($file);
+            $data = [
+                "file" => $f,
+                "timestamp" => filemtime($file),
+                "date" => date('d. n. Y', filemtime($file)),
+                "description" => 'pivo dle názvu',
                 "groups_count" => count($results["groups"]),
                 "records_count" => count($results["discounts"]),
                 "discounts" => $results["discounts"],
