@@ -229,7 +229,7 @@ class ApiPresenter extends APresenter
                 "description" => 'lahvové pivo dle názvu',
                 "records_count" => count($results["discounts"]),
                 "groups_count" => count($results["groups"]),
-                "discounts" => $results["discounts"],
+                "discounts" => $this->sortByTitle($results["discounts"]),
                 "groups" => $results["groups"],
             ];
             return $this->writeJsonData($data, $extras);
@@ -249,7 +249,7 @@ class ApiPresenter extends APresenter
                 "description" => 'pivo dle názvu',
                 "groups_count" => count($results["groups"]),
                 "records_count" => count($results["discounts"]),
-                "discounts" => $results["discounts"],
+                "discounts" => $this->sortByTitle($results["discounts"]),
                 "groups" => $results["groups"],
             ];
             return $this->writeJsonData($data, $extras);
@@ -272,6 +272,37 @@ class ApiPresenter extends APresenter
             return ErrorPresenter::getInstance()->process(404);
         }
         return $this;
+    }
+
+    /**
+     * Sort array by title key
+     *
+     * @param array $arr input array
+     * 
+     * @return array
+     */
+    public function sortByTitle($arr)
+    {
+        if (!$arr) {
+            return [];
+        }
+
+        /**
+         * Sorter builder
+         *
+         * @param string $key array key
+         * 
+         * @return int string comparison result using a "natural order" algorithm
+         */
+        function build_sorter($key)
+        {
+            return function ($a, $b) use ($key) {
+                return strnatcmp($a[$key], $b[$key]);
+            };
+        }
+
+        usort($arr, build_sorter('title'));
+        return $arr;
     }
 
     /**
