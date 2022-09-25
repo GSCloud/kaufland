@@ -495,6 +495,7 @@
         $('.filter_group').click(function() {
           var group = $(this).data('group');
           if (group) {
+            GSC.DefClick();
             $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary');
             $(this).removeClass('secondary').addClass('blue');
             $('#discounts .beer_discount').addClass('hidden');
@@ -507,6 +508,7 @@
         });
         // FILTER: clear filtering
         $('.clear_groups_filtering').click(function() {
+          GSC.PlaySound('click1');
           GSC.discount_filter_group = null;
           $('#discounts .beer_discount').removeClass('hidden');
           $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary hidden');
@@ -514,6 +516,7 @@
         });
         // FILTER: toggle groups visibility
         $('.groups_filter').click(function() {
+          GSC.PlaySound('click2');
           $('#discounts_groups .filter_group').toggleClass('hidden');
         });
       }
