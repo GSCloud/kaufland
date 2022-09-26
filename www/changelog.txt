@@ -6,12 +6,9 @@
 
 23.9.2022
 =========
-+ update jQuery v3.6.1
-+ korekce UI
-
-23.9.2022
-=========
 + filtrování podle skupin
++ korekce UI
++ update jQuery v3.6.1
 
 22.9.2022
 =========
