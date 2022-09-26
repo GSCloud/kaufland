@@ -1,8 +1,12 @@
+26.9.2022
+=========
++ [var] GSC.favorites - oblíbené pivní značky slev
+
 25.9.2022
 =========
 + [API] GetDiscountsByName - slevy na lahvové pivo dle názvu
 + [API] GetDiscountsAllByName - všechny slevy na pivo dle dle názvu
-+ korekce UI a SFX
++ korekce UI & SFX
 
 23.9.2022
 =========

@@ -506,6 +506,12 @@
       GSC.sfx = parseBool(localStorage["sfx"]);
       GSC.vibrate = parseBool(localStorage["vibrate"]);
 
+      // beer favorites list
+      if (localStorage['favorites']) {
+        GSC.favorites = JSON.parse(localStorage["favorites"]);
+      }
+      if (!GSC.favorites) GSC.favorites = [];
+
       // set test button - VIBRATE
       function setTestVibrateButton() {
         if (GSC.vibrate) {
