@@ -1,22 +1,23 @@
 26.9.2022
 =========
 + [var] GSC.favorites - oblíbené pivní značky slev
++ aktualizace překladů
 
 25.9.2022
 =========
-+ [API] GetDiscountsByName - slevy na lahvové pivo dle názvu
 + [API] GetDiscountsAllByName - všechny slevy na pivo dle dle názvu
++ [API] GetDiscountsByName - slevy na lahvové pivo dle názvu
 + korekce UI & SFX
 
 23.9.2022
 =========
 + filtrování podle skupin
 + korekce UI
-+ update jQuery v3.6.1
++ update: jQuery v3.6.1
 
 22.9.2022
 =========
-+ [API] třídění skupin
++ [API] třídění skupin podle abecedy
 + [var] GSC.discounts - slevy
 + [var] GSC.discounts_groups - skupiny slev
 + aktualizace překladů
