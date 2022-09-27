@@ -229,7 +229,7 @@ class ApiPresenter extends APresenter
                 "description" => 'lahvové pivo dle názvu',
                 "records_count" => count($results["discounts"]),
                 "groups_count" => count($results["groups"]),
-                "discounts" => $this->sortByTitle($results["discounts"]),
+                "discounts" => $this->sortByIndex($results["discounts"]),
                 "groups" => $results["groups"],
             ];
             return $this->writeJsonData($data, $extras);
@@ -249,7 +249,7 @@ class ApiPresenter extends APresenter
                 "description" => 'pivo dle názvu',
                 "groups_count" => count($results["groups"]),
                 "records_count" => count($results["discounts"]),
-                "discounts" => $this->sortByTitle($results["discounts"]),
+                "discounts" => $this->sortByindex($results["discounts"]),
                 "groups" => $results["groups"],
             ];
             return $this->writeJsonData($data, $extras);
@@ -275,13 +275,13 @@ class ApiPresenter extends APresenter
     }
 
     /**
-     * Sort array by title key
+     * Sort array by index key
      *
-     * @param array $arr input array
+     * @param array $arr input
      * 
-     * @return array
+     * @return array results
      */
-    public function sortByTitle($arr)
+    public function sortByIndex($arr)
     {
         if (!$arr) {
             return [];
@@ -290,18 +290,18 @@ class ApiPresenter extends APresenter
         /**
          * Sorter builder
          *
-         * @param string $key array key
+         * @param string $key sorting index key
          * 
          * @return int string comparison result using a "natural order" algorithm
          */
         function build_sorter($key)
         {
             return function ($a, $b) use ($key) {
-                return strnatcmp($a[$key], $b[$key]);
+                return \strnatcmp($a[$key], $b[$key]);
             };
         }
 
-        usort($arr, build_sorter('title'));
+        \usort($arr, build_sorter('title'));
         return $arr;
     }
 
@@ -314,52 +314,52 @@ class ApiPresenter extends APresenter
      */
     public function getChangelog($file)
     {
-        if (file_exists($file) && is_readable($file)) {
-            $log = file($file);
+        if (\file_exists($file) && \is_readable($file)) {
+            $log = \file($file);
             foreach ($log as $k => $v) {
-                $v = trim($v);
+                $v = \trim($v);
                 $x = '[fix]';
-                if (strpos($v, $x)) {
-                    $v = str_replace($x, '[<b>fix</b>]', $v);
+                if (\strpos($v, $x)) {
+                    $v = \str_replace($x, '[<b>fix</b>]', $v);
                     $log[$k] = "<div class=red8>$v</div>";
                 }
                 $x = '[var]';
-                if (strpos($v, $x)) {
-                    $v = str_replace($x, '[<b>var</b>]', $v);
+                if (\strpos($v, $x)) {
+                    $v = \str_replace($x, '[<b>var</b>]', $v);
                     $log[$k] = "<div class=yellow10>$v</div>";
                 }
                 $x = '[fn]';
-                if (strpos($v, $x)) {
-                    $v = str_replace($x, '[<b>fn</b>]', $v);
+                if (\strpos($v, $x)) {
+                    $v = \str_replace($x, '[<b>fn</b>]', $v);
                     $log[$k] = "<div class=blue8>$v</div>";
                 }
                 $x = '[fn,priv]';
-                if (strpos($v, $x)) {
-                    $v = str_replace($x, '[<b>fn,priv</b>]', $v);
+                if (\strpos($v, $x)) {
+                    $v = \str_replace($x, '[<b>fn,priv</b>]', $v);
                     $log[$k] = "<div class=indigo10>$v</div>";
                 }
                 $x = '[API]';
-                if (strpos($v, '[API]')) {
-                    $v = str_replace($x, '[<b>API</b>]', $v);
+                if (\strpos($v, '[API]')) {
+                    $v = \str_replace($x, '[<b>API</b>]', $v);
                     $log[$k] = "<div class=green6>$v</div>";
                 }
                 $x = '[TESTER]';
-                if (strpos($v, '[TESTER]')) {
-                    $v = str_replace($x, '[<b>TESTER</b>]', $v);
+                if (\strpos($v, '[TESTER]')) {
+                    $v = \str_replace($x, '[<b>TESTER</b>]', $v);
                     $log[$k] = "<div class=teal8>$v</div>";
                 }
                 $x = '!!!';
-                if (strpos($v, '!!!')) {
-                    $v = str_replace($x, '', $v);
+                if (\strpos($v, '!!!')) {
+                    $v = \str_replace($x, '', $v);
                     $log[$k] = "<div class='red bold'>$v</div>";
                 }
             }
-            $log = implode('<br>', $log);
-            $log = preg_replace('/==+/', '<hr>', $log);
-            $log = str_replace("\n", '', $log);
-            $log = str_replace('</div><br>', '</div>', $log);
-            $log = str_replace('<br><hr><br>', '<hr>', $log);
-            $log = preg_replace('/([0-9]+\.[0-9]+\.[0-9]+)/', '<b>$1</b>', $log);
+            $log = \implode('<br>', $log);
+            $log = \preg_replace('/==+/', '<hr>', $log);
+            $log = \str_replace("\n", '', $log);
+            $log = \str_replace('</div><br>', '</div>', $log);
+            $log = \str_replace('<br><hr><br>', '<hr>', $log);
+            $log = \preg_replace('/([0-9]+\.[0-9]+\.[0-9]+)/', '<b>$1</b>', $log);
             return $log;
         }
         return false;
@@ -435,7 +435,7 @@ class ApiPresenter extends APresenter
             // parse data file
             foreach ($arr ?? [] as $s) {
                 $s = \trim($s);
-                if (!strlen($s)) {
+                if (!\strlen($s)) {
                     continue;
                 }
                 // separator
@@ -505,7 +505,8 @@ class ApiPresenter extends APresenter
                 unset($groups[$k]);
             }
         }
-        // remove vague group keys
+        // remove vague groups
+        unset($groups["ale"]);
         unset($groups["classic"]);
         unset($groups["lezak"]);
         unset($groups["medium"]);
@@ -516,6 +517,7 @@ class ApiPresenter extends APresenter
         unset($groups["pivovar"]);
         unset($groups["premium"]);
         unset($groups["psenicne"]);
+        unset($groups["specialni"]);
         unset($groups["svetle"]);
         unset($groups["svetly"]);
         unset($groups["urquell"]);
