@@ -513,7 +513,11 @@
           GSC.discount_filter_group = null;
           $('#discounts .beer_discount').removeClass('hidden');
           $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary hidden');
-          $(this).removeClass('red').addClass('transparent').blur();
+          $(this).removeClass('red').addClass('transparent');
+          // blur the button
+          setTimeout(function() {
+            $(this).blur();
+          }, 10);
         });
         // FILTER: toggle groups visibility
         $('.groups_filter').click(function() {
