@@ -2,6 +2,7 @@
 =========
 + !!! AKCE: oblíbené položky (click title)
 + [API] refaktorizace
++ [fix] oprava Red parseru akčních cen
 + aktualizace překladů
 + korekce UI
 
