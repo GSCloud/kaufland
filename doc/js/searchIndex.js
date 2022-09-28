@@ -11,6 +11,11 @@ Search.appendIndex(
             "summary": "Main\u0020controller",
             "url": "classes/GSC-ApiPresenter.html#method_process"
         },                {
+            "fqsen": "\\GSC\\ApiPresenter\u003A\u003AsortByIndex\u0028\u0029",
+            "name": "sortByIndex",
+            "summary": "Sort\u0020array\u0020by\u0020index\u0020key",
+            "url": "classes/GSC-ApiPresenter.html#method_sortByIndex"
+        },                {
             "fqsen": "\\GSC\\ApiPresenter\u003A\u003AgetChangelog\u0028\u0029",
             "name": "getChangelog",
             "summary": "Get\u0020colorized\u0020changelog",

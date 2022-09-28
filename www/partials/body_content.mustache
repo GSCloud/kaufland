@@ -468,18 +468,24 @@
                 if (skip) continue;
                 // clone the element
                 c++;
-                products[item.product] = c;
-                $('#discount_template').clone().appendTo('#discounts').removeClass('hidden').attr('id', 'beer_' + item.product);
-                $('#beer_' + item.product + ' .counter').text(c);
-                $('#beer_' + item.product + ' .title').text(item.title);
-                $('#beer_' + item.product).data('product', item.product).data('code', item.code);
+                var id = item.product;
+                products[id] = c;
+                if (GSC.favorites[id]) {
+                  $('#discount_template').clone().appendTo('#discounts_favorites').removeClass('hidden').attr('id', 'beer_' + id).data('fav', true);
+                } else {
+                  $('#discount_template').clone().appendTo('#discounts').removeClass('hidden').attr('id', 'beer_' + id).data('fav', false);
+                }
+                $('#beer_' + id + ' .counter').text(c);
+                $('#beer_' + id + ' .title').text(item.title).data('id', id);
+                $('#beer_' + id).data('product', id).data('code', item.code);
               }
               // set element extra properties
               $('#beer_' + item.product + ' .' + item.market).removeClass('hidden');
               $('#beer_' + item.product + ' .' + item.market + '_price').html(item.price + '&nbsp;Kč');
             }
             // final counter
-            $('#discounts .counter_all').text(c);
+            $('#discounts .counter_all, #discounts_favorites .counter_all').text(c);
+            // update filters and handlers
             updateDiscountFilters();
             $('#discounts_groups .filter_group').addClass('hidden');
           }
@@ -492,6 +498,7 @@
 
       // update filters handlers
       function updateDiscountFilters() {
+
         // FILTER: filter by group
         $('.filter_group').click(function() {
           var group = $(this).data('group');
@@ -501,25 +508,47 @@
             $(this).removeClass('secondary').addClass('blue');
             $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary');
             $('.clear_groups_filtering').removeClass('transparent').addClass('red');
-            $('#discounts .beer_discount').addClass('hidden');
+            $('#discounts .beer_discount, #discounts_favorites .beer_discount').addClass('hidden');
             GSC.discounts_groups[group].forEach(el => {
               $('#beer_' + el).removeClass('hidden');
             });
           }
         });
+
         // FILTER: clear filtering
         $('.clear_groups_filtering').click(function() {
           GSC.PlaySound('click1');
           GSC.discount_filter_group = null;
-          $('#discounts .beer_discount').removeClass('hidden');
+          $('#discounts .beer_discount, #discounts_favorites .beer_discount').removeClass('hidden');
           $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary hidden');
           $(this).removeClass('red').addClass('transparent');
         });
+
         // FILTER: toggle groups visibility
         $('.groups_filter').click(function() {
           GSC.PlaySound('click2');
           $('#discounts_groups .filter_group').toggleClass('hidden');
         });
+
+        // FAVORITES: add/remove item to favorites list
+        $('#discounts .beer_discount .title, #discounts_favorites .beer_discount .title').click(function() {
+          var id = $(this).data('id');
+          if (!id) return;
+          var fav = $('#beer_' + id).data('fav');
+          if (parseBool(fav)) {
+            // remove
+            $("#beer_" + id).detach().data('fav', false).prependTo("#discounts");
+            delete GSC.favorites[id];
+            localStorage['favorites'] = JSON.stringify(GSC.favorites);
+            //console.log('B', $("#beer_" + id).data());
+          } else {
+            // add
+            $("#beer_" + id).detach().data('fav', true).appendTo("#discounts_favorites");
+            GSC.favorites[id] = true;
+            localStorage['favorites'] = JSON.stringify(GSC.favorites);
+            //console.log('A', $("#beer_" + id).data());
+          }
+        })
       }
 
       // get user information and set UI elements
