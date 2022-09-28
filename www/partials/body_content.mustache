@@ -527,7 +527,7 @@
           $('#discounts_groups .filter_group').toggleClass('hidden');
         });
 
-        // FAVORITES: add/remove item to favorites list
+        // FAVORITES: add/remove item to/from favorites list
         $('#discounts .beer_discount .title, #discounts_favorites .beer_discount .title').click(function() {
           var id = $(this).data('id');
           if (!id) return;
@@ -537,13 +537,11 @@
             $("#beer_" + id).detach().data('fav', false).prependTo("#discounts");
             delete GSC.favorites[id];
             localStorage['favorites'] = JSON.stringify(GSC.favorites);
-            //console.log('B', $("#beer_" + id).data());
           } else {
             // add
             $("#beer_" + id).detach().data('fav', true).appendTo("#discounts_favorites");
             GSC.favorites[id] = true;
             localStorage['favorites'] = JSON.stringify(GSC.favorites);
-            //console.log('A', $("#beer_" + id).data());
           }
         })
       }
