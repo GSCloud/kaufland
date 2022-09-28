@@ -2,6 +2,7 @@
 =========
 + !!! AKCE: oblíbené položky 
 + aktualizace překladů
++ korekce UI
 
 26.9.2022
 =========
