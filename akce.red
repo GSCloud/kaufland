@@ -24,7 +24,6 @@ parse source [
         thru {data-shop="}
         copy value to dq ; shop
         (store value)
-        thru <td class="text-left discounts_price">
         thru <strong class="discount_price_value">
         copy value to {</strong>} ; price
         (store value)

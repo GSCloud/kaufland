@@ -50,7 +50,7 @@ git add -A
 # clean up
 #find . -maxdepth 1 -name "akce-[0-9]*.data" -mtime +10
 #find . -maxdepth 1 -name "akce-all-[0-9]*.data" -mtime +10
-rm akce.html beer*.html >/dev/null 2>&1 
+rm akce.html beer*.html >/dev/null 2>&1
 
 # favicons recalculation
 cd www/img && . ./create_favicons.sh
