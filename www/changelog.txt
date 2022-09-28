@@ -1,13 +1,13 @@
 28.9.2022
 =========
-+ !!! AKCE: oblíbené položky 
++ !!! AKCE: oblíbené položky (click title)
++ [API] refaktorizace
 + aktualizace překladů
 + korekce UI
-+ [API] refaktorizace
 
 26.9.2022
 =========
-+ [var] GSC.favorites - oblíbené pivní značky slev
++ [var] GSC.favorites - oblíbené pivní značky slev (object)
 + aktualizace překladů
 
 25.9.2022
@@ -25,8 +25,8 @@
 22.9.2022
 =========
 + [API] třídění skupin podle abecedy
-+ [var] GSC.discounts - slevy
-+ [var] GSC.discounts_groups - skupiny slev
++ [var] GSC.discounts - slevy (array)
++ [var] GSC.discounts_groups - skupiny slev (object)
 + aktualizace překladů
 + nástřel UI pro filtrování
 
@@ -48,7 +48,6 @@
 18.9.2022
 =========
 + [fix] JS regrese (crash)
-+ [fix] použití GSC.preventclick
 + aktualizace překladů
 + korekce UI
 
@@ -146,7 +145,7 @@
 
 26.8.2022
 =========
-+ [var] GSC.pin
++ [var] GSC.pin - uživatelský PIN
 + ukládání PINu do local storage
 
 23.8.2022
@@ -167,8 +166,8 @@
 19.8.2022
 =========
 + [fn,priv] playSound()
-+ [var] GSC.audioctx - AudioContext
-+ [var] GSC.sfxbuffers - zvukové buffery
++ [var] GSC.audioctx - AudioContext (object)
++ [var] GSC.sfxbuffers - uložené zvukové buffery
 
 16.8.2022
 =========
