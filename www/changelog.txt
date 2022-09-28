@@ -3,6 +3,7 @@
 + !!! AKCE: oblíbené položky 
 + aktualizace překladů
 + korekce UI
++ [API] refaktorizace
 
 26.9.2022
 =========

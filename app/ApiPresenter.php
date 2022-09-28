@@ -142,7 +142,6 @@ class ApiPresenter extends APresenter
 
         // process API calls
         switch ($view) {
-
         case "GetUser":
             $data["user"] = [
                 "name" => $this->getIdentity()["name"] ?? null,
@@ -178,7 +177,7 @@ class ApiPresenter extends APresenter
         case "GetDiscounts":
             $f = 'akce.data';
             $file = ROOT . '/' . $f;
-            if (!file_exists($file) || !is_readable($file)) {
+            if (!\is_file($file) || !\is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
             $results = $this->getDiscounts($file);
@@ -198,7 +197,7 @@ class ApiPresenter extends APresenter
         case "GetDiscountsAll":
             $f = 'akce-all.data';
             $file = ROOT . '/' . $f;
-            if (!file_exists($file) || !is_readable($file)) {
+            if (!\is_file($file) || !\is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
             $results = $this->getDiscounts($file);
@@ -218,7 +217,7 @@ class ApiPresenter extends APresenter
         case "GetDiscountsByName":
             $f = 'akce.data';
             $file = ROOT . '/' . $f;
-            if (!file_exists($file) || !is_readable($file)) {
+            if (!\is_file($file) || !\is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
             $results = $this->getDiscounts($file);
@@ -238,7 +237,7 @@ class ApiPresenter extends APresenter
         case "GetDiscountsAllByName":
             $f = 'akce-all.data';
             $file = ROOT . '/' . $f;
-            if (!file_exists($file) || !is_readable($file)) {
+            if (!\is_file($file) || !\is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
             $results = $this->getDiscounts($file);
@@ -257,7 +256,7 @@ class ApiPresenter extends APresenter
 
         case "GetChangeLog":
             $file = WWW . '/changelog.txt';
-            if (!file_exists($file)) {
+            if (!\is_file($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
             $data = [
@@ -310,13 +309,13 @@ class ApiPresenter extends APresenter
      *
      * @param string $file filename of the changelog
      * 
-     * @return mixed HTML5 changelog or false
+     * @return mixed HTML5 changelog / false
      */
     public function getChangelog($file)
     {
-        if (\file_exists($file) && \is_readable($file)) {
+        if (\is_file($file) && \is_readable($file)) {
             $log = \file($file);
-            foreach ($log as $k => $v) {
+            foreach ($log ?? [] as $k => $v) {
                 $v = \trim($v);
                 $x = '[fix]';
                 if (\strpos($v, $x)) {
@@ -416,14 +415,14 @@ class ApiPresenter extends APresenter
         $discounts = [];
         // missing translations
         $export = DATA . '/missing_translations.txt';
-        if (!\file_exists($export)) {
-            \file_put_contents($export, '');
+        if (!\is_file($export)) {
+            \fopen($export, 'w');
         }
-        if (\file_exists($file) && \is_readable($file)) {
+        if (\is_file($file) && \is_readable($file)) {
             // load beer title translations
             $trans = [];
             $trans_file = APP . '/beer-translation.neon';
-            if (\file_exists($trans_file) && \is_readable($trans_file)) {
+            if (\is_file($trans_file) && \is_readable($trans_file)) {
                 $trans = Neon::decode(
                     \file_get_contents($trans_file)
                 );
@@ -507,7 +506,12 @@ class ApiPresenter extends APresenter
         }
         // remove vague groups
         unset($groups["ale"]);
+        unset($groups["b"]);
+        unset($groups["bohemia"]);
         unset($groups["classic"]);
+        unset($groups["extra"]);
+        unset($groups["extra"]);
+        unset($groups["kralovsky"]);
         unset($groups["lezak"]);
         unset($groups["medium"]);
         unset($groups["nefiltrovane"]);
@@ -518,11 +522,13 @@ class ApiPresenter extends APresenter
         unset($groups["premium"]);
         unset($groups["psenicne"]);
         unset($groups["specialni"]);
+        unset($groups["strong"]);
         unset($groups["svetle"]);
         unset($groups["svetly"]);
         unset($groups["urquell"]);
         unset($groups["velkopopovicky"]);
         unset($groups["vycepni"]);
+        unset($groups["zlaty"]);
         \ksort($groups);
         return [
             "discounts" => $discounts,
