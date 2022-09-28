@@ -1,3 +1,8 @@
+28.9.2022
+=========
++ !!! AKCE: oblíbené položky 
++ aktualizace překladů
+
 26.9.2022
 =========
 + [var] GSC.favorites - oblíbené pivní značky slev
