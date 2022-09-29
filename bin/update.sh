@@ -31,15 +31,15 @@ if [ ! -f "akce-$d.data" ]; then
   rm -f data/missing_translations.txt
   wget -O beer1.html 'https://www.kupi.cz/hledej?f=pivo&vse=0'
   for i in {2..8}; do wget -O "beer$i.html" 'https://www.kupi.cz/hledej?page='$i'&f=pivo&vse=0'; sleep 1; done
-  # parse bottled prices using Red-lang + fix text
+  # parse BOTTLED PRICES using Red-lang + fix text
   cat beer*.html | tr '\n' ' ' | sed 's/<tr/\n<tr/g' | grep 'záloha' > akce.html
   ./akce | sed 's/&nbsp;/ /g' | sed 's/&ndash;//g' > akce.data
-  # parse all prices using Red-lang + fix text
+  # parse ALL PRICES using Red-lang + fix text
   cat beer*.html | tr '\n' ' ' | sed 's/<tr/\n<tr/g' > akce.html
   ./akce | sed 's/&nbsp;/ /g' | sed 's/&ndash;//g' > akce-all.data
 fi
 
-# make data backup
+# data backups
 cp akce.data akce-$d.data
 cp akce-all.data akce-all-$d.data
 mkdir -p akce_archiv/

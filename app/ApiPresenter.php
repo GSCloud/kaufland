@@ -455,6 +455,7 @@ class ApiPresenter extends APresenter
                     $s = \strtolower($s);
                     $el["code"] = $s;
                     $gs = $s;
+                    // merge some codes by string replacements
                     $gs = \str_replace('budweiser', 'budvar', $gs);
                     // compute the groups
                     $g = \explode('-', $gs);
