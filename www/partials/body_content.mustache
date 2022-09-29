@@ -675,10 +675,10 @@
         }
       }      
 
-      // check backend version every minute
+      // check backend version
       GSC.chverint = setInterval(function() {
         checkVersion()
-      }, 60*1000);
+      }, 30*1000);
       checkVersion();
     });
 
