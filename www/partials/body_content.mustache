@@ -94,7 +94,7 @@
 </div>
 <div id="price" class="hidden section">
   <div class="center">
-    <span class="bold" id="discounts_description"></span>&nbsp; <span id="discounts_date"></span>
+    <span class="bold" id="discounts_description"></span>&nbsp; <span id="discounts_date"></span> &nbsp;<span id="discounts_total"></span>
     <div class="small-padding small-text">
       {{ l.but_category }}
       <button class="blue">{{ l.but_beer_bottled }}</button>
@@ -498,6 +498,7 @@
               $('#beer_' + item.product + ' .' + item.market).removeClass('hidden');
               $('#beer_' + item.product + ' .' + item.market + '_price').html(item.price + '&nbsp;Kč');
             }
+            $('#discounts_total').text('(' + c + ')');
             // update filters and handlers
             updateDiscountFilters();
             // hide filters
