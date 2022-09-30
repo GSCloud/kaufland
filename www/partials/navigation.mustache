@@ -263,13 +263,15 @@
           GSC.modals.push('changelog_modal');
         }, 10);
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
-        $.get('/api/v1/GetChangeLog' + nonce, function(data) {
+        $.get('/api/v1/GetChangeLog' + nonce).done(function(data) {
           $('.quota_actual').html(data.api_usage);
           $('.quota_total').html(data.api_quota);
           if (data && data.data && data.data.changelog) {
-            // render changelog
             $('#changelog_box').html(data.data.changelog);
           }
+        }).fail(function(jqXHR, status, error) {
+          GSC.discounts_timestamp = null;
+          console.log('GetUser', status, error);
         });
       });
       

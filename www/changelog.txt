@@ -1,3 +1,8 @@
+30.9.2022
+=========
++ jQuery XHR done/fail handlers
++ nástřel rozcestníku UI pro ceny piva
+
 28.9.2022
 =========
 + !!! AKCE: oblíbené položky (click title)

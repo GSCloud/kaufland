@@ -519,8 +519,8 @@
           if (group) {
             GSC.DefClick();
             GSC.discount_filter_group = group;
-            $(this).removeClass('secondary').addClass('blue');
             $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary');
+            $(this).removeClass('secondary').addClass('blue');
             $('.clear_groups_filtering').removeClass('transparent').addClass('red');
             $('#discounts .beer_discount, #discounts_favorites .beer_discount').addClass('hidden');
             GSC.discounts_groups[group].forEach(el => {
