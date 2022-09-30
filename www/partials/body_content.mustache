@@ -95,8 +95,16 @@
 <div id="price" class="hidden section">
   <div class="center">
     <span class="bold" id="discounts_description"></span>&nbsp; <span id="discounts_date"></span>
+    <div class="small-padding small-text">
+      {{ l.but_category }}
+      <button class="blue">{{ l.but_beer_bottled }}</button>
+      <button class="grey">{{ l.but_beer_bottled_history }}</button>
+      <button class="grey">{{ l.but_beer_all }}</button>
+      <button class="green">{{ l.but_sort_default }}</button>
+      <button class="grey">{{ l.but_sort_alpha }}</button>
+    </div>
   </div>
-  <div class="padding">
+  <div class="no-padding">
     <div id="discounts_filters"></div>
     <div id="discounts_groups"></div>    
   </div>
@@ -484,7 +492,7 @@
                   $('#discount_template').clone().appendTo('#discounts').removeClass('hidden').attr('id', 'beer_' + id).data('fav', false);
                 }
                 $('#beer_' + id + ' .title').text(item.title).data('id', id);
-                $('#beer_' + id).data('product', id).data('code', item.code);
+                $('#beer_' + id).data('product', id).data('code', item.code).data('order', item.id);
               }
               // set element extra properties
               $('#beer_' + item.product + ' .' + item.market).removeClass('hidden');
@@ -555,6 +563,7 @@
             GSC.favorites[id] = true;
           }
           localStorage['favorites'] = JSON.stringify(GSC.favorites);
+          console.log($('#beer_' + id).data());
         })
       }
 
