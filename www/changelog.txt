@@ -1,6 +1,6 @@
 1.10.2022
 =========
-+ [fix] obchodní loga
++ [fix] loga obchodů
 
 30.9.2022
 =========
