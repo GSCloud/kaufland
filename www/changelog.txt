@@ -11,7 +11,7 @@
 
 28.9.2022
 =========
-+ !!! AKCE: oblíbené položky (click title)
++ !!! AKCE: oblíbené položky (kliknutím na název piva)
 + [API] refaktorizace
 + [fix] oprava Red parseru akčních cen
 + aktualizace překladů
@@ -19,7 +19,7 @@
 
 26.9.2022
 =========
-+ [var] GSC.favorites - oblíbené pivní značky slev (object)
++ [var] GSC.favorites - (object) oblíbené pivní značky slev
 + aktualizace překladů
 
 25.9.2022
@@ -37,8 +37,8 @@
 22.9.2022
 =========
 + [API] třídění skupin podle abecedy
-+ [var] GSC.discounts - slevy (array)
-+ [var] GSC.discounts_groups - skupiny slev (object)
++ [var] GSC.discounts - (array) slevy
++ [var] GSC.discounts_groups - (object) skupiny slev
 + aktualizace překladů
 + nástřel UI pro filtrování
 
@@ -71,7 +71,7 @@
 
 16.9.2022
 =========
-+ [var] GSC.preventclick - potlačení zvuků pro prvních 100 ms běhu appky
++ [var] GSC.preventclick - (bool) potlačení zvuků pro prvních 100 ms běhu appky
 + !!! rendering akčních cen
 
 15.9.2022
@@ -124,9 +124,9 @@
 + [API] interní limiter volání (10 secs.)
 + [API] use "apikey" při volání GetUser
 + [fn] GSC.DefClick() - zvuk kliknutí
-+ [var] GSC.salt_timestamp - timestamp
-+ [var] GSC.user_timestamp - timestamp
-+ [var] GSC.version_timestamp - timestamp
++ [var] GSC.salt_timestamp - (int) timestamp
++ [var] GSC.user_timestamp - (int) timestamp
++ [var] GSC.version_timestamp - (int) timestamp
 
 4.9.2022
 ========
@@ -149,15 +149,15 @@
 + [fn,priv] getSalt()
 + [fn] GSC.GenerateAPIkey() - generování API klíče z PINu a soli
 + [fn] GSC.GetSalt() - stažení soli
-+ [var] GSC.apikey - API key
-+ [var] GSC.salt - sůl
-+ [var] GSC.today - datum vytvoření soli
-+ [var] GSC.ui - režim UI
++ [var] GSC.apikey - (string) API key
++ [var] GSC.salt - (string) sůl
++ [var] GSC.today - (string) datum vytvoření soli
++ [var] GSC.ui - (string) režim UI
 + generování API klíče
 
 26.8.2022
 =========
-+ [var] GSC.pin - uživatelský PIN
++ [var] GSC.pin - (string) uživatelský PIN
 + ukládání PINu do local storage
 
 23.8.2022
@@ -167,7 +167,7 @@
 22.8.2022
 =========
 + [fn] GSC.PlaySound()
-+ [var] GSC.lastclick - poslední interakce uživatele
++ [var] GSC.lastclick - (int) poslední interakce uživatele
 + vylepšený updater a přehled změn
 
 21.8.2022
@@ -178,8 +178,8 @@
 19.8.2022
 =========
 + [fn,priv] playSound()
-+ [var] GSC.audioctx - AudioContext (object)
-+ [var] GSC.sfxbuffers - uložené zvukové buffery
++ [var] GSC.audioctx - (object) AudioContext
++ [var] GSC.sfxbuffers - (array of AudioBuffer objects) uložené zvukové buffery
 
 16.8.2022
 =========
@@ -203,7 +203,7 @@
 =========
 + [fn,priv] getUser()
 + [fn] GSC.GetUser() - stažení informací o uživateli
-+ [var] GSC.user - informace o uživateli
++ [var] GSC.user - (object) informace o uživateli
 + aktualizace API roadmap
 
 9.8.2022
