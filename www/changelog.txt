@@ -1,11 +1,13 @@
 1.10.2022
 =========
++ [fix] filtrování dle marketů
 + [fix] loga obchodů + CDN
++ korekce UI
 
 30.9.2022
 =========
 + jQuery XHR done/fail handlers
-+ nástřel rozcestníku UI pro ceny piva
++ nástřel dalších prvků UI
 
 28.9.2022
 =========
