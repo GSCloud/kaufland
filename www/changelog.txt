@@ -1,6 +1,6 @@
 1.10.2022
 =========
-+ [fix] loga obchodů
++ [fix] loga obchodů + CDN
 
 30.9.2022
 =========
