@@ -1,3 +1,7 @@
+1.10.2022
+=========
++ [fix] obchodní loga
+
 30.9.2022
 =========
 + jQuery XHR done/fail handlers
