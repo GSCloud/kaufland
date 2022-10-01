@@ -38,11 +38,11 @@
               <a href="https://beercss.com/"><img class="responsive" src="{{ cdn }}/img/beercss.png" alt="Beercss"/></a>
             </div>
           </div>
-          <div class="small-text center">
-            {{ l.no_cookies }}
+          <div class="small-text bold center">
+            {{ l.author }}
           </div>
           <div class="small-text center">
-            {{ l.author }}
+            {{ l.no_cookies }}
           </div>
         </div>
       </div>
@@ -63,6 +63,10 @@
 <div id="err_connection" class="toast pink white-text hidden">
   <i>error</i>
   <span>{{ l.err_connection}}</span>
+</div>
+<div id="xhr_error" class="toast pink white-text hidden">
+  <i>error</i>
+  <span id="xhr_error_text"></span>
 </div>
 <div id="pin_saved" class="toast green white-text hidden">
   <i>check_circle_outline</i>
@@ -96,12 +100,18 @@
   <div class="center">
     <span class="bold" id="discounts_description"></span>&nbsp; <span id="discounts_date"></span> &nbsp;<span id="discounts_total"></span>
     <div class="small-padding small-text">
-      {{ l.but_category }}
-      <button style="margin:2px" class="blue">{{ l.but_beer_bottled }}</button>
+      <span style="white-space:nowrap">{{ l.but_market }}&nbsp;
+      <button style="margin:2px" class="blue">{{ l.but_market_local }}</button></span>
+      <button style="margin:2px" class="grey">{{ l.but_market_all }}</button>
+      &nbsp;&nbsp;
+      <span style="white-space:nowrap">{{ l.but_sort }}&nbsp;
+      <button style="margin:2px" class="blue">{{ l.but_sort_default }}</button></span>
+      <button style="margin:2px" class="grey">{{ l.but_sort_alpha }}</button>
+      &nbsp;&nbsp;
+      <span style="white-space:nowrap">{{ l.but_category }}&nbsp;
+      <button style="margin:2px" class="blue">{{ l.but_beer_bottled }}</button></span>
       <button style="margin:2px" class="grey">{{ l.but_beer_bottled_history }}</button>
       <button style="margin:2px" class="grey">{{ l.but_beer_all }}</button>
-      <button style="margin:2px" class="blue">{{ l.but_sort_default }}</button>
-      <button style="margin:2px" class="grey">{{ l.but_sort_alpha }}</button>
     </div>
   </div>
   <div class="no-padding">
@@ -122,6 +132,24 @@
       <div class="col s2 penny left-align hidden"><b class="penny_price"></b></div>
       <div class="col s1 albert hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/albert.webp"></div>
       <div class="col s2 albert left-align hidden"><b class="albert_price"></b></div>
+      <div class="col s1 billa hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/billa.webp"></div>
+      <div class="col s2 billa left-align hidden"><b class="billa_price"></b></div>
+      <div class="col s1 cba hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/cba.webp"></div>
+      <div class="col s2 cba left-align hidden"><b class="cba_price"></b></div>
+      <div class="col s1 eso hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/eso.webp"></div>
+      <div class="col s2 eso left-align hidden"><b class="eso_price"></b></div>
+      <div class="col s1 flop hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/flop.webp"></div>
+      <div class="col s2 flop left-align hidden"><b class="flop_price"></b></div>
+      <div class="col s1 globus hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/globus.webp"></div>
+      <div class="col s2 globus left-align hidden"><b class="globus_price"></b></div>
+      <div class="col s1 jip hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/jip.webp"></div>
+      <div class="col s2 jip left-align hidden"><b class="jip_price"></b></div>
+      <div class="col s1 makro hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/makro.webp"></div>
+      <div class="col s2 makro left-align hidden"><b class="makro_price"></b></div>
+      <div class="col s1 tamda hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/tamda.webp"></div>
+      <div class="col s2 tamda left-align hidden"><b class="tamda_price"></b></div>
+      <div class="col s1 tesco hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/tesco.webp"></div>
+      <div class="col s2 tesco left-align hidden"><b class="tesco_price"></b></div>
     </div>
   </div>
 </div>
@@ -244,12 +272,12 @@
 </div>
 <script>
   (function (w, $, undefined) {
-    "use strict";
+    'use strict';
 
     // something is really broken = unsupported browser
     if (!localStorage) {
       w.location.href = '/err/600';
-      if (!localStorage["uuid"]) {
+      if (!localStorage['uuid']) {
         w.location.href = '/err/600';
       }
     }
@@ -277,17 +305,32 @@
 
     // API translations
     var security_levels = [];
-    security_levels["high"] = "{{ l.security_level_high }}";
-    security_levels["low"] = "{{ l.security_level_low }}";
-    security_levels["none"] = "{{ l.security_level_none }}";
-    security_levels["pin"] = "{{ l.security_level_pin }}";
+    security_levels['high'] = '{{ l.security_level_high }}';
+    security_levels['low'] = '{{ l.security_level_low }}';
+    security_levels['none'] = '{{ l.security_level_none }}';
+    security_levels['pin'] = '{{ l.security_level_pin }}';
 
-    // markets allowed
+    // near markets
     var markets_allowed = [
       'kaufland',
       'lidl',
       'penny',
       'albert'
+    ];
+
+    // all markets
+    var markets_all = [
+      'kaufland',
+      'lidl',
+      'penny',
+      'albert',
+      'billa',
+      'cba',
+      'eso',
+      'flop',
+      'globus',
+      'makro',
+      'tesco',
     ];
 
     // LP context menu
@@ -310,18 +353,18 @@
     // *** GSC FUNCTIONS ***
 
     // GSC.ComOn() - communication icon fade-in = ON
-    if (typeof GSC.ComOn !== "function") GSC.ComOn = function() {
+    if (typeof GSC.ComOn !== 'function') GSC.ComOn = function() {
       if (GSC.offline) return;
       $('#comm').removeClass('hidden').fadeIn(10);
     }
 
     // GSC.ComOff() - communication icon fade-out = OFF
-    if (typeof GSC.ComOff !== "function") GSC.ComOff = function() {
+    if (typeof GSC.ComOff !== 'function') GSC.ComOff = function() {
       $('#comm').removeClass('hidden').fadeOut('slow');
     }
 
     // GSC.D() - add text to debug list (string)
-    if (typeof GSC.D !== "function") GSC.D = function(x) {
+    if (typeof GSC.D !== 'function') GSC.D = function(x) {
       if (x === undefined) return;
       var current = new Date();
       var t = current.toLocaleTimeString(); 
@@ -329,13 +372,13 @@
     }
 
     // GSC.Vibrate() - vibration (array)
-    if (typeof GSC.Vibrate !== "function") GSC.Vibrate = function(x) {
+    if (typeof GSC.Vibrate !== 'function') GSC.Vibrate = function(x) {
       if (x === undefined) return;
       window.navigator.vibrate(x);
     }
 
     // GSC.DefClick() - default sound click
-    if (typeof GSC.DefClick !== "function") GSC.DefClick = function() {
+    if (typeof GSC.DefClick !== 'function') GSC.DefClick = function() {
       if (GSC.preventclick) return;
       GSC.PlaySound('click4');
     }
@@ -344,13 +387,13 @@
 
     // add nonce to anchors
     GSC._fn.push(function AddNonceToAnchors() {
-      $("main")
-        .find("a")
+      $('main')
+        .find('a')
         .each(function () {
-          var h = $(this).attr("href");
-          var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
-          if (h && h.indexOf("?") == -1 && h.indexOf("http") != -1) {
-            $(this).attr("href", h + nonce);
+          var h = $(this).attr('href');
+          var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
+          if (h && h.indexOf('?') == -1 && h.indexOf('http') != -1) {
+            $(this).attr('href', h + nonce);
           }
         });
     });
@@ -378,13 +421,13 @@
         if (GSC.offline) return;
         // 10 secs. timeout limiter
         if (GSC.version_timestamp && (GSC.version_timestamp + 10*1000 > +new Date())) return false;
-        var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
+        var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetVersion' + nonce, function(data) {
           $('.quota_actual').html(data.api_usage);
           $('.quota_total').html(data.api_quota);
           GSC.version_timestamp = +new Date();
           if (data && data.data && data.data.version) {
-            if (data.data.version != "{{ VERSION }}") {
+            if (data.data.version != '{{ VERSION }}') {
               if (GSC.chverint) {
                 clearInterval(GSC.chverint);
               }
@@ -419,14 +462,14 @@
         if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 30*1000 > +new Date())) return false;
         // prevent concurrent runtime
         GSC.discounts_timestamp = +new Date();
-        var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
+        var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         // TODO: set type
         $.get('/api/v1/GetDiscounts' + nonce).done(function(data) {
           GSC.discounts_timestamp = +new Date();
           $('.quota_actual').html(data.api_usage);
           $('.quota_total').html(data.api_quota);
           if (data && data.data) {
-            localStorage["discounts"] = JSON.stringify(data.data);
+            localStorage['discounts'] = JSON.stringify(data.data);
           }
           GSC.RenderDiscounts();
         }).fail(function(jqXHR, status, error) {
@@ -435,48 +478,52 @@
         });
       }
       // GSC.GetDiscounts() - get beer price discounts by type and render the data
-      if (typeof GSC.GetDiscounts !== "function") GSC.GetDiscounts = function(type) {
+      if (typeof GSC.GetDiscounts !== 'function') GSC.GetDiscounts = function(type) {
         getDiscounts(type);
       }
 
       // render beer price discounts by type from local storage
-      function renderDiscounts(type) {
+      function renderDiscounts(filters) {
         // prevent re-rendering
         if ($('#discounts').html()) return;
-        // TODO: set type
-        if (localStorage["discounts"]) {
-          var discounts = JSON.parse(localStorage["discounts"]);
+        // TODO: process filters
+        if (localStorage['discounts']) {
+          var discounts = JSON.parse(localStorage['discounts']);
           if (discounts && discounts.discounts && discounts.groups) {
             GSC.discounts = discounts.discounts;
             GSC.discounts_groups = discounts.groups;
             $('#discounts_date').text(discounts.date);
             $('#discounts_description').text(discounts.description);
-            // render groups
+            // render groups heading and clear button
             if (GSC.ui == 'dark') {
               $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent white-text">X</button>');
             } else {
               $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent black-text">X</button>');
             }
+            // render groups
             for (var el in GSC.discounts_groups) {
               $('#discount_group_template').clone().appendTo('#discounts_groups').removeClass('hidden').attr('id', 'group_' + el);
               $('#group_' + el).text(el).data('group', el);
             }
             var c = 0;
             var products = [];
+            var markets = markets_allowed;
+            //var markets = markets_all;
+            //var markets = markets_all;
             for (var el in GSC.discounts) {
               var item = GSC.discounts[el];
+              var skip = true;
+              // check available markets
+              for (var m in markets) {
+                if (item.market == markets[m]) {
+                  skip = false;
+                  break;
+                }
+              }
+              // go to the next discount
+              if (skip) continue;
               // element not cloned yet
               if (!products[item.product]) {
-                var skip = true;
-                // check available markets
-                for (var m in markets_allowed) {
-                  if (item.market == markets_allowed[m]) {
-                    skip = false;
-                    break;
-                  }
-                }
-                if (skip) continue; // next discount
-
                 // clone the element
                 c++;
                 var id = item.product;
@@ -506,14 +553,13 @@
           }
         }
       }
-      // GSC.RenderDiscounts(type) - render beer price discounts by type from local storage
-      if (typeof GSC.RenderDiscounts !== "function") GSC.RenderDiscounts = function(type) {
-        renderDiscounts(type);
+      // GSC.RenderDiscounts(filters) - render beer price discounts by type from local storage
+      if (typeof GSC.RenderDiscounts !== 'function') GSC.RenderDiscounts = function(filters) {
+        renderDiscounts(filters);
       }
 
       // update filters handlers
       function updateDiscountFilters() {
-
         // FILTER: filter by group
         $('.filter_group').click(function() {
           var group = $(this).data('group');
@@ -529,7 +575,6 @@
             });
           }
         });
-
         // FILTER: clear filtering
         $('.clear_groups_filtering').click(function() {
           GSC.PlaySound('click1');
@@ -538,24 +583,22 @@
           $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary hidden');
           $(this).removeClass('red').addClass('transparent');
         });
-
         // FILTER: toggle groups visibility
         $('.groups_filter').click(function() {
           GSC.PlaySound('click2');
           $('#discounts_groups .filter_group').toggleClass('hidden');
         });
-
         // FAVORITES: add/remove item to/from favorites list
         $('#discounts .beer_discount .title, #discounts_favorites .beer_discount .title').click(function() {
           var id = $(this).data('id');
           if (!id) return;
           var fav = $('#beer_' + id).data('fav');
           if (parseBool(fav)) { // remove item
-            $('#beer_' + id).detach().data('fav', false).prependTo("#discounts");
+            $('#beer_' + id).detach().data('fav', false).prependTo('#discounts');
             $('#beer_' + id + ' .title').removeClass('red-text yellow-text');
             delete GSC.favorites[id];
           } else { // add item
-            $('#beer_' + id).detach().data('fav', true).appendTo("#discounts_favorites");
+            $('#beer_' + id).detach().data('fav', true).appendTo('#discounts_favorites');
             if (GSC.ui == 'dark') {
               $('#beer_' + id + ' .title').addClass('yellow-text');
             } else {
@@ -564,7 +607,7 @@
             GSC.favorites[id] = true;
           }
           localStorage['favorites'] = JSON.stringify(GSC.favorites);
-          console.log($('#beer_' + id).data());
+          //console.log($('#beer_' + id).data());
         })
       }
 
@@ -577,7 +620,7 @@
         if (GSC.offline) return;
         // 10 secs. timeout limiter
         if (GSC.user_timestamp && (GSC.user_timestamp + 10*1000 > +new Date())) return false;
-        var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
+        var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         var apikey = GSC.apikey ? '&apikey=' + GSC.apikey : '';
         $.get('/api/v1/GetUser' + nonce + apikey).done(function(data) {
           $('.quota_actual').html(data.api_usage);
@@ -593,7 +636,7 @@
         });
       }
       // GSC.GetUser() - get user information and set UI elements
-      if (typeof GSC.GetUser !== "function") GSC.GetUser = function() {
+      if (typeof GSC.GetUser !== 'function') GSC.GetUser = function() {
         getUser();
       }
       getUser();
@@ -612,7 +655,7 @@
         if (GSC.offline) return;
         // 10 secs. timeout limiter
         if (GSC.salt_timestamp && (GSC.salt_timestamp + 10*1000 > +new Date())) return false;
-        var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
+        var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetSalt' + nonce).done(function(data) {
           $('.quota_actual').html(data.api_usage);
           $('.quota_total').html(data.api_quota);
@@ -629,7 +672,7 @@
         });
       }
       // GSC.GetSalt() - get salt information
-      if (typeof GSC.GetSalt !== "function") GSC.GetSalt = function() {
+      if (typeof GSC.GetSalt !== 'function') GSC.GetSalt = function() {
         getSalt();
       }
       getSalt();
@@ -655,7 +698,7 @@
         }
       }
       // GSC.GenerateAPIkey() - get API key information
-      if (typeof GSC.GenerateAPIkey !== "function") GSC.GenerateAPIkey = function() {
+      if (typeof GSC.GenerateAPIkey !== 'function') GSC.GenerateAPIkey = function() {
         generateAPIkey();
       }
 
@@ -700,9 +743,9 @@
 
     // UI theme
     GSC._fn.push(function SetUI() {
-      ui("theme", {
-        dark: "--primary:#c00000;--on-primary:#5f150d;--primary-container:#7d2b20;--on-primary-container:#ffdad3;--secondary:#e7bdb6;--on-secondary:#442925;--secondary-container:#5d3f3a;--on-secondary-container:#ffdad3;--tertiary:#dec48c;--on-tertiary:#3e2e04;--tertiary-container:#564418;--on-tertiary-container:#fbdfa5;--error:#ffb4a9;--error-container:#930006;--on-error:#680003;--on-error-container:#ffdad4;--background:#201a19;--on-background:#ede0de;--surface:#201a19;--on-surface:#ede0de;--surface-variant:#534341;--on-surface-variant:#d8c2be;--outline:#a08c89;--inverse-on-surface:#201a19;--inverse-surface:#ede0de;--inverse-primary:#9c4235;--shadow:#000000;",
-        light: "--primary:#c00000;--on-primary:#ffffff;--primary-container:#ffdad3;--on-primary-container:#410000;--secondary:#775752;--on-secondary:#ffffff;--secondary-container:#ffdad3;--on-secondary-container:#2c1511;--tertiary:#705c2e;--on-tertiary:#ffffff;--tertiary-container:#fbdfa5;--on-tertiary-container:#261a00;--error:#ba1b1b;--error-container:#ffdad4;--on-error:#ffffff;--on-error-container:#410001;--background:#fcfcfc;--on-background:#201a19;--surface:#fcfcfc;--on-surface:#201a19;--surface-variant:#f5deda;--on-surface-variant:#534341;--outline:#867370;--inverse-on-surface:#fbeeec;--inverse-surface:#362f2e;--inverse-primary:#ffb4a6;--shadow:#000000;"
+      ui('theme', {
+        dark: '--primary:#c00000;--on-primary:#5f150d;--primary-container:#7d2b20;--on-primary-container:#ffdad3;--secondary:#e7bdb6;--on-secondary:#442925;--secondary-container:#5d3f3a;--on-secondary-container:#ffdad3;--tertiary:#dec48c;--on-tertiary:#3e2e04;--tertiary-container:#564418;--on-tertiary-container:#fbdfa5;--error:#ffb4a9;--error-container:#930006;--on-error:#680003;--on-error-container:#ffdad4;--background:#201a19;--on-background:#ede0de;--surface:#201a19;--on-surface:#ede0de;--surface-variant:#534341;--on-surface-variant:#d8c2be;--outline:#a08c89;--inverse-on-surface:#201a19;--inverse-surface:#ede0de;--inverse-primary:#9c4235;--shadow:#000000;',
+        light: '--primary:#c00000;--on-primary:#ffffff;--primary-container:#ffdad3;--on-primary-container:#410000;--secondary:#775752;--on-secondary:#ffffff;--secondary-container:#ffdad3;--on-secondary-container:#2c1511;--tertiary:#705c2e;--on-tertiary:#ffffff;--tertiary-container:#fbdfa5;--on-tertiary-container:#261a00;--error:#ba1b1b;--error-container:#ffdad4;--on-error:#ffffff;--on-error-container:#410001;--background:#fcfcfc;--on-background:#201a19;--surface:#fcfcfc;--on-surface:#201a19;--surface-variant:#f5deda;--on-surface-variant:#534341;--outline:#867370;--inverse-on-surface:#fbeeec;--inverse-surface:#362f2e;--inverse-primary:#ffb4a6;--shadow:#000000;'
       });
     });
 
