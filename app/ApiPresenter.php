@@ -166,10 +166,9 @@ class ApiPresenter extends APresenter
             break;
 
         case "GetSalt":
-            $today = date('Y-m-d');
             $data = [
-                "salt" => $this->getSalt(),
                 "today" => $this->getToday(),
+                "salt" => $this->getSalt(),
             ];
             return $this->writeJsonData($data, $extras);
             break;
@@ -184,7 +183,7 @@ class ApiPresenter extends APresenter
             $data = [
                 "file" => $f,
                 "timestamp" => filemtime($file),
-                "date" => date('d. n. Y', filemtime($file)),
+                "date" => date('j. n. Y', filemtime($file)),
                 "description" => 'lahvové pivo dle popularity',
                 "records_count" => count($results["discounts"]),
                 "groups_count" => count($results["groups"]),
@@ -204,7 +203,7 @@ class ApiPresenter extends APresenter
             $data = [
                 "file" => $f,
                 "timestamp" => filemtime($file),
-                "date" => date('d. n. Y', filemtime($file)),
+                "date" => date('j. n. Y', filemtime($file)),
                 "description" => 'pivo dle popularity',
                 "groups_count" => count($results["groups"]),
                 "records_count" => count($results["discounts"]),
@@ -224,7 +223,7 @@ class ApiPresenter extends APresenter
             $data = [
                 "file" => $f,
                 "timestamp" => filemtime($file),
-                "date" => date('d. n. Y', filemtime($file)),
+                "date" => date('j. n. Y', filemtime($file)),
                 "description" => 'lahvové pivo dle názvu',
                 "records_count" => count($results["discounts"]),
                 "groups_count" => count($results["groups"]),
@@ -244,7 +243,7 @@ class ApiPresenter extends APresenter
             $data = [
                 "file" => $f,
                 "timestamp" => filemtime($file),
-                "date" => date('d. n. Y', filemtime($file)),
+                "date" => date('j. n. Y', filemtime($file)),
                 "description" => 'pivo dle názvu',
                 "groups_count" => count($results["groups"]),
                 "records_count" => count($results["discounts"]),
