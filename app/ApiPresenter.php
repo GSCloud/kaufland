@@ -454,9 +454,11 @@ class ApiPresenter extends APresenter
                     $s = \strtolower($s);
                     $el["code"] = $s;
                     $gs = $s;
-                    // merge some codes by string replacements
+
+                    // merge codes by string replacements
                     $gs = \str_replace('budweiser', 'budvar', $gs);
                     $gs = \str_replace('svijanska', 'svijany', $gs);
+
                     // compute the groups
                     $g = \explode('-', $gs);
                     if (\count($g)) {
@@ -479,9 +481,12 @@ class ApiPresenter extends APresenter
                 }
                 // market
                 if ($c == 3) {
+
+                    // replace market names
                     $s = \str_ireplace('eso market', 'eso', $s);
                     $s = \str_ireplace('penny market', 'penny', $s);
                     $s = \str_ireplace('tamda foods', 'tamda', $s);
+
                     $el["market"] = \strtolower($s);
                     $c++;
                     continue;
@@ -491,6 +496,10 @@ class ApiPresenter extends APresenter
                     $s = \str_replace(',', '.', $s);
                     $s = \str_replace('Kč', '', $s);
                     $el["price"] = (int) \ceil(\floatval(\trim($s)));
+
+                    // filter elements
+                    if ($el["code"] == 'sklenice-na-pivo') continue;
+
                     \array_push($discounts, $el);
                     $count++;
                     if ($count == self::MAX_RECORDS) {
