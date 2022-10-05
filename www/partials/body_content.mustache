@@ -205,7 +205,6 @@
       Zatím je funkční test zvuku a&nbsp;vibrací, hudba je v&nbsp;blízkém plánu. Pokud zařízení vibrace nepodporuje, nestane se vůbec nic.
     </div>
 {{/admin_group_tester}}
-  </div>
 </div>
 <div id="user" class="white-text hidden section">
   <div class="center-align padding">
@@ -684,9 +683,8 @@
         try {
           sha256(GSC.pin + GSC.salt).then(function (hash) {
             if (hash.length == 64) {
-              GSC.apikey = hash;
               localStorage['apikey'] = hash;
-              GSC.D('<b>apikey</b> ' + hash);
+              GSC.apikey = hash;
               GSC.user = null;
               GSC.GetUser();
             }
