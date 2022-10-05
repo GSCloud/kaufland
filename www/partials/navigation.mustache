@@ -335,14 +335,12 @@
           window.navigator.vibrate(100);
           playSound('click5');
         } else playSound('click3');
-        setTestVibrateButton();
       });
 
       // settings: SFX
       $('.sfx').click(function() {
         localStorage["sfx"] = $(this).is(":checked");
         GSC.sfx = parseBool(localStorage["sfx"]);
-        setTestSfxButton();
         if (GSC.sfx) {
           playSound('click5');
         } else {
@@ -356,7 +354,6 @@
       $('.music').click(function() {
         localStorage["music"] = $(this).is(":checked");
         GSC.music = parseBool(localStorage["music"]);
-        setTestMusicButton();
         if (GSC.music) {
           playSound('click5');
         } else playSound('click3');
@@ -406,23 +403,6 @@
       if (typeof GSC.PlaySound !== "function") GSC.PlaySound = function(sound) {
         playSound(sound);
       }
-
-      // test: VIBRATE
-      $('.nav_test_vib').click(function() {
-        if (GSC.vibrate && GSC.Vibrate) GSC.Vibrate([100,50,100,50,100]);
-      });
-
-      // test: SFX
-      $('.nav_test_sfx').click(function() {
-        playSound('laser');
-      });
-
-      // test: MUSIC
-      $('.nav_test_music').click(function() {
-        if (GSC.music) {
-          alert('🎹 not implemented!');
-        }
-      });
 
       // OTHER HANDLERS AND RUNTIME
 
@@ -515,33 +495,6 @@
         GSC.favorites = JSON.parse(localStorage["favorites"]);
       }
       if (!GSC.favorites) GSC.favorites = {};
-
-      // set test button - VIBRATE
-      function setTestVibrateButton() {
-        if (GSC.vibrate) {
-          $('.nav_test_vib').removeClass('grey').addClass('blue');
-        } else {
-          $('.nav_test_vib').removeClass('blue').addClass('grey');
-        }
-      }
-
-      // set test button - SFX
-      function setTestSfxButton() {
-        if (GSC.sfx) {
-          $('.nav_test_sfx').removeClass('grey').addClass('blue');
-        } else {
-          $('.nav_test_sfx').removeClass('blue').addClass('grey');
-        }
-      }
-
-      // set test button - MUSIC
-      function setTestMusicButton() {
-        if (GSC.music) {
-          $('.nav_test_music').removeClass('grey').addClass('blue');
-        } else {
-          $('.nav_test_music').removeClass('blue').addClass('grey');
-        }
-      }
 
       // UI
       setUImode();
