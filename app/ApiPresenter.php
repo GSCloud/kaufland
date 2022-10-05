@@ -429,8 +429,9 @@ class ApiPresenter extends APresenter
             $c = 0;
             $groups = [];
             $count = 1;
-            $arr = \file($file);
+
             // parse data file
+            $arr = \file($file);
             foreach ($arr ?? [] as $s) {
                 $s = \trim($s);
                 if (!\strlen($s)) {
