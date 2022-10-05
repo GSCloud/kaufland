@@ -1,3 +1,8 @@
+5.10.2022
+=========
++ [fix] ApiPresenter
++ aktualizace překladů
+
 1.10.2022
 =========
 + [fix] filtrování dle marketů
