@@ -426,6 +426,16 @@ class ApiPresenter extends APresenter
                     \file_get_contents($trans_file)
                 );
             }
+
+            // load beer group translations
+            $gtrans = [];
+            $gtrans_file = APP . '/group-translation.neon';
+            if (\is_file($gtrans_file) && \is_readable($gtrans_file)) {
+                $gtrans = Neon::decode(
+                    \file_get_contents($gtrans_file)
+                );
+            }
+
             $c = 0;
             $groups = [];
             $count = 1;
@@ -498,8 +508,10 @@ class ApiPresenter extends APresenter
                     $s = \str_replace('Kč', '', $s);
                     $el["price"] = (int) \ceil(\floatval(\trim($s)));
 
-                    // filter elements
-                    if ($el["code"] == 'sklenice-na-pivo') continue;
+                    // filter out unwanted elements
+                    if ($el["code"] == 'sklenice-na-pivo') {
+                        continue;
+                    }
 
                     \array_push($discounts, $el);
                     $count++;
@@ -515,10 +527,12 @@ class ApiPresenter extends APresenter
                 unset($groups[$k]);
             }
         }
+
         // remove vague groups
         unset($groups["ale"]);
         unset($groups["b"]);
         unset($groups["bohemia"]);
+        unset($groups["chmeleny"]);
         unset($groups["classic"]);
         unset($groups["extra"]);
         unset($groups["extra"]);
@@ -535,14 +549,28 @@ class ApiPresenter extends APresenter
         unset($groups["psenicne"]);
         unset($groups["specialni"]);
         unset($groups["strong"]);
+        unset($groups["studena"]);
         unset($groups["svetle"]);
         unset($groups["svetly"]);
+        unset($groups["tmave"]);
         unset($groups["tmavy"]);
         unset($groups["urquell"]);
         unset($groups["velkopopovicky"]);
         unset($groups["vycepni"]);
+        unset($groups["za"]);
         unset($groups["zlaty"]);
+
+        // translate groups
+        foreach ($groups as $k => $v) {
+            if (array_key_exists($k, $gtrans)) {
+                unset($groups[$k]);
+                $groups[$gtrans[$k]] = $v;
+            }
+        }
+
+        // sort groups
         \ksort($groups);
+
         return [
             "discounts" => $discounts,
             "groups" => $groups,
