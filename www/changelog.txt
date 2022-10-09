@@ -1,6 +1,7 @@
 9.10.2022
 =========
 + !!! překlad pivních skupin
++ [fix] ApiPresenter
 + aktualizace překladů
 + korekce UI
 
