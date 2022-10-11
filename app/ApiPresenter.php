@@ -536,6 +536,8 @@ class ApiPresenter extends APresenter
         unset($groups["classic"]);
         unset($groups["extra"]);
         unset($groups["extra"]);
+        unset($groups["horka"]);
+        unset($groups["india"]);
         unset($groups["ipa"]);
         unset($groups["kralovsky"]);
         unset($groups["lezak"]);
@@ -543,6 +545,7 @@ class ApiPresenter extends APresenter
         unset($groups["nefiltrovane"]);
         unset($groups["ochucene"]);
         unset($groups["original"]);
+        unset($groups["pale"]);
         unset($groups["pivo"]);
         unset($groups["pivovar"]);
         unset($groups["premium"]);
