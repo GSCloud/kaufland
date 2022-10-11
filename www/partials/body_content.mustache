@@ -101,17 +101,17 @@
     <span class="bold" id="discounts_description"></span>&nbsp; <span id="discounts_date"></span> &nbsp;<span id="discounts_total"></span>
     <div class="small-padding small-text">
       <span style="white-space:nowrap">{{ l.but_market }}&nbsp;
-      <button style="margin:2px" class="blue">{{ l.but_market_local }}</button>
-      <button style="margin:2px" class="grey">{{ l.but_market_all }}</button></span>
+      <button style="margin:2px" class="discountswitch blue" data-set="market=1">{{ l.but_market_local }}</button>
+      <button style="margin:2px" class="discountswitch grey" data-set="market=2">{{ l.but_market_all }}</button></span>
       &nbsp;
       <span style="white-space:nowrap">{{ l.but_sort }}&nbsp;
-      <button style="margin:2px" class="blue">{{ l.but_sort_default }}</button>
-      <button style="margin:2px" class="grey">{{ l.but_sort_alpha }}</button></span>
+      <button style="margin:2px" class="discountswitch blue" data-set="sorting=1">{{ l.but_sort_default }}</button>
+      <button style="margin:2px" class="discountswitch grey" data-set="sorting=2">{{ l.but_sort_alpha }}</button></span>
       &nbsp;
       <span style="white-space:nowrap">{{ l.but_category }}&nbsp;
-      <button style="margin:2px" class="blue">{{ l.but_beer_bottled }}</button>
-      <button style="margin:2px" class="grey">{{ l.but_beer_bottled_history }}</button>
-      <button style="margin:2px" class="grey">{{ l.but_beer_all }}</button></span>
+      <button style="margin:2px" class="discountswitch blue" data-set="source=1">{{ l.but_beer_bottled }}</button>
+      <button style="margin:2px" class="discountswitch grey" data-set="source=2">{{ l.but_beer_bottled_history }}</button>
+      <button style="margin:2px" class="discountswitch grey" data-set="source=3">{{ l.but_beer_all }}</button></span>
     </div>
   </div>
   <div class="no-padding">
@@ -579,6 +579,7 @@
         $('#discounts .beer_discount .title, #discounts_favorites .beer_discount .title').click(function() {
           var id = $(this).data('id');
           if (!id) return;
+          GSC.DefClick();
           var fav = $('#beer_' + id).data('fav');
           if (parseBool(fav)) { // remove item
             $('#beer_' + id).detach().data('fav', false).prependTo('#discounts');
