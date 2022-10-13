@@ -152,7 +152,6 @@ pivo-svetly-lezak-krusovice: 'Krušovice ležák'
 pivo-svetly-lezak-kvasnicova-11-bernard: 'Bernard Kvasnicová jedenáctka'
 pivo-svetly-lezak-lobkowicz: 'Lobkowicz ležák'
 pivo-svetly-lezak-mustang-11-ostravar: 'Ostravar Mustang 11°'
-pivo-svetly-lezak-nastro-azzuro-peroni: 'Peroni Nastro Azzurro ležák' # Kupi.cz typo
 pivo-svetly-lezak-nastro-azzurro-peroni: 'Peroni Nastro Azzurro ležák'
 pivo-svetly-lezak-nefiltrovane-india-pale-lager-tchyne-primator: 'Primátor Tchýně India Pale Lager nefiltrovaný'
 pivo-svetly-lezak-nefiltrovany-vaclav-litovel: 'Litovel Václav nefiltrovaný ležák'
@@ -183,4 +182,4 @@ pivo-tmavy-lezak-hubertus: 'Hubertus tmavý ležák'
 pivo-tmavy-lezak-premium-litovel: 'Litovel Premium tmavý ležák'
 pivo-weissbier-paulaner: 'Weissbier Paulaner'
 pivo-zlaty-bazant: 'Zlatý Bažant'
-sklenice-na-pivo: 'sklenice na pivo' # removed in ApiPresenter
+sklenice-na-pivo: 'sklenice na pivo' # excluded in ApiPresenter

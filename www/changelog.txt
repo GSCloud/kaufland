@@ -1,6 +1,7 @@
-11.10.2022
+13.10.2022
 ==========
-+ aktualizace překladů
++ [var] GSC.discountswitch - (object)
++ UI přepínače
 
 10.10.2022
 ==========
@@ -10,13 +11,11 @@
 =========
 + !!! překlad pivních skupin
 + [fix] ApiPresenter
-+ aktualizace překladů
 + korekce UI
 
 5.10.2022
 =========
 + [fix] ApiPresenter
-+ aktualizace překladů
 
 1.10.2022
 =========
@@ -34,13 +33,11 @@
 + !!! AKCE: oblíbené položky (kliknutím na název piva)
 + [API] refaktorizace
 + [fix] oprava Red parseru akčních cen
-+ aktualizace překladů
 + korekce UI
 
 26.9.2022
 =========
 + [var] GSC.favorites - (object) oblíbené pivní značky slev
-+ aktualizace překladů
 
 25.9.2022
 =========
@@ -59,13 +56,11 @@
 + [API] třídění skupin podle abecedy
 + [var] GSC.discounts - (array) slevy
 + [var] GSC.discounts_groups - (object) skupiny slev
-+ aktualizace překladů
 + nástřel UI pro filtrování
 
 21.9.2022
 =========
 + [API] aktualizace struktury GetDiscounts / GetDiscountsAll
-+ aktualizace překladů
 
 20.9.2022
 =========
@@ -75,12 +70,10 @@
 =========
 + [API] pivní skupiny (groups)
 + [fix] K modal skrývání
-+ aktualizace překladů
 
 18.9.2022
 =========
 + [fix] JS regrese (crash)
-+ aktualizace překladů
 + korekce UI
 
 17.9.2022

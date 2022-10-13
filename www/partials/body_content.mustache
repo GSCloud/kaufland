@@ -101,17 +101,17 @@
     <span class="bold" id="discounts_description"></span>&nbsp; <span id="discounts_date"></span> &nbsp;<span id="discounts_total"></span>
     <div class="small-padding small-text">
       <span style="white-space:nowrap">{{ l.but_market }}&nbsp;
-      <button style="margin:2px" class="discountswitch blue" data-set="market=1">{{ l.but_market_local }}</button>
-      <button style="margin:2px" class="discountswitch grey" data-set="market=2">{{ l.but_market_all }}</button></span>
+      <button style="margin:2px" class="discountswitch sw1" data-set="market=1">{{ l.but_market_local }}</button>
+      <button style="margin:2px" class="discountswitch sw2" data-set="market=2">{{ l.but_market_all }}</button></span>
       &nbsp;
       <span style="white-space:nowrap">{{ l.but_sort }}&nbsp;
-      <button style="margin:2px" class="discountswitch blue" data-set="sorting=1">{{ l.but_sort_default }}</button>
-      <button style="margin:2px" class="discountswitch grey" data-set="sorting=2">{{ l.but_sort_alpha }}</button></span>
+      <button style="margin:2px" class="discountswitch sw3" data-set="sorting=1">{{ l.but_sort_default }}</button>
+      <button style="margin:2px" class="discountswitch sw4" data-set="sorting=2">{{ l.but_sort_alpha }}</button></span>
       &nbsp;
       <span style="white-space:nowrap">{{ l.but_category }}&nbsp;
-      <button style="margin:2px" class="discountswitch blue" data-set="source=1">{{ l.but_beer_bottled }}</button>
-      <button style="margin:2px" class="discountswitch grey" data-set="source=2">{{ l.but_beer_bottled_history }}</button>
-      <button style="margin:2px" class="discountswitch grey" data-set="source=3">{{ l.but_beer_all }}</button></span>
+      <button style="margin:2px" class="discountswitch sw5" data-set="source=1">{{ l.but_beer_bottled }}</button>
+      <button style="margin:2px" class="discountswitch sw6" data-set="source=2">{{ l.but_beer_bottled_history }}</button>
+      <button style="margin:2px" class="discountswitch sw7" data-set="source=3">{{ l.but_beer_all }}</button></span>
     </div>
   </div>
   <div class="no-padding">
@@ -290,6 +290,13 @@
 
     // today salt
     GSC.salt = null;
+
+    // discount switch
+    GSC.discountswitch = {
+      market: 1,
+      sorting: 1,
+      source: 1,
+    };
 
     // API translations
     var security_levels = [];
@@ -547,6 +554,7 @@
 
       // update filters handlers
       function updateDiscountFilters() {
+
         // FILTER: filter by group
         $('.filter_group').click(function() {
           var group = $(this).data('group');
@@ -562,6 +570,7 @@
             });
           }
         });
+
         // FILTER: clear filtering
         $('.clear_groups_filtering').click(function() {
           GSC.PlaySound('click1');
@@ -570,11 +579,13 @@
           $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary hidden');
           $(this).removeClass('red').addClass('transparent');
         });
+
         // FILTER: toggle groups visibility
         $('.groups_filter').click(function() {
           GSC.PlaySound('click2');
           $('#discounts_groups .filter_group').toggleClass('hidden');
         });
+
         // FAVORITES: add/remove item to/from favorites list
         $('#discounts .beer_discount .title, #discounts_favorites .beer_discount .title').click(function() {
           var id = $(this).data('id');
@@ -595,9 +606,48 @@
             GSC.favorites[id] = true;
           }
           localStorage['favorites'] = JSON.stringify(GSC.favorites);
-          //console.log($('#beer_' + id).data());
         })
       }
+
+      // discount switch handler
+      $('.discountswitch').click(function() {
+        var set = $(this).data('set');
+        if (set) {
+          var param = set.split('=');
+          GSC.discountswitch[param[0]] = parseInt(param[1]);
+          setDiscountSwitchUI();
+        }
+      });
+
+      // set UI for switches
+      function setDiscountSwitchUI() {
+        $('.discountswitch').removeClass('blue').addClass('grey');
+        switch (GSC.discountswitch["market"]) {
+          case 2:
+            $('.sw2').removeClass('grey').addClass('blue');
+          break;
+          default:
+            $('.sw1').removeClass('grey').addClass('blue');
+        }
+        switch (GSC.discountswitch["sorting"]) {
+          case 2:
+            $('.sw4').removeClass('grey').addClass('blue');
+          break;
+          default:
+            $('.sw3').removeClass('grey').addClass('blue');
+        }
+        switch (GSC.discountswitch["source"]) {
+          case 2:
+            $('.sw6').removeClass('grey').addClass('blue');
+          break;
+          case 3:
+            $('.sw7').removeClass('grey').addClass('blue');
+          break;
+          default:
+            $('.sw5').removeClass('grey').addClass('blue');
+        }
+      }
+      setDiscountSwitchUI();
 
       // get user information and set UI elements
       function getUser() {
