@@ -297,6 +297,10 @@
       sorting: 1,
       source: 1,
     };
+    // load discount switch
+    if (localStorage['discountswitch']) {
+      GSC.discountswitch = JSON.parse(localStorage['discountswitch']);
+    }
 
     // API translations
     var security_levels = [];
@@ -612,10 +616,16 @@
       // discount switch handler
       $('.discountswitch').click(function() {
         var set = $(this).data('set');
+        var dsold = JSON.stringify(GSC.discountswitch);
         if (set) {
-          var param = set.split('=');
-          GSC.discountswitch[param[0]] = parseInt(param[1]);
+          var p = set.split('=');
+          GSC.discountswitch[p[0]] = parseInt(p[1]);
+          localStorage['discountswitch'] = JSON.stringify(GSC.discountswitch);
+          var dsnew = localStorage['discountswitch'];
           setDiscountSwitchUI();
+          if (dsnew !== dsold) {
+            // TODO: render discounts
+          }
         }
       });
 
