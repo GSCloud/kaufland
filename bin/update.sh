@@ -48,9 +48,9 @@ cp akce-all-$d.data akce_archiv/
 git add -A
 
 # clean up
-#find . -maxdepth 1 -name "akce-[0-9]*.data" -mtime +10
-#find . -maxdepth 1 -name "akce-all-[0-9]*.data" -mtime +10
 rm akce.html beer*.html >/dev/null 2>&1
+find . -maxdepth 1 -name "akce-[0-9]*.data" -mtime +10 -delete
+find . -maxdepth 1 -name "akce-all-[0-9]*.data" -mtime +10 -delete
 
 # favicons recalculation
 cd www/img && . ./create_favicons.sh
