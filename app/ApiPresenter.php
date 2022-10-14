@@ -418,7 +418,7 @@ class ApiPresenter extends APresenter
             \fopen($export, 'w');
         }
         if (\is_file($file) && \is_readable($file)) {
-            // load beer title translations
+            // load beer translations
             $trans = [];
             $trans_file = APP . '/beer-translation.neon';
             if (\is_file($trans_file) && \is_readable($trans_file)) {
@@ -426,8 +426,7 @@ class ApiPresenter extends APresenter
                     \file_get_contents($trans_file)
                 );
             }
-
-            // load beer group translations
+            // load group translations
             $gtrans = [];
             $gtrans_file = APP . '/group-translation.neon';
             if (\is_file($gtrans_file) && \is_readable($gtrans_file)) {
@@ -436,18 +435,17 @@ class ApiPresenter extends APresenter
                 );
             }
 
+            // parse data file
             $c = 0;
             $groups = [];
             $count = 1;
-
-            // parse data file
             $arr = \file($file);
             foreach ($arr ?? [] as $s) {
                 $s = \trim($s);
                 if (!\strlen($s)) {
                     continue;
                 }
-                // separator
+                // item separator
                 if ($s == '---') {
                     $c = 1;
                     $el = [];
@@ -466,11 +464,11 @@ class ApiPresenter extends APresenter
                     $el["code"] = $s;
                     $gs = $s;
 
-                    // merge codes by string replacements
+                    // merge several group names
                     $gs = \str_replace('budweiser', 'budvar', $gs);
                     $gs = \str_replace('svijanska', 'svijany', $gs);
 
-                    // compute the groups
+                    // compute groups
                     $g = \explode('-', $gs);
                     if (\count($g)) {
                         foreach ($g as $gname) {
@@ -483,6 +481,7 @@ class ApiPresenter extends APresenter
                         }
                     }
                     $el["title"] = $trans[$s] ?? $s;
+
                     // export missing translation
                     if (!\array_key_exists($s, $trans)) {
                         \file_put_contents($export, $s . "\n", FILE_APPEND|LOCK_EX);
@@ -493,7 +492,7 @@ class ApiPresenter extends APresenter
                 // market
                 if ($c == 3) {
 
-                    // replace market names
+                    // rename markets
                     $s = \str_ireplace('eso market', 'eso', $s);
                     $s = \str_ireplace('penny market', 'penny', $s);
                     $s = \str_ireplace('tamda foods', 'tamda', $s);
@@ -508,8 +507,8 @@ class ApiPresenter extends APresenter
                     $s = \str_replace('Kč', '', $s);
                     $el["price"] = (int) \ceil(\floatval(\trim($s)));
 
-                    // filter out unwanted elements
-                    if ($el["code"] == 'sklenice-na-pivo') {
+                    // exclude unwanted elements
+                    if ($el["code"] === 'sklenice-na-pivo') {
                         continue;
                     }
 
@@ -528,7 +527,7 @@ class ApiPresenter extends APresenter
             }
         }
 
-        // remove vague groups
+        // remove vague and duplicate groups
         unset($groups["ale"]);
         unset($groups["b"]);
         unset($groups["bohemia"]);
