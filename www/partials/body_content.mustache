@@ -450,8 +450,8 @@
         });
       }
 
-      // get beer price discounts by type and render the data
-      function getDiscounts(type) {
+      // get beer price discounts
+      function getDiscounts() {
         if (GSC.offline) {
           GSC.RenderDiscounts();
           return;
@@ -459,12 +459,25 @@
         // invalidate discounts timestamp after 10 minutes
         if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 600*1000 < +new Date())) GSC.discounts_timestamp = null;
         // 30 secs. timeout limiter
-        if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 30*1000 > +new Date())) return false;
+        if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 30*1000 > +new Date())) {
+          GSC.RenderDiscounts();
+          return;
+        }
         // prevent concurrent runtime
         GSC.discounts_timestamp = +new Date();
+        var all = '';
+        if (GSC.discountswitch["source"] == 2) {
+          all = 'History';
+        }
+        if (GSC.discountswitch["source"] == 3) {
+          all = 'All';
+        }
+        var ext = '';
+        if (GSC.discountswitch["sorting"] == 2) {
+          ext = 'ByName';
+        }
         var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
-        // TODO: set type
-        $.get('/api/v1/GetDiscounts' + nonce).done(function(data) {
+        $.get('/api/v1/GetDiscounts' + all + ext + nonce).done(function(data) {
           GSC.discounts_timestamp = +new Date();
           $('.quota_actual').html(data.api_usage);
           $('.quota_total').html(data.api_quota);
@@ -550,7 +563,10 @@
             // update filters and handlers
             updateDiscountFilters();
             // hide filters on render
-            $('#discounts_groups .filter_group').addClass('hidden');
+            if (GSC.discounts_filter_group == null) {
+              $('#discounts_groups .filter_group').addClass('hidden');
+            }
+            // TODO: fix for different viewport dimensions
             if (GSC.touch) {
               $('.beer_discount .col').css('height', '30px');
             } else {
@@ -572,7 +588,7 @@
           var group = $(this).data('group');
           if (group) {
             GSC.DefClick();
-            GSC.discount_filter_group = group;
+            GSC.discounts_filter_group = group;
             $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary');
             $(this).removeClass('secondary').addClass('blue');
             $('.clear_groups_filtering').removeClass('transparent').addClass('red');
@@ -586,7 +602,7 @@
         // FILTER: clear filtering
         $('.clear_groups_filtering').click(function() {
           GSC.PlaySound('click1');
-          GSC.discount_filter_group = null;
+          GSC.discounts_filter_group = null;
           $('#discounts .beer_discount, #discounts_favorites .beer_discount').removeClass('hidden');
           $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary hidden');
           $(this).removeClass('red').addClass('transparent');
@@ -632,9 +648,9 @@
           var dsnew = localStorage['discountswitch'];
           setDiscountSwitchUI();
           if (dsnew !== dsold) {
-            $('#discounts').html('');
-            renderDiscounts();
-            // TODO: render discounts
+            GSC.DefClick();
+            GSC.discounts_timestamp = null;
+            getDiscounts();
           }
         }
       });
@@ -650,10 +666,10 @@
             $('.sw1').removeClass('grey').addClass('blue');
         }
         switch (GSC.discountswitch["sorting"]) {
-          case 2:
+          case 2: // A-Z sorting
             $('.sw4').removeClass('grey').addClass('blue');
           break;
-          default:
+          default: // popularity sorting
             $('.sw3').removeClass('grey').addClass('blue');
         }
         switch (GSC.discountswitch["source"]) {

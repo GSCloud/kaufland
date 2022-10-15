@@ -204,7 +204,7 @@ class ApiPresenter extends APresenter
                 "file" => $f,
                 "timestamp" => filemtime($file),
                 "date" => date('j. n. Y', filemtime($file)),
-                "description" => 'pivo dle popularity',
+                "description" => 'veškeré pivo dle popularity',
                 "groups_count" => count($results["groups"]),
                 "records_count" => count($results["discounts"]),
                 "discounts" => $results["discounts"],
@@ -244,7 +244,7 @@ class ApiPresenter extends APresenter
                 "file" => $f,
                 "timestamp" => filemtime($file),
                 "date" => date('j. n. Y', filemtime($file)),
-                "description" => 'pivo dle názvu',
+                "description" => 'veškeré pivo dle názvu',
                 "groups_count" => count($results["groups"]),
                 "records_count" => count($results["discounts"]),
                 "discounts" => $this->sortByindex($results["discounts"]),
@@ -467,6 +467,7 @@ class ApiPresenter extends APresenter
                     // merge several group names
                     $gs = \str_replace('budweiser', 'budvar', $gs);
                     $gs = \str_replace('svijanska', 'svijany', $gs);
+                    $gs = \str_replace('svijansky', 'svijany', $gs);
 
                     // compute groups
                     $g = \explode('-', $gs);
@@ -531,6 +532,7 @@ class ApiPresenter extends APresenter
         unset($groups["ale"]);
         unset($groups["b"]);
         unset($groups["bohemia"]);
+        unset($groups["cerne"]);
         unset($groups["chmeleny"]);
         unset($groups["classic"]);
         unset($groups["extra"]);
@@ -540,13 +542,16 @@ class ApiPresenter extends APresenter
         unset($groups["ipa"]);
         unset($groups["kralovsky"]);
         unset($groups["lezak"]);
+        unset($groups["maz"]);
         unset($groups["medium"]);
         unset($groups["nefiltrovane"]);
         unset($groups["ochucene"]);
         unset($groups["original"]);
         unset($groups["pale"]);
+        unset($groups["pardubicky"]);
         unset($groups["pivo"]);
         unset($groups["pivovar"]);
+        unset($groups["polotmavy"]);
         unset($groups["premium"]);
         unset($groups["psenicne"]);
         unset($groups["specialni"]);
