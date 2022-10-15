@@ -1,11 +1,12 @@
 15.10.2022
 ==========
++ !!! přepínače slev
 + [fix] inactive window CSS animations off
 
 13.10.2022
 ==========
 + [var] GSC.discountswitch - (object) {market, sorting, source}
-+ UI přepínače typu slev
++ UI přepínačů slev
 
 10.10.2022
 ==========
