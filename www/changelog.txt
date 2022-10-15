@@ -1,3 +1,7 @@
+15.10.2022
+==========
++ [fix] inactive window CSS animations off
+
 13.10.2022
 ==========
 + [var] GSC.discountswitch - (object) {market, sorting, source}

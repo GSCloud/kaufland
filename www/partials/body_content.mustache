@@ -354,7 +354,9 @@
     // GSC.ComOn() - communication icon fade-in = ON
     if (typeof GSC.ComOn !== 'function') GSC.ComOn = function() {
       if (GSC.offline) return;
-      $('#comm').removeClass('hidden').fadeIn(10);
+      if (!document.hidden) {
+        $('#comm').removeClass('hidden').fadeIn(10);
+      }
     }
 
     // GSC.ComOff() - communication icon fade-out = OFF
@@ -784,6 +786,7 @@
 
       // check backend version
       GSC.chverint = setInterval(function() {
+        console.log('checkVersion');
         checkVersion()
       }, 30*1000);
       checkVersion();
