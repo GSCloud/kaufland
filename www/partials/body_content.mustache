@@ -297,7 +297,6 @@
       sorting: 1,
       source: 1,
     };
-    // load discount switch
     if (localStorage['discountswitch']) {
       GSC.discountswitch = JSON.parse(localStorage['discountswitch']);
     }
@@ -485,7 +484,6 @@
 
       // render beer price discounts by type from local storage
       function renderDiscounts() {
-        // prevent re-rendering
         if ($('#discounts').html()) return;
         // TODO: process discount switches
         if (localStorage['discounts']) {
@@ -495,7 +493,7 @@
             GSC.discounts_groups = discounts.groups;
             $('#discounts_date').text(discounts.date);
             $('#discounts_description').text(discounts.description);
-            // render groups heading and clear button
+            // render groups heading and the clear button
             if (GSC.ui == 'dark') {
               $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent white-text">X</button>');
             } else {
@@ -513,18 +511,14 @@
             for (var el in GSC.discounts) {
               var item = GSC.discounts[el];
               var skip = true;
-              // check available markets
               for (var m in markets) {
                 if (item.market == markets[m]) {
                   skip = false;
                   break;
                 }
               }
-              // go to the next discount
-              if (skip) continue;
-              // element not cloned yet
-              if (!products[item.product]) {
-                // clone the element
+              if (skip) continue; // next discount
+              if (!products[item.product]) { // clone the element
                 c++;
                 var id = item.product;
                 products[id] = c;
@@ -541,7 +535,7 @@
                 $('#beer_' + id + ' .title').text(item.title).data('id', id);
                 $('#beer_' + id).data('product', id).data('code', item.code).data('order', item.id);
               }
-              // set element extra properties
+              // set extra properties
               $('#beer_' + item.product + ' .' + item.market).removeClass('hidden');
               $('#beer_' + item.product + ' .' + item.market + '_price').html(item.price + '&nbsp;Kč');
             }
@@ -650,7 +644,9 @@
         }
         switch (GSC.discountswitch["source"]) {
           case 2:
-            $('.sw6').removeClass('grey').addClass('blue');
+            GSC.discountswitch["source"] = 1;
+            //$('.sw6').removeClass('grey').addClass('blue');
+            setDiscountSwitchUI();
           break;
           case 3:
             $('.sw7').removeClass('grey').addClass('blue');
@@ -661,7 +657,7 @@
       }
       setDiscountSwitchUI();
 
-      // get user information and set UI elements
+      // get user information / set UI
       function getUser() {
         if (GSC.user) {
           setUserUI();
@@ -727,17 +723,15 @@
       }
       getSalt();
 
-      // get API key
+      // generate API key / get user credentials
       function generateAPIkey() {
         if (!GSC.pin) return;
         if (!GSC.salt) return;
-        // generate SHA-256 hash of PIN + salt
-        try {
+        try { // generate SHA-256 from PIN + salt
           sha256(GSC.pin + GSC.salt).then(function (hash) {
             if (hash.length == 64) {
               GSC.apikey = hash;
               localStorage['apikey'] = hash;
-              GSC.D('<b>apikey</b> ' + hash);
               GSC.user = null;
               GSC.GetUser();
             }
