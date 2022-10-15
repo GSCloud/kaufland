@@ -482,10 +482,10 @@
       }
 
       // render beer price discounts by type from local storage
-      function renderDiscounts(filters) {
+      function renderDiscounts() {
         // prevent re-rendering
         if ($('#discounts').html()) return;
-        // TODO: process filters
+        // TODO: process discount switches
         if (localStorage['discounts']) {
           var discounts = JSON.parse(localStorage['discounts']);
           if (discounts && discounts.discounts && discounts.groups) {
@@ -551,9 +551,9 @@
           }
         }
       }
-      // GSC.RenderDiscounts(filters) - render beer price discounts by type from local storage
-      if (typeof GSC.RenderDiscounts !== 'function') GSC.RenderDiscounts = function(filters) {
-        renderDiscounts(filters);
+      // GSC.RenderDiscounts() - render beer price discounts by type from local storage
+      if (typeof GSC.RenderDiscounts !== 'function') GSC.RenderDiscounts = function() {
+        renderDiscounts();
       }
 
       // update filters handlers

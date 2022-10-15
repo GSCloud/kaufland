@@ -39,6 +39,11 @@ if [ ! -f "akce-$d.data" ]; then
   ./akce | sed 's/&nbsp;/ /g' | sed 's/&ndash;//g' > akce-all.data
 fi
 
+# show discounts info
+A=$(cat akce.data | grep '\-\-\-' | wc -l)
+B=$(cat akce-all.data | grep '\-\-\-' | wc -l)
+echo -en "\nDiscounts - bottles: $A, all: $B\n\n"
+
 # data backups
 cp akce.data akce-$d.data
 cp akce-all.data akce-all-$d.data

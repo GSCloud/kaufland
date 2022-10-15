@@ -1,17 +1,16 @@
 13.10.2022
 ==========
-+ [var] GSC.discountswitch - (object)
-+ UI přepínače
++ [var] GSC.discountswitch - (object) {market, sorting, source}
++ UI přepínače typu slev
 
 10.10.2022
 ==========
-+ myší kurzory :)
++ kurzory myši
 
 9.10.2022
 =========
 + !!! překlad pivních skupin
 + [fix] ApiPresenter
-+ korekce UI
 
 5.10.2022
 =========
@@ -21,7 +20,6 @@
 =========
 + [fix] filtrování dle marketů
 + [fix] loga obchodů + CDN
-+ korekce UI
 
 30.9.2022
 =========
@@ -33,22 +31,19 @@
 + !!! AKCE: oblíbené položky (kliknutím na název piva)
 + [API] refaktorizace
 + [fix] oprava Red parseru akčních cen
-+ korekce UI
 
 26.9.2022
 =========
-+ [var] GSC.favorites - (object) oblíbené pivní značky slev
++ [var] GSC.favorites - (object) oblíbené akční značky
 
 25.9.2022
 =========
 + [API] GetDiscountsAllByName - všechny slevy na pivo dle dle názvu
 + [API] GetDiscountsByName - slevy na lahvové pivo dle názvu
-+ korekce UI & SFX
 
 23.9.2022
 =========
 + filtrování podle skupin
-+ korekce UI
 + update: jQuery v3.6.1
 
 22.9.2022
@@ -74,7 +69,6 @@
 18.9.2022
 =========
 + [fix] JS regrese (crash)
-+ korekce UI
 
 17.9.2022
 =========
@@ -216,7 +210,7 @@
 =========
 + [fn,priv] getUser()
 + [fn] GSC.GetUser() - stažení informací o uživateli
-+ [var] GSC.user - (object) informace o uživateli
++ [var] GSC.user - (object) informace o uživateli {name, email, country, role, pin}
 + aktualizace API roadmap
 
 9.8.2022
@@ -239,8 +233,8 @@
 + XHR event handlers
 + [API] GetVersion
 + [TESTER] test SFX
-+ [fn] GSC.ComOff() - vypnutí kom. ikony
-+ [fn] GSC.ComOn() - zapnutí kom. ikony
++ [fn] GSC.ComOff() - vypnutí komunikační ikony
++ [fn] GSC.ComOn() - zapnutí komunikační ikony
 + test / notifikace nové verze
 
 28.7.2022
@@ -260,7 +254,7 @@
 
 26.7.2022
 =========
++ Beercss UI
 + Google OAuth 2.0 login
 + aktualizace PWA
 + informační modal box pod ikonou K
-+ základní responzivní Beercss UI
