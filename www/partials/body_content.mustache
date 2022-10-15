@@ -344,7 +344,7 @@
             console.log(e.target.id);
         }
       }
-      //return true; // true = enable context menu
+      return true; // true = enable context menu
       return false; // false = prevent context menu
     }
 
@@ -484,8 +484,8 @@
 
       // render beer price discounts by type from local storage
       function renderDiscounts() {
-        if ($('#discounts').html()) return;
-        // TODO: process discount switches
+        $('#discounts').html('');
+        $('#discounts_favorites').html('');
         if (localStorage['discounts']) {
           var discounts = JSON.parse(localStorage['discounts']);
           if (discounts && discounts.discounts && discounts.groups) {
@@ -504,10 +504,17 @@
               $('#discount_group_template').clone().appendTo('#discounts_groups').removeClass('hidden').attr('id', 'group_' + el);
               $('#group_' + el).text(el).data('group', el);
             }
-            var c = 0;
+
+            var c = 0; // counter
+            var col = 0; // number of columns
             var products = [];
+
+            // set markets range by the switch state
             var markets = markets_allowed;
-            //var markets = markets_all;
+            if (GSC.discountswitch["market"] == 2) {
+              var markets = markets_all;
+            }
+
             for (var el in GSC.discounts) {
               var item = GSC.discounts[el];
               var skip = true;
@@ -544,6 +551,11 @@
             updateDiscountFilters();
             // hide filters on render
             $('#discounts_groups .filter_group').addClass('hidden');
+            if (GSC.touch) {
+              $('.beer_discount .col').css('height', '30px');
+            } else {
+              $('.beer_discount .col').css('height', '50px');
+            }
           }
         }
       }
@@ -620,6 +632,8 @@
           var dsnew = localStorage['discountswitch'];
           setDiscountSwitchUI();
           if (dsnew !== dsold) {
+            $('#discounts').html('');
+            renderDiscounts();
             // TODO: render discounts
           }
         }
@@ -629,10 +643,10 @@
       function setDiscountSwitchUI() {
         $('.discountswitch').removeClass('blue').addClass('grey');
         switch (GSC.discountswitch["market"]) {
-          case 2:
+          case 2: // all markets
             $('.sw2').removeClass('grey').addClass('blue');
           break;
-          default:
+          default: // local markets
             $('.sw1').removeClass('grey').addClass('blue');
         }
         switch (GSC.discountswitch["sorting"]) {
