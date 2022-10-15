@@ -355,13 +355,13 @@
     if (typeof GSC.ComOn !== 'function') GSC.ComOn = function() {
       if (GSC.offline) return;
       if (!document.hidden) {
-        $('#comm').removeClass('hidden').fadeIn(10);
+        $('#comm').removeClass('hidden').fadeIn(5);
       }
     }
 
     // GSC.ComOff() - communication icon fade-out = OFF
     if (typeof GSC.ComOff !== 'function') GSC.ComOff = function() {
-      $('#comm').removeClass('hidden').fadeOut('slow');
+      $('#comm').removeClass('hidden').fadeOut(25);
     }
 
     // GSC.D() - add text to debug list (string)
