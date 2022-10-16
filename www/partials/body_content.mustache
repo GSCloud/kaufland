@@ -331,7 +331,7 @@
       'tesco',
     ];
 
-    // LP context menu
+    // context menu
     w.oncontextmenu = function(e) {
       if (e.target && e.target.id) {
         // switch by id
@@ -344,7 +344,7 @@
             console.log(e.target.id);
         }
       }
-      return true; // true = enable context menu
+      //return true; // true = enable context menu
       return false; // false = prevent context menu
     }
 
@@ -416,6 +416,12 @@
     // custom functions
     GSC._fn.push(function CustomGSCfunctions() {
 
+      // set quota text
+      function setQuota(data) {
+          if (data.api_usage) $('.quota_actual').html(data.api_usage);
+          if (data.api_quota) $('.quota_total').html(data.api_quota);
+      };
+
       // check version
       function checkVersion() {
         if (GSC.offline) return;
@@ -423,8 +429,7 @@
         if (GSC.version_timestamp && (GSC.version_timestamp + 10*1000 > +new Date())) return false;
         var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetVersion' + nonce, function(data) {
-          $('.quota_actual').html(data.api_usage);
-          $('.quota_total').html(data.api_quota);
+          setQuota(data);
           GSC.version_timestamp = +new Date();
           if (data && data.data && data.data.version) {
             if (data.data.version != '{{ VERSION }}') {
@@ -479,8 +484,7 @@
         var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetDiscounts' + all + ext + nonce).done(function(data) {
           GSC.discounts_timestamp = +new Date();
-          $('.quota_actual').html(data.api_usage);
-          $('.quota_total').html(data.api_quota);
+          setQuota(data);
           if (data && data.data) {
             localStorage['discounts'] = JSON.stringify(data.data);
           }
@@ -497,6 +501,11 @@
 
       // render beer price discounts by type from local storage
       function renderDiscounts() {
+        if (GSC.offline) {
+          setTimeout(function () {
+            $('#err_connection').addClass('active');
+          }, 10);
+        }
         $('#discounts').html('');
         $('#discounts_favorites').html('');
         if (localStorage['discounts']) {
@@ -566,11 +575,10 @@
             if (GSC.discounts_filter_group == null) {
               $('#discounts_groups .filter_group').addClass('hidden');
             }
-            // TODO: fix for different viewport dimensions
-            if (GSC.touch) {
-              $('.beer_discount .col').css('height', '30px');
-            } else {
-              $('.beer_discount .col').css('height', '50px');
+            // fix viewport columns height
+            var width = document.documentElement.clientWidth;
+            if (width && width > 420) {
+              $('.beer_discount .col').css('height', '60px');
             }
           }
         }
@@ -699,8 +707,7 @@
         var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         var apikey = GSC.apikey ? '&apikey=' + GSC.apikey : '';
         $.get('/api/v1/GetUser' + nonce + apikey).done(function(data) {
-          $('.quota_actual').html(data.api_usage);
-          $('.quota_total').html(data.api_quota);
+          setQuota(data);
           if (data && data.data && data.data.user) {
             GSC.user_timestamp = +new Date();
             GSC.user = data.data.user;
@@ -733,8 +740,7 @@
         if (GSC.salt_timestamp && (GSC.salt_timestamp + 10*1000 > +new Date())) return false;
         var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetSalt' + nonce).done(function(data) {
-          $('.quota_actual').html(data.api_usage);
-          $('.quota_total').html(data.api_quota);
+          setQuota(data);
           if (data && data.data && data.data.salt && data.data.today) {
             GSC.salt_timestamp = +new Date();
             GSC.salt = data.data.salt;

@@ -507,4 +507,9 @@
       }
     });
   })(window, $);
+
+  // screen orientation change
+  screen.orientation.addEventListener("change", function(e) {
+    location.reload();
+  });
 </script>
