@@ -640,7 +640,7 @@
         $('#discounts .beer_discount .title, #discounts_favorites .beer_discount .title').click(function() {
           var id = $(this).data('id');
           if (!id) return;
-          GSC.DefClick();
+          GSC.PlaySound('click6');
           var fav = $('#beer_' + id).data('fav');
           if (parseBool(fav)) { // remove item
             $('#beer_' + id).detach().data('fav', false).prependTo('#discounts');
@@ -662,8 +662,8 @@
       // discount switch handler
       $('.discountswitch').click(function() {
         var set = $(this).data('set');
-        var dsold = JSON.stringify(GSC.discountswitch);
         if (set) {
+          var dsold = JSON.stringify(GSC.discountswitch);
           var p = set.split('=');
           GSC.discountswitch[p[0]] = parseInt(p[1]);
           localStorage['discountswitch'] = JSON.stringify(GSC.discountswitch);
