@@ -617,6 +617,7 @@
         $('.clear_groups_filtering').click(function() {
           GSC.PlaySound('click1');
           GSC.discounts_filter_group = null;
+          GSC.discounts_filter_group_id = null;
           $('#discounts .beer_discount, #discounts_favorites .beer_discount').removeClass('hidden');
           $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary hidden');
           $(this).removeClass('red').addClass('transparent hidden');
@@ -669,8 +670,8 @@
           var dsnew = localStorage['discountswitch'];
           setDiscountSwitchUI();
           if (dsnew !== dsold) {
-            GSC.DefClick();
             GSC.discounts_timestamp = null;
+            GSC.DefClick();
             getDiscounts();
           }
         }
