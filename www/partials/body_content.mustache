@@ -517,9 +517,9 @@
             $('#discounts_description').text(discounts.description);
             // render groups heading and the clear button
             if (GSC.ui == 'dark') {
-              $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent hidden white-text">X</button>');
+              $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent hidden white-text"><span class="bold" id=selgroup></span>X</button>');
             } else {
-              $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent hidden black-text">X</button>');
+              $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent hidden black-text"><span class="bold" id=selgroup></span>X</button>');
             }
             // render groups
             for (var el in GSC.discounts_groups) {
@@ -602,6 +602,7 @@
           if (group) {
             GSC.discounts_filter_group = group;
             GSC.discounts_filter_group_id = $(this).attr('id');
+            $('#selgroup').html(group + '&nbsp;&nbsp;&nbsp;').addClass('hidden');
             $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary');
             $(this).removeClass('secondary').addClass('blue');
             $('.clear_groups_filtering').removeClass('transparent').addClass('red');
@@ -619,12 +620,14 @@
           $('#discounts .beer_discount, #discounts_favorites .beer_discount').removeClass('hidden');
           $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary hidden');
           $(this).removeClass('red').addClass('transparent hidden');
+          $('#selgroup').html('').addClass('hidden');
         });
 
         // FILTER: toggle groups visibility
         $('.groups_filter').click(function() {
           GSC.PlaySound('click2');
           $('#discounts_groups .filter_group').toggleClass('hidden');
+          $('#selgroup').toggleClass('hidden');
           if (GSC.discounts_filter_group) {
             $('.clear_groups_filtering').removeClass('hidden');
           } else {
