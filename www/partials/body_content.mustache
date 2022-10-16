@@ -517,9 +517,9 @@
             $('#discounts_description').text(discounts.description);
             // render groups heading and the clear button
             if (GSC.ui == 'dark') {
-              $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent white-text">X</button>');
+              $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent hidden white-text">X</button>');
             } else {
-              $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent black-text">X</button>');
+              $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent hidden black-text">X</button>');
             }
             // render groups
             for (var el in GSC.discounts_groups) {
@@ -580,6 +580,11 @@
             if (width && width > 420) {
               $('.beer_discount .col').css('height', '60px');
             }
+            // click the group filter button
+            if (GSC.discounts_filter_group_id) {
+              $('#' + GSC.discounts_filter_group_id).click();
+              $('.clear_groups_filtering').removeClass('hidden transparent').addClass('red');
+            }
           }
         }
       }
@@ -595,8 +600,8 @@
         $('.filter_group').click(function() {
           var group = $(this).data('group');
           if (group) {
-            GSC.DefClick();
             GSC.discounts_filter_group = group;
+            GSC.discounts_filter_group_id = $(this).attr('id');
             $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary');
             $(this).removeClass('secondary').addClass('blue');
             $('.clear_groups_filtering').removeClass('transparent').addClass('red');
@@ -613,13 +618,18 @@
           GSC.discounts_filter_group = null;
           $('#discounts .beer_discount, #discounts_favorites .beer_discount').removeClass('hidden');
           $('#discounts_groups .filter_group').removeClass('blue').addClass('secondary hidden');
-          $(this).removeClass('red').addClass('transparent');
+          $(this).removeClass('red').addClass('transparent hidden');
         });
 
         // FILTER: toggle groups visibility
         $('.groups_filter').click(function() {
           GSC.PlaySound('click2');
           $('#discounts_groups .filter_group').toggleClass('hidden');
+          if (GSC.discounts_filter_group) {
+            $('.clear_groups_filtering').removeClass('hidden');
+          } else {
+            $('.clear_groups_filtering').toggleClass('hidden');
+          }
         });
 
         // FAVORITES: add/remove item to/from favorites list
