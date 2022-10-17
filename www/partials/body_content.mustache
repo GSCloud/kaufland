@@ -553,7 +553,7 @@
                 products[id] = c;
                 if (GSC.favorites[id]) {
                   $('#discount_template').clone().appendTo('#discounts_favorites').removeClass('hidden').attr('id', 'beer_' + id).data('fav', true);
-                  if (GSC.ui == 'dark') {
+                  if (GSC.ui == 'dark') { // set favorites color
                     $('#beer_' + id + ' .title').addClass('yellow-text');
                   } else {
                     $('#beer_' + id + ' .title').addClass('red-text');
