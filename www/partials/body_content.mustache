@@ -344,7 +344,7 @@
             console.log(e.target.id);
         }
       }
-      //return true; // true = enable context menu
+      return true; // true = enable context menu
       return false; // false = prevent context menu
     }
 
@@ -577,9 +577,7 @@
             }
             // fix viewport columns height
             var width = document.documentElement.clientWidth;
-            if (width && width > 420) {
-              $('.beer_discount .col').css('height', '60px');
-            }
+            $('div.col.s2').height($('div.col.s1').height() + Math.round(width / 50));
             // click the group filter button
             if (GSC.discounts_filter_group_id) {
               $('#' + GSC.discounts_filter_group_id).click();

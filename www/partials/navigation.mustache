@@ -184,8 +184,8 @@
           }, 10);
           return;
         }
-        GSC.Vibrate([200]);
         GSC.PlaySound('laser');
+        GSC.Vibrate([200]);
         $('#discount_groups').hide();
         $('nav,body').hide(250);
         setTimeout(function () {
@@ -406,7 +406,7 @@
 
       // OTHER HANDLERS AND RUNTIME
 
-      // delayed navigate to the saved state
+      // delayed navigation to the saved state
       if (!localStorage['navigation']) {
         localStorage['navigation'] = 'nav_info';
       }
@@ -509,7 +509,7 @@
   })(window, $);
 
   // screen orientation change
-  screen.orientation.addEventListener("change", function(e) {
+  screen.orientation.addEventListener('change', function() {
     location.reload();
   });
 </script>
