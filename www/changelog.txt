@@ -1,7 +1,7 @@
 22.10.2022
 ==========
 + experiment s výškou UI sloupců s cenami piv ve slevě
-+ doladění filtrů a překladů
++ doladění selekce filtrů a překladů
 
 16.10.2022
 ==========
