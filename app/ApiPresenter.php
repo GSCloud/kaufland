@@ -575,7 +575,8 @@ class ApiPresenter extends APresenter
         }
 
         // sort groups
-        \ksort($groups, SORT_LOCALE_STRING);
+        //\ksort($groups, SORT_LOCALE_STRING);
+        \ksort($groups);
 
         return [
             "discounts" => $discounts,
