@@ -468,6 +468,8 @@ class ApiPresenter extends APresenter
                     $gs = \str_replace('budweiser', 'budvar', $gs);
                     $gs = \str_replace('svijanska', 'svijany', $gs);
                     $gs = \str_replace('svijansky', 'svijany', $gs);
+                    $gs = \str_replace('tmavy', 'tmave', $gs);
+                    $gs = \str_replace('polotmavy', 'polotmave', $gs);
 
                     // compute groups
                     $g = \explode('-', $gs);
@@ -531,7 +533,9 @@ class ApiPresenter extends APresenter
         // remove vague and duplicate groups
         //unset($groups["cerne"]);
         //unset($groups["nefiltrovane"]);
+        //unset($groups["ochucene"]);
         //unset($groups["specialni"]);
+        //unset($groups["tmave"]);
         unset($groups["ale"]);
         unset($groups["b"]);
         unset($groups["bohemia"]);
@@ -545,21 +549,17 @@ class ApiPresenter extends APresenter
         unset($groups["lezak"]);
         unset($groups["maz"]);
         unset($groups["medium"]);
-        //unset($groups["ochucene"]);
         unset($groups["original"]);
         unset($groups["pale"]);
         unset($groups["pardubicky"]);
         unset($groups["pivo"]);
         unset($groups["pivovar"]);
-        unset($groups["polotmavy"]);
         unset($groups["premium"]);
         unset($groups["psenicne"]);
         unset($groups["strong"]);
         unset($groups["studena"]);
         unset($groups["svetle"]);
         unset($groups["svetly"]);
-        unset($groups["tmave"]);
-        unset($groups["tmavy"]);
         unset($groups["urquell"]);
         unset($groups["velkopopovicky"]);
         unset($groups["vycepni"]);
@@ -575,7 +575,7 @@ class ApiPresenter extends APresenter
         }
 
         // sort groups
-        \ksort($groups);
+        \ksort($groups, SORT_LOCALE_STRING);
 
         return [
             "discounts" => $discounts,
