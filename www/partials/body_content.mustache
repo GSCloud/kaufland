@@ -580,7 +580,7 @@
             $('div.col.s1').each(function () {
               if ($(this).height() > h) h = $(this).height();
             });
-            $('div.col.s2').height(h);
+            $('div.col.s2').height(h + 10);
             // click the group filter button
             if (GSC.discounts_filter_group_id) {
               $('#' + GSC.discounts_filter_group_id).click();
