@@ -46,7 +46,7 @@ l:
   but_api: '<i>settings_input_component</i>&nbsp;&nbsp;REST API'
   but_beer_all: 'vše'
   but_beer_bottled: 'lahvové'
-  but_beer_bottled_history: 'lahvové historicky'
+  but_beer_bottled_history: 'historie'
   but_category: '<i>category</i>'
   but_changelog: '<i>grading</i>&nbsp;&nbsp;PŘEHLED ZMĚN'
   but_save_pin: '💾&nbsp;&nbsp;ULOŽIT'

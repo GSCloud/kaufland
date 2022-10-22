@@ -521,16 +521,9 @@
             } else {
               $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent hidden black-text"><span class="bold" id=selgroup></span>X</button>');
             }
-            // render groups
-            for (var el in GSC.discounts_groups) {
-              $('#discount_group_template').clone().appendTo('#discounts_groups').removeClass('hidden').attr('id', 'group_' + el);
-              $('#group_' + el).text(el).data('group', el);
-            }
-
             var c = 0; // counter
             var col = 0; // number of columns
             var products = [];
-
             // set markets range by the switch state
             var markets = markets_allowed;
             if (GSC.discountswitch["market"] == 2) {
@@ -569,6 +562,17 @@
               $('#beer_' + item.product + ' .' + item.market + '_price').html(item.price + '&nbsp;Kč');
             }
             $('#discounts_total').text('(' + c + ')');
+            // render groups / convert groups into beers
+            GSC.discounts_beers = {};
+            for (var el in GSC.discounts_groups) {
+              for (var i = 0; i < GSC.discounts_groups[el].length; i++) {
+                var id = GSC.discounts_groups[el][i];
+                if (!GSC.discounts_beers[id]) GSC.discounts_beers[id] = [];
+                GSC.discounts_beers[id].push(el);
+              }
+              $('#discount_group_template').clone().appendTo('#discounts_groups').removeClass('hidden').attr('id', 'group_' + el);
+              $('#group_' + el).text(el).data('group', el);
+            }
             // update filters and handlers
             updateDiscountFilters();
             // hide filters on render

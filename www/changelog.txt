@@ -1,7 +1,8 @@
 22.10.2022
 ==========
-+ experiment s výškou UI sloupců s cenami piv ve slevě
++ [var] GSC.discounts_beers - (object) pole vlastností jednotlivých piv
 + doladění selekce filtrů a překladů
++ experiment s výškou UI sloupců s cenami piv ve slevě
 
 16.10.2022
 ==========
