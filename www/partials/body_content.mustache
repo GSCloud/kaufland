@@ -576,13 +576,10 @@
               $('#discounts_groups .filter_group').addClass('hidden');
             }
             // fix viewport columns height
-            var width = document.documentElement.clientWidth;
-            if (width > 768) width = 768;
+            //var width = document.documentElement.clientWidth;
+            //if (width > 768) width = 768;
             var h = $('div.col.s1').height();
-            console.log(h);
-            h = parseInt(h + Math.floor(width / 25));
-            console.log(h);
-            $('div.col.s2').height(h);
+            $('div.col.s2').height(h + 10);
             // click the group filter button
             if (GSC.discounts_filter_group_id) {
               $('#' + GSC.discounts_filter_group_id).click();
