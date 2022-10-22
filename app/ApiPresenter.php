@@ -529,10 +529,12 @@ class ApiPresenter extends APresenter
         }
 
         // remove vague and duplicate groups
+        //unset($groups["cerne"]);
+        //unset($groups["nefiltrovane"]);
+        //unset($groups["specialni"]);
         unset($groups["ale"]);
         unset($groups["b"]);
         unset($groups["bohemia"]);
-        unset($groups["cerne"]);
         unset($groups["chmeleny"]);
         unset($groups["classic"]);
         unset($groups["extra"]);
@@ -543,8 +545,7 @@ class ApiPresenter extends APresenter
         unset($groups["lezak"]);
         unset($groups["maz"]);
         unset($groups["medium"]);
-        unset($groups["nefiltrovane"]);
-        unset($groups["ochucene"]);
+        //unset($groups["ochucene"]);
         unset($groups["original"]);
         unset($groups["pale"]);
         unset($groups["pardubicky"]);
@@ -553,7 +554,6 @@ class ApiPresenter extends APresenter
         unset($groups["polotmavy"]);
         unset($groups["premium"]);
         unset($groups["psenicne"]);
-        unset($groups["specialni"]);
         unset($groups["strong"]);
         unset($groups["studena"]);
         unset($groups["svetle"]);
