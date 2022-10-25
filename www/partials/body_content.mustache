@@ -483,6 +483,7 @@
         }
         var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetDiscounts' + all + ext + nonce).done(function(data) {
+          console.log(data.fn);
           GSC.discounts_timestamp = +new Date();
           setQuota(data);
           if (data && data.data) {
