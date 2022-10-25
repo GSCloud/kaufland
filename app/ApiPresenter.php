@@ -514,6 +514,9 @@ class ApiPresenter extends APresenter
                     if ($el["code"] === 'sklenice-na-pivo') {
                         continue;
                     }
+                    if ($el["code"] === 'sklenice-na-pivo-banquet') {
+                        continue;
+                    }
 
                     \array_push($discounts, $el);
                     $count++;
