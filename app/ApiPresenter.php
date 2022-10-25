@@ -227,7 +227,7 @@ class ApiPresenter extends APresenter
                 "description" => 'lahvové pivo dle názvu',
                 "records_count" => count($results["discounts"]),
                 "groups_count" => count($results["groups"]),
-                "discounts" => $this->sortByIndex($results["discounts"]),
+                "discounts" => $this->sortByIndex($results["discounts"], 'title'),
                 "groups" => $results["groups"],
             ];
             return $this->writeJsonData($data, $extras);
@@ -247,7 +247,7 @@ class ApiPresenter extends APresenter
                 "description" => 'veškeré pivo dle názvu',
                 "groups_count" => count($results["groups"]),
                 "records_count" => count($results["discounts"]),
-                "discounts" => $this->sortByindex($results["discounts"]),
+                "discounts" => $this->sortByindex($results["discounts"], 'title'),
                 "groups" => $results["groups"],
             ];
             return $this->writeJsonData($data, $extras);
@@ -275,13 +275,17 @@ class ApiPresenter extends APresenter
     /**
      * Sort array by index key
      *
-     * @param array $arr input
+     * @param array  $arr   input
+     * @param string $index index key
      * 
      * @return array results
      */
-    public function sortByIndex($arr)
+    public function sortByIndex($arr, $index)
     {
         if (!$arr) {
+            return [];
+        }
+        if (!$index) {
             return [];
         }
 
@@ -299,7 +303,7 @@ class ApiPresenter extends APresenter
             };
         }
 
-        \usort($arr, build_sorter('title'));
+        \usort($arr, build_sorter($index));
         return $arr;
     }
 
