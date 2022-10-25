@@ -78,10 +78,13 @@ l:
   switch_music: '🎹 hudba'
   switch_sfx: '🔊 zvuky'
   switch_vibrate: '📳 vibrace'
+  text_date: 'datum vydání:'
   text_encryption: 'šifrování:'
   text_login_type: 'přihlášení:'
+  text_quota: 'stav hodinové kvóty API:'
   text_role: 'role:'
   text_security_level: 'úroveň zabezpečení:'
+  text_version: 'verze:'
   theme_color: '#000'
   tit_appinfo: 'Chytrá lahvárna PWA'
   tit_game: 'Kvízy a&nbsp;hry'
@@ -91,9 +94,6 @@ l:
   tit_user: 'Uživatel'
   tit_warehouse: 'Sklad'
   title: 'LAHVÁRNA'
-  txt_date: 'datum vydání:'
-  txt_quota: 'stav hodinové kvóty API:'
-  txt_version: 'verze:'
   webshare_button: '<i>share</i>&nbsp;&nbsp;sdílej'
   
 swpreload: [

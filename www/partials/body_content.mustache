@@ -10,9 +10,9 @@
             </div>
             <br>
             <div class="small-text" tabindex="-1">
-              {{ l.txt_version }} <b class="white-text">{{ VERSION_SHORT }}</b>
+              {{ l.text_version }} <b class="white-text">{{ VERSION_SHORT }}</b>
               &nbsp;&nbsp;
-              {{ l.txt_date }} <b class="white-text">{{ VERSION_DATE }}</b>
+              {{ l.text_date }} <b class="white-text">{{ VERSION_DATE }}</b>
               <br>
               <div class="center bold large-text orange-text">
                 {{>webshare}}
@@ -233,7 +233,7 @@
           {{ l.text_security_level }} <b id="security_level"></b><br>
           {{#user.id}}{{ l.text_encryption }} <b>XChaCha20 + BLAKE2b-MAC</b><br>{{/user.id}}
         </div>
-        {{l.txt_quota }}&nbsp;<span class="bold quota_actual"></span>/<span class="bold quota_total"></span>
+        {{l.text_quota }}&nbsp;<span class="bold quota_actual"></span>/<span class="bold quota_total"></span>
       </div>
       {{#user.id}}
       <article class="border">
@@ -291,6 +291,9 @@
     // today salt
     GSC.salt = null;
 
+    // data cache
+    GSC.cache = [];
+
     // discount switch
     GSC.discountswitch = {
       market: 1,
@@ -344,7 +347,7 @@
             console.log(e.target.id);
         }
       }
-      if (location.protocol == 'http:') return true; // true = enable context menu
+      if (location.protocol == 'http:') return true; // true = enable context menu on localhost
       return false; // false = prevent context menu
     }
 
@@ -483,9 +486,9 @@
         }
         var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetDiscounts' + all + ext + nonce).done(function(data) {
-          console.log(data.fn);
           GSC.discounts_timestamp = +new Date();
           setQuota(data);
+          if (data.fn) GSC.cache[data.fn] = data;
           if (data && data.data) {
             localStorage['discounts'] = JSON.stringify(data.data);
           }
