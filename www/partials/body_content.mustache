@@ -344,7 +344,7 @@
             console.log(e.target.id);
         }
       }
-      return true; // true = enable context menu
+      if (location.protocol == 'http') return true; // true = enable context menu
       return false; // false = prevent context menu
     }
 

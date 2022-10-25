@@ -185,6 +185,7 @@ pivo-tmave-vycepni-dark-litovel: 'Litovel Dark'
 pivo-tmavy-lezak-11-samson: 'Samson 11° tmavý ležák'
 pivo-tmavy-lezak-hubertus: 'Hubertus tmavý ležák'
 pivo-tmavy-lezak-premium-litovel: 'Litovel Premium tmavý ležák'
+pivo-vanocni-vyber-hubertus: 'Hubertus vánoční výběr - 8pack'
 pivo-weissbier-paulaner: 'Weissbier Paulaner'
 pivo-zlaty-bazant: 'Zlatý Bažant'
 sklenice-na-pivo: 'sklenice na pivo' # excluded in ApiPresenter
