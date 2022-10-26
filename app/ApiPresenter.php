@@ -278,7 +278,7 @@ class ApiPresenter extends APresenter
      * @param array  $arr   input
      * @param string $index index key
      * 
-     * @return array results
+     * @return array results or empty array
      */
     public function sortByIndex($arr, $index)
     {
@@ -286,7 +286,7 @@ class ApiPresenter extends APresenter
             return [];
         }
         if (!$index) {
-            return [];
+            return $arr;
         }
 
         /**

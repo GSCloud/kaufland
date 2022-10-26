@@ -485,6 +485,12 @@
           ext = 'ByName';
         }
         var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
+        // try to load data from the cache
+        if (GSC.cache['GetDiscounts' + all + ext]) {
+          GSC.discounts_data = GSC.cache['GetDiscounts' + all + ext].data;
+          GSC.RenderDiscounts();
+          return;
+        }
         $.get('/api/v1/GetDiscounts' + all + ext + nonce).done(function(data) {
           GSC.discounts_timestamp = +new Date();
           setQuota(data);

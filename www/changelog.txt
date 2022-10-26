@@ -1,3 +1,8 @@
+26.10.2022
+==========
++ [var] GSC.cache - (array of objects) cache
++ !!! neperzistentní datová cache
+
 22.10.2022
 ==========
 + UI experiment s výškou sloupců akčních cen
