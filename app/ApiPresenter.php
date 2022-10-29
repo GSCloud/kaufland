@@ -416,12 +416,15 @@ class ApiPresenter extends APresenter
     public function getDiscounts($file)
     {
         $discounts = [];
-        // missing translations
+        $groups = [];
+
+        // open for writing - missing translations
         $export = DATA . '/missing_translations.txt';
         if (!\is_file($export)) {
             \fopen($export, 'w');
         }
         if (\is_file($file) && \is_readable($file)) {
+
             // load beer translations
             $trans = [];
             $trans_file = APP . '/beer-translation.neon';
@@ -430,6 +433,7 @@ class ApiPresenter extends APresenter
                     \file_get_contents($trans_file)
                 );
             }
+
             // load group translations
             $gtrans = [];
             $gtrans_file = APP . '/group-translation.neon';
@@ -441,7 +445,6 @@ class ApiPresenter extends APresenter
 
             // parse data file
             $c = 0;
-            $groups = [];
             $count = 1;
             $arr = \file($file);
             foreach ($arr ?? [] as $s) {
@@ -468,7 +471,7 @@ class ApiPresenter extends APresenter
                     $el["code"] = $s;
                     $gs = $s;
 
-                    // merge several group names
+                    // merge several group names together
                     $gs = \str_replace('budweiser', 'budvar', $gs);
                     $gs = \str_replace('polotmavy', 'polotmave', $gs);
                     $gs = \str_replace('svijanska', 'svijany', $gs);
@@ -514,7 +517,7 @@ class ApiPresenter extends APresenter
                     $s = \str_replace('Kč', '', $s);
                     $el["price"] = (int) \ceil(\floatval(\trim($s)));
 
-                    // exclude unwanted elements
+                    // exclude unwanted products
                     if ($el["code"] === 'sklenice-na-pivo') {
                         continue;
                     }
@@ -538,11 +541,6 @@ class ApiPresenter extends APresenter
         }
 
         // remove vague and duplicate groups
-        //unset($groups["cerne"]);
-        //unset($groups["nefiltrovane"]);
-        //unset($groups["ochucene"]);
-        //unset($groups["specialni"]);
-        //unset($groups["tmave"]);
         unset($groups["ale"]);
         unset($groups["b"]);
         unset($groups["bohemia"]);
@@ -556,6 +554,10 @@ class ApiPresenter extends APresenter
         unset($groups["lezak"]);
         unset($groups["maz"]);
         unset($groups["medium"]);
+        unset($groups["nepasterizovane"]);
+        unset($groups["nepasterizovany"]);
+        unset($groups["nepasterovane"]);
+        unset($groups["nepasterovany"]);
         unset($groups["original"]);
         unset($groups["pale"]);
         unset($groups["pardubicky"]);
@@ -573,7 +575,7 @@ class ApiPresenter extends APresenter
         unset($groups["za"]);
         unset($groups["zlaty"]);
 
-        // translate groups
+        // translate group names
         foreach ($groups as $k => $v) {
             if (array_key_exists($k, $gtrans)) {
                 unset($groups[$k]);
@@ -581,9 +583,55 @@ class ApiPresenter extends APresenter
             }
         }
 
-        // sort groups
-        //\ksort($groups, SORT_LOCALE_STRING);
-        \ksort($groups);
+        /**
+         * Custom string comparison
+         *
+         * @param string $str1 string #1
+         * @param string $str2 string #2
+         * 
+         * @return bool
+         */
+        function custom_string_compare($str1, $str2)
+        {
+            $alphabet = "0123456789"
+                . "AÁBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ"
+                . "aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž";
+            $l1 = mb_strlen($str1);
+            $l2 = mb_strlen($str2);
+            $c = min($l1, $l2);
+            for ($i = 0; $i < $c; $i++) {
+                $s1 = mb_substr($str1, $i, 1);
+                $s2 = mb_substr($str2, $i, 1);
+                if ($s1 === $s2) {
+                    continue;
+                }
+                $i1 = mb_strpos($alphabet, $s1);
+                if ($i1 === false) {
+                    continue;
+                }
+                $i2 = mb_strpos($alphabet, $s2);
+                if ($i2 === false) {
+                    continue;
+                }        
+                if ($i2 === $i1) {
+                    continue;
+                }
+                if ($i1 < $i2) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }
+            if ($l1 < $l2) {
+                return -1;
+            } elseif ($l1 > $l2) {
+                return 1;
+            }
+            return 0;
+        }
+
+        // custom string sorting: numbers, Czech uppercase, Czech lowercase
+        \uksort($groups, '\\GSC\\custom_string_compare');
 
         return [
             "discounts" => $discounts,
