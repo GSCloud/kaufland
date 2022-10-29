@@ -563,11 +563,15 @@
                   $('#discount_template').clone().appendTo('#discounts').removeClass('hidden').attr('id', 'beer_' + id).data('fav', false);
                 }
                 $('#beer_' + id + ' .title').text(item.title).data('id', id);
-                $('#beer_' + id).data('product', id).data('code', item.code).data('order', item.id);
+                $('#beer_' + id).data('product', id).data('code', item.code);
               }
-              // set extra properties
+              // set beer properties
               $('#beer_' + item.product + ' .' + item.market).removeClass('hidden');
-              $('#beer_' + item.product + ' .' + item.market + '_price').html(item.price + '&nbsp;Kč');
+              var price = $('#beer_' + item.product + ' .' + item.market + '_price').data('price');
+              if (!price || item.price < price) {
+                $('#beer_' + item.product + ' .' + item.market + '_price').html(item.price + '&nbsp;Kč ');
+                $('#beer_' + item.product + ' .' + item.market + '_price').data('price', item.price);
+              }
             }
             $('#discounts_total').text('(' + c + ')');
             // render groups / convert groups into beers

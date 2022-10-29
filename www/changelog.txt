@@ -1,6 +1,7 @@
 29.10.2022
 ==========
 + [API] speciální třídění slevových skupin
++ [fix] zobrazování jen nejnižší ceny, pokud je více možných cen
 
 26.10.2022
 ==========

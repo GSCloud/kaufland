@@ -456,7 +456,7 @@ class ApiPresenter extends APresenter
                 if ($s == '---') {
                     $c = 1;
                     $el = [];
-                    $el["id"] = $count;
+                    //$el["id"] = $count;
                     continue;
                 }
                 // product
