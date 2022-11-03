@@ -1,8 +1,8 @@
 ### CHYTRÁ LAHVÁRNA
 
 # uncomment to force debugger !!!
-#dbg: TRUE
-dbg: FALSE
+dbg: TRUE
+#dbg: FALSE
 
 # CORE
 app: lahvarna
@@ -72,7 +72,7 @@ l:
   noscript: 'Povolte, prosím, JavaScript!<br>Bez něj je tato aplikace zcela nefunkční.'
   security_level_high: 'vysoká'
   security_level_low: 'nízká'
-  security_level_none: 'pouze TLS 1.2'
+  security_level_none: 'TLS 1.2'
   security_level_pin: 'PIN'
   switch_design: '🔳🔲 design'
   switch_music: '🎹 hudba'
