@@ -541,39 +541,32 @@ class ApiPresenter extends APresenter
         }
 
         // remove vague and duplicate groups
-        unset($groups["ale"]);
-        unset($groups["b"]);
-        unset($groups["bohemia"]);
-        unset($groups["chmeleny"]);
-        unset($groups["classic"]);
-        unset($groups["extra"]);
-        unset($groups["horka"]);
-        unset($groups["india"]);
-        unset($groups["ipa"]);
-        unset($groups["kralovsky"]);
-        unset($groups["lezak"]);
-        unset($groups["maz"]);
-        unset($groups["medium"]);
-        unset($groups["nepasterizovane"]);
-        unset($groups["nepasterizovany"]);
-        unset($groups["nepasterovane"]);
-        unset($groups["nepasterovany"]);
-        unset($groups["original"]);
-        unset($groups["pale"]);
-        unset($groups["pardubicky"]);
-        unset($groups["pivo"]);
-        unset($groups["pivovar"]);
-        unset($groups["premium"]);
-        unset($groups["psenicne"]);
-        unset($groups["strong"]);
-        unset($groups["studena"]);
-        unset($groups["svetle"]);
-        unset($groups["svetly"]);
-        unset($groups["urquell"]);
-        unset($groups["velkopopovicky"]);
-        unset($groups["vycepni"]);
-        unset($groups["za"]);
-        unset($groups["zlaty"]);
+        $rem = [
+            "ale",
+            "b", "bohemia",
+            "chmelene", "chmeleny", "classic",
+            "extra",
+            "horka",
+            "india", "ipa",
+            "kralovska", "kralovske", "kralovsky",
+            "lezak",
+            "maz", "medium",
+            "nepasterizovana", "nepasterizovane", "nepasterizovany",
+            "nepasterovana", "nepasterovane", "nepasterovany",
+            "original",
+            "pale", "pardubicka", "pardubicke", "pardubicky",
+            "pivo", "pivovar", "premium",
+            "psenicna", "psenicne", "psenicny",
+            "radler",
+            "strong", "studena", "studene", "studeny",
+            "svetla", "svetle", "svetly",
+            "urquell",
+            "velkopopovicka", "velkopopovicke", "velkopopovicky", "vycepni",
+            "za", "zlata", "zlate", "zlaty",
+        ];
+        foreach ($rem as $x) {
+            unset($groups[$x]);
+        }
 
         // translate group names
         foreach ($groups as $k => $v) {
