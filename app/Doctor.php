@@ -14,7 +14,7 @@ use League\CLImate\CLImate;
 
 /**
  * Doctor CLI class
- * 
+ *
  * @package GSC
  */
 class Doctor
@@ -24,7 +24,7 @@ class Doctor
 
     /**
      * Doctor CLI Constructor
-     * 
+     *
      * @return void
      */
     public function __construct()

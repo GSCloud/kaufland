@@ -98,7 +98,7 @@
     };
 
     // *** DELAYED FUNCTIONS ***
-    GSC._fn.push(function UIhandlers() {
+    GSC._fn.push(function UI() {
 
       // set UI mode
       function setUImode() {
@@ -508,7 +508,7 @@
     });
   })(window, $);
 
-  // screen orientation change
+  // screen orientation change = app reload
   screen.orientation.addEventListener('change', function() {
     location.reload();
   });

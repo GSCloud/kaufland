@@ -37,21 +37,21 @@ window.GSC = {_fn:[]};
 window.addEventListener('load', function() {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/sw.js?" + Date.now()).then(function (registration) {
-      console.log("ServiceWorker registration successful with scope: ", registration.scope);
-    }, function (err) {
-      console.log("ServiceWorker registration failed: ", err);
+      console.log("Service Worker registration successful with scope: ", registration.scope);
+    }, function (e) {
+      console.log("Service Worker registration failed: ", e);
     });
   } else {
-    console.log("Service worker not supported!");
+    console.log("Service Worker is not supported!");
   }
   console.log("Delayed functions: %s", window.GSC._fn.length);
   for (var fn = window.GSC._fn, i = 0, l = fn.length; i < l; i++) {
     try {
-      console.log(fn[i].name + '()');
+      if (fn[i].name) console.log('» fn: ' + fn[i].name);
       fn[i]();
     }
     catch(e) {
-      console.log(fn[i].name + '()\n' + e);
+      if (fn[i].name) console.log('» ERROR - fn:' + fn[i].name + "\n" + e);
     }
   };
 });
