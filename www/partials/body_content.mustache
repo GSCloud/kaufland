@@ -338,7 +338,7 @@
             break;
 
           default:
-            console.log(e.target.id);
+            //console.log(e.target.id);
         }
       }
       if (location.protocol == 'http:') return true; // true = enable context menu on localhost
@@ -841,7 +841,6 @@
 
       // check backend version
       GSC.chverint = setInterval(function() {
-        console.log('checkVersion');
         checkVersion()
       }, 30*1000);
       checkVersion();
