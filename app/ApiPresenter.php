@@ -544,7 +544,7 @@ class ApiPresenter extends APresenter
         $rem = [
             "ale",
             "b", "bohemia",
-            "chmelene", "chmeleny", "classic",
+            "chmelene", "chmeleny", "classic", "cool",
             "extra",
             "horka",
             "india", "ipa",
