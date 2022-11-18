@@ -428,9 +428,9 @@
           });
           GSC.modals = [];
         }
+
         // exit if we already have AudioContext
         if (GSC.audioctx) return;
-
         // try to get AudioContext with hinting
         if (!GSC.audioctx) {
           try {
@@ -443,7 +443,6 @@
             console.log("AudioContext error", e);
           }
         }
-
         // try to get AudioContext without hinting
         if (!GSC.audioctx) {
           try {
@@ -465,7 +464,7 @@
         ]);
       });
 
-      // switches
+      // process switches
       if (localStorage['music'] == null) localStorage["music"] = "true"
       if (localStorage['sfx'] == null) localStorage["sfx"] = "true"
       if (localStorage['vibrate'] == null) localStorage["vibrate"] = "true"
@@ -508,7 +507,7 @@
     });
   })(window, $);
 
-  // screen orientation change = app reload
+  // reload the app on screen orientation change
   screen.orientation.addEventListener('change', function() {
     location.reload();
   });
