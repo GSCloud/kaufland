@@ -104,10 +104,32 @@ l:
   webshare_button: '<i>share</i>&nbsp;&nbsp;sdílej'
   
 swpreload: [
-  '/sfx/laser.mp3'
   '/sfx/click1.mp3'
   '/sfx/click2.mp3'
   '/sfx/click3.mp3'
   '/sfx/click4.mp3'
   '/sfx/click5.mp3'
+  '/sfx/laser.mp3'
+]
+
+swpreload_cdn: [
+  '/css/beer.min.css'
+  '/img/albert.webp'
+  '/img/beercss.png'
+  '/img/billa.webp'
+  '/img/cba.webp'
+  '/img/eso.webp'
+  '/img/flop.webp'
+  '/img/globus.webp'
+  '/img/jip.webp'
+  '/img/k-app-logo.png'
+  '/img/kaufland.webp'
+  '/img/lidl.webp'
+  '/img/makro.webp'
+  '/img/penny.webp'
+  '/img/pwa.png'
+  '/img/tamda.webp'
+  '/img/tesco.webp'
+  '/js/beer.min.js'
+  '/js/material-dynamic-colors.min.js'
 ]

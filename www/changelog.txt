@@ -1,6 +1,7 @@
-18.11.2022
+19.11.2022
 ==========
 + minor tweaks
++ Service Worker / optimalizace cache
 
 29.10.2022
 ==========
