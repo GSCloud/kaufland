@@ -473,9 +473,12 @@ class ApiPresenter extends APresenter
 
                     // merge several group names together
                     $gs = \str_replace('budweiser', 'budvar', $gs);
+                    $gs = \str_replace('polotmava', 'polotmave', $gs);
                     $gs = \str_replace('polotmavy', 'polotmave', $gs);
                     $gs = \str_replace('svijanska', 'svijany', $gs);
+                    $gs = \str_replace('svijanske', 'svijany', $gs);
                     $gs = \str_replace('svijansky', 'svijany', $gs);
+                    $gs = \str_replace('tmava', 'tmave', $gs);
                     $gs = \str_replace('tmavy', 'tmave', $gs);
 
                     // compute groups
