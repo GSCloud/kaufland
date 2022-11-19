@@ -58,8 +58,8 @@
     "scope": "/",
     "start_url": "/",
     "display": "standalone",
-    "theme_color": "white",
-    "background_color": "#fff",
+    "theme_color": "black",
+    "background_color": "#000",
     "lang": "cs",
     "mobileAppIOS": "true",
     "appleStatusBarStyle": "default"
