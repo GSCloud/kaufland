@@ -22,7 +22,7 @@
 16.10.2022
 ==========
 + [fn,priv] setQuota()
-+ přidán google meta tag zabraňující automatickému překladu
++ přidán Google META tag zabraňující překladům
 + reload appky při detekci změny viewportu
 + sticky group filtr
 
