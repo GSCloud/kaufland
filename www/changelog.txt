@@ -1,8 +1,7 @@
 19.11.2022
 ==========
 + Service Worker / optimalizace (cache, events)
-+ minor tweaks
-+ opravy překladů
++ tweaks, opravy překladů
 
 29.10.2022
 ==========
