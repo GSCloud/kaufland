@@ -1,4 +1,8 @@
-19.11.2022
+21.11.2022
+==========
++ aktualizace SFX
+
+20.11.2022
 ==========
 + !!! Service Worker (optimalizace cache, events)
 + console.log tweaks, opravy překladů
