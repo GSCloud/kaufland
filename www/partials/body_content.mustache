@@ -614,6 +614,7 @@
         $('.filter_group').click(function() {
           var group = $(this).data('group');
           if (group) {
+            GSC.PlaySound('click1');
             GSC.discounts_filter_group = group;
             GSC.discounts_filter_group_id = $(this).attr('id');
             $('#selgroup').html(group + '&nbsp;&nbsp;&nbsp;').addClass('hidden');
