@@ -493,6 +493,7 @@
           GSC.discounts_data = data.data;
           GSC.RenderDiscounts();
         }).fail(function(jqXHR, status, error) {
+          
           GSC.discounts_timestamp = null;
           console.log('RenderDiscounts', status, error);
         });
@@ -505,6 +506,7 @@
       // render beer price discounts by type from local storage
       function renderDiscounts() {
         if (GSC.offline) {
+          GSC.PlaySound('err');
           setTimeout(function () {
             $('#err_connection').addClass('active');
           }, 10);
@@ -740,6 +742,7 @@
             setUserUI();
           }
         }).fail(function(jqXHR, status, error) {
+          GSC.PlaySound('err');
           GSC.discounts_timestamp = null;
           console.log('GetUser', status, error);
         });
@@ -775,6 +778,7 @@
             GSC.GenerateAPIkey();
           }
         }).fail(function(jqXHR, status, error) {
+          GSC.PlaySound('err');
           GSC.discounts_timestamp = null;
           console.log('GetSalt', status, error);
         });

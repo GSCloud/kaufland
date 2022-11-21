@@ -270,6 +270,7 @@
             $('#changelog_box').html(data.data.changelog);
           }
         }).fail(function(jqXHR, status, error) {
+          GSC.PlaySound('err');
           GSC.discounts_timestamp = null;
           console.log('GetUser', status, error);
         });
@@ -455,12 +456,14 @@
 
         // SOUND: preload
         loadSound([
-          'laser',
           'click1',
           'click2',
           'click3',
           'click4',
           'click5',
+          'click6',
+          'err',
+          'laser',
         ]);
       });
 
