@@ -1,5 +1,4 @@
 #@author Fred Brooker <git@gscloud.cz>
-
 include .env
 
 all: info
@@ -25,7 +24,6 @@ info:
 	@echo "🆘 \e[0;1mmake cleartemp\e[0m - clear temp"
 	@echo ""
 	@echo "🆘 \e[0;1mmake doctor\e[0m - run Tesseract doctor"
-	@echo "🆘 \e[0;1mmake gulp\e[0m - install/update Gulp installation"
 	@echo "🆘 \e[0;1mmake update\e[0m - update dependencies"
 	@echo "🆘 \e[0;1mmake test\e[0m - run local integration test"
 	@echo "🆘 \e[0;1mmake prod\e[0m - run production integration test"
@@ -36,11 +34,10 @@ info:
 	@echo ""
 	@echo "🆘 \e[0;1mmake everything\e[0m - run: doctor clear unit test update sync prod"
 	@echo "🆘 \e[0;1mmake reimage\e[0m - run: doctor clear unit test update build run"
+	@echo ""
 
 docs:
 	@echo "🔨 \e[1;32m Creating documentation\e[0m\n"
-	@cat TECHNICAL_DETAILS_EN.md | grep ^# | sed 'G;' > TECHNICAL_DETAILS_EN_OUTLINE.md
-	@cat TECHNICAL_DETAILS_CZ.md | grep ^# | sed 'G;' > TECHNICAL_DETAILS_CZ_OUTLINE.md
 	@bash ./bin/create_pdf.sh
 
 update:
@@ -82,11 +79,8 @@ test:
 	@bash ./cli.sh local
 
 prod:
+	@bash ./cli.sh unit
 	@bash ./cli.sh prod
-
-gulp:
-	@echo "🔨 \e[1;32m Setting gulp\e[0m\n"
-	@bash ./bin/gulp.sh
 
 build:
 	@echo "🔨 \e[1;32m Building image\e[0m\n"
