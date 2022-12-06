@@ -132,6 +132,18 @@
       <div class="col s2 penny left-align hidden"><b class="penny_price"></b></div>
       <div class="col s1 albert hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/albert.webp"></div>
       <div class="col s2 albert left-align hidden"><b class="albert_price"></b></div>
+    </div>
+  <div id="discount_template2" class="hidden beer_discount">
+    <div class="no-padding" style="margin-top:5px"><b class="title copy truncate" style="display:block"></b></div>
+    <div class="row no-padding white-text" style="border-bottom:2px solid #000">
+      <div class="col s1 kaufland hidden"><img class="square responsive" src="{{ cdn }}/img/markets/kaufland.webp"></div>
+      <div class="col s2 kaufland left-align hidden"><b class="kaufland_price"></b></div>
+      <div class="col s1 lidl hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/lidl.webp"></div>
+      <div class="col s2 lidl left-align hidden"><b class="lidl_price"></b></div>
+      <div class="col s1 penny hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/penny.webp"></div>
+      <div class="col s2 penny left-align hidden"><b class="penny_price"></b></div>
+      <div class="col s1 albert hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/albert.webp"></div>
+      <div class="col s2 albert left-align hidden"><b class="albert_price"></b></div>
       <div class="col s1 billa hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/billa.webp"></div>
       <div class="col s2 billa left-align hidden"><b class="billa_price"></b></div>
       <div class="col s1 cba hidden"><img  class="square responsive" src="{{ cdn }}/img/markets/cba.webp"></div>
@@ -548,10 +560,12 @@
             var col = 0; // number of columns
             var products = [];
 
-            // set markets range by the switch state
+            // set markets range and template by the switch state
             var markets = markets_allowed;
+            var template = '#discount_template';
             if (GSC.discountswitch["market"] == 2) {
-              var markets = markets_all;
+              markets = markets_all;
+              template = '#discount_template2';
             }
 
             for (var el in GSC.discounts) {
@@ -569,14 +583,14 @@
                 var id = item.product;
                 products[id] = c;
                 if (GSC.favorites[id]) {
-                  $('#discount_template').clone().appendTo('#discounts_favorites').removeClass('hidden').attr('id', 'beer_' + id).data('fav', true);
+                  $(template).clone().appendTo('#discounts_favorites').removeClass('hidden').attr('id', 'beer_' + id).data('fav', true);
                   if (GSC.ui == 'dark') { // set favorites color
                     $('#beer_' + id + ' .title').addClass('yellow-text');
                   } else {
                     $('#beer_' + id + ' .title').addClass('red-text');
                   }
                 } else {
-                  $('#discount_template').clone().appendTo('#discounts').removeClass('hidden').attr('id', 'beer_' + id).data('fav', false);
+                  $(template).clone().appendTo('#discounts').removeClass('hidden').attr('id', 'beer_' + id).data('fav', false);
                 }
                 $('#beer_' + id + ' .title').text(item.title).data('id', id);
                 $('#beer_' + id).data('product', id).data('code', item.code);
@@ -614,14 +628,18 @@
 
             // fix viewport columns height
             var h = 0;
-            $('div.col.s1').each(function () {
-              if ($(this).height() > h) h = $(this).height();
+            $('div.col.s1').not('hidden').each(function () {
+              if ($(this).height() > h) {
+                h = $(this).height();
+                //console.log(h);
+              }
             });
 
             // fix icon height according to the screen width
-            if (screen.width > 640) h += 25;
-            if (screen.width > 800) h += 25;
+            if (screen.width > 640) h += 10;
+            if (screen.width > 800) h += 10;
             $('div.col.s2').height(h);
+            //console.log(h);
 
             // click the group filter button
             if (GSC.discounts_filter_group_id) {
