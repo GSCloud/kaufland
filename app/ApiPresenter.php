@@ -475,6 +475,7 @@ class ApiPresenter extends APresenter
                     $gs = \str_replace('budweiser', 'budvar', $gs);
                     $gs = \str_replace('polotmava', 'polotmave', $gs);
                     $gs = \str_replace('polotmavy', 'polotmave', $gs);
+                    $gs = \str_replace('specialni', 'special', $gs);
                     $gs = \str_replace('svijanska', 'svijany', $gs);
                     $gs = \str_replace('svijanske', 'svijany', $gs);
                     $gs = \str_replace('svijansky', 'svijany', $gs);
@@ -562,9 +563,10 @@ class ApiPresenter extends APresenter
             "psenicna", "psenicne", "psenicny",
             "radler",
             "strong", "studena", "studene", "studeny",
-            "svetla", "svetle", "svetly",
+            "svetla", "svetle", "svetly", "svatecni",
             "urquell",
-            "velkopopovicka", "velkopopovicke", "velkopopovicky", "vycepni",
+            "vanocni",
+            "velkopopovicka", "velkopopovicke", "velkopopovicky", "vyber", "vycepni",
             "za", "zlata", "zlate", "zlaty",
         ];
         foreach ($rem as $x) {
