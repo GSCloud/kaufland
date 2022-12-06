@@ -273,20 +273,28 @@
 
     // AudioContext
     GSC.audioctx = null;
+
     // last interaction time
     GSC.lastclick = null
+
     // user information
     GSC.user = null;
+
     // list of modals
     GSC.modals = [];
+
     // audio buffers
     GSC.sfxbuffers = [];
+
     // today date
     GSC.today = null;
+
     // today salt
     GSC.salt = null;
+
     // data cache
     GSC.cache = [];
+
     // discount switch
     GSC.discountswitch = {
       market: 1,
@@ -339,7 +347,7 @@
             break;
 
           default:
-            //console.log(e.target.id);
+            console.log(e.target.id);
         }
       }
       if (location.protocol == 'http:') return true; // true = enable context menu on localhost
@@ -380,6 +388,8 @@
       if (GSC.preventclick) return;
       GSC.PlaySound('click4');
     }
+
+
 
     // *** DELAYED FUNCTIONS ***
 
@@ -423,8 +433,10 @@
       // check version
       function checkVersion() {
         if (GSC.offline) return;
+
         // 10 secs. timeout limiter
         if (GSC.version_timestamp && (GSC.version_timestamp + 10*1000 > +new Date())) return false;
+
         var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetVersion' + nonce, function(data) {
           setQuota(data);
@@ -438,6 +450,7 @@
               $('.nav_update').removeClass('blue').addClass('red');
               GSC.D('<span class="red bold white-text">&nbsp;NEW VERSION IS AVAILABLE!&nbsp;</span>');
               GSC.PlaySound('update');
+
               // skip the modal dialog if user interaction is under 60 seconds
               if (GSC.lastclick && (+new Date() < (GSC.lastclick + 60*1000))) return;
               if (GSC.modals.length) {
@@ -459,6 +472,7 @@
           GSC.RenderDiscounts();
           return;
         }
+
         // invalidate discounts timestamp after 10 minutes
         if (GSC.discounts_timestamp && (GSC.discounts_timestamp + 600*1000 < +new Date())) GSC.discounts_timestamp = null;
         // 30 secs. timeout limiter
@@ -466,6 +480,7 @@
           GSC.RenderDiscounts();
           return;
         }
+
         // prevent concurrent runtime
         GSC.discounts_timestamp = +new Date();
         var all = '';
@@ -480,6 +495,7 @@
           ext = 'ByName';
         }
         var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
+
         // try to load data from the cache
         if (GSC.cache['GetDiscounts' + all + ext]) {
           GSC.discounts_data = GSC.cache['GetDiscounts' + all + ext].data;
@@ -498,7 +514,8 @@
           console.log('RenderDiscounts', status, error);
         });
       }
-      // GSC.GetDiscounts() - get beer price discounts by type and render the data
+
+      // GSC.GetDiscounts: get discounts by type
       if (typeof GSC.GetDiscounts !== 'function') GSC.GetDiscounts = function(type) {
         getDiscounts(type);
       }
@@ -507,7 +524,7 @@
       function renderDiscounts() {
         if (GSC.offline) {
           GSC.PlaySound('err');
-          setTimeout(function () {
+          setTimeout(function () { // ERROR toast
             $('#err_connection').addClass('active');
           }, 10);
         }
@@ -518,8 +535,9 @@
           if (discounts && discounts.discounts && discounts.groups) {
             GSC.discounts = discounts.discounts;
             GSC.discounts_groups = discounts.groups;
-            $('#discounts_date').text(discounts.date);
+            $('#discounts_date').text(discounts.datetime);
             $('#discounts_description').text(discounts.description);
+
             // render groups heading and the clear button
             if (GSC.ui == 'dark') {
               $('#discounts_groups').html('{{ l.but_sorting }}').append('<button class="clear_groups_filtering transparent hidden white-text"><span class="bold" id=selgroup></span>X</button>');
@@ -529,6 +547,7 @@
             var c = 0; // counter
             var col = 0; // number of columns
             var products = [];
+
             // set markets range by the switch state
             var markets = markets_allowed;
             if (GSC.discountswitch["market"] == 2) {
@@ -562,6 +581,7 @@
                 $('#beer_' + id + ' .title').text(item.title).data('id', id);
                 $('#beer_' + id).data('product', id).data('code', item.code);
               }
+
               // set beer properties
               $('#beer_' + item.product + ' .' + item.market).removeClass('hidden');
               var price = $('#beer_' + item.product + ' .' + item.market + '_price').data('price');
@@ -571,6 +591,7 @@
               }
             }
             $('#discounts_total').text('(' + c + ')');
+
             // render groups / convert groups into beers
             GSC.discounts_beers = {};
             for (var el in GSC.discounts_groups) {
@@ -582,18 +603,22 @@
               $('#discount_group_template').clone().appendTo('#discounts_groups').removeClass('hidden').attr('id', 'group_' + el);
               $('#group_' + el).text(el).data('group', el);
             }
+
             // update filters and handlers
             updateDiscountFilters();
+
             // hide filters on render
             if (GSC.discounts_filter_group == null) {
               $('#discounts_groups .filter_group').addClass('hidden');
             }
+
             // fix viewport columns height
             var h = 0;
             $('div.col.s1').each(function () {
               if ($(this).height() > h) h = $(this).height();
             });
-            $('div.col.s2').height(h + 10);
+            $('div.col.s2').height(h + 20);
+
             // click the group filter button
             if (GSC.discounts_filter_group_id) {
               $('#' + GSC.discounts_filter_group_id).click();
@@ -602,12 +627,15 @@
           }
         }
       }
-      // GSC.RenderDiscounts() - render beer price discounts by type from local storage
+
+      // TBD: render discounts from local storage
+
+      // GSC.RenderDiscounts: render beer discounts
       if (typeof GSC.RenderDiscounts !== 'function') GSC.RenderDiscounts = function() {
         renderDiscounts();
       }
 
-      // update filters handlers
+      // update filter corresponding handlers
       function updateDiscountFilters() {
 
         // FILTER: filter by group
@@ -712,6 +740,7 @@
         switch (GSC.discountswitch["source"]) {
           case 2:
             GSC.discountswitch["source"] = 1;
+            // TBD: render grouped discounts
             //$('.sw6').removeClass('grey').addClass('blue');
             setDiscountSwitchUI();
           break;
@@ -731,8 +760,10 @@
           return;
         }
         if (GSC.offline) return;
+
         // 10 secs. timeout limiter
         if (GSC.user_timestamp && (GSC.user_timestamp + 10*1000 > +new Date())) return false;
+
         var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         var apikey = GSC.apikey ? '&apikey=' + GSC.apikey : '';
         $.get('/api/v1/GetUser' + nonce + apikey).done(function(data) {
@@ -748,7 +779,8 @@
           console.log('GetUser', status, error);
         });
       }
-      // GSC.GetUser() - get user information and set UI elements
+
+      // GSC.GetUser: get user information and set UI elements
       if (typeof GSC.GetUser !== 'function') GSC.GetUser = function() {
         getUser();
       }
@@ -756,7 +788,6 @@
 
       // get daily salt
       function getSalt() {
-        // compute today date
         var d = new Date();
         var dd = d.getDate();
         var mm = d.getMonth() + 1; 
@@ -766,8 +797,10 @@
         d = yyyy + '-' + mm + '-' + dd;
         if (GSC.salt && GSC.today && GSC.today == d) return true;
         if (GSC.offline) return;
+
         // 10 secs. timeout limiter
         if (GSC.salt_timestamp && (GSC.salt_timestamp + 10*1000 > +new Date())) return false;
+
         var nonce = '?nonce=' + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetSalt' + nonce).done(function(data) {
           setQuota(data);
@@ -784,7 +817,8 @@
           console.log('GetSalt', status, error);
         });
       }
-      // GSC.GetSalt() - get salt information
+
+      // GSC.GetSalt: get salt information
       if (typeof GSC.GetSalt !== 'function') GSC.GetSalt = function() {
         getSalt();
       }
@@ -794,7 +828,7 @@
       function generateAPIkey() {
         if (!GSC.pin) return;
         if (!GSC.salt) return;
-        try { // generate SHA-256 from PIN + salt
+        try {
           sha256(GSC.pin + GSC.salt).then(function (hash) {
             if (hash.length == 64) {
               GSC.apikey = hash;
@@ -803,12 +837,12 @@
               GSC.GetUser();
             }
           });
-        } catch(e) {
-          // unsupported browser
+        } catch(e) { // unsupported browser
           w.location.href = '/err/600';
         }
       }
-      // GSC.GenerateAPIkey() - get API key information
+
+      // GSC.GenerateAPIkey: get API key information
       if (typeof GSC.GenerateAPIkey !== 'function') GSC.GenerateAPIkey = function() {
         generateAPIkey();
       }
@@ -845,7 +879,7 @@
         }
       }      
 
-      // check backend version
+      // check backend version, store interval pointer
       GSC.chverint = setInterval(function() {
         checkVersion()
       }, 30*1000);

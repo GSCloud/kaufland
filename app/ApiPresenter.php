@@ -183,7 +183,7 @@ class ApiPresenter extends APresenter
             $data = [
                 "file" => $f,
                 "timestamp" => filemtime($file),
-                "date" => date('j. n. Y', filemtime($file)),
+                "datetime" => date('j. n. Y H:i', filemtime($file)),
                 "description" => 'lahvové pivo dle popularity',
                 "records_count" => count($results["discounts"]),
                 "groups_count" => count($results["groups"]),
@@ -192,7 +192,7 @@ class ApiPresenter extends APresenter
             ];
             return $this->writeJsonData($data, $extras);
             break;
-            
+
         case "GetDiscountsAll":
             $f = 'akce-all.data';
             $file = ROOT . '/' . $f;
@@ -203,7 +203,7 @@ class ApiPresenter extends APresenter
             $data = [
                 "file" => $f,
                 "timestamp" => filemtime($file),
-                "date" => date('j. n. Y', filemtime($file)),
+                "datetime" => date('j. n. Y H:i', filemtime($file)),
                 "description" => 'veškeré pivo dle popularity',
                 "groups_count" => count($results["groups"]),
                 "records_count" => count($results["discounts"]),
@@ -223,7 +223,7 @@ class ApiPresenter extends APresenter
             $data = [
                 "file" => $f,
                 "timestamp" => filemtime($file),
-                "date" => date('j. n. Y', filemtime($file)),
+                "datetime" => date('j. n. Y H:i', filemtime($file)),
                 "description" => 'lahvové pivo dle názvu',
                 "records_count" => count($results["discounts"]),
                 "groups_count" => count($results["groups"]),
@@ -232,7 +232,7 @@ class ApiPresenter extends APresenter
             ];
             return $this->writeJsonData($data, $extras);
             break;
-            
+
         case "GetDiscountsAllByName":
             $f = 'akce-all.data';
             $file = ROOT . '/' . $f;
@@ -243,7 +243,7 @@ class ApiPresenter extends APresenter
             $data = [
                 "file" => $f,
                 "timestamp" => filemtime($file),
-                "date" => date('j. n. Y', filemtime($file)),
+                "datetime" => date('j. n. Y H:i', filemtime($file)),
                 "description" => 'veškeré pivo dle názvu',
                 "groups_count" => count($results["groups"]),
                 "records_count" => count($results["discounts"]),
