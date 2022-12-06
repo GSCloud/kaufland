@@ -1,3 +1,8 @@
+6.12.2022
+=========
++ [fix] API beer groups + translations
++ [fix] UI experiment s výškou sloupců akčních cen
+
 21.11.2022
 ==========
 + aktualizace SFX
@@ -19,7 +24,7 @@
 
 22.10.2022
 ==========
-+ UI experiment se změněnou výškou sloupců akčních cen
++ UI experiment s výškou sloupců akčních cen
 + [var] GSC.discounts_beers - (object) pole piv s jejich skupinami (reverzní pole)
 + doladění selekce filtrů a překladů
 
