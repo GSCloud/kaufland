@@ -73,11 +73,15 @@
   (function (w, $, undefined) {
     "use strict";
 
-    // green progress bar
+    // scroll handler
     w.onscroll = onscroll;
     function onscroll() {
+
+      // store user activity
       GSC.lastclick = +new Date();
       $('.toast').removeClass('active');
+
+      // green bar
       var scroll = document.body.scrollTop || document.documentElement.scrollTop;
       var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       var scrolled = (scroll / height) * 100;
@@ -85,6 +89,7 @@
       if (localStorage && localStorage['navigation'] && (localStorage['scroll_' + localStorage['navigation']])) {
         localStorage['scroll_' + localStorage['navigation']] = parseInt(scroll);
       }
+
       // fix top navigation and comm icon on touch enabled devices
       if (GSC.touch) {
         if (scroll > 100) {
@@ -144,7 +149,7 @@
         localStorage['scroll_last_' + el] = offset;
         localStorage['navigation_last'] = el;
 
-        // delayed scroll & set progress bar
+        // delayed scroll & fix progress bar
         setTimeout(function() {
           window.scrollTo({
             top: offset,
@@ -209,9 +214,11 @@
           GSC.pin = null;
         }
         GSC.DefClick();
+
         setTimeout(function () { // TOAST
           $('#pin_saved').addClass('active');
         }, 10);
+
         GSC.user_timestamp = null;
         GSC.GenerateAPIkey();
       });
@@ -428,7 +435,8 @@
         GSC.lastclick = +new Date();
         $('.toast').removeClass('active');
         if (GSC.modals.length) {
-          // fix for K modal
+
+          // fix for logo modal
           if (GSC.modals[0] && GSC.modals[0] == 'appinfo_modal') return;
           GSC.modals.forEach(el => {
             $('#' + el).removeClass('active');

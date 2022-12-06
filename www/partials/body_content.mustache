@@ -532,16 +532,19 @@
         getDiscounts(type);
       }
 
-      // render beer price discounts by type from local storage
+      // render discounts by type from local object
       function renderDiscounts() {
         if (GSC.offline) {
           GSC.PlaySound('err');
-          setTimeout(function () { // ERROR toast
+          setTimeout(function () { // TOAST
             $('#err_connection').addClass('active');
           }, 10);
         }
+
+        // clear output space
         $('#discounts').html('');
         $('#discounts_favorites').html('');
+
         if (GSC.discounts_data) {
           var discounts = GSC.discounts_data;
           if (discounts && discounts.discounts && discounts.groups) {
