@@ -521,11 +521,8 @@ class ApiPresenter extends APresenter
                     $s = \str_replace('Kč', '', $s);
                     $el["price"] = (int) \ceil(\floatval(\trim($s)));
 
-                    // exclude unwanted products
-                    if ($el["code"] === 'sklenice-na-pivo') {
-                        continue;
-                    }
-                    if ($el["code"] === 'sklenice-na-pivo-banquet') {
+                    // exclude products starting with 'sklenice-na-pivo'
+                    if (strpos($el["code"], 'sklenice-na-pivo') === 0) {
                         continue;
                     }
 
