@@ -16,13 +16,10 @@ rm -rf logs/* temp/*
 ln -s ../. www/cdn-assets/$VERSION >/dev/null 2>&1
 find www/cdn-assets/ -type l -mtime +30 -delete
 
+# composer
 command -v composer >/dev/null 2>&1 || fail "PHP composer is not installed!"
 composer update --no-plugins --no-scripts
-
-# gulp
-if [ -f "gulpfile.js" ]; then
-  command -v gulp >/dev/null 2>&1 && gulp
-fi
+echo -en "\n\n"
 
 # get beer prices HTML5 raw data + preprocess
 d=$(date +'%Y%m%d')
@@ -42,7 +39,6 @@ fi
 # show discounts info
 A=$(cat akce.data | grep '\-\-\-' | wc -l)
 B=$(cat akce-all.data | grep '\-\-\-' | wc -l)
-
 info "Discounts - bottles: $A, all: $B\n\n"
 
 # data backups
