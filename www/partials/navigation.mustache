@@ -14,7 +14,7 @@
     <img id="avatar" class="small circle no-margin hidden"
       src=""
       onerror="javascript:if($(this).attr('src')){$(this).addClass('hidden');$('.nav_user').append('<i tabindex=-1 class=\'large lime-text\'>face</i>');}"
-    />
+    >
   </a>
 </nav>
 <!-- bottom navigation | medium large -->
@@ -97,6 +97,8 @@
       }
     };
 
+
+
     // *** DELAYED FUNCTIONS ***
     GSC._fn.push(function UI() {
 
@@ -123,12 +125,14 @@
         if (!$('.' + el)) return;
         localStorage['navigation'] = el;
         $('#avatar').removeClass('large');
+
         // remove modals
         if (GSC.modals.length) {
           GSC.modals.forEach(el => {
             $('#' + el).removeClass('active');
           });
         }
+
         // compute scroll offset
         var offset = localStorage['scroll_' + el];
         var lastoffset = localStorage['scroll_last_' + el];
@@ -139,6 +143,7 @@
         }
         localStorage['scroll_last_' + el] = offset;
         localStorage['navigation_last'] = el;
+
         // delayed scroll & set progress bar
         setTimeout(function() {
           window.scrollTo({
@@ -148,6 +153,7 @@
           });
           document.getElementById("progressbar").style.width = 0;
         }, 10);
+
         // set UI
         $('nav i, nav div').removeClass();
         $('.section').addClass('hidden');
@@ -161,9 +167,7 @@
         }
       }
 
-      // NAVIGATION CLICK HANDLERS
-
-      // K - logo
+      // logo
       $('.nav_app').click(function () {
         GSC.DefClick();
         setTimeout(function() {
@@ -178,13 +182,11 @@
       $('.nav_update').click(function () {
         if (GSC.offline) {
           GSC.DefClick();
-          // toast
-          setTimeout(function () {
+          setTimeout(function () { // TOAST
             $('#err_connection').addClass('active');
           }, 10);
           return;
         }
-        GSC.PlaySound('laser');
         GSC.Vibrate([200]);
         $('#discount_groups').hide();
         $('nav,body').hide(250);
@@ -202,14 +204,12 @@
         GSC.pin = $('#pin').val().toLowerCase().trim();
         localStorage["pin"] = GSC.pin;
         $('#pin').val(GSC.pin);
-        // no PIN - no fun
-        if (!GSC.pin.length) {
+        if (!GSC.pin.length) { // no PIN - no fun
           GSC.apikey = null;
           GSC.pin = null;
         }
         GSC.DefClick();
-        // toast
-        setTimeout(function () {
+        setTimeout(function () { // TOAST
           $('#pin_saved').addClass('active');
         }, 10);
         GSC.user_timestamp = null;
@@ -239,8 +239,7 @@
       // go to API page
       $('.nav_api').click(function() {
         if (GSC.offline) {
-          // toast
-          setTimeout(function () {
+          setTimeout(function () { // TOAST
             $('#err_connection').addClass('active');
           }, 10);
           return;
@@ -251,17 +250,17 @@
       // changelog
       $('.nav_changelog').click(function() {
         if (GSC.offline) {
-          // toast
-          setTimeout(function () {
+          setTimeout(function () { // TOAST
             $('#err_connection').addClass('active');
           }, 10);
           return;
         }
         GSC.PlaySound('click3');
-        setTimeout(function() {
+        setTimeout(function() { // MODAL
           $('#changelog_modal').addClass('active');
           GSC.modals.push('changelog_modal');
         }, 10);
+
         var nonce = "?nonce=" + Math.round(Math.random() * 1000000);
         $.get('/api/v1/GetChangeLog' + nonce).done(function(data) {
           $('.quota_actual').html(data.api_usage);
@@ -376,20 +375,23 @@
           sfx.start();
           return;
         }
+
         // check whether the audio buffer already exists
         if (GSC.sfxbuffers && GSC.sfxbuffers[filename + '.mp3']) return;
+
         // load the audio buffer from network
         var req = new XMLHttpRequest();
         req.open('GET', '/sfx/' + filename + '.mp3', true);
         req.responseType = 'arraybuffer';
+
         // onload handler
         req.onload = function() {
           GSC.ComOff();
           var filename = req.responseURL.substring(req.responseURL.lastIndexOf('/')+1);
           GSC.audioctx && GSC.audioctx.decodeAudioData(req.response, function(buffer) {
-              // store decoded sound buffer data
               GSC.sfxbuffers[filename] = buffer;
               if (!GSC.sfx || preload) return;
+
               // play audio buffer
               var sfx = GSC.audioctx.createBufferSource();
               sfx.buffer = buffer;
@@ -400,24 +402,28 @@
         GSC.ComOn();
         req.send();
       }
-      // GSC.PlaySound
+
+      // GSC.PlaySound: play a sound
       if (typeof GSC.PlaySound !== "function") GSC.PlaySound = function(sound) {
         playSound(sound);
       }
+
+
 
       // OTHER HANDLERS AND RUNTIME
 
       // delayed navigation to the saved state
       if (!localStorage['navigation']) {
-        localStorage['navigation'] = 'nav_info';
+        localStorage['navigation'] = 'nav_price';
       }
-      setTimeout(function() {
+
+      setTimeout(function() { // initial click event
         GSC.preventclick = true;
         $('.' + localStorage['navigation']).click();
       }, 10);
 
       // remove modals and toasts on every click
-      // prepare AudioContext object (preceding user action is mandatory!)
+      // + prepare AudioContext object (preceding user action is mandatory!)
       $('.section,main,nav').click(function() {
         GSC.lastclick = +new Date();
         $('.toast').removeClass('active');
@@ -432,6 +438,7 @@
 
         // exit if we already have AudioContext
         if (GSC.audioctx) return;
+
         // try to get AudioContext with hinting
         if (!GSC.audioctx) {
           try {
@@ -444,6 +451,7 @@
             console.log("AudioContext error", e);
           }
         }
+
         // try to get AudioContext without hinting
         if (!GSC.audioctx) {
           try {
@@ -507,6 +515,7 @@
       if (GSC.touch) {
         $('#changelog_modal').removeClass('medium');
       }
+
     });
   })(window, $);
 

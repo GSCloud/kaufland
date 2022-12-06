@@ -617,7 +617,11 @@
             $('div.col.s1').each(function () {
               if ($(this).height() > h) h = $(this).height();
             });
-            $('div.col.s2').height(h + 20);
+
+            // fix icon height according to the screen width
+            if (screen.width > 640) h += 25;
+            if (screen.width > 800) h += 25;
+            $('div.col.s2').height(h);
 
             // click the group filter button
             if (GSC.discounts_filter_group_id) {
