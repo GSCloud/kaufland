@@ -42,7 +42,8 @@ fi
 # show discounts info
 A=$(cat akce.data | grep '\-\-\-' | wc -l)
 B=$(cat akce-all.data | grep '\-\-\-' | wc -l)
-echo -en "\nDiscounts - bottles: $A, all: $B\n\n"
+
+info "Discounts - bottles: $A, all: $B\n\n"
 
 # data backups
 cp akce.data akce-$d.data
@@ -56,9 +57,6 @@ git add -A
 rm akce.html beer*.html >/dev/null 2>&1
 find . -maxdepth 1 -name "akce-[0-9]*.data" -mtime +10 -delete
 find . -maxdepth 1 -name "akce-all-[0-9]*.data" -mtime +10 -delete
-
-# favicons recalculation
-cd www/img && . ./create_favicons.sh
 
 # CRLF normalization
 git add --renormalize .
