@@ -514,14 +514,14 @@
           GSC.RenderDiscounts();
           return;
         }
+
         $.get('/api/v1/GetDiscounts' + all + ext + nonce).done(function(data) {
           GSC.discounts_timestamp = +new Date();
           setQuota(data);
-          if (data && data.fn) GSC.cache[data.fn] = data;
+          if (data.fn) GSC.cache[data.fn] = data;
           GSC.discounts_data = data.data;
           GSC.RenderDiscounts();
         }).fail(function(jqXHR, status, error) {
-          
           GSC.discounts_timestamp = null;
           console.log('RenderDiscounts', status, error);
         });
