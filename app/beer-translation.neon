@@ -1,3 +1,4 @@
+
 nealkoholicke-pivo-argus: 'Argus nealko'
 nealkoholicke-pivo-bernard: 'Bernard nealko'
 nealkoholicke-pivo-bertold: 'Bertold nealko'
@@ -13,6 +14,7 @@ nealkoholicke-pivo-ochucene-birell: 'Birell ochucené nealko'
 nealkoholicke-pivo-ochucene-birgo: 'Birgo ochucené nealko'
 nealkoholicke-pivo-ochucene-konrad: 'Konrad ochucené nealko'
 nealkoholicke-pivo-ochucene-litovel: 'Litovel ochucené nealko'
+nealkoholicke-pivo-ochucene-radler-argus: 'Argus Radler ochucené nealko'
 nealkoholicke-pivo-ochucene-radler-zlatopramen: 'Zlatopramen Radler nealko'
 nealkoholicke-pivo-ochucene-staropramen-cool: 'Staropramen COOL nealko'
 nealkoholicke-pivo-pito-samson: 'Samson Pito nealko'
@@ -138,6 +140,7 @@ pivo-svetly-lezak-11-grand-pivovar-zubr: 'Zubr Grand 11°'
 pivo-svetly-lezak-11-jedenactka-branik: 'Braník 11°'
 pivo-svetly-lezak-11-jezek-pivovar-jihlava: 'Ježek 11°'
 pivo-svetly-lezak-11-klaster: 'Klášter 11°'
+pivo-svetly-lezak-11-medium-velkopopovicky-kozel-sud: 'Velkopopovický Kozel 11° (soudek)'
 pivo-svetly-lezak-11-medium-velkopopovicky-kozel: 'Velkopopovický Kozel Medium 11°'
 pivo-svetly-lezak-11-pivovar-rychtar: 'Rychtář 11°'
 pivo-svetly-lezak-11-platan: 'Platan 11°'
@@ -220,6 +223,7 @@ pivo-tmavy-lezak-premium-litovel: 'Litovel Premium tmavý ležák'
 pivo-vanocni-vyber-hubertus: 'Hubertus Vánoční výběr'
 pivo-weissbier-paulaner: 'Paulaner Hefe-Weißbier'
 pivo-zlaty-bazant: 'Zlatý Bažant'
-sklenice-na-pivo-banquet: 'sklenice na pivo Banquet' # excluded in ApiPresenter
-sklenice-na-pivo-tesco: '' # excluded in ApiPresenter
-sklenice-na-pivo: 'sklenice na pivo' # excluded in ApiPresenter
+sklenice-na-pivo-banquet: 'sklenice na pivo Banquet' # excluded
+sklenice-na-pivo-nekupto: '' # excluded
+sklenice-na-pivo-tesco: '' # excluded
+sklenice-na-pivo: 'sklenice na pivo' # excluded
