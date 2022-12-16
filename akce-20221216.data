@@ -1,12 +1,22 @@
 ---
 618
 pivo-pilsner-urquell
-Kaufland
-342,90 Kč
+Globus
+22,90 Kč
 ---
 618
 pivo-pilsner-urquell
-Penny Market
+Kaufland
+22,90 Kč
+---
+618
+pivo-pilsner-urquell
+BILLA
+22,90 Kč
+---
+618
+pivo-pilsner-urquell
+Tesco
 22,90 Kč
 ---
 618
@@ -16,28 +26,18 @@ Albert
 ---
 618
 pivo-pilsner-urquell
+Lidl
+22,90 Kč
+---
+618
+pivo-pilsner-urquell
+TAMDA FOODS
+478,90 Kč
+---
+618
+pivo-pilsner-urquell
 Albert
-229,00 Kč
----
-618
-pivo-pilsner-urquell
-Globus
-189,90 Kč
----
-618
-pivo-pilsner-urquell
-CBA
-25,90 Kč
----
-618
-pivo-pilsner-urquell
-CBA
-25,90 Kč
----
-618
-pivo-pilsner-urquell
-ESO MARKET
-25,90 Kč
+124,90 Kč
 ---
 618
 pivo-pilsner-urquell
@@ -51,7 +51,7 @@ Penny Market
 ---
 608
 pivo-svetly-lezak-11-svijansky-maz-svijany
-Lidl
+Tesco
 10,90 Kč
 ---
 608
@@ -61,18 +61,18 @@ Globus
 ---
 29840
 pivo-svetly-lezak-12-ryze-horka-radegast
-Albert
+Tesco
 14,90 Kč
 ---
 29840
 pivo-svetly-lezak-12-ryze-horka-radegast
-Lidl
-14,90 Kč
+ESO MARKET
+16,90 Kč
 ---
-29840
-pivo-svetly-lezak-12-ryze-horka-radegast
-Penny Market
-119,90 Kč
+6929
+pivo-svetly-lezak-11-medium-velkopopovicky-kozel
+Globus
+12,90 Kč
 ---
 6929
 pivo-svetly-lezak-11-medium-velkopopovicky-kozel
@@ -81,49 +81,29 @@ FLOP
 ---
 597
 pivo-svetle-vycepni-original-10-gambrinus
-Penny Market
-9,90 Kč
----
-597
-pivo-svetle-vycepni-original-10-gambrinus
-BILLA
-9,90 Kč
----
-597
-pivo-svetle-vycepni-original-10-gambrinus
-FLOP
-10,90 Kč
----
-597
-pivo-svetle-vycepni-original-10-gambrinus
-CBA
-11,90 Kč
----
-623
-pivo-svetle-vycepni-10-velkopopovicky-kozel
-Lidl
-10,90 Kč
----
-623
-pivo-svetle-vycepni-10-velkopopovicky-kozel
 Albert
+9,90 Kč
+---
+597
+pivo-svetle-vycepni-original-10-gambrinus
+ESO MARKET
 10,90 Kč
 ---
-623
-pivo-svetle-vycepni-10-velkopopovicky-kozel
+103015
+pivo-svetle-vycepni-razna-10-radegast
+Globus
+10,90 Kč
+---
+103015
+pivo-svetle-vycepni-razna-10-radegast
+Penny Market
+10,90 Kč
+---
+103015
+pivo-svetle-vycepni-razna-10-radegast
 Tesco
 10,90 Kč
 ---
-623
-pivo-svetle-vycepni-10-velkopopovicky-kozel
-ESO MARKET
-11,90 Kč
----
-103015
-pivo-svetle-vycepni-razna-10-radegast
-CBA
-11,90 Kč
----
 103015
 pivo-svetle-vycepni-razna-10-radegast
 CBA
@@ -136,18 +116,43 @@ FLOP
 ---
 579
 pivo-svetle-vycepni-10-branik
-Penny Market
+Kaufland
 8,50 Kč
 ---
 579
 pivo-svetle-vycepni-10-branik
-Lidl
-8,50 Kč
----
-579
-pivo-svetle-vycepni-10-branik
-Globus
+Albert
 8,90 Kč
+---
+579
+pivo-svetle-vycepni-10-branik
+Tesco
+8,90 Kč
+---
+2638
+pivo-svetly-lezak-11-excelent
+Albert
+10,90 Kč
+---
+2638
+pivo-svetly-lezak-11-excelent
+Lidl
+10,90 Kč
+---
+2638
+pivo-svetly-lezak-11-excelent
+Kaufland
+10,90 Kč
+---
+2638
+pivo-svetly-lezak-11-excelent
+Tesco
+11,90 Kč
+---
+2638
+pivo-svetly-lezak-11-excelent
+Kaufland
+11,90 Kč
 ---
 2638
 pivo-svetly-lezak-11-excelent
@@ -161,8 +166,13 @@ BILLA
 ---
 27476
 pivo-svetly-lezak-b-original-budweiser-budvar
-BILLA
-126,90 Kč
+Penny Market
+14,90 Kč
+---
+27476
+pivo-svetly-lezak-b-original-budweiser-budvar
+Tesco
+129,90 Kč
 ---
 27476
 pivo-svetly-lezak-b-original-budweiser-budvar
@@ -182,11 +192,6 @@ Albert
 27476
 pivo-svetly-lezak-b-original-budweiser-budvar
 Albert
-16,90 Kč
----
-27476
-pivo-svetly-lezak-b-original-budweiser-budvar
-ESO MARKET
 16,90 Kč
 ---
 27476
@@ -199,15 +204,10 @@ pivo-svetly-lezak-b-original-budweiser-budvar
 Globus
 159,90 Kč
 ---
-603
-pivo-svetly-lezak-11-zlatopramen
-CBA
-11,90 Kč
----
 23596
 pivo-svetly-lezak-11-bernard
 Albert
-13,90 Kč
+12,90 Kč
 ---
 1709
 pivo-svetly-lezak-12-zlaty-bazant
@@ -216,13 +216,28 @@ Tesco
 ---
 1709
 pivo-svetly-lezak-12-zlaty-bazant
-Penny Market
+Tesco
+119,90 Kč
+---
+1709
+pivo-svetly-lezak-12-zlaty-bazant
+Globus
 12,90 Kč
 ---
 1709
 pivo-svetly-lezak-12-zlaty-bazant
-Lidl
-12,90 Kč
+Albert
+13,90 Kč
+---
+1709
+pivo-svetly-lezak-12-zlaty-bazant
+Tesco
+13,90 Kč
+---
+1709
+pivo-svetly-lezak-12-zlaty-bazant
+CBA
+139,00 Kč
 ---
 1709
 pivo-svetly-lezak-12-zlaty-bazant
@@ -231,48 +246,48 @@ FLOP
 ---
 47988
 pivo-svetly-lezak-11-serak-holba
-Lidl
+Penny Market
 10,90 Kč
 ---
 47988
 pivo-svetly-lezak-11-serak-holba
 CBA
 13,90 Kč
----
-47988
-pivo-svetly-lezak-11-serak-holba
-CBA
-13,90 Kč
----
-620
-pivo-svetly-lezak-12-krusovice
-CBA
-13,50 Kč
----
-600
-pivo-svetly-lezak-12-svatecni-bernard
-Albert
-16,90 Kč
----
-600
-pivo-svetly-lezak-12-svatecni-bernard
-BILLA
-19,90 Kč
 ---
 600
 pivo-svetly-lezak-12-svatecni-bernard
 BILLA
 239,00 Kč
 ---
-247380
-pivo-svetle-vycepni-ratar-radegast
-Lidl
-14,90 Kč
+4777
+pivo-svetly-lezak-11-jedenactka-branik
+Penny Market
+9,90 Kč
 ---
 4777
 pivo-svetly-lezak-11-jedenactka-branik
 CBA
 10,90 Kč
+---
+10971
+pivo-svetly-lezak-nepasterizovany-11-medium-starobrno
+Globus
+10,90 Kč
+---
+10971
+pivo-svetly-lezak-nepasterizovany-11-medium-starobrno
+Penny Market
+10,90 Kč
+---
+10971
+pivo-svetly-lezak-nepasterizovany-11-medium-starobrno
+FLOP
+11,90 Kč
+---
+64559
+pivo-lezak-11-rezany-velkopopovicky-kozel
+CBA
+13,90 Kč
 ---
 64559
 pivo-lezak-11-rezany-velkopopovicky-kozel
@@ -301,6 +316,16 @@ Tesco
 ---
 215547
 pivo-lezak-11-velkopopovicky-kozel
+TAMDA FOODS
+258,00 Kč
+---
+215547
+pivo-lezak-11-velkopopovicky-kozel
+CBA
+13,90 Kč
+---
+215547
+pivo-lezak-11-velkopopovicky-kozel
 CBA
 13,90 Kč
 ---
@@ -311,12 +336,17 @@ Albert
 ---
 104712
 pivo-svetle-vycepni-10-smichov-staropramen
+BILLA
+9,90 Kč
+---
+104712
+pivo-svetle-vycepni-10-smichov-staropramen
 Tesco
 9,90 Kč
 ---
 104712
 pivo-svetle-vycepni-10-smichov-staropramen
-BILLA
+ESO MARKET
 9,90 Kč
 ---
 104712
@@ -326,13 +356,18 @@ CBA
 ---
 150584
 pivo-svetle-kralovsky-lezak-12-krusovice
-Globus
+BILLA
 12,90 Kč
 ---
 150584
 pivo-svetle-kralovsky-lezak-12-krusovice
-Albert
+Lidl
 12,90 Kč
+---
+2143
+pivo-cerne-vycepni-10-velkopopovicky-kozel
+CBA
+13,90 Kč
 ---
 2143
 pivo-cerne-vycepni-10-velkopopovicky-kozel
@@ -346,13 +381,18 @@ FLOP
 ---
 44819
 pivo-svetly-lezak-11-grand-pivovar-zubr
-CBA
-13,90 Kč
+Penny Market
+9,90 Kč
 ---
 44819
 pivo-svetly-lezak-11-grand-pivovar-zubr
 CBA
 13,90 Kč
+---
+708
+pivo-svetle-vycepni-10-breznak
+Penny Market
+9,90 Kč
 ---
 293108
 pivo-svetly-lezak-33-budweiser-budvar
@@ -366,28 +406,8 @@ Albert
 ---
 293108
 pivo-svetly-lezak-33-budweiser-budvar
-ESO MARKET
-16,90 Kč
----
-293108
-pivo-svetly-lezak-33-budweiser-budvar
 BILLA
 16,90 Kč
----
-4357
-pivo-svetly-lezak-11-echt-pardal
-FLOP
-9,90 Kč
----
-3973
-pivo-svetly-lezak-11-staropramen
-Kaufland
-11,90 Kč
----
-270383
-pivo-svetly-lezak-12-patron-gambrinus
-Kaufland
-12,90 Kč
 ---
 270383
 pivo-svetly-lezak-12-patron-gambrinus
@@ -411,77 +431,17 @@ Tesco
 ---
 299510
 pivo-svetle-vycepni-budweiser-budvar
-Tesco
-10,90 Kč
----
-6966
-pivo-svetly-lezak-12-premium-holba
-CBA
-14,90 Kč
----
-1365
-pivo-svetly-lezak-12-staropramen
 Albert
-11,90 Kč
----
-1365
-pivo-svetly-lezak-12-staropramen
-BILLA
-12,90 Kč
----
-1365
-pivo-svetly-lezak-12-staropramen
-BILLA
-12,90 Kč
----
-1365
-pivo-svetly-lezak-12-staropramen
-ESO MARKET
-13,90 Kč
----
-17885
-pivo-kvasnicova-10-bernard
-Kaufland
-13,90 Kč
----
-90067
-pivo-svetly-lezak-11-premium-argus
-Lidl
-7,90 Kč
----
-9238
-pivo-svetle-vycepni-bernard
-Makro
-13,92 Kč
----
-15649
-pivo-svetly-lezak-premium-klaster
-Albert
-10,90 Kč
----
-4623
-pivo-svetle-vycepni-moravan-litovel
-CBA
-13,90 Kč
----
-4623
-pivo-svetle-vycepni-moravan-litovel
-CBA
-13,90 Kč
----
-343480
-pivo-svetly-vycepni-special-rog-ipa-radegast
-BILLA
-18,90 Kč
----
-4624
-pivo-svetle-vycepni-10-original-ostravar
-CBA
 10,90 Kč
 ---
 299510
 pivo-svetle-vycepni-budweiser-budvar
-Tesco
+Lidl
+10,90 Kč
+---
+299510
+pivo-svetle-vycepni-budweiser-budvar
+ESO MARKET
 10,90 Kč
 ---
 6966
@@ -496,103 +456,183 @@ Albert
 ---
 1365
 pivo-svetly-lezak-12-staropramen
-BILLA
-12,90 Kč
----
-1365
-pivo-svetly-lezak-12-staropramen
-BILLA
-12,90 Kč
----
-1365
-pivo-svetly-lezak-12-staropramen
-ESO MARKET
-13,90 Kč
----
-17885
-pivo-kvasnicova-10-bernard
-Kaufland
-13,90 Kč
----
-90067
-pivo-svetly-lezak-11-premium-argus
 Lidl
-7,90 Kč
+11,90 Kč
+---
+1365
+pivo-svetly-lezak-12-staropramen
+BILLA
+12,90 Kč
+---
+1365
+pivo-svetly-lezak-12-staropramen
+BILLA
+12,90 Kč
+---
+31524
+pivo-svetle-specialni-16-bohemian-ale-bernard
+Kaufland
+24,90 Kč
+---
+5093
+pivo-svetly-lezak-11-platan
+Penny Market
+9,90 Kč
 ---
 9238
 pivo-svetle-vycepni-bernard
 Makro
 13,92 Kč
 ---
-15649
-pivo-svetly-lezak-premium-klaster
-Albert
-10,90 Kč
+92032
+pivo-svetly-lezak-staropramen
+Penny Market
+11,90 Kč
 ---
-4623
-pivo-svetle-vycepni-moravan-litovel
-CBA
-13,90 Kč
----
-4623
-pivo-svetle-vycepni-moravan-litovel
-CBA
-13,90 Kč
+19936
+pivo-svetly-lezak-premium-ostravar
+Penny Market
+11,90 Kč
 ---
 343480
 pivo-svetly-vycepni-special-rog-ipa-radegast
 BILLA
 18,90 Kč
 ---
+4623
+pivo-svetle-vycepni-moravan-litovel
+CBA
+13,90 Kč
+---
+213183
+pivo-svetle-vycepni-original-kralovska-10-krusovice
+Tesco
+9,90 Kč
+---
+213183
+pivo-svetle-vycepni-original-kralovska-10-krusovice
+BILLA
+9,90 Kč
+---
+29147
+pivo-svetle-vycepni-10-original-argus
+Lidl
+6,90 Kč
+---
+1365
+pivo-svetly-lezak-12-staropramen
+Albert
+11,90 Kč
+---
+1365
+pivo-svetly-lezak-12-staropramen
+Lidl
+11,90 Kč
+---
+1365
+pivo-svetly-lezak-12-staropramen
+BILLA
+12,90 Kč
+---
+1365
+pivo-svetly-lezak-12-staropramen
+BILLA
+12,90 Kč
+---
+31524
+pivo-svetle-specialni-16-bohemian-ale-bernard
+Kaufland
+24,90 Kč
+---
+5093
+pivo-svetly-lezak-11-platan
+Penny Market
+9,90 Kč
+---
+9238
+pivo-svetle-vycepni-bernard
+Makro
+13,92 Kč
+---
+92032
+pivo-svetly-lezak-staropramen
+Penny Market
+11,90 Kč
+---
+19936
+pivo-svetly-lezak-premium-ostravar
+Penny Market
+11,90 Kč
+---
+343480
+pivo-svetly-vycepni-special-rog-ipa-radegast
+BILLA
+18,90 Kč
+---
+4623
+pivo-svetle-vycepni-moravan-litovel
+CBA
+13,90 Kč
+---
+213183
+pivo-svetle-vycepni-original-kralovska-10-krusovice
+Tesco
+9,90 Kč
+---
+213183
+pivo-svetle-vycepni-original-kralovska-10-krusovice
+BILLA
+9,90 Kč
+---
+29147
+pivo-svetle-vycepni-10-original-argus
+Lidl
+6,90 Kč
+---
+129318
+pivo-pilsner-urquell-darkove-baleni
+Lidl
+179,00 Kč
+---
+129318
+pivo-pilsner-urquell-darkove-baleni
+Globus
+259,00 Kč
+---
 4624
 pivo-svetle-vycepni-10-original-ostravar
 CBA
 10,90 Kč
 ---
-129318
-pivo-pilsner-urquell-darkove-baleni
-Globus
-259,00 Kč
----
-129318
-pivo-pilsner-urquell-darkove-baleni
-BILLA
-259,00 Kč
----
-129318
-pivo-pilsner-urquell-darkove-baleni
-Penny Market
-259,90 Kč
----
 44924
 pivo-svetly-lezak-premium-litovel
 CBA
 14,90 Kč
 ---
-10200
-pivo-svetly-lezak-12-premium-bohemia-regent
-BILLA
+1416
+pivo-svetle-vycepni-10-starocech
+Penny Market
+7,90 Kč
+---
+354025
+pivo-nealkoholicke-kralovsky-horke-krusovice
+Albert
 10,90 Kč
 ---
-10200
-pivo-svetly-lezak-12-premium-bohemia-regent
-FLOP
-11,90 Kč
----
-9303
-pivo-svetly-lezak-12-premium-pivovar-zubr
-CBA
-14,90 Kč
+32826
+pivo-polotmavy-lezak-11-granat-argus
+Lidl
+7,90 Kč
 ---
 60951
 pivo-svetle-vycepni-10-platan
 Albert
 7,50 Kč
 ---
-6541
-pivo-svetle-vycepni-10-classic-pivovar-zubr
+9303
+pivo-svetly-lezak-12-premium-pivovar-zubr
 CBA
-12,90 Kč
+14,90 Kč
 ---
 127827
 pivo-svetly-lezak-extra-chmelena-12-staropramen
@@ -606,7 +646,7 @@ Albert
 ---
 127827
 pivo-svetly-lezak-extra-chmelena-12-staropramen
-BILLA
+Penny Market
 119,90 Kč
 ---
 127827
@@ -618,16 +658,6 @@ Globus
 pivo-svetly-lezak-extra-chmelena-12-staropramen
 CBA
 145,00 Kč
----
-127827
-pivo-svetly-lezak-extra-chmelena-12-staropramen
-CBA
-145,00 Kč
----
-79654
-pivo-svetle-vycepni-horska-10-holba
-CBA
-12,90 Kč
 ---
 260855
 pivo-svetly-lezak-premium-lobkowicz
@@ -641,83 +671,93 @@ Albert
 ---
 47439
 pivo-svetle-premium-rebel-pivovar-havlickuv-brod
-BILLA
-69,90 Kč
+Penny Market
+8,90 Kč
 ---
-165100
-pivo-svetle-vycepni-10-stare-brno-starobrno
-Globus
-9,90 Kč
----
-21063
-pivo-svetle-vycepni-10-classic-litovel
-CBA
-12,90 Kč
----
-18357
-pivo-tmave-specialni-brune-bruin-leffe
-Kaufland
-19,90 Kč
----
-4608
-pivo-svetle-vycepni-10-bohemia-regent
+58960
+pivo-svetle-vycepni-trebonske-bohemia-regent
 FLOP
-9,90 Kč
+10,90 Kč
+---
+354466
+pivo-svetle-vycepni-10-mikolas-ales-branik
+Lidl
+8,90 Kč
 ---
 42302
 pivo-svetle-svatecni-special-13-litovel
 BILLA
 139,90 Kč
 ---
-277316
-pivo-sladkova-vyberova-edice-zubr
+352657
+pivo-tmave-vycepni-dark-litovel
+CBA
+14,90 Kč
+---
+330700
+pivo-svetly-lezak-12-kral-sumavy-strakonicky-dudak
 BILLA
-139,90 Kč
+12,90 Kč
+---
+419275
+pivo-mixpack-vanocni-vyber-sladku-lobkowicz
+BILLA
+99,90 Kč
+---
+419275
+pivo-mixpack-vanocni-vyber-sladku-lobkowicz
+Albert
+119,90 Kč
+---
+419275
+pivo-mixpack-vanocni-vyber-sladku-lobkowicz
+Albert
+119,90 Kč
+---
+129318
+pivo-pilsner-urquell-darkove-baleni
+Lidl
+179,00 Kč
 ---
 129318
 pivo-pilsner-urquell-darkove-baleni
 Globus
 259,00 Kč
 ---
-129318
-pivo-pilsner-urquell-darkove-baleni
-BILLA
-259,00 Kč
----
-129318
-pivo-pilsner-urquell-darkove-baleni
-Penny Market
-259,90 Kč
+4624
+pivo-svetle-vycepni-10-original-ostravar
+CBA
+10,90 Kč
 ---
 44924
 pivo-svetly-lezak-premium-litovel
 CBA
 14,90 Kč
 ---
-10200
-pivo-svetly-lezak-12-premium-bohemia-regent
-BILLA
+1416
+pivo-svetle-vycepni-10-starocech
+Penny Market
+7,90 Kč
+---
+354025
+pivo-nealkoholicke-kralovsky-horke-krusovice
+Albert
 10,90 Kč
 ---
-10200
-pivo-svetly-lezak-12-premium-bohemia-regent
-FLOP
-11,90 Kč
----
-9303
-pivo-svetly-lezak-12-premium-pivovar-zubr
-CBA
-14,90 Kč
+32826
+pivo-polotmavy-lezak-11-granat-argus
+Lidl
+7,90 Kč
 ---
 60951
 pivo-svetle-vycepni-10-platan
 Albert
 7,50 Kč
 ---
-6541
-pivo-svetle-vycepni-10-classic-pivovar-zubr
+9303
+pivo-svetly-lezak-12-premium-pivovar-zubr
 CBA
-12,90 Kč
+14,90 Kč
 ---
 127827
 pivo-svetly-lezak-extra-chmelena-12-staropramen
@@ -731,7 +771,7 @@ Albert
 ---
 127827
 pivo-svetly-lezak-extra-chmelena-12-staropramen
-BILLA
+Penny Market
 119,90 Kč
 ---
 127827
@@ -744,16 +784,6 @@ pivo-svetly-lezak-extra-chmelena-12-staropramen
 CBA
 145,00 Kč
 ---
-127827
-pivo-svetly-lezak-extra-chmelena-12-staropramen
-CBA
-145,00 Kč
----
-79654
-pivo-svetle-vycepni-horska-10-holba
-CBA
-12,90 Kč
----
 260855
 pivo-svetly-lezak-premium-lobkowicz
 Albert
@@ -766,36 +796,21 @@ Albert
 ---
 47439
 pivo-svetle-premium-rebel-pivovar-havlickuv-brod
-BILLA
-69,90 Kč
+Penny Market
+8,90 Kč
 ---
-165100
-pivo-svetle-vycepni-10-stare-brno-starobrno
-Globus
-9,90 Kč
----
-21063
-pivo-svetle-vycepni-10-classic-litovel
-CBA
-12,90 Kč
----
-18357
-pivo-tmave-specialni-brune-bruin-leffe
-Kaufland
-19,90 Kč
----
-4608
-pivo-svetle-vycepni-10-bohemia-regent
+58960
+pivo-svetle-vycepni-trebonske-bohemia-regent
 FLOP
-9,90 Kč
+10,90 Kč
+---
+354466
+pivo-svetle-vycepni-10-mikolas-ales-branik
+Lidl
+8,90 Kč
 ---
 42302
 pivo-svetle-svatecni-special-13-litovel
-BILLA
-139,90 Kč
----
-277316
-pivo-sladkova-vyberova-edice-zubr
 BILLA
 139,90 Kč
 ---
@@ -809,20 +824,25 @@ pivo-svetly-lezak-12-kral-sumavy-strakonicky-dudak
 BILLA
 12,90 Kč
 ---
-418825
-pivo-demon-pekelna-nadilka-lobkowicz
-BILLA
-69,90 Kč
----
-418825
-pivo-demon-pekelna-nadilka-lobkowicz
-Kaufland
-76,90 Kč
----
 419275
 pivo-mixpack-vanocni-vyber-sladku-lobkowicz
 BILLA
 99,90 Kč
+---
+419275
+pivo-mixpack-vanocni-vyber-sladku-lobkowicz
+Albert
+119,90 Kč
+---
+419275
+pivo-mixpack-vanocni-vyber-sladku-lobkowicz
+Albert
+119,90 Kč
+---
+414518
+pivo-svetly-lezak-lobkowicz
+CBA
+11,90 Kč
 ---
 416732
 pivo-vanocni-vyber-hubertus
@@ -831,79 +851,49 @@ BILLA
 ---
 625
 nealkoholicke-pivo-birell
-Albert
+Kaufland
 10,90 Kč
 ---
 625
 nealkoholicke-pivo-birell
-BILLA
-11,90 Kč
+Penny Market
+10,90 Kč
 ---
 625
 nealkoholicke-pivo-birell
-Lidl
-11,90 Kč
----
-625
-nealkoholicke-pivo-birell
-CBA
-14,90 Kč
+Globus
+12,90 Kč
 ---
 12295
 nealkoholicke-pivo-polotmave-birell
-CBA
-14,90 Kč
+Globus
+12,90 Kč
 ---
-14441
-nealkoholicke-pivo-argus
-Lidl
-5,90 Kč
----
-43793
-nealkoholicke-pivo-budweiser-budvar
-FLOP
-11,90 Kč
----
-14755
-nealkoholicke-pivo-pito-samson
-Kaufland
-7,90 Kč
+71147
+nealkoholicke-pivo-zeleny-jecmen-birell
+Globus
+12,90 Kč
 ---
 47439
 pivo-svetle-premium-rebel-pivovar-havlickuv-brod
-BILLA
-69,90 Kč
+Penny Market
+8,90 Kč
 ---
-165100
-pivo-svetle-vycepni-10-stare-brno-starobrno
-Globus
-9,90 Kč
----
-21063
-pivo-svetle-vycepni-10-classic-litovel
-CBA
-12,90 Kč
----
-18357
-pivo-tmave-specialni-brune-bruin-leffe
-Kaufland
-19,90 Kč
----
-4608
-pivo-svetle-vycepni-10-bohemia-regent
+58960
+pivo-svetle-vycepni-trebonske-bohemia-regent
 FLOP
-9,90 Kč
+10,90 Kč
+---
+354466
+pivo-svetle-vycepni-10-mikolas-ales-branik
+Lidl
+8,90 Kč
 ---
 42302
 pivo-svetle-svatecni-special-13-litovel
 BILLA
 139,90 Kč
 ---
-277316
-pivo-sladkova-vyberova-edice-zubr
-BILLA
-139,90 Kč
----
 352657
 pivo-tmave-vycepni-dark-litovel
 CBA
@@ -914,20 +904,25 @@ pivo-svetly-lezak-12-kral-sumavy-strakonicky-dudak
 BILLA
 12,90 Kč
 ---
-418825
-pivo-demon-pekelna-nadilka-lobkowicz
-BILLA
-69,90 Kč
----
-418825
-pivo-demon-pekelna-nadilka-lobkowicz
-Kaufland
-76,90 Kč
----
 419275
 pivo-mixpack-vanocni-vyber-sladku-lobkowicz
 BILLA
 99,90 Kč
+---
+419275
+pivo-mixpack-vanocni-vyber-sladku-lobkowicz
+Albert
+119,90 Kč
+---
+419275
+pivo-mixpack-vanocni-vyber-sladku-lobkowicz
+Albert
+119,90 Kč
+---
+414518
+pivo-svetly-lezak-lobkowicz
+CBA
+11,90 Kč
 ---
 416732
 pivo-vanocni-vyber-hubertus
@@ -936,68 +931,33 @@ BILLA
 ---
 625
 nealkoholicke-pivo-birell
-Albert
+Kaufland
 10,90 Kč
 ---
 625
 nealkoholicke-pivo-birell
-BILLA
-11,90 Kč
+Penny Market
+10,90 Kč
 ---
 625
 nealkoholicke-pivo-birell
-Lidl
-11,90 Kč
----
-625
-nealkoholicke-pivo-birell
-CBA
-14,90 Kč
----
-12295
-nealkoholicke-pivo-polotmave-birell
-CBA
-14,90 Kč
----
-14441
-nealkoholicke-pivo-argus
-Lidl
-5,90 Kč
----
-43793
-nealkoholicke-pivo-budweiser-budvar
-FLOP
-11,90 Kč
----
-14755
-nealkoholicke-pivo-pito-samson
-Kaufland
-7,90 Kč
----
-352657
-pivo-tmave-vycepni-dark-litovel
-CBA
-14,90 Kč
----
-330700
-pivo-svetly-lezak-12-kral-sumavy-strakonicky-dudak
-BILLA
+Globus
 12,90 Kč
 ---
-418825
-pivo-demon-pekelna-nadilka-lobkowicz
-BILLA
-69,90 Kč
+12295
+nealkoholicke-pivo-polotmave-birell
+Globus
+12,90 Kč
 ---
-418825
-pivo-demon-pekelna-nadilka-lobkowicz
-Kaufland
-76,90 Kč
+71147
+nealkoholicke-pivo-zeleny-jecmen-birell
+Globus
+12,90 Kč
 ---
-419275
-pivo-mixpack-vanocni-vyber-sladku-lobkowicz
-BILLA
-99,90 Kč
+414518
+pivo-svetly-lezak-lobkowicz
+CBA
+11,90 Kč
 ---
 416732
 pivo-vanocni-vyber-hubertus
@@ -1006,50 +966,25 @@ BILLA
 ---
 625
 nealkoholicke-pivo-birell
-Albert
+Kaufland
 10,90 Kč
 ---
 625
 nealkoholicke-pivo-birell
-BILLA
-11,90 Kč
+Penny Market
+10,90 Kč
 ---
 625
 nealkoholicke-pivo-birell
-Lidl
-11,90 Kč
----
-625
-nealkoholicke-pivo-birell
-CBA
-14,90 Kč
+Globus
+12,90 Kč
 ---
 12295
 nealkoholicke-pivo-polotmave-birell
-CBA
-14,90 Kč
+Globus
+12,90 Kč
 ---
-14441
-nealkoholicke-pivo-argus
-Lidl
-5,90 Kč
----
-43793
-nealkoholicke-pivo-budweiser-budvar
-FLOP
-11,90 Kč
----
-14755
-nealkoholicke-pivo-pito-samson
-Kaufland
-7,90 Kč
----
-43793
-nealkoholicke-pivo-budweiser-budvar
-FLOP
-11,90 Kč
----
-14755
-nealkoholicke-pivo-pito-samson
-Kaufland
-7,90 Kč
+71147
+nealkoholicke-pivo-zeleny-jecmen-birell
+Globus
+12,90 Kč
