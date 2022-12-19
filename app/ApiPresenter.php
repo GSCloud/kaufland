@@ -1,7 +1,7 @@
 <?php
 /**
  * GSC Tesseract
- * php version 7.4.0
+ * php version 8.2
  *
  * @category Framework
  * @package  Tesseract
@@ -63,7 +63,7 @@ class ApiPresenter extends APresenter
         $user_id = $d["user"]["id"] ?? null;
         $d["admin"] = $user_group = $this->getUserGroup();
         if ($user_group) {
-            $d["admin_group_${user_group}"] = true;
+            $d["admin_group_{$user_group}"] = true;
         }
 
         // general API properties
@@ -670,7 +670,7 @@ class ApiPresenter extends APresenter
     {
         $hour = date("H");
         $uid = $this->getUID();
-        $key = "access_limiter_" . SERVER . "_" . PROJECT . "_${hour}_${uid}";
+        $key = "access_limiter_" . SERVER . "_" . PROJECT . "_{$hour}_{$uid}";
         \error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
         $redis = new RedisClient(
             [
