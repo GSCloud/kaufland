@@ -1,7 +1,7 @@
 <?php
 /**
  * GSC Tesseract
- * php version 7.4.0
+ * php version 8.2
  *
  * @category Framework
  * @package  Tesseract
@@ -50,10 +50,7 @@ class LahvePresenter extends APresenter
         if ($use_cache && $output = Cache::read($cache_key, "page")) {
             header("X-Cached: true");
 
-            return $this->setData(
-                "output",
-                $output .= "\n<script>console.log('* page content cached');</script>"
-            );
+            return $this->setData("output", $output);
         }
 
         // process output
