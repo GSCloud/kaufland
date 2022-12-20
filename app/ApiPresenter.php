@@ -3,8 +3,8 @@
  * GSC Tesseract
  * php version 8.2
  *
- * @category Framework
- * @package  Tesseract
+ * @category CMS
+ * @package  Framework
  * @author   Fred Brooker <git@gscloud.cz>
  * @license  MIT https://gscloud.cz/LICENSE
  * @link     https://1950.mxd.cz
@@ -21,8 +21,8 @@ use Symfony\Component\Lock\Store\FlockStore;
 /**
  * API Presenter
  * 
- * @category Framework
- * @package  Tesseract
+ * @category CMS
+ * @package  Framework
  * @author   Fred Brooker <git@gscloud.cz>
  * @license  MIT https://gscloud.cz/LICENSE
  * @link     https://1950.mxd.cz
@@ -41,21 +41,10 @@ class ApiPresenter extends APresenter
      * 
      * @param mixed $param optional parameter
      * 
-     * @return object the controller itself
+     * @return object controller
      */
     public function process($param = null)
     {
-        foreach ([
-            'APP',
-            'CACHE',
-            'DATA',
-            'DS',
-            'LOGS',
-            'ROOT',
-            'TEMP'
-        ] as $x) {
-            defined($x) || die("FATAL ERROR: sanity check for '$x' failed!");
-        }
         \setlocale(LC_ALL, 'cs_CZ.UTF-8');
         \error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 
