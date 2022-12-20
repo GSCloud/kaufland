@@ -39,10 +39,23 @@ class ApiPresenter extends APresenter
     /**
      * Main controller
      * 
-     * @return self
+     * @param mixed $param optional parameter
+     * 
+     * @return object the controller itself
      */
-    public function process()
+    public function process($param = null)
     {
+        foreach ([
+            'APP',
+            'CACHE',
+            'DATA',
+            'DS',
+            'LOGS',
+            'ROOT',
+            'TEMP'
+        ] as $x) {
+            defined($x) || die("FATAL ERROR: sanity check for '$x' failed!");
+        }
         \setlocale(LC_ALL, 'cs_CZ.UTF-8');
         \error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 
@@ -53,17 +66,33 @@ class ApiPresenter extends APresenter
 
         // view properties
         $presenter = $this->getPresenter();
-        $use_key = $presenter[$view]["use_key"] ?? false;
-        $allow_key = $presenter[$view]["allow_key"] ?? false;
-        $priv = $presenter[$view]["private"] ?? false;
+        $use_key = false;
+        if (is_array($presenter)) {
+            $use_key = \array_key_exists("use_key", $presenter[$view])
+                ? $presenter[$view]["use_key"] : false;
+        }
+        $allow_key = false;
+        if (is_array($presenter)) {
+            $allow_key = \array_key_exists("allow_key", $presenter[$view])
+                ? $presenter[$view]["allow_key"] : false;
+        }
+        $priv = false;
+        if (is_array($presenter)) {
+            $priv = \array_key_exists("private", $presenter[$view])
+                ? $presenter[$view]["private"] : false;
+        }
 
         // user data, permissions and authorizations
         $api_key = $_GET["apikey"] ?? null;
-        $d["user"] = $this->getCurrentUser() ?? [];
-        $user_id = $d["user"]["id"] ?? null;
-        $d["admin"] = $user_group = $this->getUserGroup();
-        if ($user_group) {
-            $d["admin_group_{$user_group}"] = true;
+        $user_id = null;
+        $user_group = null;
+        if (is_array($d)) {
+            $d["user"] = $this->getCurrentUser();
+            $user_id = $d["user"]["id"] ?? null;
+            $d["admin"] = $user_group = $this->getUserGroup();
+            if ($user_group) {
+                $d["admin_group_{$user_group}"] = true;
+            }
         }
 
         // general API properties
@@ -91,8 +120,8 @@ class ApiPresenter extends APresenter
             return $this->writeJsonData(401, $extras);
         }
         // PRIVATE && OAUTH2 && NOT ALLOWED
-        if ($priv && $user_id && !$user_group) {
-            return $this->writeJsonData(401, $extras);
+        if ($priv && $user_id > 0 && !$user_group) {
+                return $this->writeJsonData(401, $extras);
         }
         // NO API KEY
         if ($use_key && !$api_key) {
@@ -100,8 +129,10 @@ class ApiPresenter extends APresenter
         }
 
         // API KEY MANDATORY
-        if ($use_key && $api_key) {
-            $pin = $check = $this->checkKey($api_key);
+        if ($use_key) {
+            $pin = $this->checkKey($api_key);
+            $check = $this->checkKey($api_key);
+
             // NO GROUP && API KEY FAILED
             if (!$user_group && $check === false) {
                 return $this->writeJsonData(401, $extras);
@@ -119,7 +150,7 @@ class ApiPresenter extends APresenter
                 $access = strtoupper($check);
             }
         }
-
+        
         // API KEY ALLOWED
         if ($allow_key && $api_key) {
             $pin = $check = $this->checkKey($api_key);
@@ -148,7 +179,7 @@ class ApiPresenter extends APresenter
                 "email" => $this->getIdentity()["email"] ?? null,
                 "country" => $this->getIdentity()["country"] ?? null,
                 "role" => $access,
-                "pin" => $pin,
+                "pin" => $pin ?: null,
                 "avatar" => $this->getIdentity()["avatar"] ?? null,
                 "login_type" => $this->getIdentity()["id"]
                     ? "Google OAuth 2.0" : ($pin ? "PIN" : null),
@@ -156,14 +187,12 @@ class ApiPresenter extends APresenter
                     ? "high" : ($access ? "low" : "none"),
             ];
             return $this->writeJsonData($data, $extras);
-            break;
 
         case "GetVersion":
             $data = [
                 "version" => $this->getData('VERSION'),
             ];
             return $this->writeJsonData($data, $extras);
-            break;
 
         case "GetSalt":
             $data = [
@@ -171,19 +200,23 @@ class ApiPresenter extends APresenter
                 "salt" => $this->getSalt(),
             ];
             return $this->writeJsonData($data, $extras);
-            break;
 
         case "GetDiscounts":
             $f = 'akce.data';
-            $file = ROOT . '/' . $f;
+            $file = null;
+            defined('ROOT') && $file = ROOT . '/' . $f;
+            if (!$file) {
+                return ErrorPresenter::getInstance()->process(404);
+            }
             if (!\is_file($file) || !\is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
             $results = $this->getDiscounts($file);
             $data = [
                 "file" => $f,
-                "timestamp" => filemtime($file),
-                "datetime" => date('j. n. Y H:i', filemtime($file)),
+                "timestamp" => \filemtime($file) ?: null,
+                "datetime" => \filemtime($file)
+                    ? date('j. n. Y H:i', \filemtime($file)) : null,
                 "description" => 'lahvové pivo dle popularity',
                 "records_count" => count($results["discounts"]),
                 "groups_count" => count($results["groups"]),
@@ -191,19 +224,23 @@ class ApiPresenter extends APresenter
                 "groups" => $results["groups"],
             ];
             return $this->writeJsonData($data, $extras);
-            break;
 
         case "GetDiscountsAll":
             $f = 'akce-all.data';
-            $file = ROOT . '/' . $f;
+            $file = null;
+            defined('ROOT') && $file = ROOT . '/' . $f;
+            if (!$file) {
+                return ErrorPresenter::getInstance()->process(404);
+            }
             if (!\is_file($file) || !\is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
             $results = $this->getDiscounts($file);
             $data = [
                 "file" => $f,
-                "timestamp" => filemtime($file),
-                "datetime" => date('j. n. Y H:i', filemtime($file)),
+                "timestamp" => \filemtime($file) ?: null,
+                "datetime" => \filemtime($file)
+                    ? date('j. n. Y H:i', \filemtime($file)) : null,
                 "description" => 'veškeré pivo dle popularity',
                 "groups_count" => count($results["groups"]),
                 "records_count" => count($results["discounts"]),
@@ -211,19 +248,23 @@ class ApiPresenter extends APresenter
                 "groups" => $results["groups"],
             ];
             return $this->writeJsonData($data, $extras);
-            break;
 
         case "GetDiscountsByName":
             $f = 'akce.data';
-            $file = ROOT . '/' . $f;
+            $file = null;
+            defined('ROOT') && $file = ROOT . '/' . $f;
+            if (!$file) {
+                return ErrorPresenter::getInstance()->process(404);
+            }
             if (!\is_file($file) || !\is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
             $results = $this->getDiscounts($file);
             $data = [
                 "file" => $f,
-                "timestamp" => filemtime($file),
-                "datetime" => date('j. n. Y H:i', filemtime($file)),
+                "timestamp" => \filemtime($file) ?: null,
+                "datetime" => \filemtime($file)
+                    ? date('j. n. Y H:i', \filemtime($file)) : null,
                 "description" => 'lahvové pivo dle názvu',
                 "records_count" => count($results["discounts"]),
                 "groups_count" => count($results["groups"]),
@@ -231,19 +272,23 @@ class ApiPresenter extends APresenter
                 "groups" => $results["groups"],
             ];
             return $this->writeJsonData($data, $extras);
-            break;
 
         case "GetDiscountsAllByName":
             $f = 'akce-all.data';
-            $file = ROOT . '/' . $f;
+            $file = null;
+            defined('ROOT') && $file = ROOT . '/' . $f;
+            if (!$file) {
+                return ErrorPresenter::getInstance()->process(404);
+            }
             if (!\is_file($file) || !\is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
             $results = $this->getDiscounts($file);
             $data = [
                 "file" => $f,
-                "timestamp" => filemtime($file),
-                "datetime" => date('j. n. Y H:i', filemtime($file)),
+                "timestamp" => \filemtime($file) ?: null,
+                "datetime" => \filemtime($file)
+                    ? date('j. n. Y H:i', \filemtime($file)) : null,
                 "description" => 'veškeré pivo dle názvu',
                 "groups_count" => count($results["groups"]),
                 "records_count" => count($results["discounts"]),
@@ -251,34 +296,38 @@ class ApiPresenter extends APresenter
                 "groups" => $results["groups"],
             ];
             return $this->writeJsonData($data, $extras);
-            break;
 
         case "GetChangeLog":
-            $file = WWW . '/changelog.txt';
-            if (!\is_file($file)) {
+            $file = null;
+            defined('WWW') && $file = WWW . '/changelog.txt';
+            if (!$file) {
+                return ErrorPresenter::getInstance()->process(404);
+            }
+            if (!\is_file($file) && \is_readable($file)) {
                 return ErrorPresenter::getInstance()->process(404);
             }
             $data = [
+                "timestamp" => \filemtime($file) ?: null,
+                "datetime" => \filemtime($file)
+                    ? date('j. n. Y H:i', \filemtime($file)) : null,
                 "changelog" => $this->getChangelog($file),
             ];
             return $this->writeJsonData($data, $extras);
-            break;
 
         default:
             // TODO: uncomment in production
             //sleep(5);
             return ErrorPresenter::getInstance()->process(404);
         }
-        return $this;
     }
 
     /**
      * Sort array by index key
      *
-     * @param array  $arr   input
-     * @param string $index index key
+     * @param array<mixed> $arr   input
+     * @param string       $index index key
      * 
-     * @return array results or empty array
+     * @return array<mixed> results / empty array
      */
     public function sortByIndex($arr, $index)
     {
@@ -296,6 +345,8 @@ class ApiPresenter extends APresenter
          * 
          * @return int string comparison result using a "natural order" algorithm
          */
+        // @codingStandardsIgnoreStart
+        /** @phpstan-ignore-next-line */
         function build_sorter($key)
         {
             return function ($a, $b) use ($key) {
@@ -303,7 +354,9 @@ class ApiPresenter extends APresenter
             };
         }
 
+        /** @phpstan-ignore-next-line */
         \usort($arr, build_sorter($index));
+        // @codingStandardsIgnoreEnd
         return $arr;
     }
 
@@ -317,8 +370,8 @@ class ApiPresenter extends APresenter
     public function getChangelog($file)
     {
         if (\is_file($file) && \is_readable($file)) {
-            $log = \file($file);
-            foreach ($log ?? [] as $k => $v) {
+            $log = \file($file) ?: [];
+            foreach ($log as $k => $v) {
                 $v = \trim($v);
                 $x = '[fix]';
                 if (\strpos($v, $x)) {
@@ -358,7 +411,7 @@ class ApiPresenter extends APresenter
             }
             $log = \implode('<br>', $log);
             $log = \preg_replace('/==+/', '<hr>', $log);
-            $log = \str_replace("\n", '', $log);
+            $log = \str_replace("\n", '', (array) $log);
             $log = \str_replace('</div><br>', '</div>', $log);
             $log = \str_replace('<br><hr><br>', '<hr>', $log);
             $log = \preg_replace('/([0-9]+\.[0-9]+\.[0-9]+)/', '<b>$1</b>', $log);
@@ -374,6 +427,9 @@ class ApiPresenter extends APresenter
      */
     public function saveLastSeen()
     {
+        if (!defined('DATA')) {
+            return $this;
+        }
         if ($email = $this->getIdentity()["email"]) {
             @file_put_contents(
                 DATA . "/last_seen." . $email,
@@ -396,7 +452,7 @@ class ApiPresenter extends APresenter
         if (!$apikey) {
             return false;
         }
-        $pins = (array) $this->getData("security_pin") ?? [];
+        $pins = $this->getData("security_pin") ?: [];
         $salt = $this->getSalt();
         foreach ($pins as $k => $v) {
             if (hash("sha256", $v . $salt) === $apikey) {
@@ -411,7 +467,7 @@ class ApiPresenter extends APresenter
      *
      * @param string $file filename of the datafile
      * 
-     * @return array discounts and groups
+     * @return array<mixed> discounts and groups
      */
     public function getDiscounts($file)
     {
@@ -419,27 +475,28 @@ class ApiPresenter extends APresenter
         $groups = [];
 
         // open for writing - missing translations
-        $export = DATA . '/missing_translations.txt';
-        if (!\is_file($export)) {
+        $export = null;
+        defined('DATA') && $export = DATA . '/missing_translations.txt';
+        if ($export && !\is_file($export)) {
             \fopen($export, 'w');
         }
         if (\is_file($file) && \is_readable($file)) {
-
             // load beer translations
             $trans = [];
-            $trans_file = APP . '/beer-translation.neon';
+            $trans_file = '';
+            defined('APP') && $trans_file = APP . '/beer-translation.neon';
             if (\is_file($trans_file) && \is_readable($trans_file)) {
                 $trans = Neon::decode(
-                    \file_get_contents($trans_file)
+                    \file_get_contents($trans_file) ?: ''
                 );
             }
-
             // load group translations
             $gtrans = [];
-            $gtrans_file = APP . '/group-translation.neon';
+            $gtrans_file = '';
+            defined('APP') && $gtrans_file = APP . '/group-translation.neon';
             if (\is_file($gtrans_file) && \is_readable($gtrans_file)) {
                 $gtrans = Neon::decode(
-                    \file_get_contents($gtrans_file)
+                    \file_get_contents($gtrans_file) ?: ''
                 );
             }
 
@@ -447,7 +504,7 @@ class ApiPresenter extends APresenter
             $c = 0;
             $count = 1;
             $arr = \file($file);
-            foreach ($arr ?? [] as $s) {
+            foreach ($arr ?: [] as $s) {
                 $s = \trim($s);
                 if (!\strlen($s)) {
                     continue;
@@ -484,7 +541,7 @@ class ApiPresenter extends APresenter
 
                     // compute groups
                     $g = \explode('-', $gs);
-                    if (\count($g)) {
+                    if (\is_array($g)) {
                         foreach ($g as $gname) {
                             if (!\array_key_exists($gname, $groups)) {
                                 $groups[$gname] = [];
@@ -498,7 +555,13 @@ class ApiPresenter extends APresenter
 
                     // export missing translation
                     if (!\array_key_exists($s, $trans)) {
-                        \file_put_contents($export, $s . "\n", FILE_APPEND|LOCK_EX);
+                        if ($export) {
+                            \file_put_contents(
+                                $export,
+                                $s . "\n",
+                                FILE_APPEND|LOCK_EX
+                            );
+                        }
                     }
                     $c++;
                     continue;
@@ -522,7 +585,7 @@ class ApiPresenter extends APresenter
                     $el["price"] = (int) \ceil(\floatval(\trim($s)));
 
                     // exclude products starting with 'sklenice-na-pivo'
-                    if (strpos($el["code"], 'sklenice-na-pivo') === 0) {
+                    if (\strpos($el["code"], 'sklenice-na-pivo') === 0) {
                         continue;
                     }
 
@@ -535,11 +598,14 @@ class ApiPresenter extends APresenter
                 }
             }
         }
+        // @codingStandardsIgnoreStart
         foreach ($groups as $k => $v) {
+            /** @phpstan-ignore-next-line */
             if (\count($v) < 2) {
                 unset($groups[$k]);
             }
         }
+        // @codingStandardsIgnoreEnd
 
         // remove vague and duplicate groups
         $rem = [
@@ -571,10 +637,12 @@ class ApiPresenter extends APresenter
         }
 
         // translate group names
-        foreach ($groups as $k => $v) {
-            if (array_key_exists($k, $gtrans)) {
-                unset($groups[$k]);
-                $groups[$gtrans[$k]] = $v;
+        if ($gtrans ?? null) {
+            foreach ($groups as $k => $v) {
+                if (array_key_exists($k, $gtrans)) {
+                    unset($groups[$k]);
+                    $groups[$gtrans[$k]] = $v;
+                }
             }
         }
 
@@ -586,25 +654,27 @@ class ApiPresenter extends APresenter
          * 
          * @return bool
          */
+        // @codingStandardsIgnoreStart
+        /** @phpstan-ignore-next-line */
         function custom_string_compare($str1, $str2)
         {
             $alphabet = "0123456789"
-                . "AÁBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ"
-                . "aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž";
-            $l1 = mb_strlen($str1);
-            $l2 = mb_strlen($str2);
-            $c = min($l1, $l2);
+            . "AÁBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ"
+            . "aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž";
+            $l1 = \mb_strlen($str1);
+            $l2 = \mb_strlen($str2);
+            $c = \min($l1, $l2);
             for ($i = 0; $i < $c; $i++) {
-                $s1 = mb_substr($str1, $i, 1);
-                $s2 = mb_substr($str2, $i, 1);
+                $s1 = \mb_substr($str1, $i, 1);
+                $s2 = \mb_substr($str2, $i, 1);
                 if ($s1 === $s2) {
                     continue;
                 }
-                $i1 = mb_strpos($alphabet, $s1);
+                $i1 = \mb_strpos($alphabet, $s1);
                 if ($i1 === false) {
                     continue;
                 }
-                $i2 = mb_strpos($alphabet, $s2);
+                $i2 = \mb_strpos($alphabet, $s2);
                 if ($i2 === false) {
                     continue;
                 }        
@@ -624,9 +694,11 @@ class ApiPresenter extends APresenter
             }
             return 0;
         }
-
-        // custom string sorting: numbers, Czech uppercase, Czech lowercase
-        \uksort($groups, '\\GSC\\custom_string_compare');
+        
+        // custom sorter: numbers, Czech uppercase, Czech lowercase
+        /** @phpstan-ignore-next-line */
+        \uksort($groups, 'self::custom_string_compare');
+        // @codingStandardsIgnoreEnd
 
         return [
             "discounts" => $discounts,
@@ -657,7 +729,7 @@ class ApiPresenter extends APresenter
                 'sha256',
                 $this->getToday()
             )
-            . $this->getData('daily_salt_seed') ?? 'SALT_SEED_IS_IN_PRIVATE_CONFIG!'
+            . $this->getData('daily_salt_seed') ?: 'SALT_SEED_IS_IN_PRIVATE_CONFIG!'
         );
     }
 
@@ -670,6 +742,15 @@ class ApiPresenter extends APresenter
     {
         $hour = date("H");
         $uid = $this->getUID();
+        defined('SERVER') || define(
+            'SERVER',
+            strtolower(
+                preg_replace(
+                    "/[^A-Za-z0-9]/", '', $_SERVER['SERVER_NAME'] ?? 'localhost'
+                )
+            )
+        );
+        defined('PROJECT') || define('PROJECT', 'LASAGNA');
         $key = "access_limiter_" . SERVER . "_" . PROJECT . "_{$hour}_{$uid}";
         \error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
         $redis = new RedisClient(

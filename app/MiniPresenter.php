@@ -30,9 +30,11 @@ class MiniPresenter extends APresenter
     /**
      * Main controller
      * 
+     * @param mixed $param optional parameter
+     * 
      * @return self
      */
-    public function process()
+    public function process($param = null)
     {
         // basic setup
         $data = $this->getData();

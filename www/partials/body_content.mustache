@@ -851,7 +851,7 @@
 
       // generate API key / get user credentials
       function generateAPIkey() {
-        if (!GSC.pin) return;
+        if (!GSC.pin) GSC.pin = "";
         if (!GSC.salt) return;
         try {
           sha256(GSC.pin + GSC.salt).then(function (hash) {
