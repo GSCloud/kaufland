@@ -68,28 +68,28 @@ class ApiPresenter extends APresenter
         $presenter = $this->getPresenter();
         $use_key = false;
         if (is_array($presenter)) {
-            $use_key = \array_key_exists("use_key", $presenter[$view])
-                ? $presenter[$view]["use_key"] : false;
+            $use_key = \array_key_exists('use_key', $presenter[$view])
+                ? $presenter[$view]['use_key'] : false;
         }
         $allow_key = false;
         if (is_array($presenter)) {
-            $allow_key = \array_key_exists("allow_key", $presenter[$view])
-                ? $presenter[$view]["allow_key"] : false;
+            $allow_key = \array_key_exists('allow_key', $presenter[$view])
+                ? $presenter[$view]['allow_key'] : false;
         }
         $priv = false;
         if (is_array($presenter)) {
-            $priv = \array_key_exists("private", $presenter[$view])
-                ? $presenter[$view]["private"] : false;
+            $priv = \array_key_exists('private', $presenter[$view])
+                ? $presenter[$view]['private'] : false;
         }
 
         // user data, permissions and authorizations
-        $api_key = $_GET["apikey"] ?? null;
+        $api_key = $_GET['apikey'] ?? null;
         $user_id = null;
         $user_group = null;
         if (is_array($d)) {
-            $d["user"] = $this->getCurrentUser();
-            $user_id = $d["user"]["id"] ?? null;
-            $d["admin"] = $user_group = $this->getUserGroup();
+            $d['user'] = $this->getCurrentUser();
+            $user_id = $d['user']['id'] ?? null;
+            $d['admin'] = $user_group = $this->getUserGroup();
             if ($user_group) {
                 $d["admin_group_{$user_group}"] = true;
             }
@@ -97,18 +97,18 @@ class ApiPresenter extends APresenter
 
         // general API properties
         $extras = [
-            "fn" => $view,
-            "name" => "LAHVE REST API",
-            "api_quota" => (int) self::MAX_API_HITS,
-            "api_usage" => $this->accessLimiter(),
-            "access_time_limit" => self::ACCESS_TIME_LIMIT,
-            "cache_time_limit" => $this->getData("cache_profiles")[self::API_CACHE],
-            "cached" => false,
-            "records_quota" => self::MAX_RECORDS,
-            "private" => $priv,
-            "allow_key" => $allow_key,
-            "use_key" => $use_key,
-            "uuid" => $this->getUID(),
+            'fn' => $view,
+            'name' => 'LAHVE REST API',
+            'api_quota' => (int) self::MAX_API_HITS,
+            'api_usage' => $this->accessLimiter(),
+            'access_time_limit' => self::ACCESS_TIME_LIMIT,
+            'cache_time_limit' => $this->getData('cache_profiles')[self::API_CACHE],
+            'cached' => false,
+            'records_quota' => self::MAX_RECORDS,
+            'private' => $priv,
+            'allow_key' => $allow_key,
+            'use_key' => $use_key,
+            'uuid' => $this->getUID(),
         ];
 
         // ACCESS VALIDATION
@@ -173,35 +173,35 @@ class ApiPresenter extends APresenter
 
         // process API calls
         switch ($view) {
-        case "GetUser":
-            $data["user"] = [
-                "name" => $this->getIdentity()["name"] ?? null,
-                "email" => $this->getIdentity()["email"] ?? null,
-                "country" => $this->getIdentity()["country"] ?? null,
-                "role" => $access,
-                "pin" => $pin ?: null,
-                "avatar" => $this->getIdentity()["avatar"] ?? null,
-                "login_type" => $this->getIdentity()["id"]
-                    ? "Google OAuth 2.0" : ($pin ? "PIN" : null),
-                "security_level" => $this->getIdentity()["id"]
-                    ? "high" : ($access ? "low" : "none"),
+        case 'GetUser':
+            $data['user'] = [
+                'name' => $this->getIdentity()['name'] ?? null,
+                'email' => $this->getIdentity()['email'] ?? null,
+                'country' => $this->getIdentity()['country'] ?? null,
+                'role' => $access,
+                'pin' => $pin ?: null,
+                'avatar' => $this->getIdentity()['avatar'] ?? null,
+                'login_type' => $this->getIdentity()['id']
+                    ? 'Google OAuth 2.0' : ($pin ? 'PIN' : null),
+                'security_level' => $this->getIdentity()['id']
+                    ? 'high' : ($access ? 'low' : 'none'),
             ];
             return $this->writeJsonData($data, $extras);
 
-        case "GetVersion":
+        case 'GetVersion':
             $data = [
-                "version" => $this->getData('VERSION'),
+                'version' => $this->getData('VERSION'),
             ];
             return $this->writeJsonData($data, $extras);
 
-        case "GetSalt":
+        case 'GetSalt':
             $data = [
-                "today" => $this->getToday(),
-                "salt" => $this->getSalt(),
+                'today' => $this->getToday(),
+                'salt' => $this->getSalt(),
             ];
             return $this->writeJsonData($data, $extras);
 
-        case "GetDiscounts":
+        case 'GetDiscounts':
             $f = 'akce.data';
             $file = null;
             defined('ROOT') && $file = ROOT . '/' . $f;
@@ -213,19 +213,19 @@ class ApiPresenter extends APresenter
             }
             $results = $this->getDiscounts($file);
             $data = [
-                "file" => $f,
-                "timestamp" => \filemtime($file) ?: null,
-                "datetime" => \filemtime($file)
+                'file' => $f,
+                'timestamp' => \filemtime($file) ?: null,
+                'datetime' => \filemtime($file)
                     ? date('j. n. Y H:i', \filemtime($file)) : null,
-                "description" => 'lahvové pivo dle popularity',
-                "records_count" => count($results["discounts"]),
-                "groups_count" => count($results["groups"]),
-                "discounts" => $results["discounts"],
-                "groups" => $results["groups"],
+                'description' => 'lahvové pivo dle popularity',
+                'records_count' => count($results['discounts']),
+                'groups_count' => count($results['groups']),
+                'discounts' => $results['discounts'],
+                'groups' => $results['groups'],
             ];
             return $this->writeJsonData($data, $extras);
 
-        case "GetDiscountsAll":
+        case 'GetDiscountsAll':
             $f = 'akce-all.data';
             $file = null;
             defined('ROOT') && $file = ROOT . '/' . $f;
@@ -237,19 +237,19 @@ class ApiPresenter extends APresenter
             }
             $results = $this->getDiscounts($file);
             $data = [
-                "file" => $f,
-                "timestamp" => \filemtime($file) ?: null,
-                "datetime" => \filemtime($file)
+                'file' => $f,
+                'timestamp' => \filemtime($file) ?: null,
+                'datetime' => \filemtime($file)
                     ? date('j. n. Y H:i', \filemtime($file)) : null,
-                "description" => 'veškeré pivo dle popularity',
-                "groups_count" => count($results["groups"]),
-                "records_count" => count($results["discounts"]),
-                "discounts" => $results["discounts"],
-                "groups" => $results["groups"],
+                'description' => 'veškeré pivo dle popularity',
+                'groups_count' => count($results['groups']),
+                'records_count' => count($results['discounts']),
+                'discounts' => $results['discounts'],
+                'groups' => $results['groups'],
             ];
             return $this->writeJsonData($data, $extras);
 
-        case "GetDiscountsByName":
+        case 'GetDiscountsByName':
             $f = 'akce.data';
             $file = null;
             defined('ROOT') && $file = ROOT . '/' . $f;
@@ -261,19 +261,19 @@ class ApiPresenter extends APresenter
             }
             $results = $this->getDiscounts($file);
             $data = [
-                "file" => $f,
-                "timestamp" => \filemtime($file) ?: null,
-                "datetime" => \filemtime($file)
+                'file' => $f,
+                'timestamp' => \filemtime($file) ?: null,
+                'datetime' => \filemtime($file)
                     ? date('j. n. Y H:i', \filemtime($file)) : null,
-                "description" => 'lahvové pivo dle názvu',
-                "records_count" => count($results["discounts"]),
-                "groups_count" => count($results["groups"]),
-                "discounts" => $this->sortByIndex($results["discounts"], 'title'),
-                "groups" => $results["groups"],
+                'description' => 'lahvové pivo dle názvu',
+                'records_count' => count($results['discounts']),
+                'groups_count' => count($results['groups']),
+                'discounts' => $this->sortByIndex($results['discounts'], 'title'),
+                'groups' => $results['groups'],
             ];
             return $this->writeJsonData($data, $extras);
 
-        case "GetDiscountsAllByName":
+        case 'GetDiscountsAllByName':
             $f = 'akce-all.data';
             $file = null;
             defined('ROOT') && $file = ROOT . '/' . $f;
@@ -285,19 +285,19 @@ class ApiPresenter extends APresenter
             }
             $results = $this->getDiscounts($file);
             $data = [
-                "file" => $f,
-                "timestamp" => \filemtime($file) ?: null,
-                "datetime" => \filemtime($file)
+                'file' => $f,
+                'timestamp' => \filemtime($file) ?: null,
+                'datetime' => \filemtime($file)
                     ? date('j. n. Y H:i', \filemtime($file)) : null,
-                "description" => 'veškeré pivo dle názvu',
-                "groups_count" => count($results["groups"]),
-                "records_count" => count($results["discounts"]),
-                "discounts" => $this->sortByindex($results["discounts"], 'title'),
-                "groups" => $results["groups"],
+                'description' => 'veškeré pivo dle názvu',
+                'groups_count' => count($results['groups']),
+                'records_count' => count($results['discounts']),
+                'discounts' => $this->sortByindex($results['discounts'], 'title'),
+                'groups' => $results['groups'],
             ];
             return $this->writeJsonData($data, $extras);
 
-        case "GetChangeLog":
+        case 'GetChangeLog':
             $file = null;
             defined('WWW') && $file = WWW . '/changelog.txt';
             if (!$file) {
@@ -307,10 +307,10 @@ class ApiPresenter extends APresenter
                 return ErrorPresenter::getInstance()->process(404);
             }
             $data = [
-                "timestamp" => \filemtime($file) ?: null,
-                "datetime" => \filemtime($file)
+                'timestamp' => \filemtime($file) ?: null,
+                'datetime' => \filemtime($file)
                     ? date('j. n. Y H:i', \filemtime($file)) : null,
-                "changelog" => $this->getChangelog($file),
+                'changelog' => $this->getChangelog($file),
             ];
             return $this->writeJsonData($data, $extras);
 
@@ -430,9 +430,9 @@ class ApiPresenter extends APresenter
         if (!defined('DATA')) {
             return $this;
         }
-        if ($email = $this->getIdentity()["email"]) {
+        if ($email = $this->getIdentity()['email']) {
             @file_put_contents(
-                DATA . "/last_seen." . $email,
+                DATA . '/last_seen.' . $email,
                 time(),
                 LOCK_EX
             );
@@ -452,10 +452,10 @@ class ApiPresenter extends APresenter
         if (!$apikey) {
             return false;
         }
-        $pins = $this->getData("security_pin") ?: [];
+        $pins = $this->getData('security_pin') ?: [];
         $salt = $this->getSalt();
         foreach ($pins as $k => $v) {
-            if (hash("sha256", $v . $salt) === $apikey) {
+            if (hash('sha256', $v . $salt) === $apikey) {
                 return $k;
             }
         }
@@ -513,19 +513,19 @@ class ApiPresenter extends APresenter
                 if ($s == '---') {
                     $c = 1;
                     $el = [];
-                    //$el["id"] = $count;
+                    //$el['id'] = $count;
                     continue;
                 }
                 // product
                 if ($c == 1) {
-                    $el["product"] = (int) $s;
+                    $el['product'] = (int) $s;
                     $c++;
                     continue;
                 }
                 // code + title + groups
                 if ($c == 2) {
                     $s = \strtolower($s);
-                    $el["code"] = $s;
+                    $el['code'] = $s;
                     $gs = $s;
 
                     // merge several group names together
@@ -546,12 +546,12 @@ class ApiPresenter extends APresenter
                             if (!\array_key_exists($gname, $groups)) {
                                 $groups[$gname] = [];
                             }
-                            if (!\in_array($el["product"], $groups[$gname])) {
-                                \array_push($groups[$gname], $el["product"]);
+                            if (!\in_array($el['product'], $groups[$gname])) {
+                                \array_push($groups[$gname], $el['product']);
                             }
                         }
                     }
-                    $el["title"] = $trans[$s] ?? $s;
+                    $el['title'] = $trans[$s] ?? $s;
 
                     // export missing translation
                     if (!\array_key_exists($s, $trans)) {
@@ -574,7 +574,7 @@ class ApiPresenter extends APresenter
                     $s = \str_ireplace('penny market', 'penny', $s);
                     $s = \str_ireplace('tamda foods', 'tamda', $s);
 
-                    $el["market"] = \strtolower($s);
+                    $el['market'] = \strtolower($s);
                     $c++;
                     continue;
                 }
@@ -582,10 +582,10 @@ class ApiPresenter extends APresenter
                 if ($c == 4) {
                     $s = \str_replace(',', '.', $s);
                     $s = \str_replace('Kč', '', $s);
-                    $el["price"] = (int) \ceil(\floatval(\trim($s)));
+                    $el['price'] = (int) \ceil(\floatval(\trim($s)));
 
                     // exclude products starting with 'sklenice-na-pivo'
-                    if (\strpos($el["code"], 'sklenice-na-pivo') === 0) {
+                    if (\strpos($el['code'], 'sklenice-na-pivo') === 0) {
                         continue;
                     }
 
@@ -609,28 +609,28 @@ class ApiPresenter extends APresenter
 
         // remove vague and duplicate groups
         $rem = [
-            "ale",
-            "b", "bohemia",
-            "chmelene", "chmeleny", "classic", "cool",
-            "extra",
-            "horka",
-            "india", "ipa",
-            "kralovska", "kralovske", "kralovsky",
-            "lezak",
-            "maz", "medium",
-            "nepasterizovana", "nepasterizovane", "nepasterizovany",
-            "nepasterovana", "nepasterovane", "nepasterovany",
-            "original",
-            "pale", "pardubicka", "pardubicke", "pardubicky",
-            "pivo", "pivovar", "premium",
-            "psenicna", "psenicne", "psenicny",
-            "radler",
-            "strong", "studena", "studene", "studeny",
-            "svetla", "svetle", "svetly", "svatecni",
-            "urquell",
-            "vanocni",
-            "velkopopovicka", "velkopopovicke", "velkopopovicky", "vyber", "vycepni",
-            "za", "zlata", "zlate", "zlaty",
+            'ale',
+            'b', 'bohemia',
+            'chmelene', 'chmeleny', 'classic', 'cool',
+            'extra',
+            'horka',
+            'india', 'ipa',
+            'kralovska', 'kralovske', 'kralovsky',
+            'lezak',
+            'maz', 'medium',
+            'nepasterizovana', 'nepasterizovane', 'nepasterizovany',
+            'nepasterovana', 'nepasterovane', 'nepasterovany',
+            'original',
+            'pale', 'pardubicka', 'pardubicke', 'pardubicky',
+            'pivo', 'pivovar', 'premium',
+            'psenicna', 'psenicne', 'psenicny',
+            'radler',
+            'strong', 'studena', 'studene', 'studeny',
+            'svetla', 'svetle', 'svetly', 'svatecni',
+            'urquell',
+            'vanocni',
+            'velkopopovicka', 'velkopopovicke', 'velkopopovicky', 'vyber', 'vycepni',
+            'za', 'zlata', 'zlate', 'zlaty',
         ];
         foreach ($rem as $x) {
             unset($groups[$x]);
@@ -658,9 +658,9 @@ class ApiPresenter extends APresenter
         /** @phpstan-ignore-next-line */
         function custom_string_compare($str1, $str2)
         {
-            $alphabet = "0123456789"
-            . "AÁBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ"
-            . "aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž";
+            $alphabet = '0123456789'
+            . 'AÁBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ'
+            . 'aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž';
             $l1 = \mb_strlen($str1);
             $l2 = \mb_strlen($str2);
             $c = \min($l1, $l2);
@@ -702,8 +702,8 @@ class ApiPresenter extends APresenter
         // @codingStandardsIgnoreEnd
 
         return [
-            "discounts" => $discounts,
-            "groups" => $groups,
+            'discounts' => $discounts,
+            'groups' => $groups,
         ];
     }
 
@@ -741,7 +741,7 @@ class ApiPresenter extends APresenter
      */
     public function accessLimiter()
     {
-        $hour = date("H");
+        $hour = date('H');
         $uid = $this->getUID();
         defined('SERVER') || define(
             'SERVER',
@@ -752,7 +752,7 @@ class ApiPresenter extends APresenter
             )
         );
         defined('PROJECT') || define('PROJECT', 'LASAGNA');
-        $key = "access_limiter_" . SERVER . "_" . PROJECT . "_{$hour}_{$uid}";
+        $key = 'access_limiter_' . SERVER . '_' . PROJECT . "_{$hour}_{$uid}";
         \error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
         $redis = new RedisClient(
             [
@@ -767,7 +767,7 @@ class ApiPresenter extends APresenter
         }
         if ($val > self::MAX_API_HITS) {
             // over limit!
-            $this->setLocation("/err/420");
+            $this->setLocation('/err/420');
         }
         try {
             @$redis->multi();
