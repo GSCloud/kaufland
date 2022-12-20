@@ -1,3 +1,100 @@
+<div id="user" class="white-text hidden section">
+  <div class="center-align padding">
+    <div class="left-align no-padding" tabindex="-1">
+      <div class="center padding">
+        {{ l.info_demo }}
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <div class="small field label prefix border">
+            <i>password</i>
+            <input id="pin" autocomplete="off" name="pin" type="password"/>
+            <label>PIN</label>
+          </div>
+        </div>
+        <div class="col s6">
+          <button class="responsive blue white-text save_pin bold">
+            {{ l.but_save_pin }}
+          </button>
+        </div>
+      </div>
+      {{^user.id}}
+      <div class="container">
+        <div class="row">
+          <div class="column">
+            <div class="center">
+              {{>login}}
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/user.id}}
+      <div class="center-align small-padding" tabindex="-1">
+        <div id="role_row" class="hidden">{{ l.text_role }} <b id="role"></b><br></div>
+        <div id="login_type_row" class="hidden">{{ l.text_login_type }} <b id="login_type"></b><br></div>
+        <div id="security_level_row" class="hidden">
+          {{ l.text_security_level }} <b id="security_level"></b><br>
+          {{#user.id}}{{ l.text_encryption }} <b>XChaCha20 + BLAKE2b-MAC</b><br>{{/user.id}}
+        </div>
+        {{l.text_quota }}&nbsp;<span class="bold quota_actual"></span>/<span class="bold quota_total"></span>
+      </div>
+      {{#user.id}}
+      <article class="border">
+        <div class="row">
+          <div class="column">
+            <div class="center">
+              {{>logout}}
+            </div>
+          </div>
+        </div>
+      </article>
+      {{/user.id}}
+    </div>
+  </div>
+{{#admin_group_tester}}
+    <div class="center-align padding" tabindex="-1">
+      <a href="?cssdebug=1&nonce={{ nonce }}" class="">
+        <button class="responsive blue bold white-text">CSS debugger</button>
+      </a>
+    </div>
+    <article id="debuglist" class="truncate left-align black small-padding small-text" tabindex="-1">
+    </article>
+{{/admin_group_tester}}
+</div>
+<div id="config" class="white-text hidden section">
+  <div class="center-align padding">
+    <div class="padding" tabindex="-1">
+      <div class="row large-space">
+        <div class="col s6 right-align">
+          <label class="switch">
+            <input type="checkbox" class="ui">
+            <span>{{ l.switch_design }}</span>
+          </label>
+        </div>
+        <div class="col s6 left-align">
+          <label class="switch">
+            <input type="checkbox" class="vibrate">
+            <span>{{ l.switch_vibrate }}</span>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6 right-align">
+          <label class="switch">
+            <input type="checkbox" class="sfx">
+            <span>{{ l.switch_sfx }}</span>
+          </label>
+        </div>
+        <div class="col s6 left-align">
+          <label class="switch">
+            <input type="checkbox" class="music">
+            <span>{{ l.switch_music }}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div id="appinfo_modal" class="modal hidden">
   <article class="no-padding">
     <div class="row no-wrap no-space">
@@ -173,103 +270,7 @@
     </div>
   </div>
 </div>
-<div id="config" class="white-text hidden section">
-  <div class="center-align padding">
-    <div class="padding" tabindex="-1">
-      <div class="row large-space">
-        <div class="col s6 right-align">
-          <label class="switch">
-            <input type="checkbox" class="ui">
-            <span>{{ l.switch_design }}</span>
-          </label>
-        </div>
-        <div class="col s6 left-align">
-          <label class="switch">
-            <input type="checkbox" class="vibrate">
-            <span>{{ l.switch_vibrate }}</span>
-          </label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s6 right-align">
-          <label class="switch">
-            <input type="checkbox" class="sfx">
-            <span>{{ l.switch_sfx }}</span>
-          </label>
-        </div>
-        <div class="col s6 left-align">
-          <label class="switch">
-            <input type="checkbox" class="music">
-            <span>{{ l.switch_music }}</span>
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="user" class="white-text hidden section">
-  <div class="center-align padding">
-    <div class="left-align no-padding" tabindex="-1">
-      <div class="center padding">
-        {{ l.info_demo }}
-      </div>
-      <div class="row">
-        <div class="col s6">
-          <div class="small field label prefix border">
-            <i>password</i>
-            <input id="pin" autocomplete="off" name="pin" type="password"/>
-            <label>PIN</label>
-          </div>
-        </div>
-        <div class="col s6">
-          <button class="responsive blue white-text save_pin bold">
-            {{ l.but_save_pin }}
-          </button>
-        </div>
-      </div>
-      {{^user.id}}
-      <div class="container">
-        <div class="row">
-          <div class="column">
-            <div class="center">
-              {{>login}}
-            </div>
-          </div>
-        </div>
-      </div>
-      {{/user.id}}
-      <div class="center-align small-padding" tabindex="-1">
-        <div id="role_row" class="hidden">{{ l.text_role }} <b id="role"></b><br></div>
-        <div id="login_type_row" class="hidden">{{ l.text_login_type }} <b id="login_type"></b><br></div>
-        <div id="security_level_row" class="hidden">
-          {{ l.text_security_level }} <b id="security_level"></b><br>
-          {{#user.id}}{{ l.text_encryption }} <b>XChaCha20 + BLAKE2b-MAC</b><br>{{/user.id}}
-        </div>
-        {{l.text_quota }}&nbsp;<span class="bold quota_actual"></span>/<span class="bold quota_total"></span>
-      </div>
-      {{#user.id}}
-      <article class="border">
-        <div class="row">
-          <div class="column">
-            <div class="center">
-              {{>logout}}
-            </div>
-          </div>
-        </div>
-      </article>
-      {{/user.id}}
-    </div>
-  </div>
-{{#admin_group_tester}}
-    <div class="center-align padding" tabindex="-1">
-      <a href="?cssdebug=1&nonce={{ nonce }}" class="">
-        <button class="responsive blue bold white-text">CSS debugger</button>
-      </a>
-    </div>
-    <article id="debuglist" class="truncate left-align black small-padding small-text" tabindex="-1">
-    </article>
-{{/admin_group_tester}}
-</div>
+
 
 <script>
   (function (w, $, undefined) {

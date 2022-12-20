@@ -28,10 +28,12 @@ class LahvePresenter extends APresenter
 {
     /**
      * Main controller
+     * 
+     * @param mixed $param optional parameter
      *
      * @return self
      */
-    public function process()
+    public function process($param = null)
     {
         // basic setup
         $data = $this->getData();
@@ -49,7 +51,6 @@ class LahvePresenter extends APresenter
         );
         if ($use_cache && $output = Cache::read($cache_key, "page")) {
             header("X-Cached: true");
-
             return $this->setData("output", $output);
         }
 
@@ -58,7 +59,6 @@ class LahvePresenter extends APresenter
         StringFilters::trim_html_comment($output);
         Cache::write($cache_key, $output, "page");
         header("X-Cached: false");
-
         return $this->setData("output", $output);
     }
 }

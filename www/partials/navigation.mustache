@@ -211,14 +211,13 @@
         $('#pin').val(GSC.pin);
         if (!GSC.pin.length) { // no PIN - no fun
           GSC.apikey = null;
-          GSC.pin = null;
+          GSC.pin = '';
+        } else {
+          setTimeout(function () { // TOAST
+            $('#pin_saved').addClass('active');
+          }, 10);
         }
         GSC.DefClick();
-
-        setTimeout(function () { // TOAST
-          $('#pin_saved').addClass('active');
-        }, 10);
-
         GSC.user_timestamp = null;
         GSC.GenerateAPIkey();
       });
@@ -517,7 +516,7 @@
       // UI
       setUImode();
       $('nav,body,#offline,.modal,.toast').removeClass('hidden');
-      $('nav,body').hide().show(350);
+      $('nav,body').hide().fadeIn(350);
 
       // UI fix for touch devices
       if (GSC.touch) {

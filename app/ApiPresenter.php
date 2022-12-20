@@ -696,6 +696,7 @@ class ApiPresenter extends APresenter
         }
         
         // custom sorter: numbers, Czech uppercase, Czech lowercase
+
         /** @phpstan-ignore-next-line */
         \uksort($groups, 'self::custom_string_compare');
         // @codingStandardsIgnoreEnd
