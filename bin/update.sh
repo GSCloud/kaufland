@@ -50,7 +50,8 @@ cp akce-all-$d.data akce_archiv/
 git add -A
 
 # clean up
-rm akce.html beer*.html >/dev/null 2>&1
+info Cleaning
+rm *.html >/dev/null 2>&1
 find . -maxdepth 1 -name "akce-[0-9]*.data" -mtime +10 -delete
 find . -maxdepth 1 -name "akce-all-[0-9]*.data" -mtime +10 -delete
 
