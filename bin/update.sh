@@ -19,7 +19,7 @@ find www/cdn-assets/ -type l -mtime +30 -delete
 # composer
 command -v composer >/dev/null 2>&1 || fail "PHP composer is not installed!"
 composer update --no-plugins --no-scripts
-echo -en "\n\n"
+echo -en "\n"
 
 # get beer prices HTML5 raw data + preprocess
 d=$(date +'%Y%m%d')
@@ -39,7 +39,7 @@ fi
 # show discounts info
 A=$(cat akce.data | grep '\-\-\-' | wc -l)
 B=$(cat akce-all.data | grep '\-\-\-' | wc -l)
-info "Discounts - bottles: $A, all: $B\n\n"
+info "Discounts - bottles: $A, all: $B\n"
 
 # data backups
 cp akce.data akce-$d.data
