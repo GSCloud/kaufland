@@ -1,5 +1,5 @@
 #!/bin/bash
-#@author Filip Oščádal <git@gscloud.cz>
+#@author Fred Brooker <git@gscloud.cz>
 
 dir="$(dirname "$0")"
 . "$dir/_includes.sh"
@@ -28,10 +28,10 @@ if [ ! -f "akce-$d.data" ]; then
   rm -f data/missing_translations.txt
   wget -O beer1.html 'https://www.kupi.cz/hledej?f=pivo&vse=0'
   for i in {2..8}; do wget -O "beer$i.html" 'https://www.kupi.cz/hledej?page='$i'&f=pivo&vse=0'; sleep 1; done
-  # parse BOTTLED PRICES using Red-lang + fix text
+  # parse BOTTLED PRICES using Red + fix output
   cat beer*.html | tr '\n' ' ' | sed 's/<tr/\n<tr/g' | grep 'záloha' > akce.html
   ./akce | sed 's/&nbsp;/ /g' | sed 's/&ndash;//g' > akce.data
-  # parse ALL PRICES using Red-lang + fix text
+  # parse ALL PRICES using Red + fix output
   cat beer*.html | tr '\n' ' ' | sed 's/<tr/\n<tr/g' > akce.html
   ./akce | sed 's/&nbsp;/ /g' | sed 's/&ndash;//g' > akce-all.data
 fi
@@ -52,8 +52,8 @@ git add -A
 # clean up
 info Cleaning
 rm *.html >/dev/null 2>&1
-find . -maxdepth 1 -name "akce-[0-9]*.data" -mtime +10 -delete
-find . -maxdepth 1 -name "akce-all-[0-9]*.data" -mtime +10 -delete
+find . -maxdepth 1 -name "akce-[0-9]*.data" -mtime +10 -delete >/dev/null 2>&1
+find . -maxdepth 1 -name "akce-all-[0-9]*.data" -mtime +10 -delete >/dev/null 2>&1
 
 # CRLF normalization
 git add --renormalize .
