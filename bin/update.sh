@@ -52,6 +52,7 @@ git add -A
 # clean up
 info Cleaning
 rm *.html >/dev/null 2>&1
+sync
 find . -maxdepth 1 -name "akce-[0-9]*.data" -mtime +10 -delete >/dev/null 2>&1
 find . -maxdepth 1 -name "akce-all-[0-9]*.data" -mtime +10 -delete >/dev/null 2>&1
 
