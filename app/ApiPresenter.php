@@ -604,6 +604,7 @@ class ApiPresenter extends APresenter
             'extra',
             'horka',
             'india', 'ipa',
+            'jedenactka',
             'kralovska', 'kralovske', 'kralovsky',
             'lezak',
             'maz', 'medium',
@@ -614,6 +615,7 @@ class ApiPresenter extends APresenter
             'pivo', 'pivovar', 'premium',
             'psenicna', 'psenicne', 'psenicny',
             'radler',
+            'stare',
             'strong', 'studena', 'studene', 'studeny',
             'svetla', 'svetle', 'svetly', 'svatecni',
             'urquell',
@@ -635,60 +637,7 @@ class ApiPresenter extends APresenter
             }
         }
 
-        /**
-         * Custom string comparison
-         *
-         * @param string $str1 string #1
-         * @param string $str2 string #2
-         * 
-         * @return bool
-         */
-        // @codingStandardsIgnoreStart
-        /** @phpstan-ignore-next-line */
-        function custom_string_compare($str1, $str2)
-        {
-            $alphabet = '0123456789'
-            . 'AÁBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ'
-            . 'aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž';
-            $l1 = \mb_strlen($str1);
-            $l2 = \mb_strlen($str2);
-            $c = \min($l1, $l2);
-            for ($i = 0; $i < $c; $i++) {
-                $s1 = \mb_substr($str1, $i, 1);
-                $s2 = \mb_substr($str2, $i, 1);
-                if ($s1 === $s2) {
-                    continue;
-                }
-                $i1 = \mb_strpos($alphabet, $s1);
-                if ($i1 === false) {
-                    continue;
-                }
-                $i2 = \mb_strpos($alphabet, $s2);
-                if ($i2 === false) {
-                    continue;
-                }        
-                if ($i2 === $i1) {
-                    continue;
-                }
-                if ($i1 < $i2) {
-                    return -1;
-                } else {
-                    return 1;
-                }
-            }
-            if ($l1 < $l2) {
-                return -1;
-            } elseif ($l1 > $l2) {
-                return 1;
-            }
-            return 0;
-        }
-        
-        // custom sorter: numbers, Czech uppercase, Czech lowercase
-
-        /** @phpstan-ignore-next-line */
-        \uksort($groups, 'self::custom_string_compare');
-        // @codingStandardsIgnoreEnd
+        \ksort($groups);
 
         return [
             'discounts' => $discounts,
