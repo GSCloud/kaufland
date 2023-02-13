@@ -21,7 +21,7 @@ class LogoutPresenter extends APresenter
      * Controller processor
      * 
      * @param mixed $param optional parameter
-     *
+     * 
      * @return void
      */
     public function process($param = null)

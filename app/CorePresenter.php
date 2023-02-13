@@ -26,7 +26,7 @@ class CorePresenter extends APresenter
     /**
      * Main controller
      * 
-     * @param mixed $param optional
+     * @param mixed $param optional parameter
      *
      * @return void
      */

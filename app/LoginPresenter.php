@@ -16,7 +16,9 @@ class LoginPresenter extends APresenter
 {
     /**
      * Main controller
-     *
+     * 
+     * @param mixed $param optional parameter
+     * 
      * @return void
      */
     public function process($param = null)
@@ -100,12 +102,7 @@ class LoginPresenter extends APresenter
                     "name" => $ownerDetails->getName(),
                     ]
                 );
-                $this->addMessage(
-                    "Google login: "
-                    . $ownerDetails->getName()
-                    . " "
-                    . $ownerDetails->getEmail()
-                );
+                $this->addMessage("Google login: " . $ownerDetails->getName() . " " . $ownerDetails->getEmail());
                 //$this->addAuditMessage("GOOGLE OAUTH LOGIN");
 
                 /*
@@ -128,13 +125,7 @@ class LoginPresenter extends APresenter
                 $this->clearCookie('oauth2state');
                 // store email for the next run
                 if (strlen($ownerDetails->getEmail())) {
-                    \setcookie(
-                        'login_hint',
-                        $ownerDetails->getEmail() ?? '',
-                        time() + 86400 * 31,
-                        "/",
-                        DOMAIN
-                    );
+                    \setcookie('login_hint', $ownerDetails->getEmail() ?? '', time() + 86400 * 31, "/", DOMAIN);
                 }
                 $this->clearCookie("oauth2state");
                 $this->setLocation("/{$nonce}");

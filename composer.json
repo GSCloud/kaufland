@@ -1,5 +1,5 @@
 {
-    "name": "gscloud/tesseractapp",
+    "name": "gscloud/tesseract-app",
     "description": "Tesseract App",
     "require": {
         "adbario/php-dot-notation": "^3",
