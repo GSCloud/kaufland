@@ -1,3 +1,4 @@
+
 nealkoholicke-pivo-argus: 'Argus nealko'
 nealkoholicke-pivo-bernard: 'Bernard nealko'
 nealkoholicke-pivo-bertold: 'Bertold nealko'
@@ -211,6 +212,7 @@ pivo-svetly-lezak-faxe: 'Faxe ležák'
 pivo-svetly-lezak-heineken-soudek: 'Heineken ležák (soudek)'
 pivo-svetly-lezak-heineken: 'Heineken ležák'
 pivo-svetly-lezak-horal: 'Horal 11°'
+pivo-svetly-lezak-huhnak-maxx-11: 'Huhňák Maxx 11° ležák'
 pivo-svetly-lezak-india-pale-ale-primator: 'Primátor India Pale Ale'
 pivo-svetly-lezak-keltske-dedictvi: 'Keltské dědictví ležák'
 pivo-svetly-lezak-krusovice: 'Krušovice ležák'
@@ -261,7 +263,8 @@ pivo-vratislavicky-svetly-lezak-11-konrad: 'Konrád 11°'
 pivo-weissbier-paulaner: 'Paulaner Hefe-Weißbier'
 pivo-zeleny-lezak-bohemia-regent: 'Bohemia-Regent ležák'
 pivo-zlaty-bazant: 'Zlatý Bažant'
-sklenice-na-pivo-banquet: 'sklenice na pivo Banquet' # excluded
+sklenice-na-pivo-banquet: '' # excluded
 sklenice-na-pivo-nekupto: '' # excluded
+sklenice-na-pivo-pasabahce: '' # excluded
 sklenice-na-pivo-tesco: '' # excluded
-sklenice-na-pivo: 'sklenice na pivo' # excluded
+sklenice-na-pivo: '' # excluded
