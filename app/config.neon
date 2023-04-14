@@ -49,7 +49,7 @@ data: [
 # locale
 lang: cs
 l:
-  author: 'Fred Brooker @ GS Cloud Ltd. 2022'
+  author: 'Fred Brooker @ GS Cloud Ltd. 2022-2023'
   but_api: '<i>settings_input_component</i>&nbsp;&nbsp;REST API'
   but_beer_all: 'vše'
   but_beer_bottled: 'lahvové'
