@@ -578,6 +578,14 @@ class ApiPresenter extends APresenter
                         continue;
                     }
 
+                    // exclude products which title gets translated to 'x'
+                    if (array_key_exists(
+                        $el['code'], $trans
+                    ) && $trans[$el['code']] == 'x'
+                    ) {
+                        continue;
+                    }
+
                     \array_push($discounts, $el);
                     $count++;
                     if ($count == self::MAX_RECORDS) {
