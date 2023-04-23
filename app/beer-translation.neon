@@ -12,6 +12,7 @@ nealkoholicke-pivo-heineken: 'Heineken nealko'
 nealkoholicke-pivo-holba: 'Holba nealko'
 nealkoholicke-pivo-ipa-birell: 'Birell IPA nealko'
 nealkoholicke-pivo-kozel: 'Kozel nealko'
+nealkoholicke-pivo-nastro-azzurro-peroni: 'Peroni Nastro Azzurro nealko'
 nealkoholicke-pivo-ochucene-bernard: 'Bernard ochucené nealko'
 nealkoholicke-pivo-ochucene-birell: 'Birell ochucené nealko'
 nealkoholicke-pivo-ochucene-birgo: 'Birgo ochucené nealko'
@@ -43,6 +44,7 @@ pivo-cerne-vycepni-10-krusovice: 'Krušovice 10° černé'
 pivo-cerne-vycepni-10-velkopopovicky-kozel: 'Velkopopovický Kozel černá 10°'
 pivo-cerne-vycepni-kralovske-10-krusovice: 'Krušovice Královské černé 10°'
 pivo-demon-pekelna-nadilka-lobkowicz: 'Lobkowicz Démon Pekelná nadílka'
+pivo-desperados-soudek: 'Desperados (soudek)'
 pivo-desperados: 'Desperados'
 pivo-exportni-lezak-brouczech-pivovar-nova-paka: 'BrouCzech Exportní ležák'
 pivo-extra-strong-bear-beer-harboe: 'Harboe Bear Extra Strong'
@@ -63,6 +65,7 @@ pivo-kvasnicova-10-bernard: 'Bernard 10° kvasnicová'
 pivo-lezak-11-rezany-velkopopovicky-kozel: 'Velkopopovický Kozel 11° řezaný ležák'
 pivo-lezak-11-velkopopovicky-kozel: 'Velkopopovický Kozel 11°'
 pivo-lezak-12-bernard: 'Bernard 12°'
+pivo-lezak-rastinger: 'Rastinger ležák'
 pivo-lezak-staropramen: 'Staropramen ležák'
 pivo-lezak-svetly-mythos: 'Mythos ležák'
 pivo-mandlovy-valentynsky-lezak-hustopecska-mandlarna: 'Mandlový valentýnský ležák Hustopečská mandlárna'
@@ -213,6 +216,7 @@ pivo-svetly-lezak-bez-lepku-12-premium-ferdinand: 'Ferdinand Premium bezlepková
 pivo-svetly-lezak-bez-lepku-bernard: 'Bernard ležák bez lepku'
 pivo-svetly-lezak-birra-moretti: 'Birra Moretti ležák'
 pivo-svetly-lezak-bitr-starobrno: 'Starobrno Bitr'
+pivo-svetly-lezak-bohem-krusovice: 'Krušovice Bohém ležák'
 pivo-svetly-lezak-branik: 'Braník ležák'
 pivo-svetly-lezak-bruncvik: 'Bruncvík ležák'
 pivo-svetly-lezak-budweiser-budvar: 'Budweiser Budvar ležák'
@@ -277,5 +281,6 @@ pivonka-paeonia: 'x'  # excluded
 sklenice-na-pivo-banquet: '' # excluded
 sklenice-na-pivo-nekupto: '' # excluded
 sklenice-na-pivo-pasabahce: '' # excluded
+sklenice-na-pivo-pilsner-urquell: '' # excluded
 sklenice-na-pivo-tesco: '' # excluded
 sklenice-na-pivo: '' # excluded
