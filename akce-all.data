@@ -11,6 +11,11 @@ Globus
 ---
 618
 pivo-pilsner-urquell
+Lidl
+161,40 Kč
+---
+618
+pivo-pilsner-urquell
 Globus
 26,90 Kč
 ---
@@ -221,6 +226,11 @@ Tesco
 ---
 579
 pivo-svetle-vycepni-10-branik
+Lidl
+37,90 Kč
+---
+579
+pivo-svetle-vycepni-10-branik
 Kaufland
 9,90 Kč
 ---
@@ -426,6 +436,11 @@ Albert
 ---
 215547
 pivo-lezak-11-velkopopovicky-kozel
+Lidl
+13,90 Kč
+---
+215547
+pivo-lezak-11-velkopopovicky-kozel
 FLOP TOP
 13,90 Kč
 ---
@@ -511,6 +526,11 @@ Albert
 ---
 104712
 pivo-svetle-vycepni-10-smichov-staropramen
+Lidl
+10,90 Kč
+---
+104712
+pivo-svetle-vycepni-10-smichov-staropramen
 CBA
 11,90 Kč
 ---
@@ -563,6 +583,11 @@ Tesco
 pivo-svetle-kralovsky-lezak-12-krusovice
 Kaufland
 12,90 Kč
+---
+150584
+pivo-svetle-kralovsky-lezak-12-krusovice
+Lidl
+127,20 Kč
 ---
 150584
 pivo-svetle-kralovsky-lezak-12-krusovice
@@ -764,6 +789,11 @@ pivo-svetly-lezak-11-primator
 Kaufland
 9,90 Kč
 ---
+90067
+pivo-svetly-lezak-11-premium-argus
+Lidl
+7,90 Kč
+---
 223695
 pivo-plne-svetle-psenicne-nefiltrovane-12-staropramen
 Albert
@@ -853,16 +883,6 @@ BILLA
 pivo-cerny-lezak-12-bernard
 Globus
 18,90 Kč
----
-33293
-pivo-svetly-lezak-branik
-Penny Market
-10,90 Kč
----
-33293
-pivo-svetly-lezak-branik
-CBA
-16,90 Kč
 ---
 16266
 pivo-svetly-lezak-corona-extra
@@ -904,6 +924,11 @@ pivo-svetly-lezak-11-primator
 Kaufland
 9,90 Kč
 ---
+90067
+pivo-svetly-lezak-11-premium-argus
+Lidl
+7,90 Kč
+---
 223695
 pivo-plne-svetle-psenicne-nefiltrovane-12-staropramen
 Albert
@@ -1274,30 +1299,15 @@ pivo-mixpack-vyber-sladku-na-gril
 BILLA
 119,90 Kč
 ---
-625
-nealkoholicke-pivo-birell
-Tesco
-11,90 Kč
+33293
+pivo-svetly-lezak-branik
+Penny Market
+10,90 Kč
 ---
-625
-nealkoholicke-pivo-birell
-Globus
-11,90 Kč
----
-625
-nealkoholicke-pivo-birell
-Albert
-12,90 Kč
----
-625
-nealkoholicke-pivo-birell
-FLOP TOP
-18,90 Kč
----
-625
-nealkoholicke-pivo-birell
-FLOP
-18,90 Kč
+33293
+pivo-svetly-lezak-branik
+CBA
+16,90 Kč
 ---
 4624
 pivo-svetle-vycepni-10-original-ostravar
@@ -1586,6 +1596,11 @@ Albert
 ---
 625
 nealkoholicke-pivo-birell
+Lidl
+12,90 Kč
+---
+625
+nealkoholicke-pivo-birell
 FLOP TOP
 18,90 Kč
 ---
@@ -1648,6 +1663,11 @@ Globus
 nealkoholicke-pivo-ochucene-staropramen-cool
 BILLA
 33,90 Kč
+---
+67344
+nealkoholicke-pivo-ochucene-staropramen-cool
+Lidl
+14,90 Kč
 ---
 67344
 nealkoholicke-pivo-ochucene-staropramen-cool
@@ -1778,6 +1798,11 @@ BILLA
 nealkoholicke-pivo-svetle-free-bear
 CBA
 10,99 Kč
+---
+260855
+pivo-svetly-lezak-premium-lobkowicz
+Albert
+13,90 Kč
 ---
 17881
 pivo-polotmavy-lezak-granat-staropramen
@@ -1941,6 +1966,11 @@ Albert
 ---
 625
 nealkoholicke-pivo-birell
+Lidl
+12,90 Kč
+---
+625
+nealkoholicke-pivo-birell
 FLOP TOP
 18,90 Kč
 ---
@@ -2003,6 +2033,11 @@ Globus
 nealkoholicke-pivo-ochucene-staropramen-cool
 BILLA
 33,90 Kč
+---
+67344
+nealkoholicke-pivo-ochucene-staropramen-cool
+Lidl
+14,90 Kč
 ---
 67344
 nealkoholicke-pivo-ochucene-staropramen-cool
@@ -2134,6 +2169,36 @@ nealkoholicke-pivo-svetle-free-bear
 CBA
 10,99 Kč
 ---
+625
+nealkoholicke-pivo-birell
+Tesco
+11,90 Kč
+---
+625
+nealkoholicke-pivo-birell
+Globus
+11,90 Kč
+---
+625
+nealkoholicke-pivo-birell
+Albert
+12,90 Kč
+---
+625
+nealkoholicke-pivo-birell
+Lidl
+12,90 Kč
+---
+625
+nealkoholicke-pivo-birell
+FLOP TOP
+18,90 Kč
+---
+625
+nealkoholicke-pivo-birell
+FLOP
+18,90 Kč
+---
 15053
 nealkoholicke-pivo-ochucene-birell
 Albert
@@ -2188,6 +2253,11 @@ Globus
 nealkoholicke-pivo-ochucene-staropramen-cool
 BILLA
 33,90 Kč
+---
+67344
+nealkoholicke-pivo-ochucene-staropramen-cool
+Lidl
+14,90 Kč
 ---
 67344
 nealkoholicke-pivo-ochucene-staropramen-cool
