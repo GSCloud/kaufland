@@ -598,7 +598,7 @@ class ApiPresenter extends APresenter
         // @codingStandardsIgnoreStart
         foreach ($groups as $k => $v) {
             /** @phpstan-ignore-next-line */
-            if (\count($v) < 2) {
+            if (\count($v) < 3) {
                 unset($groups[$k]);
             }
         }
@@ -616,6 +616,7 @@ class ApiPresenter extends APresenter
             'kralovska', 'kralovske', 'kralovsky',
             'lezak',
             'maz', 'medium',
+            'na', 'nova',
             'nepasterizovana', 'nepasterizovane', 'nepasterizovany',
             'nepasterovana', 'nepasterovane', 'nepasterovany',
             'original',
