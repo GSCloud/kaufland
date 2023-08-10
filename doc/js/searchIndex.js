@@ -86,11 +86,6 @@ Search.appendIndex(
             "summary": "Exception\u0020handler",
             "url": "namespaces/gsc.html#function_exceptionErrorHandler"
         },                {
-            "fqsen": "\\GSC\\logger\u0028\u0029",
-            "name": "logger",
-            "summary": "Google\u0020Stackdriver\u0020logger",
-            "url": "namespaces/gsc.html#function_logger"
-        },                {
             "fqsen": "\\GSC\\APresenter",
             "name": "APresenter",
             "summary": "Abstract\u0020Presenter\u0020class",
@@ -908,7 +903,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\GSC\\Doctor",
             "name": "Doctor",
-            "summary": "Doctor\u0020CLI\u0020class",
+            "summary": "Doctor",
             "url": "classes/GSC-Doctor.html"
         },                {
             "fqsen": "\\GSC\\Doctor\u003A\u003A__construct\u0028\u0029",
