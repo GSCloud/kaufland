@@ -888,7 +888,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\GSC\\CliVersion\u003A\u003Aprocess\u0028\u0029",
             "name": "process",
-            "summary": "Controller\u0020processor",
+            "summary": "Controller\u0020processor\u0020\u002D\u0020Show\u0020version\u0020information\u0020as\u0020a\u0020JSON\u0020formatted\u0020string.",
             "url": "classes/GSC-CliVersion.html#method_process"
         },                {
             "fqsen": "\\GSC\\CorePresenter",
@@ -963,12 +963,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\GSC\\LoginPresenter",
             "name": "LoginPresenter",
-            "summary": "Login\u0020Presenter",
+            "summary": "Login\u0020Presenter\u0020class",
             "url": "classes/GSC-LoginPresenter.html"
         },                {
             "fqsen": "\\GSC\\LoginPresenter\u003A\u003Aprocess\u0028\u0029",
             "name": "process",
-            "summary": "Main\u0020controller",
+            "summary": "Controller\u0020processor",
             "url": "classes/GSC-LoginPresenter.html#method_process"
         },                {
             "fqsen": "\\GSC\\LogoutPresenter",
@@ -1058,27 +1058,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\GSC\\IStringFilters\u003A\u003Aconvert_eol_to_br\u0028\u0029",
             "name": "convert_eol_to_br",
-            "summary": "",
+            "summary": "Convert\u0020EOLs\u0020to\u0020\u003Cbr\u003E",
             "url": "classes/GSC-IStringFilters.html#method_convert_eol_to_br"
         },                {
             "fqsen": "\\GSC\\IStringFilters\u003A\u003Aconvert_eolhyphen_to_brdot\u0028\u0029",
             "name": "convert_eolhyphen_to_brdot",
-            "summary": "",
+            "summary": "Convert\u0020EOL\u0020\u002B\u0020hyphen\/star\u0020to\u0020HTML",
             "url": "classes/GSC-IStringFilters.html#method_convert_eolhyphen_to_brdot"
         },                {
             "fqsen": "\\GSC\\IStringFilters\u003A\u003Acorrect_text_spacing\u0028\u0029",
             "name": "correct_text_spacing",
-            "summary": "",
+            "summary": "Correct\u0020text\u0020spacing",
             "url": "classes/GSC-IStringFilters.html#method_correct_text_spacing"
         },                {
             "fqsen": "\\GSC\\IStringFilters\u003A\u003Atrim_eol\u0028\u0029",
             "name": "trim_eol",
-            "summary": "",
+            "summary": "Trim\u0020various\u0020EOL\u0020combinations",
             "url": "classes/GSC-IStringFilters.html#method_trim_eol"
         },                {
             "fqsen": "\\GSC\\IStringFilters\u003A\u003Atrim_html_comment\u0028\u0029",
             "name": "trim_html_comment",
-            "summary": "",
+            "summary": "Trim\u0020THML\u0020comments",
             "url": "classes/GSC-IStringFilters.html#method_trim_html_comment"
         },                {
             "fqsen": "\\GSC\\UnitTester",
