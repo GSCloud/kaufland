@@ -1,3 +1,14 @@
+# @author Fred Brooker <git@gscloud.cz>
+# API routes
+
+API:
+  path: /api
+  api: true
+  api_description: "REST API dashboard"
+  api_info: "This page 🐱"
+  presenter: core
+  sitemap: false
+
 GetVersion:
   path: "/api/v1/GetVersion"
   method: GET
