@@ -77,7 +77,7 @@ sync:
 
 test: unit
 ifneq ($(strip $(has_phpstan)),)
-	phpstan -l9 analyse www/index.php Bootstrap.php app/App.php app/Doctor.php
+	phpstan -l9 analyse -c phpstan.neon www/index.php Bootstrap.php app/CliDemo.php app/CliVersion.php app/Doctor.php app/ErrorPresenter.php app/MiniPresenter.php app/UnitTester.php
 	phpstan -l8 analyse app/ApiPresenter.php
 endif
 	@bash ./cli.sh local
