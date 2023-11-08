@@ -55,12 +55,10 @@ rsync -ahz --progress --delete-after --delay-updates --exclude "www/upload" --ex
   *.php \
   *.txt \
   akce*.data \
-  akce_archiv \
   app \
   bin \
   cli.sh \
   composer.lock \
-  doc \
   remote_fixer.sh \
   vendor \
   www \
