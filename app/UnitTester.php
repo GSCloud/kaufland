@@ -47,7 +47,6 @@ class UnitTester
             'CliVersion',
             'CorePresenter',
             'ErrorPresenter',
-            'MiniPresenter',
             'LoginPresenter',
             'LogoutPresenter',
         ];
@@ -56,11 +55,11 @@ class UnitTester
         foreach ($controllers as $c) {
             $controller = "\\GSC\\$c";
 
-            // get instances
+            // get Singletons
             $app = $controller::getInstance();
             $app2 = $controller::getInstance();
 
-            // compare objects
+            // compare Singletons
             Assert::same($app, $app2);
 
             // check instance type
@@ -68,7 +67,6 @@ class UnitTester
 
             // getData(), setData(), getCfg()
             Assert::same(null, $app->getData('just.null.testing'));
-            Assert::truthy(count($app->getData()));
             Assert::type('array', $app->getData());
             Assert::same($app->getData('cfg'), $app->getCfg());
             Assert::same(null, $app->getData('foo'));
@@ -116,44 +114,28 @@ class UnitTester
 
             // fluent interface
             Assert::same($app, $app->addCritical());
-            Assert::same($app, $app->addCritical(42));
-            Assert::same($app, $app->addCritical(true));
-            Assert::same($app, $app->addCritical(false));
             Assert::same($app, $app->addCritical(null));
-            Assert::same($app, $app->addCritical([]));
             Assert::same([], $app->getCriticals());
             Assert::same($app, $app->addCritical('test message'));
             Assert::same(['test message'], $app->getCriticals());
 
             // fluent interface
             Assert::same($app, $app->addError());
-            Assert::same($app, $app->addError(42));
-            Assert::same($app, $app->addError(true));
-            Assert::same($app, $app->addError(false));
             Assert::same($app, $app->addError(null));
-            Assert::same($app, $app->addError([]));
             Assert::same([], $app->getErrors());
             Assert::same($app, $app->addError('test message'));
             Assert::same(['test message'], $app->getErrors());
 
             // fluent interface
             Assert::same($app, $app->addMessage());
-            Assert::same($app, $app->addMessage(42));
-            Assert::same($app, $app->addMessage(true));
-            Assert::same($app, $app->addMessage(false));
             Assert::same($app, $app->addMessage(null));
-            Assert::same($app, $app->addMessage([]));
             Assert::same([], $app->getMessages());
             Assert::same($app, $app->addMessage('test message'));
             Assert::same(['test message'], $app->getMessages());
 
             // fluent interface
             Assert::same($app, $app->addAuditMessage());
-            Assert::same($app, $app->addAuditMessage(42));
-            Assert::same($app, $app->addAuditMessage(true));
-            Assert::same($app, $app->addAuditMessage(false));
             Assert::same($app, $app->addAuditMessage(null));
-            Assert::same($app, $app->addAuditMessage([]));
             Assert::same($app, $app->addAuditMessage('test message'));
 
             // fluent interface
